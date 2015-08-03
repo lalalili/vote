@@ -1,0 +1,210 @@
+<?php namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Requests\CreatePhotoRequest;
+use App\Http\Requests\UpdatePhotoRequest;
+use App\Models\Photo;
+use App\Repositories\PhotoRepository;
+use Flash;
+use Image;
+use Input;
+use Mitul\Controller\AppBaseController as Controller;
+use Redirect;
+use Request;
+use Response;
+use Validator;
+
+class PhotoController extends Controller
+{
+
+    /** @var  PhotoRepository */
+    private $photoRepository;
+
+    function __construct(PhotoRepository $photoRepo)
+    {
+        $this->photoRepository = $photoRepo;
+    }
+
+    /**
+     * Display a listing of the Photo.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $photos = $this->photoRepository->paginate(10);
+
+        return view('photos.index')
+            ->with('photos', $photos);
+    }
+
+    /**
+     * Show the form for creating a new Photo.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('photos.create');
+    }
+
+    /**
+     * Store a newly created Photo in storage.
+     *
+     * @param CreatePhotoRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreatePhotoRequest $request)
+    {
+//		$input = $request->all();
+//
+//		$photo = $this->photoRepository->create($input);
+//
+//		Flash::success('Photo saved successfully.');
+//
+//		return redirect(route('photos.index'));
+
+        $file = array('upload' => Request::file('upload'));
+        $rules = array('upload' => 'required',);
+        //dd($file);
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            Flash::overlay('請選擇上傳檔案', '警告');
+            return Redirect::to('photos/create');
+        } else {
+            // checking file is valid.
+            $utf8_filename = Request::file('upload')->getClientOriginalName();
+            //dd($utf8_filename);
+            if ($utf8_filename <> '') {
+                $destinationPath = '/uploads/images'; // upload path
+                $extension = Request::file('upload')->getClientOriginalExtension(); // getting image extension
+                $fileName = md5($utf8_filename) . '.' . $extension; // renameing image
+                //dd($fileName);
+                //Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
+                Image::make(Request::file('upload'))->resize(140, 140)->save(public_path().$destinationPath.'/'.$fileName);
+                //sending back with message
+                //Flash::overlay('success', 'Upload successfully');
+                $path = $destinationPath . '/' . $fileName;
+                //dd($path);
+                $photo = new Photo;
+                $photo->name = Input::get('name');
+                $photo->filename = $fileName;
+                $photo->utf8_filename = $utf8_filename;
+                $photo->seq = Input::get('seq');
+                $photo->path = $path;
+                $photo->album_id = Input::get('album_id');
+                $photo->page_id = Input::get('page_id');
+                $photo->title_id = Input::get('title_id');
+                $photo->is_display = Input::get('is_display');
+
+
+                if ($photo->save()) {
+                    //Flash::success('更新成功 ! ');
+                    //flash('更新成功 !');
+                    flash()->success('儲存成功 !');
+                    return Redirect::to('photos');
+                } else {
+                    //return Redirect::back()->withInput()->withErrors('保存失败！');
+                    return view('photos.index');
+                }
+
+            } else {
+                // sending back with error message.
+                Flash::overlay('請上傳正確檔案', '警告');
+                return Redirect::to('photos/create');
+            }
+        }
+    }
+
+    /**
+     * Display the specified Photo.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $photo = $this->photoRepository->find($id);
+
+        if (empty($photo)) {
+            Flash::error('Photo not found');
+
+            return redirect(route('photos.index'));
+        }
+
+        return view('photos.show')->with('photo', $photo);
+    }
+
+    /**
+     * Show the form for editing the specified Photo.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $photo = $this->photoRepository->find($id);
+
+        if (empty($photo)) {
+            Flash::error('Photo not found');
+
+            return redirect(route('photos.index'));
+        }
+
+        return view('photos.edit')->with('photo', $photo);
+    }
+
+    /**
+     * Update the specified Photo in storage.
+     *
+     * @param  int $id
+     * @param UpdatePhotoRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdatePhotoRequest $request)
+    {
+        $photo = $this->photoRepository->find($id);
+
+        if (empty($photo)) {
+            Flash::error('Photo not found');
+
+            return redirect(route('photos.index'));
+        }
+
+        $photo = $this->photoRepository->updateRich($request->all(), $id);
+
+        Flash::success('Photo updated successfully.');
+
+        return redirect(route('photos.index'));
+    }
+
+    /**
+     * Remove the specified Photo from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $photo = $this->photoRepository->find($id);
+
+        if (empty($photo)) {
+            Flash::error('Photo not found');
+
+            return redirect(route('photos.index'));
+        }
+
+        unlink(public_path().$photo->path);
+        $this->photoRepository->delete($id);
+
+        Flash::success('Photo deleted successfully.');
+
+        return redirect(route('photos.index'));
+    }
+}

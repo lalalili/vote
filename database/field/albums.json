@@ -1,0 +1,12 @@
+[
+  {
+    "field":"name:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"note:string",
+    "type":"text",
+    "validations": ""
+  }
+]

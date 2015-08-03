@@ -1,0 +1,42 @@
+[
+  {
+    "field":"title:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"name:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"filename:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"utf8_filename:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"seq:unsignedTinyInteger",
+    "type":"number",
+    "validations": "required"
+  },
+  {
+    "field":"path:string",
+    "type":"file",
+    "validations": "required"
+  },
+  {
+    "field":"is_display:boolean",
+    "type":"checkbox",
+    "validations": ""
+  },
+  {
+    "field":"album_id:unsignedInteger",
+    "type":"number",
+    "validations": "required"
+  }
+]

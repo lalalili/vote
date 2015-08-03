@@ -1,0 +1,205 @@
+<?php namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Requests\CreateAlbumRequest;
+use App\Http\Requests\UpdateAlbumRequest;
+use App\Models\Album;
+use App\Repositories\AlbumRepository;
+use Flash;
+use Excel;
+use Mitul\Controller\AppBaseController as Controller;
+use Redirect;
+use Request;
+use Response;
+use Validator;
+
+class AlbumController extends Controller
+{
+
+    /** @var  AlbumRepository */
+    private $albumRepository;
+
+    function __construct(AlbumRepository $albumRepo)
+    {
+        $this->albumRepository = $albumRepo;
+    }
+
+    /**
+     * Display a listing of the Album.
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        $albums = $this->albumRepository->paginate(10);
+
+        return view('albums.index')
+            ->with('albums', $albums);
+    }
+
+    /**
+     * Show the form for creating a new Album.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('albums.create');
+    }
+
+    /**
+     * Store a newly created Album in storage.
+     *
+     * @param CreateAlbumRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateAlbumRequest $request)
+    {
+        $input = $request->all();
+
+        $album = $this->albumRepository->create($input);
+
+        Flash::success('Album saved successfully.');
+
+        return redirect(route('albums.index'));
+    }
+
+    /**
+     * Display the specified Album.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $album = $this->albumRepository->find($id);
+
+        if (empty($album)) {
+            Flash::error('Album not found');
+
+            return redirect(route('albums.index'));
+        }
+
+        return view('albums.show')->with('album', $album);
+    }
+
+    /**
+     * Show the form for editing the specified Album.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $album = $this->albumRepository->find($id);
+
+        if (empty($album)) {
+            Flash::error('Album not found');
+
+            return redirect(route('albums.index'));
+        }
+
+        return view('albums.edit')->with('album', $album);
+    }
+
+    /**
+     * Update the specified Album in storage.
+     *
+     * @param  int $id
+     * @param UpdateAlbumRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateAlbumRequest $request)
+    {
+        $album = $this->albumRepository->find($id);
+
+        if (empty($album)) {
+            Flash::error('Album not found');
+
+            return redirect(route('albums.index'));
+        }
+
+        $album = $this->albumRepository->updateRich($request->all(), $id);
+
+        Flash::success('Album updated successfully.');
+
+        return redirect(route('albums.index'));
+    }
+
+    /**
+     * Remove the specified Album from storage.
+     *
+     * @param  int $id
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $album = $this->albumRepository->find($id);
+
+        if (empty($album)) {
+            Flash::error('Album not found');
+
+            return redirect(route('albums.index'));
+        }
+
+        $this->albumRepository->delete($id);
+
+        Flash::success('Album deleted successfully.');
+
+        return redirect(route('albums.index'));
+    }
+
+    public function upload()
+    {
+        return view('albums/upload');
+    }
+
+    public function batch()
+    {
+        $file = array('upload' => Request::file('upload'));
+        $rules = array('upload' => 'required',);
+        //dd(Request::file('upload'));
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            Flash::overlay('請選擇上傳Excel檔案', '警告');
+            return Redirect::to('admin/albums/upload');
+        } else {
+            // checking file is valid.
+            $upload_name = Request::file('upload')->getClientOriginalName();
+            //dd($upload_name);
+            if ($upload_name == 'store.xlsx') {
+                $destinationPath = 'uploads'; // upload path
+                //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
+                //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                $fileName = 'store.xlsx';
+                Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+                //Flash::overlay('success', 'Upload successfully');
+                $file = public_path() . '/' . $destinationPath . '/' . $fileName;
+                //dd($file);
+                $uploads = Excel::selectSheets('All')->load($file, function ($reader) {
+                })->get()->toArray();
+                //dd($data);
+                Album::truncate();
+                foreach ($uploads as $upload) {
+                    Album::create($upload);
+                }
+                unlink($file);
+                //Company::insert($upload);
+                //Flash::overlay('上傳成功','Info');
+                //$datas = Album::orderBy('site', 'asc')->get();
+                return view('albums.index');
+            } else {
+                // sending back with error message.
+                Flash::overlay('請上傳正確檔案', '警告');
+                return Redirect::to('albums.index');
+            }
+        }
+    }
+}

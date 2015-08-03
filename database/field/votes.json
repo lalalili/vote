@@ -1,0 +1,47 @@
+[
+  {
+    "field":"name:string",
+    "type":"text",
+    "validations": "required"
+  },
+  {
+    "field":"phone:string",
+    "type":"number",
+    "validations": "required"
+  },
+  {
+    "field":"q1:boolean",
+    "type":"checkbox",
+    "validations": "required"
+  },
+  {
+    "field":"q2:boolean",
+    "type":"checkbox",
+    "validations": "required"
+  },
+  {
+    "field":"q3:boolean",
+    "type":"checkbox",
+    "validations": "required"
+  },
+  {
+    "field":"note1:string",
+    "type":"text",
+    "validations": ""
+  },
+  {
+    "field":"note2:string",
+    "type":"text",
+    "validations": ""
+  },
+  {
+    "field":"photo_id:unsignedInteger",
+    "type":"number",
+    "validations": "required"
+  },
+  {
+    "field":"album_id:unsignedInteger",
+    "type":"number",
+    "validations": "required"
+  }
+]
