@@ -72,13 +72,21 @@ class PhotoController extends Controller
     public function show(){
         $lists = Photo::with('Album','Title')->get();
         //dd($lists);
-        return view('vote', compact('lists'));
+        return view('show', compact('lists'));
     }
 
-    public function poll($id){
+    public function choose($id){
         //dd($id);
         $to = Photo::find($id);
         //dd($to->name);
         return view('pull', compact('to'));
     }
+
+    public function pull(){
+        //dd($id);
+        $to = Photo::find($id);
+        //dd($to->name);
+        return view('pull', compact('to'));
+    }
+
 }

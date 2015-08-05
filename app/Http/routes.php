@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/vote', 'PhotoController@show');
-Route::get('/vote/{id}', 'PhotoController@poll');
-
+Route::get('/show', 'PhotoController@show');
+Route::get('/choose/{id}', 'PhotoController@choose');
+Route::post('/pull', 'PhotoController@poll');
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'admin'], function () {

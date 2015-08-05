@@ -40,7 +40,7 @@
                         </li>
                         <li><a href="#lists">得獎名單</a>
                         </li>
-                        <li><a href="{{url('vote')}}">投票去</a>
+                        <li><a href="{{url('show')}}">投票去</a>
                         </li>
                     </ul>
                 </div>
@@ -72,16 +72,16 @@
                             <img src="{{url('/img/freeze/Slides/thumb.png')}}" alt="">
                         </div>
 
-                        {{--<div class="tp-caption lfl fadeout visible-xs"--}}
-                        {{--data-x="left"--}}
-                        {{--data-y="center"--}}
-                        {{--data-hoffset="700"--}}
-                        {{--data-voffset="0"--}}
-                        {{--data-speed="500"--}}
-                        {{--data-start="700"--}}
-                        {{--data-easing="Power4.easeOut">--}}
-                        {{--<img src="{{url('/img/freeze/iphone-freeze.png')}}" alt="">--}}
-                        {{--</div>--}}
+                        <div class="tp-caption lfl fadeout visible-xs"
+                        data-x="left"
+                        data-y="center"
+                        data-hoffset="700"
+                        data-voffset="0"
+                        data-speed="500"
+                        data-start="700"
+                        data-easing="Power4.easeOut">
+                        <img src="{{url('/img/freeze/Slides/thumb_s.png')}}" alt="">
+                        </div>
 
                         <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
@@ -115,7 +115,7 @@
 
                     <div class="divider"></div>
                     <h3>票選期間：2015/11/1 ~ 2015/12/31</h3>
-                    <h4>本活動如有任何未盡事宜，LUXGEN保由修改活動內容，變更，暫停及解釋活動內容之權力，<BR>不另行書面通知參加此活動者與得獎者。</h4>
+                    <h4>本活動如有任何未盡事宜，<BR>LUXGEN保由修改活動內容，變更，暫停及解釋活動內容之權力，<BR>不另行書面通知參加此活動者與得獎者。</h4>
                 </div>
                 <div class="row">
                     <div class="col-md-10 col-md-push-1 scrollpoint sp-effect3">
@@ -228,23 +228,20 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
+                                        <th>姓名</th>
+                                        <th>獎項</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td>張馬克</td>
+                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Mark2</td>
-                                        <td>Otto2</td>
-                                        <td>@mdo2</td>
+                                        <td>陳大文</td>
+                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -261,23 +258,20 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Username</th>
+                                        <th>姓名</th>
+                                        <th>獎項</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
                                         <td>1</td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>@mdo</td>
+                                        <td>李瀅瀅</td>
+                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
-                                        <td>Mark2</td>
-                                        <td>Otto2</td>
-                                        <td>@mdo2</td>
+                                        <td>王美麗</td>
+                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
                                     </tr>
                                     </tbody>
                                 </table>
