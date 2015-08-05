@@ -33,7 +33,7 @@
             </ul>
         </div>
         <!-- /.navbar-collapse -->
-    </div>
+    </div> 
     <!-- /.container-->
 
     <div class="wrapper">

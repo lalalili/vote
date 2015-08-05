@@ -696,7 +696,7 @@ form .form-control {
     height: 40px;
     line-height: 40px;
     padding: 10px 20px;
-    color: #cfcfcf;
+    /*color: #cfcfcf;*/
     border: 2px solid #cccccc;
     font-weight: 300;
 }

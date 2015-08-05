@@ -77,6 +77,8 @@ class PhotoController extends Controller
 
     public function poll($id){
         //dd($id);
-
+        $to = Photo::find($id);
+        //dd($to->name);
+        return view('pull', compact('to'));
     }
 }
