@@ -47,25 +47,46 @@
         <section id="vote" class="doublediagonal">
             <div class="container">
                 <div class="section-heading scrollpoint sp-effect3">
-                    <h1>請點選最佳微笑大使照片開始投票</h1>
+                    <br/><br/>
+                    <h2>請點選最佳微笑大使照片開始投票</h2>
 
                     <div class="divider"></div>
                 </div>
-                @foreach($lists->chunk(3) as $list3)
+                @if($lists->count() > 3)
+                    @foreach($lists->chunk(3) as $list3)
+                        <div class="row">
+                            @foreach($list3 as $list)
+                                <div class="col-md-4 col-sm-4 col-xs-4">
+                                    <div class="about-item scrollpoint sp-effect2">
+                                        <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
+                                                                                  src="/uploads/demo/{{ $list->filename }}"
+                                                                                  alt=""></a></i>
+
+                                        <h3>{{ $list->title->name }}</h3>
+
+                                        <p>{{ $list->name }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                @else
                     <div class="row">
-                        @foreach($list3 as $list)
+                        @foreach($lists as $list)
                             <div class="col-md-4 col-sm-4 col-xs-4">
                                 <div class="about-item scrollpoint sp-effect2">
-                                    <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive" src="uploads/demo/{{ $list->filename }}" alt="" ></a></i>
+                                    <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
+                                                                              src="/uploads/demo/{{ $list->filename }}"
+                                                                              alt=""></a></i>
 
-                                    <h3>{{ $list->album->name }}</h3>
+                                    <h3>{{ $list->title->name }}</h3>
 
                                     <p>{{ $list->name }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                @endforeach
+                @endif
             </div>
         </section>
     </div>

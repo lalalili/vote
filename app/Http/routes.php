@@ -15,12 +15,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/show', 'PhotoController@show');
-Route::get('/choose/{id}', 'PhotoController@choose');
-Route::post('/pull', 'PhotoController@poll');
+Route::get('show/{id}', 'PhotoController@show');
+Route::get('choose/{id}', 'PhotoController@choose');
+Route::post('pull', 'PhotoController@pull');
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/', function () {
+        return redirect('admin/photo/list');
+    });
     Route::controller('photo', 'PhotoController');
     Route::controller('album', 'AlbumController');
     Route::controller('title', 'TitleController');

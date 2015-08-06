@@ -47,7 +47,8 @@
         <section id="support" class="doublediagonal">
             <div class="container">
                 <div class="section-heading scrollpoint sp-effect3">
-                    <h1>微笑大使票選</h1>
+                    <br/><br/>
+                    <h2>微笑大使票選</h2>
 
                     <div class="divider"></div>
                 </div>
@@ -58,14 +59,15 @@
                     <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
-                                <form role="form" action="pull" method="post">
+                                <form role="form" action="{{url('pull')}}" method="post">
                                     <div class="form-group">
                                         <h5>您選擇的最佳微笑大使：</h5>
-                                        <input type="text" class="form-control"  readonly value="{{ $to->name }}" name="voteTo">
+                                        <input type="text" class="form-control" readonly value="{{ $to->name }}"
+                                               name="voteTo">
                                     </div>
                                     <div class="form-group">
                                         <h5>姓名 * :</h5>
-                                        <input type="text" class="form-control"  name="name">
+                                        <input type="text" class="form-control" name="name">
                                     </div>
                                     <div class="form-group">
                                         <h5>電話 * :</h5>
@@ -81,40 +83,44 @@
                                         </div>
                                         {{--<input type="checkbox" class="form-control" name="q1">進入生活館/服務廠時，服務人員能夠主動服務 立即接待--}}
                                     </div>
+                                    <div class="form-group">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="voteToID" value="{{ $to->id }}">
+                                    </div>
                                     <button type="submit" class="btn btn-primary btn-lg">送出</button>
                                 </form>
                             </div>
                             {{--<div class="col-md-4 col-sm-4 contact-details scrollpoint sp-effect2">--}}
-                                {{--<div class="media">--}}
-                                    {{--<a class="pull-left" href="#">--}}
-                                        {{--<i class="fa fa-map-marker fa-2x"></i>--}}
-                                    {{--</a>--}}
+                            {{--<div class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                            {{--<i class="fa fa-map-marker fa-2x"></i>--}}
+                            {{--</a>--}}
 
-                                    {{--<div class="media-body">--}}
-                                        {{--<h4 class="media-heading">--}}
-                                        {{--</h4>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="media">--}}
-                                    {{--<a class="pull-left" href="#">--}}
-                                        {{--<i class="fa fa-envelope fa-2x"></i>--}}
-                                    {{--</a>--}}
+                            {{--<div class="media-body">--}}
+                            {{--<h4 class="media-heading">--}}
+                            {{--</h4>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                            {{--<i class="fa fa-envelope fa-2x"></i>--}}
+                            {{--</a>--}}
 
-                                    {{--<div class="media-body">--}}
-                                        {{--<h4 class="media-heading">--}}
-                                            {{--<a href="mailto:support@oleose.com">support@oleose.com</a>--}}
-                                        {{--</h4>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                                {{--<div class="media">--}}
-                                    {{--<a class="pull-left" href="#">--}}
-                                        {{--<i class="fa fa-phone fa-2x"></i>--}}
-                                    {{--</a>--}}
+                            {{--<div class="media-body">--}}
+                            {{--<h4 class="media-heading">--}}
+                            {{--<a href="mailto:support@oleose.com">support@oleose.com</a>--}}
+                            {{--</h4>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="media">--}}
+                            {{--<a class="pull-left" href="#">--}}
+                            {{--<i class="fa fa-phone fa-2x"></i>--}}
+                            {{--</a>--}}
 
-                                    {{--<div class="media-body">--}}
-                                        {{--<h4 class="media-heading">+1 234 567890</h4>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
+                            {{--<div class="media-body">--}}
+                            {{--<h4 class="media-heading">+1 234 567890</h4>--}}
+                            {{--</div>--}}
+                            {{--</div>--}}
                             {{--</div>--}}
                         </div>
                     </div>

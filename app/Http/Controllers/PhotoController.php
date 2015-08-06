@@ -4,11 +4,15 @@ use App\Http\Requests;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Title;
+use App\Models\Vote;
 use DataEdit;
 use DataFilter;
 use DataGrid;
 use Input;
+use Redirect;
 use View;
+use Request;
+use Flash;
 
 class PhotoController extends Controller
 {
@@ -53,7 +57,7 @@ class PhotoController extends Controller
         $edit->add('album_id', '據點', 'select')->options(Album::lists("name", "id")->all());
         $edit->add('title_id', '職稱', 'select')->options(title::lists("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');
-        $edit->add('filename','照片', 'image')->move('uploads/demo/')->resize(160, 160)->preview(160, 160);
+        $edit->add('filename', '照片', 'image')->move('uploads/demo/')->resize(160, 160)->preview(160, 160);
 
 
         $grid = DataGrid::source(Photo::with('album', 'title'));
@@ -69,24 +73,58 @@ class PhotoController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function show(){
-        $lists = Photo::with('Album','Title')->get();
+    public function show($id)
+    {
+        //$lists = Photo::findOrFail($id);
+        $lists = Photo::with('Album', 'Title')->where('album_id',$id)->get();
         //dd($lists);
         return view('show', compact('lists'));
     }
 
-    public function choose($id){
+    public function choose($id)
+    {
         //dd($id);
-        $to = Photo::find($id);
-        //dd($to->name);
+        $to = Photo::findOrFail($id);
+        //dd($to);
         return view('pull', compact('to'));
     }
 
-    public function pull(){
-        //dd($id);
-        $to = Photo::find($id);
-        //dd($to->name);
-        return view('pull', compact('to'));
+    public function pull()
+    {
+        $voteToID = Request::input('voteToID');
+        $Name = Request::input('name');
+        $Phone = Request::input('phone');
+        $Q1 = True;
+        //dd($voteToID);
+        //dd($Name);
+        //dd($Phone);
+        //dd($Q1);
+        if ($voteToID == "")
+        {
+            return view('show');
+        }
+        else if ($Name == "") {
+            Flash::warning('請輸入姓名');
+            return Redirect::back();
+
+        } else if ($Phone == "") {
+            Flash::warning('請輸入電話');
+            return Redirect::back();
+        } else if ($Q1 <> "on") {
+            Flash::warning('請勾選同意活動辦法');
+            return Redirect::back();
+        }
+        $vote = new Vote;
+        $vote->photo_id = $voteToID;
+        $vote->name = $Name;
+        $vote->phone = $Phone;
+        $vote->q1 = $Q1;
+        if ($vote->save()) {
+            return view('home');
+        } else {
+            Flash::warning('系統異常，請再重新送出一次');
+            return Redirect::back();
+        }
     }
 
 }

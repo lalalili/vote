@@ -40,7 +40,7 @@
                         </li>
                         <li><a href="#lists">得獎名單</a>
                         </li>
-                        <li><a href="{{url('show')}}">投票去</a>
+                        <li><a href="{{url('/show/1')}}">投票去</a>
                         </li>
                     </ul>
                 </div>
