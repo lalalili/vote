@@ -42,20 +42,36 @@
 
     </header>
     <!-- /.container-->
+    <section id="show">
+        <div class="wrapper">
+            <section id="vote" class="doublediagonal">
+                <div class="container">
+                    <div class="section-heading scrollpoint sp-effect3">
+                        <br/><br/>
 
-    <div class="wrapper">
-        <section id="vote" class="doublediagonal">
-            <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <br/><br/>
-                    <h2>請點選最佳微笑大使照片開始投票</h2>
+                        <h2>請點選最佳微笑大使照片開始投票</h2>
+                    </div>
+                    @if($lists->count() > 3)
+                        @foreach($lists->chunk(3) as $list3)
+                            <div class="row">
+                                @foreach($list3 as $list)
+                                    <div class="col-md-4 col-sm-4 col-xs-4">
+                                        <div class="about-item scrollpoint sp-effect2">
+                                            <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
+                                                                                      src="/uploads/demo/{{ $list->filename }}"
+                                                                                      alt=""></a></i>
 
-                    <div class="divider"></div>
-                </div>
-                @if($lists->count() > 3)
-                    @foreach($lists->chunk(3) as $list3)
+                                            <h3>{{ $list->title->name }}</h3>
+
+                                            <p>{{ $list->name }}</p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    @else
                         <div class="row">
-                            @foreach($list3 as $list)
+                            @foreach($lists as $list)
                                 <div class="col-md-4 col-sm-4 col-xs-4">
                                     <div class="about-item scrollpoint sp-effect2">
                                         <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
@@ -69,25 +85,9 @@
                                 </div>
                             @endforeach
                         </div>
-                    @endforeach
-                @else
-                    <div class="row">
-                        @foreach($lists as $list)
-                            <div class="col-md-4 col-sm-4 col-xs-4">
-                                <div class="about-item scrollpoint sp-effect2">
-                                    <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
-                                                                              src="/uploads/demo/{{ $list->filename }}"
-                                                                              alt=""></a></i>
-
-                                    <h3>{{ $list->title->name }}</h3>
-
-                                    <p>{{ $list->name }}</p>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
-        </section>
-    </div>
+                    @endif
+                </div>
+            </section>
+        </div>
+    </section>
 @endsection

@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
 Route::post('pull', 'PhotoController@pull');
+Route::get('pdpa', function(){
+    return view('pdpa');
+});
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'admin'], function () {

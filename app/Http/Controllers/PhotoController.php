@@ -94,11 +94,15 @@ class PhotoController extends Controller
         $voteToID = Request::input('voteToID');
         $Name = Request::input('name');
         $Phone = Request::input('phone');
-        $Q1 = True;
+        $Q1 = Request::input('q1');
+        $Q2 = Request::input('q2');
+        $Q3 = Request::input('q3');
+        $Q4 = Request::input('q4');
+
         //dd($voteToID);
         //dd($Name);
         //dd($Phone);
-        //dd($Q1);
+        //dd($Q3);
         if ($voteToID == "")
         {
             return view('show');
@@ -110,7 +114,7 @@ class PhotoController extends Controller
         } else if ($Phone == "") {
             Flash::warning('請輸入電話');
             return Redirect::back();
-        } else if ($Q1 <> "on") {
+        } else if ($Q4 <> "1") {
             Flash::warning('請勾選同意活動辦法');
             return Redirect::back();
         }
@@ -119,6 +123,8 @@ class PhotoController extends Controller
         $vote->name = $Name;
         $vote->phone = $Phone;
         $vote->q1 = $Q1;
+        $vote->q2 = $Q2;
+        $vote->q3 = $Q3;
         if ($vote->save()) {
             return view('home');
         } else {

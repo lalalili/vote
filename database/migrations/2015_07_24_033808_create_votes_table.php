@@ -18,9 +18,9 @@ class CreateVotesTable extends Migration
 			$table->increments('id');
 			$table->string('name');
 			$table->string('phone');
-			$table->boolean('q1');
-			$table->boolean('q2');
-			$table->boolean('q3');
+			$table->boolean('q1')->nullable();
+			$table->boolean('q2')->nullable();
+			$table->boolean('q3')->nullable();
 			$table->string('note1')->nullable();
 			$table->string('note2')->nullable();
 			$table->unsignedInteger('photo_id');

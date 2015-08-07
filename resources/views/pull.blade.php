@@ -42,90 +42,88 @@
         </nav>
 
     </header>
-    <div class="wrapper">
+    <section id="pull">
+        <div class="wrapper">
+            <section id="support" class="doublediagonal">
+                <div class="container">
+                    <div class="section-heading scrollpoint sp-effect3">
+                        <br/><br/>
 
-        <section id="support" class="doublediagonal">
-            <div class="container">
-                <div class="section-heading scrollpoint sp-effect3">
-                    <br/><br/>
-                    <h2>微笑大使票選</h2>
+                        <h2>微笑大使票選</h2>
 
-                    <div class="divider"></div>
-                </div>
-                <div class="row">
-                    <div class="container">
-                        @include('flash::message')
+                        <div class="divider"></div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="row">
-                            <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
-                                <form role="form" action="{{url('pull')}}" method="post">
-                                    <div class="form-group">
-                                        <h5>您選擇的最佳微笑大使：</h5>
-                                        <input type="text" class="form-control" readonly value="{{ $to->name }}"
-                                               name="voteTo">
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>姓名 * :</h5>
-                                        <input type="text" class="form-control" name="name">
-                                    </div>
-                                    <div class="form-group">
-                                        <h5>電話 * :</h5>
-                                        <input type="text" class="form-control" name="phone">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <label style="font-size: 2em">
-                                                <input type="checkbox" name="q1">
-                                                <span class="cr"><i class="cr-icon fa fa-check"></i></span>
-                                                我已經閱讀並了解活動內容說明，並提供個人資料於符合個資聲明知範圍內被蒐集處理與利用。
-                                            </label>
+                    <div class="row">
+                        <div class="container">
+                            @include('flash::message')
+                        </div>
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
+                                    <form role="form" action="{{url('pull')}}" method="post">
+                                        <div class="form-group">
+                                            <h4><b style="color: red">*</b> 您選擇的最佳微笑大使：</h4>
+                                            <input type="text" class="form-control" readonly value="{{ $to->name }}"
+                                                   name="voteTo">
                                         </div>
-                                        {{--<input type="checkbox" class="form-control" name="q1">進入生活館/服務廠時，服務人員能夠主動服務 立即接待--}}
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="voteToID" value="{{ $to->id }}">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary btn-lg">送出</button>
-                                </form>
+                                        <div class="form-group">
+                                            <h4><b style="color: red">*</b> 姓名 :</h4>
+                                            <input type="text" class="form-control" name="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <h4><b style="color: red">*</b> 電話 ( 請直接輸入數字，不含任何符號 例如 手機 : 0912345678 市話 :
+                                                0227893969 ):</h4>
+                                            <input type="text" class="form-control" name="phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label style="font-size: 20px">
+                                                    <input type="checkbox" name="q1" value="1">
+                                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                    進入生活館/服務廠時，服務人員能夠主動服務並立即接待
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label style="font-size: 20px">
+                                                    <input type="checkbox" name="q2" value="1">
+                                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                    我能感受到服務人員具有熱情與熱誠的服務態度
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label style="font-size: 20px">
+                                                    <input type="checkbox" name="q3" value="1">
+                                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                    全程溝通中服務人員的傾聽及表達都能深得我心
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="checkbox">
+                                                <label style="font-size: 20px">
+                                                    <input type="checkbox" name="q4" value="1">
+                                                    <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+                                                    <b style="color: red">*</b> 我已經閱讀並了解活動內容說明，並同意提供個人資料於符合<a
+                                                            href="{{url('/pdpa')}}">個資聲明</a>範圍內被蒐集處理與利用
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <input type="hidden" name="voteToID" value="{{ $to->id }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-lg">送出</button>
+                                    </form>
+                                </div>
                             </div>
-                            {{--<div class="col-md-4 col-sm-4 contact-details scrollpoint sp-effect2">--}}
-                            {{--<div class="media">--}}
-                            {{--<a class="pull-left" href="#">--}}
-                            {{--<i class="fa fa-map-marker fa-2x"></i>--}}
-                            {{--</a>--}}
-
-                            {{--<div class="media-body">--}}
-                            {{--<h4 class="media-heading">--}}
-                            {{--</h4>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="media">--}}
-                            {{--<a class="pull-left" href="#">--}}
-                            {{--<i class="fa fa-envelope fa-2x"></i>--}}
-                            {{--</a>--}}
-
-                            {{--<div class="media-body">--}}
-                            {{--<h4 class="media-heading">--}}
-                            {{--<a href="mailto:support@oleose.com">support@oleose.com</a>--}}
-                            {{--</h4>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--<div class="media">--}}
-                            {{--<a class="pull-left" href="#">--}}
-                            {{--<i class="fa fa-phone fa-2x"></i>--}}
-                            {{--</a>--}}
-
-                            {{--<div class="media-body">--}}
-                            {{--<h4 class="media-heading">+1 234 567890</h4>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
+            </section>
+        </div>
+    </section>
 @endsection
