@@ -10,6 +10,9 @@ class Album extends Model
 
 	public $fillable = [
 	    "name",
+	    "type",
+	    "area",
+        "path",
 		"note"
 	];
 

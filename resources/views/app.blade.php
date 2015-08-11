@@ -22,9 +22,10 @@
     <link rel="stylesheet" href="{{url('/js/rs-plugin/css/settings.css')}}">
 
     <link rel="stylesheet" href="{{url('/css/styles.css')}}">
+    <link rel="stylesheet" href="{{url('/css/jquery.fullPage.css')}}">
 
 
-    <script type="text/javascript" src="{{url('/js/modernizr.custom.32033.js')}}"></script>
+
 
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -34,7 +35,7 @@
 </head>
 
 <body>
-
+<script src="{{url('/js/modernizr.custom.32033.js')}}"></script>
 <script src="{{url('/js/jquery-1.11.1.min.js')}}"></script>
 <script src="{{url('/js/bootstrap.min.js')}}"></script>
 <script src="{{url('/js/slick.min.js')}}"></script>
@@ -42,10 +43,34 @@
 <script src="{{url('/js/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
 <script src="{{url('/js/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 <script src="{{url('/js/waypoints.min.js')}}"></script>
+<script src="{{url('/js/jquery.fullPage.min.js')}}"></script>
 <script src="{{url('/js/scripts.js')}}"></script>
+
 <script>
     $(document).ready(function() {
         appMaster.preLoader();
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#fullpage').fullpage({
+            sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+            anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
+            menu: '#menu',
+            css3: true,
+            scrollingSpeed: 1000
+        });
+
+        $('#showExamples').click(function(e){
+            e.stopPropagation();
+            e.preventDefault();
+            $('#examplesList').toggle();
+        });
+
+        $('html').click(function(){
+            $('#examplesList').hide();
+        });
     });
 </script>
 {!! Rapyd::scripts() !!}

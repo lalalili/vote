@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'AlbumController@show');
+
+Route::get('store/{id}', 'AlbumController@choose');
 
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');

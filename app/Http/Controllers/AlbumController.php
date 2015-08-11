@@ -7,6 +7,7 @@ use DataFilter;
 use DataGrid;
 use Excel;
 use Flash;
+use Illuminate\Support\Facades\Session;
 use Input;
 use Redirect;
 use Request;
@@ -21,7 +22,7 @@ class AlbumController extends Controller
         $filter = DataFilter::source(new Album());
         //dd($filter);
         $filter->add('name', '據點', 'text');
-        $filter->add('note', '區域', 'text');
+        $filter->add('area', '區域', 'text');
 
         $filter->submit('search');
         $filter->reset('reset');
@@ -29,7 +30,7 @@ class AlbumController extends Controller
 
         $grid = DataGrid::source($filter);
         $grid->add('name', '姓名');
-        $grid->add('note', '區域');
+        $grid->add('area', '區域');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
@@ -51,7 +52,10 @@ class AlbumController extends Controller
         $edit->label('據點編輯');
 
         $edit->add('name', '據點', 'text')->rule('required|min:3');
-        $edit->add('note', '區域', 'text')->rule('required|min:3');
+        $edit->add('type', '類別', 'text')->rule('required|min:3');
+        $edit->add('area', '區域', 'text')->rule('required|min:3');
+        $edit->add('qa', 'QR Code', 'image')->move('uploads/demo/qr')->resize(160, 160)->preview(160, 160);
+
         $edit->add('column', '呈現欄位(預設3)', 'text');
         $edit->add('seq', '呈現順序(1~9)', 'text');
         $edit->add('is_display', '是否顯示', 'checkbox');
@@ -59,7 +63,7 @@ class AlbumController extends Controller
 
         $grid = DataGrid::source(new Album());
         $grid->add('name', '據點');
-        $grid->add('note', '區域');
+        $grid->add('area', '區域');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
@@ -115,6 +119,31 @@ class AlbumController extends Controller
                 Flash::overlay('請上傳正確檔案', '警告');
                 return Redirect::to('/admin/album/upload');
             }
+        }
+    }
+
+    public function show()
+    {
+        $lists1 = Album::where('area', '北智捷')->get();
+        $lists2 = Album::where('area', '桃智捷')->get();
+        $lists3 = Album::where('area', '中智捷')->get();
+        $lists4 = Album::where('area', '南智捷')->get();
+        $lists5 = Album::where('area', '高智捷')->get();
+        //dd($lists1);
+        return view('qr', compact('lists1', 'lists2', 'lists3', 'lists4', 'lists5'));
+    }
+
+    public function choose($id)
+    {
+        //dd(Album::find($id));
+        if(Album::find($id) <> null)
+        {
+            $storeId = $id;
+            return view('home',compact('storeId'));
+        }
+        else
+        {
+            return redirect('/');
         }
     }
 }

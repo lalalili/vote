@@ -19,10 +19,10 @@ class CreatePhotosTable extends Migration
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('filename');
-			$table->string('utf8_filename');
+			$table->string('filename')->nullable();
+			$table->string('utf8_filename')->nullable();
 			$table->unsignedTinyInteger('seq')->default(1);
-			$table->string('path');
+			$table->string('path')->nullable();
 			$table->boolean('is_display')->default(1);
 			$table->unsignedInteger('album_id');
 			$table->unsignedInteger('title_id');

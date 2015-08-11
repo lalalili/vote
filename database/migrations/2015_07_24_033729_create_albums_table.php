@@ -17,7 +17,11 @@ class CreateAlbumsTable extends Migration
 		{
 			$table->increments('id');
 			$table->string('name');
-			$table->string('note')->nullable();
+            $table->string('type');
+			$table->string('area');
+            $table->string('path')->nullable();
+            $table->string('qr')->nullable();
+            $table->string('note')->nullable();
             $table->unsignedTinyInteger('column')->default(3);
             $table->unsignedTinyInteger('seq')->default(1);
             $table->boolean('is_display')->default(1);

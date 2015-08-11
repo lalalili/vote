@@ -40,7 +40,7 @@
                         </li>
                         <li><a href="#lists">得獎名單</a>
                         </li>
-                        <li><a href="{{url('/show/1')}}">投票去</a>
+                        <li><a href="{{url('/show')}}/{{$storeId}}">投票去</a>
                         </li>
                     </ul>
                 </div>
@@ -98,7 +98,7 @@
                         </div>
                         <div class="tp-caption sfr" data-x="750" data-y="center" data-hoffset="0"
                              data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
-                            <a href="#vote" class="btn btn-default btn-lg">投票去</a>
+                            <a href="{{url('/show')}}/{{$storeId}}" class="btn btn-default btn-lg">投票去</a>
                         </div>
 
                     </li>

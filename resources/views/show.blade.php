@@ -56,14 +56,15 @@
                             <div class="row">
                                 @foreach($list3 as $list)
                                     <div class="col-md-4 col-sm-4 col-xs-4">
-                                        <div class="about-item scrollpoint sp-effect2">
+                                        <div class="about-item scrollpoint sp-effect2"
+                                             style="display:table-cell; vertical-align:middle; text-align:center">
                                             <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
-                                                                                      src="/uploads/demo/{{ $list->filename }}"
+                                                                                      align="top"
+                                                                                      src="/uploads/demo/{{ $list->path }}"
                                                                                       alt=""></a></i>
-
                                             <h3>{{ $list->title->name }}</h3>
-
-                                            <p>{{ $list->name }}</p>
+                                            <h4>{{ $list->name }}</h4>
+                                            <BR>
                                         </div>
                                     </div>
                                 @endforeach
@@ -74,9 +75,10 @@
                             @foreach($lists as $list)
                                 <div class="col-md-4 col-sm-4 col-xs-4">
                                     <div class="about-item scrollpoint sp-effect2">
-                                        <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
-                                                                                  src="/uploads/demo/{{ $list->filename }}"
-                                                                                  alt=""></a></i>
+                                        <i><a href="/choose/{{ $list->id }}"><img
+                                                        class="img-circle img-responsive"
+                                                        src="/uploads/demo/{{ $list->path }}"
+                                                        alt=""></a></i>
 
                                         <h3>{{ $list->title->name }}</h3>
 
