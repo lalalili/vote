@@ -129,7 +129,7 @@ class AlbumController extends Controller
         $lists3 = Album::where('area', '中智捷')->get();
         $lists4 = Album::where('area', '南智捷')->get();
         $lists5 = Album::where('area', '高智捷')->get();
-        //dd($lists1);
+        //dd($lists2);
         return view('qr', compact('lists1', 'lists2', 'lists3', 'lists4', 'lists5'));
     }
 
