@@ -37,7 +37,7 @@
 
     <ul id="menu">
         <li><img src="{{url('/img/freeze/logo.png')}}" alt=""/></li>
-        <li data-menuanchor="firstPage" class="active"><a href="#firstPage">北智捷</a></li>
+        <li data-menuanchor="firstPage"><a href="#firstPage">北智捷</a></li>
         <li data-menuanchor="secondPage"><a href="#secondPage">桃智捷</a></li>
         <li data-menuanchor="3rdPage"><a href="#3rdPage">中智捷</a></li>
         <li data-menuanchor="4thpage"><a href="#4thpage">南智捷</a></li>
@@ -46,7 +46,7 @@
     </ul>
 
     <div id="fullpage">
-        <div class="section active" id="section0">
+        <div class="section" id="section0">
             <div class="wrapper">
                 <section id="vote" class="doublediagonal">
                     <div class="container">

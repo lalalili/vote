@@ -59,17 +59,8 @@
             anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
             menu: '#menu',
             css3: true,
-            scrollingSpeed: 1000
-        });
-
-        $('#showExamples').click(function(e){
-            e.stopPropagation();
-            e.preventDefault();
-            $('#examplesList').toggle();
-        });
-
-        $('html').click(function(){
-            $('#examplesList').hide();
+            scrollingSpeed: 1000,
+            scrollBar: true
         });
     });
 </script>
