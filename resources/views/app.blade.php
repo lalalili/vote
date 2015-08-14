@@ -35,15 +35,16 @@
 </head>
 
 <body>
-<script src="{{url('/js/modernizr.custom.32033.js')}}"></script>
 <script src="{{url('/js/jquery-1.11.1.min.js')}}"></script>
+@yield('content')
+<script src="{{url('/js/modernizr.custom.32033.js')}}"></script>
 <script src="{{url('/js/bootstrap.min.js')}}"></script>
 <script src="{{url('/js/slick.min.js')}}"></script>
 <script src="{{url('/js/placeholdem.min.js')}}"></script>
 <script src="{{url('/js/rs-plugin/js/jquery.themepunch.plugins.min.js')}}"></script>
 <script src="{{url('/js/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 <script src="{{url('/js/waypoints.min.js')}}"></script>
-<script src="{{url('/js/jquery.fullPage.min.js')}}"></script>
+
 <script src="{{url('/js/scripts.js')}}"></script>
 
 <script>
@@ -52,20 +53,9 @@
     });
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#fullpage').fullpage({
-            sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-            anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
-            menu: '#menu',
-            css3: true,
-            scrollingSpeed: 1000,
-            scrollBar: true
-        });
-    });
-</script>
+
 {!! Rapyd::scripts() !!}
-@yield('content')
+
 </body>
 
 </html>

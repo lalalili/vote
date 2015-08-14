@@ -1,42 +1,23 @@
 @extends('app')
 
 @section('content')
-    {{--<div class="pre-loader">--}}
-    {{--<div class="load-con">--}}
-    {{--<img src="{{url('/img/freeze/logo.png')}}" class="animated fadeInDown" alt="">--}}
 
-    {{--<div class="spinner">--}}
-    {{--<div class="bounce1"></div>--}}
-    {{--<div class="bounce2"></div>--}}
-    {{--<div class="bounce3"></div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-    {{--</div>--}}
-
-    {{--<header>--}}
-
-    {{--<nav class="navbar navbar-default navbar-fixed-top" role="navigation">--}}
-    {{--<div class="container">--}}
-    {{--<!-- Brand and toggle get grouped for better mobile display -->--}}
-    {{--<div class="navbar-header">--}}
-    {{--<button type="button" class="navbar-toggle" data-toggle="collapse"--}}
-    {{--data-target="#bs-example-navbar-collapse-1">--}}
-    {{--<span class="fa fa-bars fa-lg"></span>--}}
-    {{--</button>--}}
-    {{--<a class="navbar-brand" href="index.html">--}}
-    {{--<img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">--}}
-    {{--</a>--}}
-    {{--</div>--}}
-    {{--<!-- /.navbar-collapse -->--}}
-    {{--</div>--}}
-    {{--<!-- /.container-->--}}
-    {{--</nav>--}}
-
-    {{--</header>--}}
-    <!-- /.container-->
-
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#fullpage').fullpage({
+                sectionsColor: ['#5AB5C0', '#82C6CE', '#AEDBE0', '#C9E7EA', '#DBE7E8'],
+                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage'],
+                menu: '#menu',
+                css3: true,
+                scrollingSpeed: 1000,
+                scrollBar: true,
+                fitToSection: false
+            });
+        });
+    </script>
     <ul id="menu">
-        <li><img src="{{url('/img/freeze/logo.png')}}" alt=""/></li>
+        <img src="{{url('/img/freeze/logo.png')}}" alt=""/>
+        <br/>
         <li data-menuanchor="firstPage"><a href="#firstPage">北智捷</a></li>
         <li data-menuanchor="secondPage"><a href="#secondPage">桃智捷</a></li>
         <li data-menuanchor="3rdPage"><a href="#3rdPage">中智捷</a></li>
@@ -52,8 +33,6 @@
                     <div class="container">
                         <div class="section-heading scrollpoint sp-effect3">
                             <br/><br/>
-
-                            <h2>北智捷</h2>
                         </div>
                         @foreach($lists1->chunk(3) as $list3)
                             <div class="row">
@@ -82,8 +61,6 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-
-                        <h2>桃智捷</h2>
                     </div>
                     @foreach($lists2->chunk(3) as $list3)
                         <div class="row">
@@ -111,8 +88,6 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-
-                        <h2>中智捷</h2>
                     </div>
                     @foreach($lists3->chunk(3) as $list3)
                         <div class="row">
@@ -140,8 +115,6 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-
-                        <h2>南智捷</h2>
                     </div>
                     @foreach($lists4->chunk(3) as $list3)
                         <div class="row">
@@ -169,8 +142,6 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-
-                        <h2>高智捷</h2>
                     </div>
                     @foreach($lists5->chunk(3) as $list3)
                         <div class="row">
@@ -195,4 +166,5 @@
         </div>
     </div>
 
+    <script src="{{url('/js/jquery.fullPage.min.js')}}"></script>
 @endsection
