@@ -21,6 +21,9 @@ Route::post('pull', 'PhotoController@pull');
 Route::get('pdpa', function(){
     return view('pdpa');
 });
+Route::get('thanks', function(){
+    return view('success');
+});
 
 //Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 Route::group(['prefix' => 'admin'], function () {
@@ -30,4 +33,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::controller('photo', 'PhotoController');
     Route::controller('album', 'AlbumController');
     Route::controller('title', 'TitleController');
+    Route::controller('vote', 'VoteController');
+    Route::get('summary', 'VoteController@count');
 });

@@ -54,11 +54,11 @@ class AlbumController extends Controller
         $edit->add('name', '據點', 'text')->rule('required|min:3');
         $edit->add('type', '類別', 'text')->rule('required|min:3');
         $edit->add('area', '區域', 'text')->rule('required|min:3');
-        $edit->add('qa', 'QR Code', 'image')->move('uploads/demo/qr')->resize(160, 160)->preview(160, 160);
+        $edit->add('path', 'QR Code', 'image')->move('uploads/demo/store')->resize(160, 160)->preview(160, 160);
 
-        $edit->add('column', '呈現欄位(預設3)', 'text');
-        $edit->add('seq', '呈現順序(1~9)', 'text');
-        $edit->add('is_display', '是否顯示', 'checkbox');
+//        $edit->add('column', '呈現欄位(預設3)', 'text');
+//        $edit->add('seq', '呈現順序(1~9)', 'text');
+//        $edit->add('is_display', '是否顯示', 'checkbox');
 
 
         $grid = DataGrid::source(new Album());

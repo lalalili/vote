@@ -10,12 +10,9 @@
                 <div class="bounce2"></div>
                 <div class="bounce3"></div>
             </div>
-
         </div>
     </div>
-
     <header>
-
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -24,23 +21,21 @@
                             data-target="#bs-example-navbar-collapse-1">
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="{{ URL::previous() }}">
                         <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a class="getApp" href="/">回到首頁</a>
+                        <li><a class="getApp" href="{{ URL::previous() }}">回上一頁</a>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
             <!-- /.container-->
         </nav>
-
     </header>
     <section id="pull">
         <div class="wrapper">
@@ -48,9 +43,7 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-
                         <h2>微笑大使票選</h2>
-
                         <div class="divider"></div>
                     </div>
                     <div class="row">

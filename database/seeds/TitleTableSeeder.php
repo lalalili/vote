@@ -23,7 +23,19 @@ class TitleTableSeeder extends Seeder
         ], [
             'name' => '銷售主任'
         ], [
-            'name' => '廠長'
+            'name' => '服務廠長'
+        ], [
+            'name' => '行政組長'
+        ],[
+            'name' => '服務專員'
+        ], [
+            'name' => '行政專員'
+        ], [
+            'name' => '零件專員'
+        ], [
+            'name' => '引擎組長'
+        ], [
+            'name' => '技師'
         ]];
 
         foreach ($titles as $title) {

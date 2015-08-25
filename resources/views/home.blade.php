@@ -12,9 +12,7 @@
             </div>
         </div>
     </div>
-
     <header>
-
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -23,14 +21,12 @@
                             data-target="#bs-example-navbar-collapse-1">
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
-                    <a class="navbar-brand" href="{{url('/')}}">
+                    <a class="navbar-brand">
                         <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
-
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/">活動首頁</a>
                         </li>
@@ -48,8 +44,6 @@
             </div>
             <!-- /.container-->
         </nav>
-
-
         <!--RevSlider-->
         <div class="tp-banner-container">
             <div class="tp-banner">
@@ -71,7 +65,6 @@
                              data-easing="Power4.easeOut">
                             <img src="{{url('/img/freeze/Slides/thumb.png')}}" alt="">
                         </div>
-
                         <div class="tp-caption lfl fadeout visible-xs"
                         data-x="left"
                         data-y="center"
@@ -82,7 +75,6 @@
                         data-easing="Power4.easeOut">
                         <img src="{{url('/img/freeze/Slides/thumb_s.png')}}" alt="">
                         </div>
-
                         <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
                             2015 Luxgen
@@ -91,7 +83,6 @@
                              data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
                             微笑大使票選活動
                         </div>
-
                         <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="185" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
                             <a href="#abouts" class="btn btn-primary inverse btn-lg">活動辦法</a>
@@ -100,19 +91,16 @@
                              data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
                             <a href="{{url('/show')}}/{{$storeId}}" class="btn btn-default btn-lg">投票去</a>
                         </div>
-
                     </li>
                 </ul>
             </div>
         </div>
     </header>
-
     <div class="wrapper">
         <section id="abouts">
             <div class="container">
                 <div class="section-heading inverse scrollpoint sp-effect3">
                     <h1>活動辦法</h1>
-
                     <div class="divider"></div>
                     <h3>票選期間：2015/11/1 ~ 2015/12/31</h3>
                     <h4>本活動如有任何未盡事宜，<BR>LUXGEN保由修改活動內容，變更，暫停及解釋活動內容之權力，<BR>不另行書面通知參加此活動者與得獎者。</h4>
@@ -161,52 +149,40 @@
         </section>
         <section id="prize">
             <div class="container">
-
                 <div class="section-heading scrollpoint sp-effect3">
                     <h1>獎品一覽</h1>
-
                     <div class="divider"></div>
                     <h4>抽獎時間：2015/12/10(三)，於2015/12/11(四)起，電話通知得獎人</h4>
                     <h4>抽獎時間：2016/01/10(三)，於2016/12/11(四)起，電話通知得獎人</h4>
                     <h4>誠摯地邀請您為微笑服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳微笑的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
                 </div>
-
                 <div class="row">
                     <p>獎品內容/每月名額:(每月抽出60名幸運兒)</p>
-
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-
                             <h3>3 名</h3>
-
                             <p>LUXGEN耳掛式咖啡十盒 (市價2500元)</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-
                             <h3>30 名</h3>
-
                             <p>LUXGEN耳掛式咖啡一盒</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-
                             <h3>30 名</h3>
-
                             <p>LUXGEN耳掛式咖啡一盒</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-
                             <h3>30 名</h3>
-
                             <p>LUXGEN耳掛式咖啡一盒</p>
                         </div>
                     </div>
@@ -215,7 +191,6 @@
         </section>
         <section id="lists">
             <div class="container">
-
                 <div class="section-heading scrollpoint sp-effect3">
                     <h1>得獎名單</h1>
                 </div>

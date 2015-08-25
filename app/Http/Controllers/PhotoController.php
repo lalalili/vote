@@ -57,7 +57,7 @@ class PhotoController extends Controller
         $edit->add('album_id', '據點', 'select')->options(Album::lists("name", "id")->all());
         $edit->add('title_id', '職稱', 'select')->options(title::lists("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');
-        $edit->add('filename', '照片', 'image')->move('uploads/demo/user')->resize(160, 160)->preview(160, 160);
+        $edit->add('path', '照片', 'image')->move('uploads/demo/user')->resize(160, 160)->preview(160, 160);
 
 
         $grid = DataGrid::source(Photo::with('album', 'title'));
@@ -126,7 +126,7 @@ class PhotoController extends Controller
         $vote->q2 = $Q2;
         $vote->q3 = $Q3;
         if ($vote->save()) {
-            return view('home');
+            return Redirect::back()->back();
         } else {
             Flash::warning('系統異常，請再重新送出一次');
             return Redirect::back();

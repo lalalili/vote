@@ -3,29 +3,30 @@
 @section('content')
 
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#fullpage').fullpage({
                 sectionsColor: ['#5AB5C0', '#82C6CE', '#AEDBE0', '#C9E7EA', '#DBE7E8'],
-                anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage'],
+                anchors: ['1st', '2nd', '3rd', '4th', '5th'],
                 menu: '#menu',
                 css3: true,
                 scrollingSpeed: 1000,
                 scrollBar: true,
-                autoScrolling: false,
+                autoScrolling: true,
                 fitToSection: false
             });
         });
     </script>
-    <ul id="menu">
+    <div id="menu">
+    <ul>
         <img src="{{url('/img/freeze/logo.png')}}" alt=""/>
         <br/>
-        <li data-menuanchor="firstPage"><a href="#firstPage">北智捷</a></li>
-        <li data-menuanchor="secondPage"><a href="#secondPage">桃智捷</a></li>
-        <li data-menuanchor="3rdPage"><a href="#3rdPage">中智捷</a></li>
-        <li data-menuanchor="4thpage"><a href="#4thpage">南智捷</a></li>
-        <li data-menuanchor="5thpage"><a href="#5thpage">高智捷</a></li>
-
+        <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
+        <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
+        <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
+        <li data-menuanchor="4th"><a href="#4th">南智捷</a></li>
+        <li data-menuanchor="5th"><a href="#5th">高智捷</a></li>
     </ul>
+    </div>
 
     <div id="fullpage">
         <div class="section" id="section0">
@@ -43,7 +44,7 @@
                                              style="display:table-cell; vertical-align:middle; text-align:center">
                                             <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                      align="top"
-                                                                                     src="/uploads/demo/{{ $list->path }}"
+                                                                                     src="/uploads/demo/store/{{ $list->path }}"
                                                                                      alt=""></a></i>
 
                                             <h3>{{ $list->name }}</h3>
@@ -71,7 +72,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/{{ $list->path }}"
+                                                                                 src="/uploads/demo/store/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -98,7 +99,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/{{ $list->path }}"
+                                                                                 src="/uploads/demo/store/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -125,7 +126,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/{{ $list->path }}"
+                                                                                 src="/uploads/demo/store/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -152,7 +153,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/{{ $list->path }}"
+                                                                                 src="/uploads/demo/store/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>

@@ -34,4 +34,9 @@ class Album extends Model
     {
         return $this->hasMany('App\Models\Photo');
     }
+
+    public function vote()
+    {
+        return $this->hasManyThrough('App\Models\Vote','App\Models\Photo');
+    }
 }

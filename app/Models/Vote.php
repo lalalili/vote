@@ -6,9 +6,9 @@ class Vote extends Model
 {
     
 	public $table = "votes";
-    
+    protected $appends = ['album'];
 
-	public $fillable = [
+    public $fillable = [
 	    "name",
 		"phone",
 		"q1",
@@ -49,4 +49,11 @@ class Vote extends Model
     {
         return $this->belongsTo('App\Models\Photo');
     }
+
+    public function getAlbumAttribute()
+    {
+        //dd($this->photo->album['name']);
+        return $this->photo->album['name'];
+    }
+
 }
