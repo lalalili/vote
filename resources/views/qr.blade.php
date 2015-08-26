@@ -17,7 +17,7 @@
         });
     </script>
 
-    <div id="menu">
+    <div id="menu" class="col-md-4 col-sm-4 col-xs-4">
         <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
         <ul>
             <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
