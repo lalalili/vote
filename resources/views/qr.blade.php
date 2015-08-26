@@ -16,16 +16,19 @@
             });
         });
     </script>
-
-    <div id="menu" class="col-md-4 col-sm-4 col-xs-4">
-        <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
-        <ul>
-            <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
-            <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
-            <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
-            <li data-menuanchor="4th"><a href="#4th">南智捷</a></li>
-            <li data-menuanchor="5th"><a href="#5th">高智捷</a></li>
-        </ul>
+    <div class="row">
+        <div class="col-md-4 col-sm-4 col-xs-4">
+            <div id="menu">
+                <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
+                <ul>
+                    <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
+                    <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
+                    <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
+                    <li data-menuanchor="4th"><a href="#4th">南智捷</a></li>
+                    <li data-menuanchor="5th"><a href="#5th">高智捷</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div id="fullpage">
