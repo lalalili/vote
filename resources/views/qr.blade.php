@@ -16,6 +16,7 @@
             });
         });
     </script>
+
     <div id="menu">
         <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
         <ul>
