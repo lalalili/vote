@@ -1384,10 +1384,11 @@ section#pull{
     /*border-radius: 10px;*/
     /*color: #000;*/
     display: inline-block;
-    margin: 5px;
+    /*margin: 3px;*/
+    /*margin-left: -13px;*/
+    /*float:left;*/
     font-size: 20px;
     font-weight: bold;
-
 }
 #menu li.active {
     /*background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;*/
