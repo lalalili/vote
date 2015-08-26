@@ -1383,7 +1383,7 @@ section#pull{
     /*background: rgba(0, 0, 0, 0.5) none repeat scroll 0 0;*/
     /*border-radius: 10px;*/
     /*color: #000;*/
-    display: inline-block;
+    /*display: inline-block;*/
     margin: 15px;
     font-size: 20px;
     font-weight: bold;
@@ -1394,7 +1394,7 @@ section#pull{
     color: #fff;
 }
 #menu li a {
-    color: #A99E9E;
+    color: #525151;
     /*text-decoration: none;*/
 }
 #menu li.active {
@@ -1412,7 +1412,7 @@ section#pull{
     color: #fff;
 }
 #menu {
-    height: 50px;
+    height: 40px;
     left: 0;
     margin: 0;
     padding: 0;
