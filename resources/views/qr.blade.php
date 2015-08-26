@@ -11,7 +11,7 @@
                 css3: true,
                 scrollingSpeed: 1000,
                 scrollBar: true,
-                autoScrolling: true,
+                autoScrolling: false,
                 fitToSection: false
             });
         });
