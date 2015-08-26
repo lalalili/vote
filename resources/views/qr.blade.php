@@ -17,14 +17,14 @@
         });
     </script>
     <div id="menu">
-    <ul>
         <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
-        <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
-        <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
-        <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
-        <li data-menuanchor="4th"><a href="#4th">南智捷</a></li>
-        <li data-menuanchor="5th"><a href="#5th">高智捷</a></li>
-    </ul>
+        <ul>
+            <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
+            <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
+            <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
+            <li data-menuanchor="4th"><a href="#4th">南智捷</a></li>
+            <li data-menuanchor="5th"><a href="#5th">高智捷</a></li>
+        </ul>
     </div>
 
     <div id="fullpage">
@@ -34,6 +34,7 @@
                     <div class="container">
                         <div class="section-heading scrollpoint sp-effect3">
                         </div>
+                        <br/>
                         @foreach($lists1->chunk(3) as $list3)
                             <div class="row">
                                 @foreach($list3 as $list)
@@ -60,8 +61,8 @@
             <div class="wrapper">
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
-                        <br/><br/>
                     </div>
+                    <br/>
                     @foreach($lists2->chunk(3) as $list3)
                         <div class="row">
                             @foreach($list3 as $list)
@@ -87,8 +88,8 @@
             <div class="wrapper">
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
-                        <br/><br/>
                     </div>
+                    <br/>
                     @foreach($lists3->chunk(3) as $list3)
                         <div class="row">
                             @foreach($list3 as $list)
@@ -114,8 +115,8 @@
             <div class="wrapper">
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
-                        <br/><br/>
                     </div>
+                    <br/>
                     @foreach($lists4->chunk(3) as $list3)
                         <div class="row">
                             @foreach($list3 as $list)
@@ -141,8 +142,8 @@
             <div class="wrapper">
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
-                        <br/><br/>
                     </div>
+                    <br/>
                     @foreach($lists5->chunk(3) as $list3)
                         <div class="row">
                             @foreach($list3 as $list)
