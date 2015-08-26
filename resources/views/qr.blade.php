@@ -18,8 +18,7 @@
     </script>
     <div id="menu">
     <ul>
-        <img src="{{url('/img/freeze/logo.png')}}" alt=""/>
-        <br/>
+        <img src="{{url('/img/freeze/logo1.png')}}" height="40"/>
         <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
         <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>
         <li data-menuanchor="3rd"><a href="#3rd">中智捷</a></li>
@@ -34,7 +33,6 @@
                 <section id="vote" class="doublediagonal">
                     <div class="container">
                         <div class="section-heading scrollpoint sp-effect3">
-                            <br/><br/>
                         </div>
                         @foreach($lists1->chunk(3) as $list3)
                             <div class="row">
