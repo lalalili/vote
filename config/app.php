@@ -151,7 +151,7 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Zofe\Rapyd\RapydServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-
+        JasperPHP\JasperPHPServiceProvider::class,
 
     ],
 

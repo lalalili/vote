@@ -35,4 +35,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::controller('title', 'TitleController');
     Route::controller('vote', 'VoteController');
     Route::get('summary', 'VoteController@count');
+    Route::get('seed', 'VoteController@seed');
 });

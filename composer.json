@@ -24,7 +24,8 @@
     "mitulgolakiya/laravel-api-generator": "dev-master",
     "maatwebsite/excel": "~2.0",
     "zofe/rapyd": "2.0.*",
-    "zizaco/entrust": "dev-laravel-5"
+    "zizaco/entrust": "dev-laravel-5",
+    "cossou/jasperphp": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "602a743f34a3ff85d0022a830298b728",
+    "hash": "abf01e39f3d02e0b290b05807538ea37",
     "packages": [
         {
             "name": "barryvdh/laravel-ide-helper",
@@ -173,6 +173,47 @@
                 "preload"
             ],
             "time": "2015-06-28 21:39:13"
+        },
+        {
+            "name": "cossou/jasperphp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cossou/JasperPHP.git",
+                "reference": "f196d9a951ad43c37a961554e28049b38f4b276c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cossou/JasperPHP/zipball/f196d9a951ad43c37a961554e28049b38f4b276c",
+                "reference": "f196d9a951ad43c37a961554e28049b38f4b276c",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "JasperPHP": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hélder Duarte",
+                    "email": "cossou@gmail.com"
+                }
+            ],
+            "description": "Create Reports in PHP with JasperReports",
+            "homepage": "https://github.com/cossou/JasperPHP",
+            "keywords": [
+                "jasper",
+                "jasperreports",
+                "java",
+                "pdf",
+                "reports"
+            ],
+            "time": "2015-04-28 10:10:36"
         },
         {
             "name": "danielstjules/stringy",
@@ -3780,7 +3821,8 @@
         "laravelcollective/html": 20,
         "bosnadev/repositories": 20,
         "mitulgolakiya/laravel-api-generator": 20,
-        "zizaco/entrust": 20
+        "zizaco/entrust": 20,
+        "cossou/jasperphp": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
