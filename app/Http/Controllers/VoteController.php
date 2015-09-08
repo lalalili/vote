@@ -8,6 +8,7 @@ use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
+use Excel;
 use Input;
 use View;
 
@@ -71,7 +72,8 @@ class VoteController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function seed(){
+    public function recal()
+    {
         //準備資料並存到summary
         $counts = DB::table('votes')
             ->Join('photos', 'votes.photo_id', '=', 'photos.id')
@@ -110,39 +112,83 @@ class VoteController extends Controller
                 $summary->save();
             }
         }
+        $r1s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '北智捷')
+            ->where('albums.type', '生活館')
+            ->get();
+        $r2s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '桃智捷')
+            ->where('albums.type', '生活館')
+            ->get();
+        $r3s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '中智捷')
+            ->where('albums.type', '生活館')
+            ->get();
+        $r4s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '南智捷')
+            ->where('albums.type', '生活館')
+            ->get();
+        $r5s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '高智捷')
+            ->where('albums.type', '生活館')
+            ->get();
+        //dd($r1);
+        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
     }
 
     public function count()
     {
         //產生報告
         $r1s = DB::table('summaries')
-        ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-        ->where('albums.area','北智捷')
-        ->where('albums.type','生活館')
-        ->get();
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '北智捷')
+            ->where('albums.type', '生活館')
+            ->get();
         $r2s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-            ->where('albums.area','桃智捷')
-            ->where('albums.type','生活館')
+            ->where('albums.area', '桃智捷')
+            ->where('albums.type', '生活館')
             ->get();
         $r3s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-            ->where('albums.area','中智捷')
-            ->where('albums.type','生活館')
+            ->where('albums.area', '中智捷')
+            ->where('albums.type', '生活館')
             ->get();
         $r4s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-            ->where('albums.area','南智捷')
-            ->where('albums.type','生活館')
+            ->where('albums.area', '南智捷')
+            ->where('albums.type', '生活館')
             ->get();
         $r5s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-            ->where('albums.area','高智捷')
-            ->where('albums.type','生活館')
+            ->where('albums.area', '高智捷')
+            ->where('albums.type', '生活館')
             ->get();
         //dd($r1);
-        return view('admin.summary', compact('r1s','r2s','r3s','r4s','r5s'));
+        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
+    }
 
-
+    public function download()
+    {
+        Excel::create('summary', function ($excel) {
+            $excel->sheet('rank', function ($sheet) {
+                $summaries = DB::table('summaries')
+                    ->select('area as 區域', 'album_name as 據點', 'photo_name as 姓名', 'count as 票數', 'rank as 店排名')
+                    ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+                    ->get();
+                //dd($summaries);
+                $data = array();
+                foreach ($summaries as $summary) {
+                    $data[] = (array)$summary;
+                }
+                //dd($data);
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
     }
 }

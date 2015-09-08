@@ -1409,10 +1409,10 @@ section#pull {
     color: #fff;
 }
 
-#menu li:hover a:hover {
+/*#menu li:hover a:hover {*/
     /*background: rgba(255, 255, 255, 0.8) none repeat scroll 0 0;*/
-    color: #ee3c23;
-}
+    /*color: #ee3c23;*/
+/*}*/
 
 #menu li a, #menu li.active a {
     /*display: block;*/

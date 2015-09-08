@@ -7,8 +7,9 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
+                        <button class="btn btn-info" type="button" style="float: right;" onclick="location.href='/admin/summary/download'">下載</button>
+                        <button class="btn btn-danger" type="button"  style="float: right;" onclick="location.href='/admin/recal'">重新計算</button>
                         <h3>生活館</h3>
-
                         <div class="table-responsive">
                             <table class="table table-bordered table-striped">
                                 <thead>

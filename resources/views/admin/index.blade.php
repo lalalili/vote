@@ -42,7 +42,7 @@
 
         <ul class="nav navbar-top-links navbar-right">
             @if(Auth::check())
-                {{Auth::getUser()['name']}}
+                歡迎登入： {{Auth::getUser()['name']}}
             @else
                 Guest
             @endif
@@ -71,7 +71,7 @@
             </li>
         </ul>
         <!-- /.navbar-top-links -->
-
+        @if(Auth::check())
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -84,6 +84,7 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    @if(Auth::user()->hasRole('admin'))
                     <li class="active">
                         <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i> 基本設定<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -111,11 +112,13 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
+                    @endif
                 </ul>
             </div>
             <!-- /.sidebar-collapse -->
         </div>
         <!-- /.navbar-static-side -->
+        @endif
     </nav>
 
 

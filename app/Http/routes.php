@@ -25,8 +25,12 @@ Route::get('thanks', function(){
     return view('success');
 });
 
-//Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-Route::group(['prefix' => 'admin'], function () {
+Route::get('auth/login','Auth\AuthController@getLogin');
+Route::post('auth/login','Auth\AuthController@postLogin');
+Route::get('auth/logout','Auth\AuthController@getLogout');
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+//Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
         return redirect('admin/photo/list');
     });
@@ -35,5 +39,6 @@ Route::group(['prefix' => 'admin'], function () {
     Route::controller('title', 'TitleController');
     Route::controller('vote', 'VoteController');
     Route::get('summary', 'VoteController@count');
-    Route::get('seed', 'VoteController@seed');
+    Route::get('recal', 'VoteController@recal');
+    Route::get('summary/download', 'VoteController@download');
 });
