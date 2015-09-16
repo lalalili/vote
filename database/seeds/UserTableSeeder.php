@@ -68,13 +68,6 @@ class UserTableSeeder extends Seeder
             'email' => 'LE',
             'password' => bcrypt('LE')
         ];
-        $user3 = User::create($owner);
-        $user3->roles()->sync([2]);
-        $owner = [
-            'name' => 'LA',
-            'email' => 'LA',
-            'password' => bcrypt('LA')
-        ];
         $user7 = User::create($owner);
         $user7->roles()->sync([2]);
     }
