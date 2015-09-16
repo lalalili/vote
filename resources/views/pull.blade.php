@@ -55,16 +55,16 @@
                                 <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
                                     <form role="form" action="{{url('pull')}}" method="post">
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 您選擇的最佳微笑大使：</h4>
+                                            <h4><b style="color: red">*</b> 本據點最佳服務人員姓名：</h4>
                                             <input type="text" class="form-control" readonly value="{{ $to->name }}"
                                                    name="voteTo">
                                         </div>
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 姓名 :</h4>
+                                            <h4><b style="color: red">*</b> 請填寫您的大名 :</h4>
                                             <input type="text" class="form-control" name="name">
                                         </div>
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 電話 ( 請直接輸入數字，不含任何符號 例如 手機 : 0912345678 市話 :
+                                            <h4><b style="color: red">*</b> 請填寫您的電話 ( 請直接輸入數字，不含任何符號 例如 手機 : 0912345678 市話 :
                                                 0227893969 ):</h4>
                                             <input type="text" class="form-control" name="phone">
                                         </div>

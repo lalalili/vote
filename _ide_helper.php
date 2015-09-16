@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.10 (LTS) on 2015-08-28.
+ * Generated for Laravel 5.1.16 (LTS) on 2015-09-09.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -762,7 +762,7 @@ namespace {
         /**
          * Register a shared binding in the container.
          *
-         * @param string $abstract
+         * @param string|array $abstract
          * @param \Closure|string|null $concrete
          * @return void 
          * @static 
@@ -2943,6 +2943,17 @@ namespace {
         }
         
         /**
+         * Is Doctrine available?
+         *
+         * @return bool 
+         * @static 
+         */
+        public static function isDoctrineAvailable(){
+            //Method inherited from \Illuminate\Database\Connection            
+            return \Illuminate\Database\MySqlConnection::isDoctrineAvailable();
+        }
+        
+        /**
          * Get a Doctrine Schema Column instance.
          *
          * @param string $table
@@ -3441,6 +3452,7 @@ namespace {
          * @param string $pageName
          * @param int|null $page
          * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator 
+         * @throws \InvalidArgumentException
          * @static 
          */
         public static function paginate($perPage = null, $columns = array(), $pageName = 'page', $page = null){
@@ -14926,6 +14938,47 @@ namespace {
          */
         public static function showMethod($class, $methods){
             return \Zofe\Rapyd\Documenter::showMethod($class, $methods);
+        }
+        
+    }
+
+
+    class JasperPHP extends \JasperPHP\Facades\JasperPHP{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function compile($input_file, $output_file = false, $background = true, $redirect_output = true){
+            return \JasperPHP\JasperPHP::compile($input_file, $output_file, $background, $redirect_output);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function process($input_file, $output_file = false, $format = array(), $parameters = array(), $db_connection = array(), $background = true, $redirect_output = true){
+            return \JasperPHP\JasperPHP::process($input_file, $output_file, $format, $parameters, $db_connection, $background, $redirect_output);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function output(){
+            return \JasperPHP\JasperPHP::output();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function execute($run_as_user = false){
+            return \JasperPHP\JasperPHP::execute($run_as_user);
         }
         
     }
