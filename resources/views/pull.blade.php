@@ -61,12 +61,12 @@
                                         </div>
                                         <div class="form-group">
                                             <h4><b style="color: red">*</b> 請填寫您的大名 :</h4>
-                                            <input type="text" class="form-control" name="name">
+                                            <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                         </div>
                                         <div class="form-group">
                                             <h4><b style="color: red">*</b> 請填寫您的電話 ( 請直接輸入數字，不含任何符號 例如 手機 : 0912345678 市話 :
                                                 0227893969 ):</h4>
-                                            <input type="text" class="form-control" name="phone">
+                                            <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
                                         </div>
                                         <div class="form-group">
                                             <div class="checkbox">

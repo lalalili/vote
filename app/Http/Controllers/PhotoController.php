@@ -77,7 +77,7 @@ class PhotoController extends Controller
     public function show($id)
     {
         //$lists = Photo::findOrFail($id);
-        $lists = Photo::with('Album', 'Title')->where('album_id',$id)->get();
+        $lists = Photo::with('Album', 'Title')->where('album_id', $id)->get();
         //dd($lists);
         return view('show', compact('lists'));
     }
@@ -99,38 +99,48 @@ class PhotoController extends Controller
         $Q2 = Request::input('q2');
         $Q3 = Request::input('q3');
         $Q4 = Request::input('q4');
-
+        Request::flash();
         //dd($voteToID);
         //dd($Name);
         //dd($Phone);
         //dd($Q3);
-        if ($voteToID == "")
-        {
+        if ($voteToID == "") {
             return view('show');
-        }
-        else if ($Name == "") {
+        } else if ($Name == "") {
             Flash::warning('請輸入姓名');
-            return Redirect::back();
+            return Redirect::back()->withInput();
 
         } else if ($Phone == "") {
             Flash::warning('請輸入電話');
-            return Redirect::back();
+            return Redirect::back()->withInput();
         } else if ($Q4 <> "1") {
             Flash::warning('請勾選同意活動辦法');
-            return Redirect::back();
+            return Redirect::back()->withInput();
         }
         $vote = new Vote;
         $vote->photo_id = $voteToID;
         $vote->name = $Name;
         $vote->phone = $Phone;
-        $vote->q1 = $Q1;
-        $vote->q2 = $Q2;
-        $vote->q3 = $Q3;
+        if ($Q1 == 1) {
+            $vote->q1 = $Q1;
+        } else {
+            $vote->q1 = 0;
+        }
+        if ($Q2 == 1) {
+            $vote->q2 = $Q2;
+        } else {
+            $vote->q2 = 0;
+        }
+        if ($Q3 == 1) {
+            $vote->q3 = $Q3;
+        } else {
+            $vote->q3 = 0;
+        }
         if ($vote->save()) {
-            return Redirect::back()->back();
+            return redirect('/thanks');
         } else {
             Flash::warning('系統異常，請再重新送出一次');
-            return Redirect::back();
+            return Redirect::back()->withInput();
         }
     }
 
