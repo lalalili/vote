@@ -3,7 +3,7 @@
 @section('content')
     <div class="pre-loader">
         <div class="load-con">
-            <img src="{{url('/img/freeze/logo.png')}}" class="animated fadeInDown" alt="">
+            <img src="{{url('/images/freeze/logo.png')}}" class="animated fadeInDown" alt="">
 
             <div class="spinner">
                 <div class="bounce1"></div>
@@ -24,7 +24,7 @@
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
+                        <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
 
@@ -61,7 +61,7 @@
                     <!-- SLIDE  -->
                     <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
                         <!-- MAIN IMAGE -->
-                        <img src="{{url('/img/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
+                        <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
                              data-bgposition="left top" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->
@@ -73,7 +73,7 @@
                              data-speed="500"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/Slides/hand-freeze.png')}}" alt="">
+                            <img src="{{url('/images/freeze/Slides/hand-freeze.png')}}" alt="">
                         </div>
 
                         <div class="tp-caption lfl fadeout visible-xs"
@@ -84,7 +84,7 @@
                              data-speed="500"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/iphone-freeze.png')}}" alt="">
+                            <img src="{{url('/images/freeze/iphone-freeze.png')}}" alt="">
                         </div>
 
                         <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
@@ -113,7 +113,7 @@
                     <!-- SLIDE 2 -->
                     <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000">
                         <!-- MAIN IMAGE -->
-                        <img src="{{url('/img/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
+                        <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
                              data-bgposition="left top" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->
@@ -125,7 +125,7 @@
                              data-speed="1000"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/Slides/freeze-slide2.png')}}" alt="">
+                            <img src="{{url('/images/freeze/Slides/freeze-slide2.png')}}" alt="">
                         </div>
 
 
@@ -140,7 +140,7 @@
                     <!-- SLIDE 3 -->
                     <li data-transition="zoomout" data-slotamount="7" data-masterspeed="1000">
                         <!-- MAIN IMAGE -->
-                        <img src="{{url('/img/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
+                        <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
                              data-bgposition="left top" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->
@@ -154,7 +154,7 @@
                              data-speed="1000"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/Slides/family-freeze.png')}}" alt="">
+                            <img src="{{url('/images/freeze/Slides/family-freeze.png')}}" alt="">
                         </div>
 
                         <div class="tp-caption customin customout visible-xs"
@@ -167,7 +167,7 @@
                              data-speed="1000"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/Slides/family-freeze.png')}}" alt="">
+                            <img src="{{url('/images/freeze/Slides/family-freeze.png')}}" alt="">
                         </div>
 
                         <div class="tp-caption lfb visible-xs" data-x="center" data-y="center" data-hoffset="0"
@@ -330,7 +330,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <img src="{{url('/img/freeze/iphone-freeze.png')}}" class="img-responsive scrollpoint sp-effect5"
+                        <img src="{{url('/images/freeze/iphone-freeze.png')}}" class="img-responsive scrollpoint sp-effect5"
                              alt="">
                     </div>
                     <div class="col-md-4 col-sm-4 scrollpoint sp-effect2">
@@ -502,31 +502,31 @@
                 </div>
                 <div class="slider filtering scrollpoint sp-effect5">
                     <div class="one">
-                        <img src="{{url('/img/freeze/screens/profile.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/profile.jpg')}}" alt="">
                         <h4>Profile Page</h4>
                     </div>
                     <div class="two">
-                        <img src="{{url('/img/freeze/screens/menu.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/menu.jpg')}}" alt="">
                         <h4>Toggel Menu</h4>
                     </div>
                     <div class="three">
-                        <img src="{{url('/img/freeze/screens/weather.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/weather.jpg')}}" alt="">
                         <h4>Weather Forcast</h4>
                     </div>
                     <div class="one">
-                        <img src="{{url('/img/freeze/screens/signup.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/signup.jpg')}}" alt="">
                         <h4>Sign Up</h4>
                     </div>
                     <div class="one">
-                        <img src="{{url('/img/freeze/screens/calendar.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/calendar.jpg')}}" alt="">
                         <h4>Event Calendar</h4>
                     </div>
                     <div class="two">
-                        <img src="{{url('/img/freeze/screens/options.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/options.jpg')}}" alt="">
                         <h4>Some Options</h4>
                     </div>
                     <div class="three">
-                        <img src="{{url('/img/freeze/screens/sales.jpg')}}" alt="">
+                        <img src="{{url('/images/freeze/screens/sales.jpg')}}" alt="">
                         <h4>Sales Analysis</h4>
                     </div>
                 </div>
@@ -563,7 +563,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="hanging-phone scrollpoint sp-effect2 hidden-xs">
-                            <img src="{{url('/img/freeze/freeze-angled2.png')}}" alt="">
+                            <img src="{{url('/images/freeze/freeze-angled2.png')}}" alt="">
                         </div>
                         <div class="platforms">
                             <a href="#" class="btn btn-primary inverse scrollpoint sp-effect1">
@@ -652,7 +652,7 @@
         <footer>
             <div class="container">
                 <a href="#" class="scrollpoint sp-effect3">
-                    <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
+                    <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
                 </a>
 
                 <div class="social">

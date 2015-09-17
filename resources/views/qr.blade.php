@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-4 col-sm-4 col-xs-4">
             <div id="menu">
-                <img src="{{url('/img/freeze/logo.png')}}" height="40"/>
+                <img src="{{url('/images/freeze/logo.png')}}" height="40"/>
                 <ul>
                     <li data-menuanchor="1st"><a href="#1st">北智捷</a></li>
                     <li data-menuanchor="2nd"><a href="#2nd">桃智捷</a></li>

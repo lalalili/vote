@@ -3,7 +3,7 @@
 @section('content')
     <div class="pre-loader">
         <div class="load-con">
-            <img src="{{url('/img/freeze/logo.png')}}" class="animated fadeInDown" alt="">
+            <img src="{{url('/images/freeze/logo.png')}}" class="animated fadeInDown" alt="">
 
             <div class="spinner">
                 <div class="bounce1"></div>
@@ -22,7 +22,7 @@
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
                     <a class="navbar-brand" href="{{ URL::previous() }}">
-                        <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
+                        <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
 

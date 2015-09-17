@@ -3,7 +3,7 @@
 @section('content')
     <div class="pre-loader">
         <div class="load-con">
-            <img src="{{url('/img/freeze/logo.png')}}" class="animated fadeInDown" alt="">
+            <img src="{{url('/images/freeze/logo.png')}}" class="animated fadeInDown" alt="">
 
             <div class="spinner">
                 <div class="bounce1"></div>
@@ -22,7 +22,7 @@
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
                     <a class="navbar-brand" href="{{ URL::previous() }}">
-                        <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
+                        <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,7 +68,8 @@
                         <div class="row">
                             @foreach($lists as $list)
                                 <div class="col-md-4 col-sm-4 col-xs-4">
-                                    <div class="about-item scrollpoint sp-effect2">
+                                    <div class="about-item scrollpoint sp-effect2"
+                                         style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/choose/{{ $list->id }}"><img
                                                         class="img-circle img-responsive"
                                                         src="/uploads/demo/user/{{ $list->path }}"

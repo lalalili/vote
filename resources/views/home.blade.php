@@ -3,7 +3,7 @@
 @section('content')
     <div class="pre-loader">
         <div class="load-con">
-            <img src="{{url('/img/freeze/logo.png')}}" class="animated fadeInDown" alt="">
+            <img src="{{url('/images/freeze/logo.png')}}" class="animated fadeInDown" alt="">
 
             <div class="spinner">
                 <div class="bounce1"></div>
@@ -22,14 +22,14 @@
                         <span class="fa fa-bars fa-lg"></span>
                     </button>
                     <a class="navbar-brand">
-                        <img src="{{url('/img/freeze/logo.png')}}" alt="" class="logo">
+                        <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
                     </a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/">活動首頁</a>
-                        </li>
+                        {{--<li><a href="/">活動首頁</a>--}}
+                        {{--</li>--}}
                         <li><a href="#abouts">活動辦法</a>
                         </li>
                         <li><a href="#prize">獎品一覽</a>
@@ -51,7 +51,7 @@
                     <!-- SLIDE  -->
                     <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
                         <!-- MAIN IMAGE -->
-                        <img src="{{url('/img/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
+                        <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
                              data-bgposition="left top" data-bgrepeat="no-repeat">
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->
@@ -63,7 +63,7 @@
                              data-speed="500"
                              data-start="700"
                              data-easing="Power4.easeOut">
-                            <img src="{{url('/img/freeze/Slides/thumb.png')}}" alt="">
+                            <img src="{{url('/images/freeze/Slides/thumb.png')}}" alt="">
                         </div>
                         <div class="tp-caption lfl fadeout visible-xs"
                         data-x="left"
@@ -73,7 +73,7 @@
                         data-speed="500"
                         data-start="700"
                         data-easing="Power4.easeOut">
-                        <img src="{{url('/img/freeze/Slides/thumb_s.png')}}" alt="">
+                        <img src="{{url('/images/freeze/Slides/thumb_s.png')}}" alt="">
                         </div>
                         <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
@@ -160,32 +160,32 @@
                     <p>獎品內容/每月名額:(每月抽出60名幸運兒)</p>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
-                            <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-                            <h3>3 名</h3>
-                            <p>LUXGEN耳掛式咖啡十盒 (市價2500元)</p>
+                            <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
+                            <h3>1 名</h3>
+                            <p>LUXGEN 5 Sedan 1:18模型車</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-3 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
-                            <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-                            <h3>30 名</h3>
-                            <p>LUXGEN耳掛式咖啡一盒</p>
+                            <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
+                            <h3>1 名</h3>
+                            <p>LUXGEN 4G USB隨身碟</p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
-                            <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-                            <h3>30 名</h3>
-                            <p>LUXGEN耳掛式咖啡一盒</p>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
-                            <i><img class="img-circle img-responsive" src="{{url('/img/freeze/prize/p1.png')}}" alt=""></i>
-                            <h3>30 名</h3>
-                            <p>LUXGEN耳掛式咖啡一盒</p>
-                        </div>
-                    </div>
+                    {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
+                        {{--<div class="about-item scrollpoint sp-effect2">--}}
+                            {{--<i><img class="img-circle img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>--}}
+                            {{--<h3>30 名</h3>--}}
+                            {{--<p>LUXGEN耳掛式咖啡一盒</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
+                        {{--<div class="about-item scrollpoint sp-effect2">--}}
+                            {{--<i><img class="img-circle img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>--}}
+                            {{--<h3>30 名</h3>--}}
+                            {{--<p>LUXGEN耳掛式咖啡一盒</p>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </section>

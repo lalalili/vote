@@ -1011,7 +1011,7 @@ section#features .media.active .media-heading {
 }
 
 section#abouts {
-    background: url("../img/freeze/bk-freeze.jpg");
+    background: url("../images/freeze/bk-freeze.jpg");
 }
 
 section#abouts header {
@@ -1099,7 +1099,7 @@ section#demo header h1:after {
 
 /* Get app Section */
 section#getApp {
-    background: url("../img/freeze/bk-freeze-ga.jpg");
+    background: url("../images/freeze/bk-freeze-ga.jpg");
 }
 
 section#getApp header {
