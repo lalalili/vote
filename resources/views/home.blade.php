@@ -102,7 +102,7 @@
                 <div class="section-heading inverse scrollpoint sp-effect3">
                     <h1>活動辦法</h1>
                     <div class="divider"></div>
-                    <h3>票選期間：2015/11/1 ~ 2015/12/31</h3>
+                    <h3>票選期間：2015/12/1 ~ 2016/01/31</h3>
                     <h4>本活動如有任何未盡事宜，<BR>LUXGEN保由修改活動內容，變更，暫停及解釋活動內容之權力，<BR>不另行書面通知參加此活動者與得獎者。</h4>
                 </div>
                 <div class="row">
@@ -152,33 +152,33 @@
                 <div class="section-heading scrollpoint sp-effect3">
                     <h1>獎品一覽</h1>
                     <div class="divider"></div>
-                    <h4>抽獎時間：2015/12/10(三)，於2015/12/11(四)起，電話通知得獎人</h4>
-                    <h4>抽獎時間：2016/01/10(三)，於2016/12/11(四)起，電話通知得獎人</h4>
+                    <h4>抽獎時間：2016/01/11(一)，於2016/01/11(一)起，電話通知得獎人</h4>
+                    <h4>抽獎時間：2016/02/11(四)，於2016/02/11(四)起，電話通知得獎人</h4>
                     <h4>誠摯地邀請您為微笑服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳微笑的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
                 </div>
                 <div class="row">
-                    <p>獎品內容/每月名額:(每月抽出60名幸運兒)</p>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
+                    <p>獎品內容/每月名額 : (每月抽出幸運兒)</p>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
-                            <h3>1 名</h3>
+                            <h3>6 名</h3>
                             <p>LUXGEN 5 Sedan 1:18模型車</p>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-3 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2">
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
-                            <h3>1 名</h3>
+                            <h3>20 名</h3>
                             <p>LUXGEN 4G USB隨身碟</p>
                         </div>
                     </div>
-                    {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
-                        {{--<div class="about-item scrollpoint sp-effect2">--}}
-                            {{--<i><img class="img-circle img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>--}}
-                            {{--<h3>30 名</h3>--}}
-                            {{--<p>LUXGEN耳掛式咖啡一盒</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
+                            <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt=""></i>
+                            <h3>100 名</h3>
+                            <p>LUXGEN 耳掛式咖啡一盒</p>
+                        </div>
+                    </div>
                     {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
                         {{--<div class="about-item scrollpoint sp-effect2">--}}
                             {{--<i><img class="img-circle img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>--}}
@@ -208,16 +208,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>張馬克</td>
-                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>陳大文</td>
-                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
-                                    </tr>
+                                    {{--<tr>--}}
+                                        {{--<td>1</td>--}}
+                                        {{--<td>張馬克</td>--}}
+                                        {{--<td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>2</td>--}}
+                                        {{--<td>陳大文</td>--}}
+                                        {{--<td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>--}}
+                                    {{--</tr>--}}
                                     </tbody>
                                 </table>
                             </div>
@@ -238,16 +238,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>李瀅瀅</td>
-                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>王美麗</td>
-                                        <td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>
-                                    </tr>
+                                    {{--<tr>--}}
+                                        {{--<td>1</td>--}}
+                                        {{--<td>李瀅瀅</td>--}}
+                                        {{--<td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>--}}
+                                    {{--</tr>--}}
+                                    {{--<tr>--}}
+                                        {{--<td>2</td>--}}
+                                        {{--<td>王美麗</td>--}}
+                                        {{--<td>LUXGEN耳掛式咖啡十盒 (市價2500元)</td>--}}
+                                    {{--</tr>--}}
                                     </tbody>
                                 </table>
                             </div>
