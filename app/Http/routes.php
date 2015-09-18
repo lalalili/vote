@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'AlbumController@show');
+Route::get('/home', 'AlbumController@show');
 Route::get('store/{id}', 'AlbumController@choose');
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
@@ -30,6 +31,9 @@ Route::get('auth/logout','Auth\AuthController@getLogout');
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 //Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
+        return redirect('admin/photo/list');
+    });
+    Route::get('/home', function () {
         return redirect('admin/photo/list');
     });
     Route::controller('photo', 'PhotoController');

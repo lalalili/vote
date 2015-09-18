@@ -116,11 +116,13 @@ class VoteController extends Controller
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '北智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r2s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '桃智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r3s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
@@ -131,11 +133,13 @@ class VoteController extends Controller
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '南智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r5s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '高智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         //dd($r1);
         return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
@@ -148,26 +152,31 @@ class VoteController extends Controller
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '北智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r2s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '桃智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r3s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '中智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r4s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '南智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         $r5s = DB::table('summaries')
             ->Join('albums', 'summaries.album_id', '=', 'albums.id')
             ->where('albums.area', '高智捷')
             ->where('albums.type', '生活館')
+            ->where('rank', '<', '4')
             ->get();
         //dd($r1);
         return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
@@ -180,6 +189,7 @@ class VoteController extends Controller
                 $summaries = DB::table('summaries')
                     ->select('area as 區域', 'album_name as 據點', 'photo_name as 姓名', 'count as 票數', 'rank as 店排名')
                     ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+                    ->where('rank', '<', '4')
                     ->get();
                 //dd($summaries);
                 $data = array();
