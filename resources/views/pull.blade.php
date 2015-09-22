@@ -55,7 +55,7 @@
                                 <div class="col-md-8 col-sm-8 scrollpoint sp-effect1">
                                     <form role="form" action="{{url('pull')}}" method="post">
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 本據點最佳服務人員姓名：</h4>
+                                            <h4><b style="color: red">*</b> 本據點最有禮的服務人員姓名：</h4>
                                             <input type="text" class="form-control" readonly value="{{ $to->name }}"
                                                    name="voteTo">
                                         </div>
