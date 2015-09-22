@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>微笑大使管理</title>
+    <title>禮貌大使管理</title>
 
     <link rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('/css/font-awesome.min.css')}}">
@@ -36,7 +36,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{ url('/') }}">微笑大使管理</a>
+            <a class="navbar-brand" href="{{ url('/') }}">禮貌大使管理</a>
         </div>
         <!-- /.navbar-header -->
 

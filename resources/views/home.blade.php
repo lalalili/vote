@@ -81,7 +81,7 @@
                         </div>
                         <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                            微笑大使票選活動
+                            禮貌大使票選活動
                         </div>
                         <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0"
                              data-voffset="185" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
@@ -150,7 +150,7 @@
                     <div class="divider"></div>
                     <h4>抽獎時間：2016/01/13，於2016/01/14起，電話通知得獎人</h4>
                     <h4>抽獎時間：2016/02/17，於2016/02/18起，電話通知得獎人</h4>
-                    <h4>誠摯地邀請您為微笑服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳微笑的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
+                    <h4>誠摯地邀請您為禮貌服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
                 </div>
                 <div class="row">
                     <p>獎品內容/每月名額 : (每月抽出幸運兒)</p>

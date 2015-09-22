@@ -43,7 +43,7 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-                        <h2>微笑大使票選</h2>
+                        <h2>禮貌大使票選</h2>
                         <div class="divider"></div>
                     </div>
                     <div class="row">

@@ -43,7 +43,7 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
-                        <h2>請點選最佳微笑大使照片開始投票</h2>
+                        <h2>請點選最佳禮貌大使照片開始投票</h2>
                     </div>
                     @if($lists->count() > 3)
                         @foreach($lists->chunk(3) as $list3)
