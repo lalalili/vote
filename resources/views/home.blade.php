@@ -153,26 +153,26 @@
                     <h4>誠摯地邀請您為禮貌服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
                 </div>
                 <div class="row">
-                    <p>獎品內容 : </p>
+                    <h4>獎品內容 : </h4>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
                             <h3>3 名 / 輪</h3>
-                            <h3>LUXGEN 5 Sedan 1:18模型車</h3>
+                            <h4>LUXGEN 5 Sedan 1:18模型車</h4>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
                             <h3>10 名 / 輪</h3>
-                            <h3>LUXGEN 4G USB隨身碟</h3>
+                            <h4>LUXGEN 4G USB隨身碟</h4>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt=""></i>
                             <h3>50 名 / 輪</h3>
-                            <h3>LUXGEN 掛耳式咖啡一盒</h3>
+                            <h4>LUXGEN 掛耳式咖啡一盒</h4>
                         </div>
                     </div>
                     {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
