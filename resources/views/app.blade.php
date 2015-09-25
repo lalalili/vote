@@ -20,26 +20,27 @@
     <link rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('/css/font-awesome.min.css')}}">
 
-    <link rel="stylesheet" href="{{url('/css/animate.css')}}">
-    <link rel="stylesheet" href="{{url('/css/slick.css')}}">
+    <link rel="stylesheet" href="{{url('/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url('/css/slick.min.css')}}">
+    <link rel="stylesheet" href="{{url('/css/jquery.fullPage.min.css')}}">
+
+    {{--<link rel="stylesheet" href="{{url('/css/styles.css')}}">--}}
+    <link href="{{ elixir('css/app.css') }}" rel="stylesheet">
+
     <link rel="stylesheet" href="{{url('/js/rs-plugin/css/settings.css')}}">
-    <link rel="stylesheet" href="{{url('/css/jquery.fullPage.css')}}">
-
-    <link rel="stylesheet" href="{{url('/css/styles.css')}}">
 
 
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     {!! Rapyd::styles() !!}
 </head>
 
 <body>
 
 <script src="{{url('/js/jquery-1.11.1.min.js')}}"></script>
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
 @yield('content')
-
 <script src="{{url('/js/bootstrap.min.js')}}"></script>
 <script src="{{url('/js/slick.min.js')}}"></script>
 <script src="{{url('/js/placeholdem.min.js')}}"></script>
@@ -47,8 +48,9 @@
 <script src="{{url('/js/rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
 <script src="{{url('/js/waypoints.min.js')}}"></script>
 
-<script src="{{url('/js/modernizr.custom.32033.js')}}"></script>
-<script src="{{url('/js/scripts.js')}}"></script>
+<script src="{{url('/js/modernizr.custom.32033.min.js')}}"></script>
+{{--<script src="{{url('/js/scripts.js')}}"></script>--}}
+<script src="{{ elixir('js/app.js') }}"></script>
 
 <script>
     $(document).ready(function () {
