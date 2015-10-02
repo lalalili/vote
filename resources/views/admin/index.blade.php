@@ -87,9 +87,6 @@
                                         <a href="{{ url('admin/album/list') }}"> 據點管理</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/album/upload') }}"> 據點上傳</a>
-                                    </li>
-                                    <li>
                                         <a href="{{ url('admin/title/list') }}"> 職稱管理</a>
                                     </li>
                                 </ul>
