@@ -21,7 +21,6 @@
     <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet"/>
 
 
-
 </head>
 
 <body>
@@ -67,52 +66,59 @@
         </ul>
         <!-- /.navbar-top-links -->
         @if(Auth::check())
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li class="active">
-                        <a href="#"><i class="fa fa-child fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('admin/photo/list') }}"> 員工列表</a>
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-child fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('admin/photo/list') }}"> 員工列表</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        @if(Auth::user()->hasRole('admin'))
+                            <li class="active">
+                                <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i> 基本設定<span
+                                            class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('admin/album/list') }}"> 據點管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/album/upload') }}"> 據點上傳</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/title/list') }}"> 職稱管理</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
                             </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    @if(Auth::user()->hasRole('admin'))
-                    <li class="active">
-                        <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i> 基本設定<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('admin/album/list') }}"> 據點管理</a>
+                            <li class="active">
+                                <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 投票管理<span
+                                            class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('admin/vote/list') }}"> 投票列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/summary') }}"> 總攬</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="{{ url('admin/album/upload') }}"> 據點上傳</a>
+                                <a href="/admin/adv"><i class="fa fa-wrench fa-fw"></i> 進階設定<span
+                                            class="fa arrow"></span></a>
+                                <!-- /.nav-second-level -->
                             </li>
-                            <li>
-                                <a href="{{ url('admin/title/list') }}"> 職稱管理</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 投票管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('admin/vote/list') }}"> 投票列表</a>
-                            </li>
-                            <li>
-                                <a href="{{ url('admin/summary') }}"> 總攬</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    @endif
-                </ul>
+                        @endif
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
+            <!-- /.navbar-static-side -->
         @endif
     </nav>
 
@@ -120,7 +126,7 @@
     <!-- Page Content -->
     <script src="{{url('/js/jquery-1.11.1.min.js')}}"></script>
     @yield('content')
-    <!-- /.row -->
+            <!-- /.row -->
     <!-- /#page-wrapper -->
 
 </div>
@@ -139,7 +145,6 @@
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
 
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>

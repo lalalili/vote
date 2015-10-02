@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Summary;
 use App\Models\Photo;
 use App\Models\Vote;
+use Artisan;
 use DataEdit;
 use DataFilter;
 use DataGrid;
@@ -39,7 +40,7 @@ class VoteController extends Controller
         $grid->paginate(10);
 
 
-        return View::make('admin.list', compact('filter', 'grid'));
+        return View::make('admin.vote', compact('filter', 'grid'));
     }
 
     public function anyEdit()
@@ -78,7 +79,10 @@ class VoteController extends Controller
         $counts = DB::table('votes')
             ->Join('photos', 'votes.photo_id', '=', 'photos.id')
             ->join('albums', 'photos.album_id', '=', 'albums.id')
-            ->select(DB::raw('albums.id as album_id, albums.name as album_name, photos.id as photo_id, photos.name as photo_name,count(*) as count'))->groupBy('photo_id')->orderBy('count', 'desc')->get();
+            ->select(DB::raw('albums.id as album_id, albums.name as album_name, photos.id as photo_id, photos.name as photo_name,count(*) as count'))
+            ->groupBy('photo_id')
+            ->orderBy('count', 'desc')
+            ->get();
         DB::table('summaries')->truncate();
         foreach ($counts as $count) {
             //dd($count);
@@ -182,7 +186,7 @@ class VoteController extends Controller
         return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
     }
 
-    public function download()
+    public function downloadSummary()
     {
         Excel::create('summary', function ($excel) {
             $excel->sheet('rank', function ($sheet) {
@@ -195,6 +199,42 @@ class VoteController extends Controller
                 $data = array();
                 foreach ($summaries as $summary) {
                     $data[] = (array)$summary;
+                }
+                //dd($data);
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
+    }
+
+    public function reset()
+    {
+        DB::table('votes')->truncate();
+        DB::table('photos')->truncate();
+        return redirect('admin/photo/list');
+    }
+
+    public function seed()
+    {
+        //echo '<br>產生測試員工資料...';
+        Artisan::call('db:seed');
+        //echo '<br>員工資料產生完成';
+        return redirect('admin/photo/list');
+    }
+
+    public function downloadVote()
+    {
+        Excel::create('vote', function ($excel) {
+            $excel->sheet('vote', function ($sheet) {
+                $votes = DB::table('votes')
+                    ->select('votes.id as 投票編號', 'photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話', 'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3')
+                    ->Join('photos', 'votes.photo_id', '=', 'photos.id')
+                    ->join('albums', 'photos.album_id', '=', 'albums.id')
+                    ->orderBy('votes.id', 'desc')
+                    ->get();
+                //dd($summaries);
+                $data = array();
+                foreach ($votes as $vote) {
+                    $data[] = (array)$vote;
                 }
                 //dd($data);
                 $sheet->fromArray($data);

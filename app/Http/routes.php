@@ -45,6 +45,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function() {
     Route::controller('title', 'TitleController');
     Route::controller('vote', 'VoteController');
     Route::get('summary', 'VoteController@count');
+    Route::get('reset', 'VoteController@reset');
+    Route::get('votes/download', 'VoteController@downloadVote');
     Route::get('recal', 'VoteController@recal');
-    Route::get('summary/download', 'VoteController@download');
+    Route::get('seed', 'VoteController@seed');
+    Route::get('summary/download', 'VoteController@downloadSummary');
+    Route::get('adv', function () {
+        return view('admin.adv');
+    });
 });

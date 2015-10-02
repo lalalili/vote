@@ -32,7 +32,7 @@ class PhotoController extends Controller
         $grid = DataGrid::source($filter);
 
         $grid->add('{{ $album->name }}', '據點', 'album_id');
-        $grid->add('{{ $title->name }}', '區域', 'title_id');
+        $grid->add('{{ $title->name }}', '職稱', 'title_id');
         $grid->add('name', '姓名');
         $grid->add('updated_at', '更新時間');
         $grid->orderBy('album_id', 'asc');
@@ -63,7 +63,7 @@ class PhotoController extends Controller
 
         $grid = DataGrid::source(Photo::with('album', 'title'));
         $grid->add('{{ $album->name }}', '據點', 'album_id');
-        $grid->add('{{ $title->name }}', '據點', 'title_id');
+        $grid->add('{{ $title->name }}', '職稱', 'title_id');
         $grid->add('name', '姓名');
         $grid->add('updated_at', '更新時間');
         $grid->orderBy('album_id', 'asc');

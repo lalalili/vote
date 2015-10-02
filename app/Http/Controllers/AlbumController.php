@@ -75,7 +75,7 @@ class AlbumController extends Controller
 
     public function anyUpload()
     {
-        return view('admin/upload');
+        return view('admin/adv');
     }
 
     public function anyBatch()
