@@ -151,38 +151,35 @@
                     <h4>第一輪抽獎時間：2016/01/13，於2016/01/14起，電話通知得獎人</h4>
                     <h4>第二輪抽獎時間：2016/02/17，於2016/02/18起，電話通知得獎人</h4>
                     <h4>誠摯地邀請您給禮貌服務展現最價的服務/銷售人員一個鼓勵，</h4>
-                    <h4>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
-                </div>
-                <div class="row">
-                    <h4>獎品內容 : </h4>
+                    <h4>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4><br>
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<h4>獎品內容 : </h4>--}}
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
-                            <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
-                            <h3>3 名 / 輪</h3>
-                            <h4>LUXGEN 5 Sedan 1:18模型車</h4>
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
+                            <h4>LUXGEN 5 Sedan 1:18模型車 (3 名 / 輪)</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
-                            <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
-                            <h3>10 名 / 輪</h3>
-                            <h4>LUXGEN 4G USB隨身碟</h4>
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
+                            <h4>LUXGEN 4G USB隨身碟 (10 名 / 輪)</h4>
+                        </div>
+                    </div>
+                    <h4> - </h4>
+                    <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
+                            <h4>LUXGEN 掛耳式咖啡一盒 (50 名 / 輪)</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
-                            <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt=""></i>
-                            <h3>50 名 / 輪</h3>
-                            <h4>LUXGEN 掛耳式咖啡一盒</h4>
+                        <div class="about-item scrollpoint sp-effect2">
+                            <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
+                            <h4>LUXGEN 掛耳式咖啡一盒 (50 名 / 輪)</h4>
                         </div>
                     </div>
-                    {{--<div class="col-md-3 col-sm-3 col-xs-6">--}}
-                        {{--<div class="about-item scrollpoint sp-effect2">--}}
-                            {{--<i><img class="img-circle img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>--}}
-                            {{--<h3>30 名</h3>--}}
-                            {{--<p>LUXGEN耳掛式咖啡一盒</p>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </div>
         </section>
