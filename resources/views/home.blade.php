@@ -122,7 +122,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="about-comment">
-                                            <h4>3. 本活動將由LUXGEN以電話通知得獎訊息，中獎者必須在領獎期間返回原投票之生活館/服務廠，填妥所有的領獎資料並提供相關證件(身份證正反面影本)方能領取獎品(禮券)。如逾期或有造假情事LUXGEN有權取消得獎人資格。抽獎券若有遺失、塗改、偽造、無法辨識或損毀之情況，均無法補發及不得參與抽獎活動。</h4>
+                                            <h4>3. 本活動將由LUXGEN以電話通知得獎訊息，中獎者必須在領獎期間返回原投票之生活館/服務廠，填妥所有的領獎資料並提供相關證件(身份證正反面影本)方能領取獎品。如逾期或有造假情事，LUXGEN有權取消得獎人資格。抽獎券若有遺失、塗改、偽造、無法辨識或損毀之情況，均無法補發及不得參與抽獎活動。</h4>
                                             <h4>4. 本活動贈品限中獎者本人兌換，恕不得要求折換現金或轉換其他等值商品。若中獎者不收受活動贈品時，視同放棄得獎權利，亦不得變更或折換現金。</h4>
                                         </div>
                                     </div>
@@ -150,25 +150,26 @@
                     <div class="divider"></div>
                     <h4>第一輪抽獎時間：2016/01/13，於2016/01/14起，電話通知得獎人</h4>
                     <h4>第二輪抽獎時間：2016/02/17，於2016/02/18起，電話通知得獎人</h4>
-                    <h4>誠摯地邀請您為禮貌服務展現最價的服務/銷售人員一個鼓勵，<BR>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
+                    <h4>誠摯地邀請您給禮貌服務展現最價的服務/銷售人員一個鼓勵，</h4>
+                    <h4>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4>
                 </div>
                 <div class="row">
                     <h4>獎品內容 : </h4>
-                    <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
                             <h3>3 名 / 輪</h3>
                             <h4>LUXGEN 5 Sedan 1:18模型車</h4>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
                             <h3>10 名 / 輪</h3>
                             <h4>LUXGEN 4G USB隨身碟</h4>
                         </div>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-6">
+                    <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt=""></i>
                             <h3>50 名 / 輪</h3>
