@@ -1,4 +1,4 @@
-<?php namespace App\Repositories;
+<?php namespace app\Repositories;
 
 use App\Models\Vote;
 use Bosnadev\Repositories\Eloquent\Repository;
@@ -7,32 +7,27 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class VoteRepository extends Repository
 {
-
     /**
     * Configure the Model
     *
     **/
     public function model()
     {
-      return 'App\Models\Vote';
+        return 'App\Models\Vote';
     }
 
-	public function search($input)
+    public function search($input)
     {
         $query = Vote::query();
 
         $columns = Schema::getColumnListing('votes');
         $attributes = array();
 
-        foreach($columns as $attribute)
-        {
-            if(isset($input[$attribute]) and !empty($input[$attribute]))
-            {
+        foreach ($columns as $attribute) {
+            if (isset($input[$attribute]) and !empty($input[$attribute])) {
                 $query->where($attribute, $input[$attribute]);
                 $attributes[$attribute] = $input[$attribute];
-            }
-            else
-            {
+            } else {
                 $attributes[$attribute] =  null;
             }
         }
@@ -44,8 +39,7 @@ class VoteRepository extends Repository
     {
         $model = $this->find($id);
 
-        if(empty($model))
-        {
+        if (empty($model)) {
             throw new HttpException(1001, "Vote not found");
         }
 
@@ -56,8 +50,7 @@ class VoteRepository extends Repository
     {
         $model = $this->find($id);
 
-        if(empty($model))
-        {
+        if (empty($model)) {
             throw new HttpException(1001, "Vote not found");
         }
 

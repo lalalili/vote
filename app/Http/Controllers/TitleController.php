@@ -1,11 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+namespace app\Http\Controllers;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Models\Title;
 use DataEdit;
 use DataFilter;
@@ -41,7 +38,9 @@ class TitleController extends Controller
 
     public function anyEdit()
     {
-        if (Input::get('do_delete') == 1) return "not the first";
+        if (Input::get('do_delete') == 1) {
+            return "not the first";
+        }
 
         $edit = DataEdit::source(new Title());
         //dd($edit);

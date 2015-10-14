@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace app\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Album;
@@ -7,7 +7,6 @@ use DataFilter;
 use DataGrid;
 use Excel;
 use Flash;
-use Illuminate\Support\Facades\Session;
 use Input;
 use Redirect;
 use Request;
@@ -16,7 +15,6 @@ use View;
 
 class AlbumController extends Controller
 {
-
     public function anyList()
     {
         $filter = DataFilter::source(new Album());
@@ -43,7 +41,9 @@ class AlbumController extends Controller
 
     public function anyEdit()
     {
-        if (Input::get('do_delete') == 1) return "not the first";
+        if (Input::get('do_delete') == 1) {
+            return "not the first";
+        }
 
         $edit = DataEdit::source(new Album());
         //dd($edit);
@@ -136,13 +136,10 @@ class AlbumController extends Controller
     public function choose($id)
     {
         //dd(Album::find($id));
-        if(Album::find($id) <> null)
-        {
+        if (Album::find($id) <> null) {
             $storeId = $id;
-            return view('home',compact('storeId'));
-        }
-        else
-        {
+            return view('home', compact('storeId'));
+        } else {
             return redirect('/');
         }
     }

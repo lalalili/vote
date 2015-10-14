@@ -150,34 +150,34 @@
                     <div class="divider"></div>
                     <h4>第一輪抽獎時間：2016/01/13，於2016/01/14起，電話通知得獎人</h4>
                     <h4>第二輪抽獎時間：2016/02/17，於2016/02/18起，電話通知得獎人</h4>
-                    <h4>誠摯地邀請您給禮貌服務展現最價的服務/銷售人員一個鼓勵，</h4>
-                    <h4>請您於投票頁面點選最佳禮貌的服務人員，並填寫相關資訊，即可參加抽獎活動</h4><br>
+                    <h4>誠摯地邀請您給予表現最佳的服務人員/銷售人員一個鼓勵，</h4>
+                    <h4>請立即掃描QR Code，投下您寶貴的一票，即可參加獎活動。</h4>
+                    <h4>獎品內容/每月名額(每月抽出120名幸運兒)：</h4><br>
                 {{--</div>--}}
                 {{--<div class="row">--}}
-                    {{--<h4>獎品內容 : </h4>--}}
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 5 Sedan 1:18模型車 (3 名 / 輪)</h4>
+                            <h4>LUXGEN 5 Sedan 1:18模型車一個(市值9,999元) 3名</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 4G USB隨身碟 (10 名 / 輪)</h4>
+                            <h4>LUXGEN 4G USB隨身碟一個(市值500元) 10名</h4>
                         </div>
                     </div>
                     <h4> - </h4>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 掛耳式咖啡一盒 (50 名 / 輪)</h4>
+                            <h4>7-11禮卷 200元 15名</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
-                            <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 掛耳式咖啡一盒 (50 名 / 輪)</h4>
+                            <i><img class="img-responsive" src="{{url('/images/prize/p4.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
+                            <h4>LUXGEN掛耳式咖啡一盒(市值250元) 120名</h4>
                         </div>
                     </div>
                 </div>

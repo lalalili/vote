@@ -17,18 +17,18 @@ Route::get('store/{id}', 'AlbumController@choose');
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
 Route::post('pull', 'PhotoController@pull');
-Route::get('pdpa', function(){
+Route::get('pdpa', function () {
     return view('pdpa');
 });
-Route::get('thanks', function(){
+Route::get('thanks', function () {
     return view('success');
 });
 
-Route::get('auth/login','Auth\AuthController@getLogin');
-Route::post('auth/login','Auth\AuthController@postLogin');
-Route::get('auth/logout','Auth\AuthController@getLogout');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 //Route::group(['prefix' => 'admin'], function () {
     Route::get('/', function () {
         return redirect('admin/photo/list');
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
 
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::controller('album', 'AlbumController');
     Route::controller('title', 'TitleController');
     Route::controller('vote', 'VoteController');

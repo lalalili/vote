@@ -1,20 +1,19 @@
-<?php namespace App\Models;
+<?php namespace app\Models;
 
 use Illuminate\Database\Eloquent\Model as Model;
 
 class Album extends Model
 {
-    
-	public $table = "albums";
+    public $table = "albums";
     
 
-	public $fillable = [
-	    "name",
-	    "type",
-	    "area",
+    public $fillable = [
+        "name",
+        "type",
+        "area",
         "path",
-		"note"
-	];
+        "note"
+    ];
 
     /**
      * The attributes that should be casted to native types.
@@ -23,12 +22,12 @@ class Album extends Model
      */
     protected $casts = [
         "name" => "string",
-		"note" => "string"
+        "note" => "string"
     ];
 
-	public static $rules = [
-	    "name" => "required"
-	];
+    public static $rules = [
+        "name" => "required"
+    ];
 
     public function photo()
     {
@@ -37,6 +36,6 @@ class Album extends Model
 
     public function vote()
     {
-        return $this->hasManyThrough('App\Models\Vote','App\Models\Photo');
+        return $this->hasManyThrough('App\Models\Vote', 'App\Models\Photo');
     }
 }

@@ -8,15 +8,14 @@ use App\Models\Vote;
 use DataEdit;
 use DataFilter;
 use DataGrid;
+use Flash;
 use Input;
 use Redirect;
-use View;
 use Request;
-use Flash;
+use View;
 
 class PhotoController extends Controller
 {
-
     public function anyList()
     {
         $filter = DataFilter::source(Photo::with('album', 'title'));
@@ -46,7 +45,9 @@ class PhotoController extends Controller
 
     public function anyEdit()
     {
-        if (Input::get('do_delete') == 1) return "not the first";
+        if (Input::get('do_delete') == 1) {
+            return "not the first";
+        }
 
         $edit = DataEdit::source(new Photo());
         //dd($edit);
@@ -57,7 +58,7 @@ class PhotoController extends Controller
         $edit->add('album_id', '據點', 'select')->options(Album::lists("name", "id")->all());
         $edit->add('title_id', '職稱', 'select')->options(title::lists("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');
-        $edit->add('utf8_filename', '原始圖片名稱', 'text');
+//        $edit->add('utf8_filename', '原始圖片名稱', 'text');
         $edit->add('path', '照片', 'image')->resize(160, 160)->move('uploads/demo/user')->preview(160, 160);
 
 
@@ -106,14 +107,13 @@ class PhotoController extends Controller
         //dd($Q3);
         if ($voteToID == "") {
             return view('show');
-        } else if ($Name == "") {
+        } elseif ($Name == "") {
             Flash::warning('請輸入姓名');
             return Redirect::back()->withInput();
-
-        } else if ($Phone == "") {
+        } elseif ($Phone == "") {
             Flash::warning('請輸入電話');
             return Redirect::back()->withInput();
-        } else if ($Q4 <> "1") {
+        } elseif ($Q4 <> "1") {
             Flash::warning('請勾選同意活動辦法');
             return Redirect::back()->withInput();
         }
@@ -143,5 +143,4 @@ class PhotoController extends Controller
             return Redirect::back()->withInput();
         }
     }
-
 }

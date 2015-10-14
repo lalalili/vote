@@ -5,37 +5,34 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateVotesTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('votes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('phone');
+            $table->boolean('q1')->default(0)->nullable();
+            $table->boolean('q2')->default(0)->nullable();
+            $table->boolean('q3')->default(0)->nullable();
+            $table->string('note1')->nullable();
+            $table->string('note2')->nullable();
+            $table->unsignedInteger('photo_id');
+            $table->timestamps();
+        });
+    }
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('votes', function(Blueprint $table)
-		{
-			$table->increments('id');
-			$table->string('name');
-			$table->string('phone');
-			$table->boolean('q1')->default(0)->nullable();
-			$table->boolean('q2')->default(0)->nullable();
-			$table->boolean('q3')->default(0)->nullable();
-			$table->string('note1')->nullable();
-			$table->string('note2')->nullable();
-			$table->unsignedInteger('photo_id');
-			$table->timestamps();
-		});
-	}
-
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('votes');
-	}
-
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('votes');
+    }
 }

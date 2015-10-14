@@ -12,8 +12,7 @@ class CreateTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('titles', function(Blueprint $table)
-        {
+        Schema::create('titles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('note')->nullable();
@@ -30,5 +29,4 @@ class CreateTitlesTable extends Migration
     {
         Schema::drop('titles');
     }
-
 }

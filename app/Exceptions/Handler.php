@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exceptions;
+namespace app\Exceptions;
 
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -40,8 +40,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        if ($e instanceof ModelNotFoundException)
-        {
+        if ($e instanceof ModelNotFoundException) {
             return response()->make(view('home'));
         }
         return parent::render($request, $e);

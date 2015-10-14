@@ -102,7 +102,7 @@ class RoleTableSeeder extends Seeder
 
 
         $role1 = Role::findOrFail(1);
-        $role1->perms()->sync([1,2,3]);
+        $role1->perms()->sync([1, 2, 3]);
         $role2 = Role::findOrFail(2);
         $role2->perms()->sync([1]);
     }

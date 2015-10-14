@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers;
+<?php namespace app\Http\Controllers;
 
 use App\Http\Requests;
-use App\Summary;
 use App\Models\Photo;
 use App\Models\Vote;
+use App\Summary;
 use Artisan;
 use DataEdit;
 use DataFilter;
@@ -15,7 +15,6 @@ use View;
 
 class VoteController extends Controller
 {
-
     public function anyList()
     {
         $filter = DataFilter::source(Vote::with('photo'));
@@ -45,7 +44,9 @@ class VoteController extends Controller
 
     public function anyEdit()
     {
-        if (Input::get('do_delete') == 1) return "not the first";
+        if (Input::get('do_delete') == 1) {
+            return "not the first";
+        }
 
         $edit = DataEdit::source(new Vote());
         //dd($edit);
@@ -53,7 +54,8 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::lists("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::lists("name", "id")->all());
+        ;
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
@@ -101,7 +103,8 @@ class VoteController extends Controller
             $ranks = DB::select('SELECT id, album_id, album_name, photo_id, photo_name, count, rank FROM (
               SELECT id, album_id, album_name, photo_id, photo_name, count, @curRank := IF
               (@prevRank = count, @curRank, @incRank) AS rank,    @incRank := @incRank + 1, @prevRank := count FROM summaries p,
-              (SELECT @curRank :=0, @prevRank := NULL, @incRank := 1) r where album_id = ? ORDER BY count desc) s', [$i]);
+              (SELECT @curRank :=0, @prevRank := NULL, @incRank := 1) r where album_id = ? ORDER BY count desc) s',
+                [$i]);
             //dd($ranks);
             DB::table('summaries')->where('album_id', $i)->delete();
             foreach ($ranks as $rank) {
@@ -226,7 +229,8 @@ class VoteController extends Controller
         Excel::create('vote', function ($excel) {
             $excel->sheet('vote', function ($sheet) {
                 $votes = DB::table('votes')
-                    ->select('votes.id as 投票編號', 'photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話', 'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3')
+                    ->select('votes.id as 投票編號', 'photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話',
+                        'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')
                     ->join('albums', 'photos.album_id', '=', 'albums.id')
                     ->orderBy('votes.id', 'desc')
