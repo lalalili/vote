@@ -158,26 +158,26 @@
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 5 Sedan 1:18模型車一個(市值9,999元) 3名</h4>
+                            <h4>LUXGEN 5 Sedan 1:18模型車一個(市值9,999元) 3名 / 月</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN 4G USB隨身碟一個(市值500元) 10名</h4>
+                            <h4>LUXGEN 4G USB隨身碟一個(市值500元) 10名 / 月</h4>
                         </div>
                     </div>
                     <h4> - </h4>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>7-11禮卷 200元 15名</h4>
+                            <h4>7-11禮卷 200元 15名 / 月</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
                         <div class="about-item scrollpoint sp-effect2">
                             <i><img class="img-responsive" src="{{url('/images/prize/p4.png')}}" alt="" style="display:table-cell; vertical-align:middle; text-align:center"></i>
-                            <h4>LUXGEN掛耳式咖啡一盒(市值250元) 120名</h4>
+                            <h4>LUXGEN掛耳式咖啡一盒(市值250元) 120名 / 月</h4>
                         </div>
                     </div>
                 </div>
