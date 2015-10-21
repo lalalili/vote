@@ -2,14 +2,16 @@
 /node_modules
 Homestead.yaml
 .env
+/.envoydeploy
+*.org
 
 # Created by https://www.gitignore.io
 
 ### Laravel ###
 /.idea
 /bootstrap/compiled.php
-#.env.*.php
-#.env.php
+*.env.*
+/tests
 
 # Created by https://www.gitignore.io
 

@@ -37,4 +37,7 @@ elixir(function (mix) {
         "sb-admin-2.js",
     ], 'public/js/admin.js');
     mix.phpUnit();
+    mix.browserSync({
+        proxy: 'votev.com'
+    });
 });

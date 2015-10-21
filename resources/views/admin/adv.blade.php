@@ -35,11 +35,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">測試資料處理</div>
                     <div class="panel-body">
-                        <button class="btn btn-danger" type="button"
+                        <button class="btn btn-info" type="button"
                                 onclick="location.href='/admin/seed'">建立測試資料
                         </button>
+                    </div>
+                    <div class="panel-body">
                         <button class="btn btn-danger" type="button"
-                                onclick="location.href='/admin/reset'">清空測試資料
+                                onclick="location.href='/admin/reset/photos'">清空員工資料
+                        </button>
+                        <button class="btn btn-danger" type="button"
+                                onclick="location.href='/admin/reset/votes'">清空投票資料
                         </button>
                     </div>
                 </div>

@@ -209,9 +209,14 @@ class VoteController extends Controller
         })->export('xlsx');
     }
 
-    public function reset()
+    public function resetVotes()
     {
         DB::table('votes')->truncate();
+        return redirect('admin/vote/list');
+    }
+
+    public function resetPhotos()
+    {
         DB::table('photos')->truncate();
         return redirect('admin/photo/list');
     }
