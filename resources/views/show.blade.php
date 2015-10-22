@@ -54,7 +54,7 @@
                                              style="display:table-cell; vertical-align:middle; text-align:center">
                                             <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
                                                                                       align="top"
-                                                                                      src="/uploads/{{ $list->path }}"
+                                                                                      src="/uploads/images/user/{{ $list->path }}"
                                                                                       alt=""></a></i>
                                             <h3>{{ $list->title->name }}</h3>
                                             <h4>{{ $list->name }}</h4>
@@ -72,7 +72,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/choose/{{ $list->id }}"><img
                                                         class="img-circle img-responsive"
-                                                        src="/uploads/{{ $list->path }}"
+                                                        src="/uploads/images/user/{{ $list->path }}"
                                                         alt=""></a></i>
                                         <h3>{{ $list->title->name }}</h3>
                                         <p>{{ $list->name }}</p>
