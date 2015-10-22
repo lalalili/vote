@@ -47,7 +47,7 @@
                                              style="display:table-cell; vertical-align:middle; text-align:center">
                                             <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                      align="top"
-                                                                                     src="/uploads/demo/store/{{ $list->path }}"
+                                                                                     src="/uploads/{{ $list->path }}"
                                                                                      alt=""></a></i>
 
                                             <h3>{{ $list->name }}</h3>
@@ -75,7 +75,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/store/{{ $list->path }}"
+                                                                                 src="/uploads/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -102,7 +102,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/store/{{ $list->path }}"
+                                                                                 src="/uploads/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -129,7 +129,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/store/{{ $list->path }}"
+                                                                                 src="/uploads/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>
@@ -156,7 +156,7 @@
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/store/{{ $list->id }}"><img class="img-responsive"
                                                                                  align="top"
-                                                                                 src="/uploads/demo/store/{{ $list->path }}"
+                                                                                 src="/uploads/{{ $list->path }}"
                                                                                  alt=""></a></i>
 
                                         <h3>{{ $list->name }}</h3>

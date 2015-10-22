@@ -59,7 +59,7 @@ class PhotoController extends Controller
         $edit->add('title_id', '職稱', 'select')->options(title::lists("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');
 //        $edit->add('utf8_filename', '原始圖片名稱', 'text');
-        $edit->add('path', '照片', 'image')->resize(160, 160)->move('uploads/demo/user')->preview(160, 160);
+        $edit->add('path', '照片', 'image')->resize(160, 160)->move('uploads/images/user')->preview(160, 160);
 
 
         $grid = DataGrid::source(Photo::with('album', 'title'));

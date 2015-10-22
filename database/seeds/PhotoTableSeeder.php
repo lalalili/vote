@@ -17,7 +17,7 @@ class PhotoTableSeeder extends Seeder
         for ($i = 0; $i < 100; $i++) {
             Photo::create([
                 'name' => '員工'.$i,
-                'path' => 'user'.rand(1, 6).'.png',
+                'path' => 'demo\user'.rand(1, 6).'.png',
                 'album_id' => rand(2, 71),
                 'title_id' => rand(1, 11)
             ]);
