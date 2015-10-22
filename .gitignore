@@ -3,7 +3,7 @@
 /node_modules
 /.idea
 *.env*
-
+/.vagrant
 
 ### Project ###
 Envoy.blade.php
