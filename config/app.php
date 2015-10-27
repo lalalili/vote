@@ -149,7 +149,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Zofe\Rapyd\RapydServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-
+        Spatie\Backup\BackupServiceProvider::class,
+        App\Providers\DropboxFilesystemServiceProvider::class,
     ],
 
     /*

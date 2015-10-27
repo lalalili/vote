@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.19 (LTS) on 2015-10-14.
+ * Generated for Laravel 5.1.20 (LTS) on 2015-10-27.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3715,7 +3715,7 @@ namespace {
         /**
          * Set the columns to be selected.
          *
-         * @param array $columns
+         * @param array|mixed $columns
          * @return $this 
          * @static 
          */
@@ -3750,7 +3750,7 @@ namespace {
         /**
          * Add a new select column to the query.
          *
-         * @param mixed $column
+         * @param array|mixed $column
          * @return $this 
          * @static 
          */
@@ -4414,6 +4414,7 @@ namespace {
          *
          * @param array $columns
          * @return array|static[] 
+         * @deprecated since version 5.1. Use get instead.
          * @static 
          */
         public static function getFresh($columns = array()){
@@ -5483,7 +5484,7 @@ namespace {
         /**
          * Get all of the input except for a specified array of items.
          *
-         * @param array $keys
+         * @param array|mixed $keys
          * @return array 
          * @static 
          */
@@ -5600,7 +5601,7 @@ namespace {
         /**
          * Flash only some of the input to the session.
          *
-         * @param mixed  string
+         * @param array|mixed $keys
          * @return void 
          * @static 
          */
@@ -5611,7 +5612,7 @@ namespace {
         /**
          * Flash only some of the input to the session.
          *
-         * @param mixed  string
+         * @param array|mixed $keys
          * @return void 
          * @static 
          */
@@ -8220,7 +8221,7 @@ namespace {
         /**
          * Get all of the input except for a specified array of items.
          *
-         * @param array $keys
+         * @param array|mixed $keys
          * @return array 
          * @static 
          */
@@ -8337,7 +8338,7 @@ namespace {
         /**
          * Flash only some of the input to the session.
          *
-         * @param mixed  string
+         * @param array|mixed $keys
          * @return void 
          * @static 
          */
@@ -8348,7 +8349,7 @@ namespace {
         /**
          * Flash only some of the input to the session.
          *
-         * @param mixed  string
+         * @param array|mixed $keys
          * @return void 
          * @static 
          */
@@ -9965,7 +9966,7 @@ namespace {
         /**
          * Resolve the middleware name to a class name preserving passed parameters.
          *
-         * @param $name
+         * @param string $name
          * @return string 
          * @static 
          */
@@ -10078,7 +10079,7 @@ namespace {
          * @param string $class
          * @param \Closure|null $callback
          * @return void 
-         * @throws NotFoundHttpException
+         * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
          * @static 
          */
         public static function model($key, $class, $callback = null){
@@ -11225,7 +11226,7 @@ namespace {
         }
         
         /**
-         * Generate a absolute URL to the given path.
+         * Generate an absolute URL to the given path.
          *
          * @param string $path
          * @param mixed $extra
@@ -11259,6 +11260,19 @@ namespace {
          */
         public static function asset($path, $secure = null){
             return \Illuminate\Routing\UrlGenerator::asset($path, $secure);
+        }
+        
+        /**
+         * Generate a URL to an asset from a custom root domain such as CDN, etc.
+         *
+         * @param string $root
+         * @param string $path
+         * @param bool|null $secure
+         * @return string 
+         * @static 
+         */
+        public static function assetFrom($root, $path, $secure = null){
+            return \Illuminate\Routing\UrlGenerator::assetFrom($root, $path, $secure);
         }
         
         /**
@@ -12396,6 +12410,15 @@ namespace {
          *
          * @static 
          */
+        public static function tag($tag){
+            return \Zofe\Rapyd\Rapyd::tag($tag);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
         public static function script($script){
             return \Zofe\Rapyd\Rapyd::script($script);
         }
@@ -13280,7 +13303,7 @@ namespace {
          * @return \Zofe\Rapyd\DataForm\View|\Zofe\Rapyd\DataForm\Redirect 
          * @static 
          */
-        public static function view($viewname, $array = array()){
+        public static function view($viewname = 'rapyd::form', $array = array()){
             return \Zofe\Rapyd\DataForm\DataForm::view($viewname, $array);
         }
         
@@ -13704,7 +13727,7 @@ namespace {
          * @return \Zofe\Rapyd\DataForm\View|\Zofe\Rapyd\DataForm\Redirect 
          * @static 
          */
-        public static function view($viewname, $array = array()){
+        public static function view($viewname = 'rapyd::form', $array = array()){
             //Method inherited from \Zofe\Rapyd\DataForm\DataForm            
             return \Zofe\Rapyd\DataEdit\DataEdit::view($viewname, $array);
         }
@@ -14108,7 +14131,7 @@ namespace {
          * @return \Zofe\Rapyd\DataForm\View|\Zofe\Rapyd\DataForm\Redirect 
          * @static 
          */
-        public static function view($viewname, $array = array()){
+        public static function view($viewname = 'rapyd::form', $array = array()){
             //Method inherited from \Zofe\Rapyd\DataForm\DataForm            
             return \Zofe\Rapyd\DataFilter\DataFilter::view($viewname, $array);
         }
@@ -14287,6 +14310,29 @@ namespace {
         public static function formButton($url, $method, $name, $position = 'BL', $attributes = array()){
             //Method inherited from \Zofe\Rapyd\Widget            
             return \Zofe\Rapyd\DataFilter\DataFilter::formButton($url, $method, $name, $position, $attributes);
+        }
+        
+    }
+
+
+    class DataEmbed extends \Zofe\Rapyd\Facades\DataEmbed{
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function source($url, $id){
+            return \Zofe\Rapyd\DataEmbed::source($url, $id);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */
+        public static function build($view = 'rapyd::dataembed'){
+            return \Zofe\Rapyd\DataEmbed::build($view);
         }
         
     }
