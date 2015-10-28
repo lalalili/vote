@@ -26,7 +26,7 @@ class Kernel extends ConsoleKernel
     {
 //        $schedule->command('inspire')
 //                 ->hourly();
-        $schedule->command('backup:clean')->sendOutputTo('/home/vagrant/log/clean.txt')->emailOutputTo('lalalili@gmail.com');
-        $schedule->command('backup:run')->sendOutputTo('/home/vagrant/log/run.txt')->emailOutputTo('lalalili@gmail.com');
+        $schedule->command('backup:clean')->sendOutputTo('log_clean.txt')->emailOutputTo('lalalili@gmail.com');
+        $schedule->command('backup:run')->sendOutputTo('log_backup.txt')->emailOutputTo('lalalili@gmail.com');
     }
 }
