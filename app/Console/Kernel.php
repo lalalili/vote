@@ -26,7 +26,9 @@ class Kernel extends ConsoleKernel
     {
 //        $schedule->command('inspire')
 //                 ->hourly();
-        $schedule->command('backup:clean')->sendOutputTo('log_clean.txt')->emailOutputTo('lalalili@gmail.com');
-        $schedule->command('backup:run')->sendOutputTo('log_backup.txt')->emailOutputTo('lalalili@gmail.com');
+        $schedule->command('backup:clean');
+        $schedule->command('backup:run');
+//        $schedule->command('backup:clean')->sendOutputTo('log_clean.txt')->emailOutputTo('lalalili@gmail.com');
+//        $schedule->command('backup:run')->sendOutputTo('log_backup.txt')->emailOutputTo('lalalili@gmail.com');
     }
 }
