@@ -11,7 +11,7 @@ return [
              * specify individual files as well.
              */
             'include' => [
-                base_path(),
+                base_path('public/uploads/images/user'),
             ],
 
             /*
@@ -19,8 +19,11 @@ return [
              * You can specify individual files as well.
              */
             'exclude' => [
-                storage_path(),
-                base_path('vendor'),
+//                storage_path(),
+//                base_path('vendor'),
+//                base_path('node_nodules'),
+//                base_path('.git'),
+//                base_path('public/uploads/demo'),
             ],
         ],
 
