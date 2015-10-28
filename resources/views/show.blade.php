@@ -46,7 +46,7 @@
                         <h2>請點選最佳禮貌大使照片開始投票</h2>
                     </div>
                     @if(count($lists) > 3)
-                        @foreach($lists->chunk(3) as $list3)
+                        @foreach(array_chunk($lists, 200)  as $list3)
                             <div class="row">
                                 @foreach($list3 as $list)
                                     <div class="col-md-4 col-sm-4 col-xs-4">
