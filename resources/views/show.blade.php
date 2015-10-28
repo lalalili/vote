@@ -45,7 +45,7 @@
                         <br/><br/>
                         <h2>請點選最佳禮貌大使照片開始投票</h2>
                     </div>
-                    @if($lists->count() > 3)
+                    @if(count($lists) > 3)
                         @foreach($lists->chunk(3) as $list3)
                             <div class="row">
                                 @foreach($list3 as $list)
@@ -56,7 +56,7 @@
                                                                                       align="top"
                                                                                       src="/uploads/images/user/{{ $list->path }}"
                                                                                       alt=""></a></i>
-                                            <h3>{{ $list->title->name }}</h3>
+                                            <h3>{{ $list->title }}</h3>
                                             <h4>{{ $list->name }}</h4>
                                             <BR>
                                         </div>
@@ -74,7 +74,7 @@
                                                         class="img-circle img-responsive"
                                                         src="/uploads/images/user/{{ $list->path }}"
                                                         alt=""></a></i>
-                                        <h3>{{ $list->title->name }}</h3>
+                                        <h3>{{ $list->title }}</h3>
                                         <p>{{ $list->name }}</p>
                                     </div>
                                 </div>

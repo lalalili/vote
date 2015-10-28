@@ -8,6 +8,7 @@ use App\Models\Vote;
 use DataEdit;
 use DataFilter;
 use DataGrid;
+use DB;
 use Flash;
 use Input;
 use Redirect;
@@ -78,7 +79,12 @@ class PhotoController extends Controller
     public function show($id)
     {
         //$lists = Photo::findOrFail($id);
-        $lists = Photo::with('Album', 'Title')->where('album_id', $id)->get();
+        //$lists = Photo::with('Album', 'Title')->where('album_id', $id)->orderBy('titles.id', 'desc')->get();
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.id as id', 'photos.name as name', 'photos.path as path','titles.name as title', 'albums.id as album_id', 'titles.note as order')
+            ->where('album_id', $id)->orderBy('order', 'asc')->get();
         //dd($lists);
         return view('show', compact('lists'));
     }
