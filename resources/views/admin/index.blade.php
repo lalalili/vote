@@ -110,6 +110,11 @@
                                             class="fa arrow"></span></a>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <li>
+                                <a href="/admin/photo/delete"><i class="fa fa-wrench fa-fw"></i> 員工刪除<span
+                                            class="fa arrow"></span></a>
+                                <!-- /.nav-second-level -->
+                            </li>
                         @endif
                     </ul>
                 </div>

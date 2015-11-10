@@ -9,6 +9,7 @@ use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
+use Entrust;
 use Flash;
 use Input;
 use Redirect;
@@ -83,7 +84,8 @@ class PhotoController extends Controller
         $lists = DB::table('photos')
             ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-            ->select('photos.id as id', 'photos.name as name', 'photos.path as path','titles.name as title', 'albums.id as album_id', 'titles.note as order')
+            ->select('photos.id as id', 'photos.name as name', 'photos.path as path', 'titles.name as title',
+                'albums.id as album_id', 'titles.note as order')
             ->where('album_id', $id)->orderBy('order', 'asc')->get();
         //dd($lists);
         return view('show', compact('lists'));
@@ -147,6 +149,37 @@ class PhotoController extends Controller
         } else {
             Flash::warning('系統異常，請再重新送出一次');
             return Redirect::back()->withInput();
+        }
+    }
+
+    public function anyDelete()
+    {
+        if (!Entrust::hasRole('admin')) {
+            return redirect('/admin');
+        } else {
+            $filter = DataFilter::source(Photo::with('album', 'title'));
+            //dd($filter);
+            $filter->add('album.name', '據點', 'text');
+            $filter->add('title.name', '職稱', 'text');
+            $filter->add('name', '姓名', 'text');
+
+            $filter->submit('search');
+            $filter->reset('reset');
+            $filter->build();
+
+            $grid = DataGrid::source($filter);
+
+            $grid->add('{{ $album->name }}', '據點', 'album_id');
+            $grid->add('{{ $title->name }}', '職稱', 'title_id');
+            $grid->add('name', '姓名');
+            $grid->add('updated_at', '更新時間');
+            $grid->orderBy('album_id', 'asc');
+            $grid->paginate(10);
+
+            $grid->edit('/admin/photo/edit', '功能', 'show|modify|delete');
+
+            $grid->link('/admin/photo/edit', "新增員工", "TR");
+            return View::make('admin.list', compact('filter', 'grid'));
         }
     }
 }
