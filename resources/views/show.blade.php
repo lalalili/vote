@@ -49,7 +49,7 @@
                         @foreach(array_chunk($lists, 200)  as $list3)
                             <div class="row">
                                 @foreach($list3 as $list)
-                                    <div class="col-md-3 col-sm-3 col-xs-2">
+                                    <div class="col-md-4 col-sm-4 col-xs-6">
                                         <div class="about-item scrollpoint sp-effect2"
                                              style="display:table-cell; vertical-align:middle; text-align:center">
                                             <i><a href="/choose/{{ $list->id }}"><img class="img-circle img-responsive"
@@ -67,7 +67,7 @@
                     @else
                         <div class="row">
                             @foreach($lists as $list)
-                                <div class="col-md-3 col-sm-3 col-xs-2">
+                                <div class="col-md-4 col-sm-4 col-xs-6">
                                     <div class="about-item scrollpoint sp-effect2"
                                          style="display:table-cell; vertical-align:middle; text-align:center">
                                         <i><a href="/choose/{{ $list->id }}"><img
