@@ -10,10 +10,14 @@ keys:
     - D:\Dropbox\work\homestead\key\id_rsa
 
 folders:
+    - map: D:\Dropbox\work\report
+      to: /home/vagrant/Code
     - map: D:\Dropbox\work\vote
       to: /home/vagrant/Code
 
 sites:
+    - map: reportv.com
+      to: /home/vagrant/Code/public
     - map: votev.com
       to: /home/vagrant/Code/public
       hhvm: true

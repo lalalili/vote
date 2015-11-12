@@ -64,8 +64,8 @@
                                             <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                         </div>
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 請填寫您的電話 ( 請直接輸入數字，不含任何符號 例如 手機 : 0912345678 市話 :
-                                                0227893969 ):</h4>
+                                            <h4><b style="color: red">*</b> 請填寫您的電話 <br>( 攸關中獎權益，請提供您的真實電話。範例 手機 : 0912345678 市話 :
+                                                0212345678 ):</h4>
                                             <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
                                         </div>
                                         <div class="form-group">
