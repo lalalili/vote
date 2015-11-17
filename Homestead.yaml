@@ -11,15 +11,15 @@ keys:
 
 folders:
     - map: D:\Dropbox\work\report
-      to: /home/vagrant/Code
+      to: /home/vagrant/report
     - map: D:\Dropbox\work\vote
-      to: /home/vagrant/Code
+      to: /home/vagrant/vote
 
 sites:
     - map: reportv.com
-      to: /home/vagrant/Code/public
+      to: /home/vagrant/report/public
     - map: votev.com
-      to: /home/vagrant/Code/public
+      to: /home/vagrant/vote/public
       hhvm: true
 
 databases:
