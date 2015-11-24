@@ -23,8 +23,8 @@
                                         <button class="btn btn-default" type="reset">Reset</button>
                                     </div>
                                 </div>
+                            </form>
                         </div>
-                        </form>
                         @include('flash::message')
                     </div>
                 </div>

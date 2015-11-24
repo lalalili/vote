@@ -32,7 +32,7 @@ class VoteController extends Controller
         $grid->add('album', '據點');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名');
-        $grid->add('updated_at', 'Last Updated');
+        $grid->add('updated_at', '投票時間');
 
         $grid->edit('/admin/vote/edit', 'Edit', 'show');
         $grid->orderBy('id', 'desc');
@@ -235,7 +235,7 @@ class VoteController extends Controller
             $excel->sheet('vote', function ($sheet) {
                 $votes = DB::table('votes')
                     ->select('votes.id as 投票編號', 'photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話',
-                        'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3')
+                        'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')
                     ->join('albums', 'photos.album_id', '=', 'albums.id')
                     ->orderBy('votes.id', 'desc')
