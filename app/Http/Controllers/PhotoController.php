@@ -58,7 +58,7 @@ class PhotoController extends Controller
         $edit->label('員工編輯');
 
         $edit->add('album_id', '據點', 'select')->options(Album::lists("name", "id")->all());
-        $edit->add('title_id', '職稱', 'select')->options(title::lists("name", "id")->all());
+        $edit->add('title_id', '職稱', 'select')->options(Title::lists("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');
 //        $edit->add('utf8_filename', '原始圖片名稱', 'text');
         $edit->add('path', '照片', 'image')->resize(145, 160)->move('uploads/images/user')->preview(145, 160);

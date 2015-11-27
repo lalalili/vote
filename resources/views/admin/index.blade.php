@@ -11,13 +11,15 @@
 
     <title>禮貌大使管理</title>
 
-    <link rel="stylesheet" href="{{url('/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{url('css/plugins/metisMenu/metisMenu.min.css') }}">
-    <link href="{{url('css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/plugins/metisMenu/metisMenu.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery.dataTables.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.css') }}" >
+    <link rel="stylesheet" href="{{ asset('/css/dataTables.responsive.css') }}" >
+    <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}" >
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
-    <link rel="stylesheet" href="{{elixir('css/admin.css')}}">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -120,6 +122,34 @@
                                             class="fa arrow"></span></a>
                                 <!-- /.nav-second-level -->
                             </li>
+                            <li class="active">
+                                <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 報名管理<span
+                                            class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('admin/signup/yearlist') }}"> 菁訓班年度</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/grouplist') }}"> 菁訓班梯次</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/projectlist') }}"> 課程項目</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/courselist') }}"> 課別</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/eventlist') }}"> 課程日期/場次</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/list') }}"> 報名列表</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/signup/step1') }}"> 報名</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
                         @endif
                     </ul>
                 </div>
@@ -131,7 +161,7 @@
 
 
     <!-- Page Content -->
-    <script src="{{url('/js/jquery-1.11.1.min.js')}}"></script>
+    <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
     @yield('content')
             <!-- /.row -->
     <!-- /#page-wrapper -->
@@ -139,14 +169,15 @@
 </div>
 <!-- /#wrapper -->
 
-<script src="{{url('/js/bootstrap.min.js')}}"></script>
-<script src="{{url('js/plugins/metisMenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/js/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/select2.min.js') }}"></script>
 
 <!-- Custom Theme JavaScript -->
 {{--<script src="{{ url('js/sb-admin-2.js') }}"></script>--}}
 <script src="{{ elixir('js/admin.js') }}"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
 
 <!-- This is only necessary if you do Flash::overlay('...') -->
 <script>

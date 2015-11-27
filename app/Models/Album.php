@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model as Model;
 class Album extends Model
 {
     public $table = "albums";
-    
+
 
     public $fillable = [
         "name",

@@ -54,4 +54,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('adv', function () {
         return view('admin.adv');
     });
+//    Route::get('signup/{id}/step2', 'SignupController@step2');
+//    Route::post('signup/{id}/step2', 'SignupController@step2');
+    Route::controller('signup', 'SignupController');
+
 });

@@ -16,24 +16,57 @@ class PhotoTableSeeder extends Seeder
 
         for ($i = 0; $i < 100; $i++) {
             Photo::create([
-                'name' => '員工'.$i,
-                'path' => 'user'.rand(1, 6).'.png',
+                'name'     => '員工' . $i,
+                'path'     => 'user' . rand(1, 6) . '.png',
                 'album_id' => rand(2, 71),
                 'title_id' => rand(1, 11)
             ]);
         }
 
-        $photos = [[
-            'name' => '葉瑋豪',
-            'path' => 'user8.png',
-            'album_id' => 1,
-            'title_id' => 1
-        ], [
-            'name' => '蘇游育銘',
-            'path' => 'user7.png',
-            'album_id' => 1,
-            'title_id' => 5
-        ]];
+        $photos = [
+            [
+                'name'     => '員工A',
+                'path'     => 'user8.png',
+                'album_id' => 1,
+                'title_id' => 1
+            ],
+            [
+                'name'     => '員工B',
+                'path'     => 'user7.png',
+                'album_id' => 1,
+                'title_id' => 2
+            ],
+            [
+                'name'     => '員工A',
+                'path'     => 'user8.png',
+                'album_id' => 2,
+                'title_id' => 1
+            ],
+            [
+                'name'     => '員工B',
+                'path'     => 'user7.png',
+                'album_id' => 2,
+                'title_id' => 2
+            ],
+            [
+                'name'     => '員工C',
+                'path'     => 'user1.png',
+                'album_id' => 2,
+                'title_id' => 3
+            ],
+            [
+                'name'     => '員工D',
+                'path'     => 'user2.png',
+                'album_id' => 2,
+                'title_id' => 4
+            ],
+            [
+                'name'     => '員工E',
+                'path'     => 'user3.png',
+                'album_id' => 2,
+                'title_id' => 5
+            ]
+        ];
 
         foreach ($photos as $photo) {
             Photo::create($photo);

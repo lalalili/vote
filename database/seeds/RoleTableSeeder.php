@@ -75,27 +75,34 @@ class RoleTableSeeder extends Seeder
             $table->primary(['permission_id', 'role_id']);
         });
 
-        $roles = [[
-            'name' => 'admin',
-            'display_name' => '站台管理'
-        ], [
-            'name' => 'owner',
-            'display_name' => '據點管理'
-        ]];
+        $roles = [
+            [
+                'name'         => 'admin',
+                'display_name' => '站台管理'
+            ],
+            [
+                'name'         => 'owner',
+                'display_name' => '據點管理'
+            ]
+        ];
         foreach ($roles as $role) {
             Role::create($role);
         }
 
-        $permissions = [[
-            'name' => 'edit-photo',
-            'display_name' => '員工管理'
-        ], [
-            'name' => 'edit-album',
-            'display_name' => '據點管理'
-        ], [
-            'name' => 'edit-vote',
-            'display_name' => '投票管理'
-        ]];
+        $permissions = [
+            [
+                'name'         => 'edit-photo',
+                'display_name' => '員工管理'
+            ],
+            [
+                'name'         => 'edit-album',
+                'display_name' => '據點管理'
+            ],
+            [
+                'name'         => 'edit-vote',
+                'display_name' => '投票管理'
+            ]
+        ];
         foreach ($permissions as $permission) {
             Permission::create($permission);
         }

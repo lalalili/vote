@@ -26,3 +26,30 @@ $(function() {
         }
     })
 })
+
+function seed_confirm()
+{
+    var r=confirm("確認要建立測試資料 !!");
+    if (r==true)
+    {
+        window.location.href='/admin/seed';
+    }
+}
+
+function reset_photo_confirm()
+{
+    var r=confirm("確認要清空員工資料 !!");
+    if (r==true)
+    {
+        window.location.href='/admin/reset/photos';
+    }
+}
+
+function reset_vote_confirm()
+{
+    var r=confirm("確認要清空投票資料 !!");
+    if (r==true)
+    {
+        window.location.href='/admin/reset/votes';
+    }
+}

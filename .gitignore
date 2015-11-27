@@ -11,4 +11,4 @@ Envoy.blade.php
 *.org
 
 
-/tests/ExampleTest.php
+/tests/VoteTest.php

@@ -1,8 +1,10 @@
-<?php namespace app;
+<?php
 
-use Zizaco\Entrust\EntrustRole;
+namespace App;
 
-class Role extends EntrustRole
+use Illuminate\Database\Eloquent\Model;
+
+class Group extends Model
 {
     protected $fillable = ["name", "note"];
 
