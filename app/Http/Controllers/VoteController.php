@@ -148,8 +148,38 @@ class VoteController extends Controller
             ->where('albums.type', '生活館')
             ->where('rank', '<', '4')
             ->get();
+        $r6s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '北智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r7s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '桃智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r8s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '中智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r9s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '南智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r10s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '高智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
         //dd($r1);
-        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
+        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s', 'r6s', 'r7s', 'r8s', 'r9s', 'r10s'));
     }
 
     public function count()
