@@ -185,8 +185,38 @@ class VoteController extends Controller
             ->where('albums.type', '生活館')
             ->where('rank', '<', '4')
             ->get();
+        $r6s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '北智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r7s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '桃智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r8s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '中智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r9s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '南智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
+        $r10s = DB::table('summaries')
+            ->Join('albums', 'summaries.album_id', '=', 'albums.id')
+            ->where('albums.area', '高智捷')
+            ->where('albums.type', '服務廠')
+            ->where('rank', '<', '4')
+            ->get();
         //dd($r1);
-        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s'));
+        return view('admin.summary', compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s', 'r6s', 'r7s', 'r8s', 'r9s', 'r10s'));
     }
 
     public function downloadSummary()
@@ -234,7 +264,7 @@ class VoteController extends Controller
         Excel::create('vote', function ($excel) {
             $excel->sheet('vote', function ($sheet) {
                 $votes = DB::table('votes')
-                    ->select('votes.id as 投票編號', 'photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話',
+                    ->select('votes.id as 投票編號', 'albums.name as 據點','photos.name as 員工姓名', 'votes.name as 客戶姓名', 'phone as 客戶電話',
                         'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')
                     ->join('albums', 'photos.album_id', '=', 'albums.id')

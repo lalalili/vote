@@ -76,7 +76,7 @@ class SignupController extends Controller
     {
         $filter = DataFilter::source(new Group());
         //dd($filter);
-        $filter->add('name', '年度', 'text');
+        $filter->add('name', '梯次', 'text');
         $filter->add('note', '備註', 'text');
 
         $filter->submit('search');
@@ -84,7 +84,7 @@ class SignupController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('name', '年度');
+        $grid->add('name', '梯次');
         $grid->add('note', '備註');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');

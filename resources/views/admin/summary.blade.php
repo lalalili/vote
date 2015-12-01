@@ -104,6 +104,97 @@
                                 </tbody>
                             </table>
                         </div>
+                        <h3>服務廠</h3>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                <tr>
+                                    <th>據點</th>
+                                    <th>姓名</th>
+                                    <th>票數</th>
+                                    <th>名次</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td colspan="4" align="center">北智捷</td>
+                                </tr>
+                                @foreach( $r6s as $r6)
+                                    <tr>
+                                        <td>{{$r6->album_name}}
+                                        </td>
+                                        <td>{{$r6->photo_name}}
+                                        </td>
+                                        <td>{{$r6->count}}
+                                        </td>
+                                        <td>{{$r6->rank}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="4" align="center">桃智捷</td>
+                                </tr>
+                                @foreach( $r7s as $r7)
+                                    <tr>
+                                        <td>{{$r7->album_name}}
+                                        </td>
+                                        <td>{{$r7->photo_name}}
+                                        </td>
+                                        <td>{{$r7->count}}
+                                        </td>
+                                        <td>{{$r7->rank}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="4" align="center">中智捷</td>
+                                </tr>
+                                @foreach( $r8s as $r8)
+                                    <tr>
+                                        <td>{{$r8->album_name}}
+                                        </td>
+                                        <td>{{$r8->photo_name}}
+                                        </td>
+                                        <td>{{$r8->count}}
+                                        </td>
+                                        <td>{{$r8->rank}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="4" align="center">南智捷</td>
+                                </tr>
+                                @foreach( $r9s as $r9)
+                                    <tr>
+                                        <td>{{$r9->album_name}}
+                                        </td>
+                                        <td>{{$r9->photo_name}}
+                                        </td>
+                                        <td>{{$r9->count}}
+                                        </td>
+                                        <td>{{$r9->rank}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                <tr>
+                                    <td colspan="4" align="center">高智捷</td>
+                                </tr>
+                                @foreach( $r10s as $r10)
+                                    <tr>
+                                        <td>{{$r10->album_name}}
+                                        </td>
+                                        <td>{{$r10->photo_name}}
+                                        </td>
+                                        <td>{{$r10->count}}
+                                        </td>
+                                        <td>{{$r10->rank}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
