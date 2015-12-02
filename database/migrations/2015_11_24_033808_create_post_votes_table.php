@@ -23,7 +23,6 @@ class CreatePostVotesTable extends Migration
             $table->string('note2')->nullable();
             $table->unsignedInteger('photo_id');
             $table->dateTime('created_at');
-            $table->index(['account_id', 'created_at']);
         });
     }
 
