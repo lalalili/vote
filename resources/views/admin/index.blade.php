@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/plugins/metisMenu/metisMenu.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/jquery.dataTables.min.css') }}" >
-    <link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.css') }}" >
-    <link rel="stylesheet" href="{{ asset('/css/dataTables.responsive.css') }}" >
-    <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}" >
+    <link rel="stylesheet" href="{{ asset('/css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/dataTables.responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
 
@@ -55,14 +55,14 @@
                 <ul class="dropdown-menu dropdown-user">
                     @if (Auth::check())
                         <li>
-                            <a href="{{url('/auth/logout')}}">
+                            <a href="{{ url('/auth/logout' )}}">
                                 <i class="fa fa-sign-out fa-fw"></i>
                                 Logout
                             </a>
                         </li>
                     @else
                         <li>
-                            <a href="{{url('/auth/login')}}">
+                            <a href="{{ url('/auth/login') }}">
                                 <i class="fa fa-sign-in fa-fw"></i>
                                 Login
                             </a>
@@ -87,19 +87,6 @@
                         </li>
                         @if(Auth::user()->hasRole('admin'))
                             <li class="active">
-                                <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i> 基本設定<span
-                                            class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{ url('admin/album/list') }}"> 據點管理</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('admin/title/list') }}"> 職稱管理</a>
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <li class="active">
                                 <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 投票管理<span
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
@@ -109,20 +96,41 @@
                                     <li>
                                         <a href="{{ url('admin/summary') }}"> 總攬</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('admin/vote/postlist') }}"> 投票列表(已處理)</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/post_summary') }}"> 總攬(已處理)</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/vote/whitelist') }}"> 白名單投票列表</a>
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                            <li class="active">
+                                <a href="#"><i class="fa fa-wrench fa-fw"></i> 系統設定<span
+                                            class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{ url('admin/album/list') }}"> 據點管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/title/list') }}"> 職稱管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/admin/photo/delete') }}"> 員工管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/whitelist/list') }}"> 白名單管理</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/admin/adv') }}"> 進階功能</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
                             <li>
-                                <a href="/admin/adv"><i class="fa fa-wrench fa-fw"></i> 進階設定<span
-                                            class="fa arrow"></span></a>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <li>
-                                <a href="/admin/photo/delete"><i class="fa fa-wrench fa-fw"></i> 員工刪除<span
-                                            class="fa arrow"></span></a>
-                                <!-- /.nav-second-level -->
-                            </li>
-                            <li class="active">
                                 <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 報名管理<span
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

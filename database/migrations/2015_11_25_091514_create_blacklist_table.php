@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsTable extends Migration
+class CreateBlacklistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,10 @@ class CreateEventsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('blacklists', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('note')->nullable();
+            $table->string('phone');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateEventsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events');
+        Schema::drop('blacklists');
     }
 }

@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSignupsTable extends Migration
+class CreatePostSummariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,15 +12,14 @@ class CreateSignupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('signups', function (Blueprint $table) {
+        Schema::create('post_summaries', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('album_id');
+            $table->string('album_name');
             $table->unsignedInteger('photo_id');
-            $table->unsignedInteger('year_id');
-            $table->unsignedInteger('group_id');
-            $table->unsignedInteger('project_id');
-            $table->unsignedInteger('course_id');
-            $table->unsignedInteger('event_id');
-            $table->string('note')->nullable();
+            $table->string('photo_name');
+            $table->unsignedInteger('count');
+            $table->unsignedInteger('rank')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ class CreateSignupsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('signups');
+        Schema::drop('post_summaries');
     }
 }

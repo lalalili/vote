@@ -38,4 +38,9 @@ class Album extends Model
     {
         return $this->hasManyThrough('App\Models\Vote', 'App\Models\Photo');
     }
+
+    public function postvote()
+    {
+        return $this->hasManyThrough('App\Models\PostVote', 'App\Models\Photo', 'album_id', 'photo_id');
+    }
 }

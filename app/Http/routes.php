@@ -45,15 +45,20 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::controller('title', 'TitleController');
     Route::controller('vote', 'VoteController');
     Route::get('summary', 'VoteController@count');
+    Route::get('post_summary', 'VoteController@postcount');
     Route::get('reset/votes', 'VoteController@resetVotes');
     Route::get('reset/photos', 'VoteController@resetPhotos');
     Route::get('votes/download', 'VoteController@downloadVote');
+    Route::get('votes/post_download', 'VoteController@postdownloadVote');
     Route::get('recal', 'VoteController@recal');
+    Route::get('post_recal', 'VoteController@postrecal');
     Route::get('seed', 'VoteController@seed');
     Route::get('summary/download', 'VoteController@downloadSummary');
+    Route::get('summary/post_download', 'VoteController@postdownloadSummary');
     Route::get('adv', function () {
         return view('admin.adv');
     });
+    Route::controller('whitelist', 'WhitelistController');
 //    Route::get('signup/{id}/step2', 'SignupController@step2');
 //    Route::post('signup/{id}/step2', 'SignupController@step2');
     Route::controller('signup', 'SignupController');

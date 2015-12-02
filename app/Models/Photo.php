@@ -59,4 +59,8 @@ class Photo extends Model
     {
         return $this->hasMany('App\Signup');
     }
+    public function postvote()
+    {
+        return $this->hasMany('App\Models\PostVote', 'id', 'photo_id');
+    }
 }
