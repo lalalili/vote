@@ -99,11 +99,11 @@ class VoteController extends Controller
 
         $grid = DataGrid::source($filter);
         $grid->add('{{ $photo->album->area}}', '經銷商', 'photo_id');
-        $grid->add('album', '據點');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('phone', '客戶電話');
-        $grid->add('updated_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
+        $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/edit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
@@ -134,11 +134,11 @@ class VoteController extends Controller
 
         $grid = DataGrid::source(Vote::with('photo'));
         $grid->add('{{ $photo->album->area}}', '經銷商', 'photo_id');
-        $grid->add('album', '據點', 'album_id');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('phone', '客戶電話');
-        $grid->add('updated_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
+        $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/edit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
@@ -399,11 +399,11 @@ class VoteController extends Controller
 
         $grid = DataGrid::source($filter);
         $grid->add('{{ $photo->album->area }}', '經銷商', 'photo_id');
-        $grid->add('album', '據點');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('phone', '客戶電話');
-        $grid->add('created_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
+        $grid->add('created_at', '投票時間', true);
 
         $grid->edit('/admin/vote/postedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
@@ -433,11 +433,11 @@ class VoteController extends Controller
 
         $grid = DataGrid::source(PostVote::with('photo'));
         $grid->add('{{ $photo->album->area }}', '經銷商', 'photo_id');
-        $grid->add('album', '據點', 'album_id');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('phone', '客戶電話');
-        $grid->add('created_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
+        $grid->add('created_at', '投票時間', true);
 
         $grid->edit('/admin/vote/postedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
@@ -495,9 +495,10 @@ class VoteController extends Controller
         DB::table('post_votes')->truncate();
         $phone = Whitelist::lists('phone');
         $votes = DB::table('votes')->whereRaw('updated_at = (select max(updated_at) from votes as f where f.phone = votes.phone)')
+            ->whereRaw('time(created_at) between "08:00:00" and "22:00:00"')
             ->whereNotIn('phone', $phone)
-            ->where(DB::raw(' time(created_at) between "08:00:00" and "22:00:00"'))->get();
-        //dd($votes);0
+            ->get();
+//        dd($votes);
         foreach ($votes as $vote) {
             $postvote = new PostVote;
             $postvote->name = $vote->name;
@@ -725,10 +726,10 @@ class VoteController extends Controller
 
         $grid = DataGrid::source($filter);
 
-        $grid->add('album', '據點');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('updated_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
@@ -758,10 +759,10 @@ class VoteController extends Controller
         $edit->add('q3', '問題三', 'checkbox');
 
         $grid = DataGrid::source(Vote::with('photo'));
-        $grid->add('album', '據點', 'album_id');
+        $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
-        $grid->add('name', '客戶姓名');
-        $grid->add('updated_at', '投票時間');
+        $grid->add('name', '客戶姓名', true);
+        $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
