@@ -98,10 +98,11 @@ class VoteController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-
+        $grid->add('{{ $photo->album->area}}', '經銷商', 'photo_id');
         $grid->add('album', '據點');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名');
+        $grid->add('phone', '客戶電話');
         $grid->add('updated_at', '投票時間');
 
         $grid->edit('/admin/vote/edit', 'Edit', 'show|modify|delete');
@@ -132,9 +133,11 @@ class VoteController extends Controller
         $edit->add('q3', '問題三', 'checkbox');
 
         $grid = DataGrid::source(Vote::with('photo'));
+        $grid->add('{{ $photo->album->area}}', '經銷商', 'photo_id');
         $grid->add('album', '據點', 'album_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名');
+        $grid->add('phone', '客戶電話');
         $grid->add('updated_at', '投票時間');
 
         $grid->edit('/admin/vote/edit', 'Edit', 'show|modify|delete');
@@ -149,7 +152,7 @@ class VoteController extends Controller
         Excel::create('votes', function ($excel) {
             $excel->sheet('votes', function ($sheet) {
                 $votes = DB::table('votes')
-                    ->select('votes.id as 投票編號', 'albums.name as 據點', 'photos.name as 員工姓名', 'votes.name as 客戶姓名',
+                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名', 'votes.name as 客戶姓名',
                         'phone as 客戶電話',
                         'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')
@@ -172,9 +175,9 @@ class VoteController extends Controller
         Excel::create('summary', function ($excel) {
             $excel->sheet('summary', function ($sheet) {
                 $summaries = DB::table('summaries')
-                    ->select('area as 區域', 'album_name as 據點', 'photo_name as 姓名', 'count as 票數', 'rank as 店排名')
+                    ->select('area as 經銷商', 'album_name as 據點', 'photo_name as 姓名', 'count as 票數', 'rank as 店排名')
                     ->Join('albums', 'summaries.album_id', '=', 'albums.id')
-                    ->where('rank', '<', '4')
+//                    ->where('rank', '<', '4')
                     ->get();
                 //dd($summaries);
                 $data = array();
@@ -384,24 +387,6 @@ class VoteController extends Controller
 
     public function anyPostlist()
     {
-
-        DB::table('post_votes')->truncate();
-        $votes = DB::table('votes')->whereRaw('updated_at = (select max(updated_at) from votes as f where f.phone = votes.phone)')->get();
-        //dd($votes);
-        foreach ($votes as $vote) {
-            $postvote = new PostVote;
-            $postvote->name = $vote->name;
-            $postvote->phone = $vote->phone;
-            $postvote->q1 = $vote->q1;
-            $postvote->q2 = $vote->q2;
-            $postvote->q3 = $vote->q3;
-            $postvote->photo_id = $vote->photo_id;
-            $postvote->note1 = $vote->note1;
-            $postvote->note2 = $vote->note2;
-            $postvote->created_at = $vote->updated_at;
-            $postvote->save();
-        }
-
         $filter = DataFilter::source(PostVote::with('photo'));
         //dd($filter);
         //$filter->add('album.name', '據點', 'text');
@@ -413,10 +398,11 @@ class VoteController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-
+        $grid->add('{{ $photo->album->area }}', '經銷商', 'photo_id');
         $grid->add('album', '據點');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名');
+        $grid->add('phone', '客戶電話');
         $grid->add('created_at', '投票時間');
 
         $grid->edit('/admin/vote/postedit', 'Edit', 'show|modify|delete');
@@ -446,9 +432,11 @@ class VoteController extends Controller
         $edit->add('q3', '問題三', 'checkbox');
 
         $grid = DataGrid::source(PostVote::with('photo'));
+        $grid->add('{{ $photo->album->area }}', '經銷商', 'photo_id');
         $grid->add('album', '據點', 'album_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名');
+        $grid->add('phone', '客戶電話');
         $grid->add('created_at', '投票時間');
 
         $grid->edit('/admin/vote/postedit', 'Edit', 'show|modify|delete');
@@ -463,7 +451,7 @@ class VoteController extends Controller
         Excel::create('post_votes', function ($excel) {
             $excel->sheet('post_votes', function ($sheet) {
                 $votes = DB::table('post_votes')
-                    ->select('post_votes.id as 投票編號', 'albums.name as 據點', 'photos.name as 員工姓名',
+                    ->select('post_votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名',
                         'post_votes.name as 客戶姓名',
                         'phone as 客戶電話',
                         'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'post_votes.created_at as 投票時間')
@@ -489,7 +477,7 @@ class VoteController extends Controller
                 $summaries = DB::table('post_summaries')
                     ->select('area as 區域', 'album_name as 據點', 'photo_name as 姓名', 'count as 票數', 'rank as 店排名')
                     ->Join('albums', 'post_summaries.album_id', '=', 'albums.id')
-                    ->where('rank', '<', '4')
+//                    ->where('rank', '<', '4')
                     ->get();
                 //dd($summaries);
                 $data = array();
@@ -500,6 +488,49 @@ class VoteController extends Controller
                 $sheet->fromArray($data);
             });
         })->export('xlsx');
+    }
+
+    public function syncVote()
+    {
+        DB::table('post_votes')->truncate();
+        $phone = Whitelist::lists('phone');
+        $votes = DB::table('votes')->whereRaw('updated_at = (select max(updated_at) from votes as f where f.phone = votes.phone)')
+            ->whereNotIn('phone', $phone)
+            ->where(DB::raw(' time(created_at) between "08:00:00" and "22:00:00"'))->get();
+        //dd($votes);0
+        foreach ($votes as $vote) {
+            $postvote = new PostVote;
+            $postvote->name = $vote->name;
+            $postvote->phone = $vote->phone;
+            $postvote->q1 = $vote->q1;
+            $postvote->q2 = $vote->q2;
+            $postvote->q3 = $vote->q3;
+            $postvote->photo_id = $vote->photo_id;
+            $postvote->note1 = $vote->note1;
+            $postvote->note2 = $vote->note2;
+            $postvote->created_at = $vote->updated_at;
+            $postvote->save();
+        }
+
+        $whitelist_votes = DB::table('votes')
+            ->whereIn('phone', $phone)
+//            ->where(DB::raw(' time(created_at) between "08:00:00" and "22:00:00"'))
+            ->get();
+
+        foreach ($whitelist_votes as $whitelist_vote) {
+            $postvote = new PostVote;
+            $postvote->name = $whitelist_vote->name;
+            $postvote->phone = $whitelist_vote->phone;
+            $postvote->q1 = $whitelist_vote->q1;
+            $postvote->q2 = $whitelist_vote->q2;
+            $postvote->q3 = $whitelist_vote->q3;
+            $postvote->photo_id = $whitelist_vote->photo_id;
+            $postvote->note1 = $whitelist_vote->note1;
+            $postvote->note2 = $whitelist_vote->note2;
+            $postvote->created_at = $whitelist_vote->updated_at;
+            $postvote->save();
+        }
+        return Redirect::back();
     }
 
     public function postCount()
@@ -704,7 +735,7 @@ class VoteController extends Controller
         $grid->paginate(10);
 
 
-        return View::make('admin.vote', compact('filter', 'grid'));
+        return View::make('admin.whitelist', compact('filter', 'grid'));
     }
 
     public function anyWhiteedit()
@@ -737,5 +768,31 @@ class VoteController extends Controller
         $grid->paginate(10);
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
+    }
+
+    public function downloadWhitelistVote()
+    {
+        Excel::create('whitelist_votes', function ($excel) {
+            $excel->sheet('whitelist_votes', function ($sheet) {
+                $phone = Whitelist::lists('phone');
+                $votes = DB::table('votes')
+                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名', 'votes.name as 客戶姓名',
+                        'phone as 客戶電話',
+                        'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
+                    ->Join('photos', 'votes.photo_id', '=', 'photos.id')
+                    ->join('albums', 'photos.album_id', '=', 'albums.id')
+                    ->whereIn('phone', $phone)
+                    ->orderBy('votes.id', 'desc')
+                    ->get();
+
+                //dd($votes);
+                $data = array();
+                foreach ($votes as $vote) {
+                    $data[] = (array)$vote;
+                }
+                //dd($data);
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
     }
 }

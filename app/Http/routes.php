@@ -30,6 +30,9 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('/home', function () {
     return redirect('/admin/photo/list');
 });
+Route::get('admin/votes/syncvote', 'VoteController@syncvote');
+Route::get('admin/votes/recal', 'VoteController@recal');
+Route::get('admin/post_votes/recal', 'VoteController@postrecal');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 //Route::group(['prefix' => 'admin'], function () {
@@ -49,15 +52,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('reset/votes', 'VoteController@resetVotes');
     Route::get('reset/photos', 'VoteController@resetPhotos');
     Route::get('votes/download', 'VoteController@downloadVote');
-    Route::get('votes/post_download', 'VoteController@postdownloadVote');
-    Route::get('recal', 'VoteController@recal');
-    Route::get('post_recal', 'VoteController@postrecal');
-    Route::get('seed', 'VoteController@seed');
+    Route::get('post_votes/download', 'VoteController@postdownloadVote');
     Route::get('summary/download', 'VoteController@downloadSummary');
-    Route::get('summary/post_download', 'VoteController@postdownloadSummary');
+    Route::get('post_summary/download', 'VoteController@postdownloadSummary');
+    Route::get('whitelist_votes/download', 'VoteController@downloadWhitelistVote');
     Route::get('adv', function () {
         return view('admin.adv');
     });
+//    Route::get('seed', 'VoteController@seed');
     Route::controller('whitelist', 'WhitelistController');
 //    Route::get('signup/{id}/step2', 'SignupController@step2');
 //    Route::post('signup/{id}/step2', 'SignupController@step2');

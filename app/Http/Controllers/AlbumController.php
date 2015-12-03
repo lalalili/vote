@@ -20,15 +20,15 @@ class AlbumController extends Controller
         $filter = DataFilter::source(new Album());
         //dd($filter);
         $filter->add('name', '據點', 'text');
-        $filter->add('area', '區域', 'text');
+        $filter->add('area', '經銷商', 'text');
 
         $filter->submit('search');
         $filter->reset('reset');
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('name', '姓名');
-        $grid->add('area', '區域');
+        $grid->add('name', '據點');
+        $grid->add('area', '經銷商');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
@@ -53,7 +53,7 @@ class AlbumController extends Controller
 
         $edit->add('name', '據點', 'text')->rule('required|min:3');
         $edit->add('type', '類別', 'text')->rule('required|min:3');
-        $edit->add('area', '區域', 'text')->rule('required|min:3');
+        $edit->add('area', '經銷商', 'text')->rule('required|min:3');
         $edit->add('path', 'QR Code', 'image')->move('uploads/images/store')->resize(160, 160)->preview(160, 160);
 
 //        $edit->add('column', '呈現欄位(預設3)', 'text');
@@ -63,7 +63,7 @@ class AlbumController extends Controller
 
         $grid = DataGrid::source(new Album());
         $grid->add('name', '據點');
-        $grid->add('area', '區域');
+        $grid->add('area', '經銷商');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);

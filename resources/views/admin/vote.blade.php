@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <button class="btn btn-info" type="button" style="float: right;"
+                        <button class="btn btn-info" type="button" style="float: left; position: relative; left: 50%;"
                                 onclick="location.href='/admin/votes/download'">下載
                         </button>
                         {!! $filter !!}

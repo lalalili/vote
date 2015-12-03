@@ -58,25 +58,25 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">測試資料處理</div>
-                    <div class="panel-body">
-                        <button class="btn btn-info" type="button"
-                                onclick="seed_confirm()">建立測試資料
-                        </button>
-                    </div>
-                    <div class="panel-body">
-                        <button class="btn btn-danger" type="button"
-                                onclick="reset_photo_confirm()">清空員工資料
-                        </button>
-                        <button class="btn btn-danger" type="button"
-                                onclick="reset_vote_confirm()">清空投票資料
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div class="row">--}}
+            {{--<div class="col-lg-12">--}}
+                {{--<div class="panel panel-default">--}}
+                    {{--<div class="panel-heading">測試資料處理</div>--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<button class="btn btn-info" type="button"--}}
+                                {{--onclick="seed_confirm()">建立測試資料--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="panel-body">--}}
+                        {{--<button class="btn btn-danger" type="button"--}}
+                                {{--onclick="reset_photo_confirm()">清空員工資料--}}
+                        {{--</button>--}}
+                        {{--<button class="btn btn-danger" type="button"--}}
+                                {{--onclick="reset_vote_confirm()">清空投票資料--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
     </div>
 @endsection

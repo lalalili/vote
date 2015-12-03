@@ -7,10 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <button class="btn btn-info" type="button" style="float: left; position: relative; left: 50%;"
-                                onclick="location.href='/admin/post_votes/download'">下載
-                        </button>
-                        <button class="btn btn-danger" type="button" style="float: left; position: relative; left: 50%;"
-                                onclick="location.href='/admin/votes/syncvote'">重新計算
+                                onclick="location.href='/admin/whitelist_votes/download'">下載
                         </button>
                         {!! $filter !!}
                         {!! $grid !!}
