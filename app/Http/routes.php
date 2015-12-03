@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     });
 //    Route::get('seed', 'VoteController@seed');
     Route::controller('whitelist', 'WhitelistController');
+    Route::get('wall/{id}', 'PhotoController@wall');
 //    Route::get('signup/{id}/step2', 'SignupController@step2');
 //    Route::post('signup/{id}/step2', 'SignupController@step2');
     Route::controller('signup', 'SignupController');

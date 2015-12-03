@@ -127,6 +127,9 @@
                                     <li>
                                         <a href="{{ url('/admin/adv') }}"> 進階功能</a>
                                     </li>
+                                    <li>
+                                        <a href="{{ url('/admin/wall/1') }}"> 相片牆</a>
+                                    </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>

@@ -729,6 +729,7 @@ class VoteController extends Controller
         $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
@@ -762,6 +763,7 @@ class VoteController extends Controller
         $grid->add('album', '據點', 'photo_id');
         $grid->add('{{ $photo->name }}', '員工姓名', 'photo_id');
         $grid->add('name', '客戶姓名', true);
+        $grid->add('phone', '客戶電話', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
