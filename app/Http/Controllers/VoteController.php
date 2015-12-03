@@ -495,7 +495,7 @@ class VoteController extends Controller
         DB::table('post_votes')->truncate();
         $phone = Whitelist::lists('phone');
         $votes = DB::table('votes')->whereRaw('updated_at = (select max(updated_at) from votes as f where f.phone = votes.phone)')
-            ->whereRaw('time(created_at) between "08:00:00" and "22:00:00"')
+            ->whereRaw('time(created_at) between "08:30:00" and "22:00:00"')
             ->whereNotIn('phone', $phone)
             ->get();
 //        dd($votes);
@@ -515,7 +515,7 @@ class VoteController extends Controller
 
         $whitelist_votes = DB::table('votes')
             ->whereIn('phone', $phone)
-//            ->where(DB::raw(' time(created_at) between "08:00:00" and "22:00:00"'))
+//            ->where(DB::raw(' time(created_at) between "08:30:00" and "22:00:00"'))
             ->get();
 
         foreach ($whitelist_votes as $whitelist_vote) {
