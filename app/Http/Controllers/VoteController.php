@@ -13,11 +13,78 @@ use DataFilter;
 use DataGrid;
 use DB;
 use Excel;
+use Flash;
 use Input;
+use Redirect;
+use Request;
+use Validator;
 use View;
 
 class VoteController extends Controller
 {
+    public function pull(Request $request)
+    {
+        //dd($request::input('voteToID'));
+        $voteToID = $request::input('voteToID');
+        $Name = $request::input('name');
+        $Phone = $request::input('phone');
+        $Q1 = $request::input('q1');
+        $Q2 = $request::input('q2');
+        $Q3 = $request::input('q3');
+        $Q4 = $request::input('q4');
+        $request::flash();
+        //dd($voteToID);
+        //dd($Name);
+        //dd($Phone);
+        //dd($Q3);
+        if ($voteToID == "") {
+            return view('show');
+        } elseif ($Name == "") {
+            Flash::warning('請輸入姓名');
+            return Redirect::back()->withInput();
+        } elseif ($Phone == "") {
+            Flash::warning('請輸入電話');
+            return Redirect::back()->withInput();
+        } elseif ($Q4 <> "1") {
+            Flash::warning('請勾選同意活動辦法');
+            return Redirect::back()->withInput();
+        }
+
+        $validator = Validator::make($request::all(), [
+            'phone' => 'required|digits_between:8,10',
+        ]);
+
+        if ($validator->fails()) {
+            Flash::warning('電話號碼請依照範例範例格式，輸入不含符號的數字');
+            return Redirect::back()->withInput();
+        }
+        $vote = new Vote;
+        $vote->photo_id = $voteToID;
+        $vote->name = $Name;
+        $vote->phone = $Phone;
+        if ($Q1 == 1) {
+            $vote->q1 = $Q1;
+        } else {
+            $vote->q1 = 0;
+        }
+        if ($Q2 == 1) {
+            $vote->q2 = $Q2;
+        } else {
+            $vote->q2 = 0;
+        }
+        if ($Q3 == 1) {
+            $vote->q3 = $Q3;
+        } else {
+            $vote->q3 = 0;
+        }
+        if ($vote->save()) {
+            return redirect('/thanks');
+        } else {
+            Flash::warning('系統異常，請再重新送出一次');
+            return Redirect::back()->withInput();
+        }
+    }
+
     public function anyList()
     {
         $filter = DataFilter::source(Vote::with('photo'));

@@ -4,16 +4,13 @@ use App\Http\Requests;
 use App\Models\Album;
 use App\Models\Photo;
 use App\Models\Title;
-use App\Models\Vote;
 use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
 use Entrust;
-use Flash;
 use Input;
-use Redirect;
-use Request;
+
 use View;
 
 class PhotoController extends Controller
@@ -97,59 +94,6 @@ class PhotoController extends Controller
         $to = Photo::findOrFail($id);
         //dd($to);
         return view('pull', compact('to'));
-    }
-
-    public function pull()
-    {
-        $voteToID = Request::input('voteToID');
-        $Name = Request::input('name');
-        $Phone = Request::input('phone');
-        $Q1 = Request::input('q1');
-        $Q2 = Request::input('q2');
-        $Q3 = Request::input('q3');
-        $Q4 = Request::input('q4');
-        Request::flash();
-        //dd($voteToID);
-        //dd($Name);
-        //dd($Phone);
-        //dd($Q3);
-        if ($voteToID == "") {
-            return view('show');
-        } elseif ($Name == "") {
-            Flash::warning('請輸入姓名');
-            return Redirect::back()->withInput();
-        } elseif ($Phone == "") {
-            Flash::warning('請輸入電話');
-            return Redirect::back()->withInput();
-        } elseif ($Q4 <> "1") {
-            Flash::warning('請勾選同意活動辦法');
-            return Redirect::back()->withInput();
-        }
-        $vote = new Vote;
-        $vote->photo_id = $voteToID;
-        $vote->name = $Name;
-        $vote->phone = $Phone;
-        if ($Q1 == 1) {
-            $vote->q1 = $Q1;
-        } else {
-            $vote->q1 = 0;
-        }
-        if ($Q2 == 1) {
-            $vote->q2 = $Q2;
-        } else {
-            $vote->q2 = 0;
-        }
-        if ($Q3 == 1) {
-            $vote->q3 = $Q3;
-        } else {
-            $vote->q3 = 0;
-        }
-        if ($vote->save()) {
-            return redirect('/thanks');
-        } else {
-            Flash::warning('系統異常，請再重新送出一次');
-            return Redirect::back()->withInput();
-        }
     }
 
     public function anyDelete()

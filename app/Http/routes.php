@@ -16,7 +16,7 @@ Route::get('/home', 'AlbumController@show');
 Route::get('store/{id}', 'AlbumController@choose');
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
-Route::post('pull', 'PhotoController@pull');
+Route::post('pull', 'VoteController@pull');
 Route::get('pdpa', function () {
     return view('pdpa');
 });
