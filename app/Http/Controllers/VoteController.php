@@ -152,7 +152,8 @@ class VoteController extends Controller
         Excel::create('votes', function ($excel) {
             $excel->sheet('votes', function ($sheet) {
                 $votes = DB::table('votes')
-                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名', 'votes.name as 客戶姓名',
+                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名',
+                        'votes.name as 客戶姓名',
                         'phone as 客戶電話',
                         'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')
@@ -779,7 +780,8 @@ class VoteController extends Controller
             $excel->sheet('whitelist_votes', function ($sheet) {
                 $phone = Whitelist::lists('phone');
                 $votes = DB::table('votes')
-                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名', 'votes.name as 客戶姓名',
+                    ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名',
+                        'votes.name as 客戶姓名',
                         'phone as 客戶電話',
                         'q1 as 問題1', 'q2 as 問題2', 'q3 as 問題3', 'votes.updated_at as 投票時間')
                     ->Join('photos', 'votes.photo_id', '=', 'photos.id')

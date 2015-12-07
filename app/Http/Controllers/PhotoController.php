@@ -134,9 +134,9 @@ class PhotoController extends Controller
         $lists = DB::table('photos')
             ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-            ->select('photos.id as id', 'photos.name as name', 'photos.path as path', 'titles.name as title',
+            ->select('photos.id as id', 'photos.name as name', 'photos.path as path', 'albums.name as album',
                 'albums.id as album_id', 'titles.note as order')
-            ->where('title_id', $id)->orderBy('order', 'asc')->get();
+            ->where('title_id', $id)->orderBy('album_id', 'asc')->get();
         //dd($lists);
         return view('admin.wall', compact('lists'));
     }

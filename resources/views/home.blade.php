@@ -162,13 +162,15 @@
                     {{--</div>--}}
                     {{--<div class="row">--}}
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
+                        <div class="about-item scrollpoint sp-effect2"
+                             style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p1.png')}}" alt=""></i>
                             <h4>LUXGEN 5 Sedan 1:18模型車一個<br>(市值9,999元)<br>3名 / 月</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
+                        <div class="about-item scrollpoint sp-effect2"
+                             style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p2.png')}}" alt=""></i>
                             <h4>LUXGEN 4G USB 隨身碟一個<br>(市值500元)<br>10名 / 月</h4>
                         </div>
@@ -176,13 +178,15 @@
                     <h4> - </h4>
 
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
+                        <div class="about-item scrollpoint sp-effect2"
+                             style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p3.png')}}" alt=""></i>
                             <h4>7-11禮卷 <br>200元<br>15名 / 月</h4>
                         </div>
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-6">
-                        <div class="about-item scrollpoint sp-effect2" style="display:table-cell; vertical-align:middle; text-align:center">
+                        <div class="about-item scrollpoint sp-effect2"
+                             style="display:table-cell; vertical-align:middle; text-align:center">
                             <i><img class="img-responsive" src="{{url('/images/prize/p4.png')}}" alt=""></i>
                             <h4>LUXGEN掛耳式咖啡一盒<br>(市值250元)<br>120名 / 月</h4>
                         </div>

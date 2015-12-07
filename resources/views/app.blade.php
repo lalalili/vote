@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="{{ url('/css/jquery.fullPage.min.css')}}">
 
     {{--<link rel="stylesheet" href="{{url('/css/styles.css')}}">--}}
-    <link rel="stylesheet" href="{{ elixir('css/app.css') }}" >
+    <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
     <link rel="stylesheet" href="{{ url('/js/rs-plugin/css/settings.css')}}">
 

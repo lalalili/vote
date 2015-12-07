@@ -30,7 +30,7 @@
                                                         src="/uploads/images/user/{{ $list->path }}"
                                                         alt=""></a></i>
 
-                                        <h3>{{ $list->title }}</h3>
+                                        <h3>{{ $list->album }}</h3>
                                         <h4>{{ $list->name }}</h4>
                                         <BR>
                                     </div>
@@ -48,8 +48,7 @@
                                                     src="/uploads/images/user/{{ $list->path }}"
                                                     alt=""></a></i>
 
-                                    <h3>{{ $list->title }}</h3>
-
+                                    <h3>{{ $list->album }}</h3>
                                     <p>{{ $list->name }}</p>
                                 </div>
                             </div>

@@ -43,7 +43,9 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
+
                         <h2>禮貌大使票選</h2>
+
                         <div class="divider"></div>
                     </div>
                     <div class="row">
@@ -64,9 +66,11 @@
                                             <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                         </div>
                                         <div class="form-group">
-                                            <h4><b style="color: red">*</b> 請填寫您的電話 <br>( 攸關中獎權益，請提供您的真實電話。範例 手機 : 0912345678 市話 :
+                                            <h4><b style="color: red">*</b> 請填寫您的電話 <br>( 攸關中獎權益，請提供您的真實電話。範例 手機 :
+                                                0912345678 市話 :
                                                 0212345678 ):</h4>
-                                            <input type="text" class="form-control" name="phone" value="{{old('phone')}}">
+                                            <input type="text" class="form-control" name="phone"
+                                                   value="{{old('phone')}}">
                                         </div>
                                         <div class="form-group">
                                             <div class="checkbox">
