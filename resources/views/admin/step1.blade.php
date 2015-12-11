@@ -28,7 +28,7 @@
                                         </td>
                                         <td>{{$list->name}}
                                         </td>
-                                        <td><a href="/admin/signup/step2/?insert={{$list->id}}">開始報名</a>
+                                        <td><a href="/admin/signup/step2/{{$list->id}}">開始報名</a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -45,7 +45,10 @@
     <script>
         $(document).ready(function () {
             $('#list').DataTable({
-                responsive: true
+                responsive: true,
+                language: {
+                    url: '/local/zh_TW.json'
+                }
             });
         });
     </script>

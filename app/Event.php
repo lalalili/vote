@@ -12,4 +12,9 @@ class Event extends Model
     {
         return $this->hasMany('App\Signup');
     }
+
+    public function course()
+    {
+        return $this->belongsTo('App\Course');
+    }
 }

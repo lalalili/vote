@@ -12,4 +12,14 @@ class Course extends Model
     {
         return $this->hasMany('App\Signup');
     }
+
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
+
+    public function event()
+    {
+        return $this->hasMany('App\Event');
+    }
 }

@@ -62,8 +62,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
 //    Route::get('seed', 'VoteController@seed');
     Route::controller('whitelist', 'WhitelistController');
     Route::get('wall/{id}', 'PhotoController@wall');
-//    Route::get('signup/{id}/step2', 'SignupController@step2');
-//    Route::post('signup/{id}/step2', 'SignupController@step2');
+    Route::get('signup/step2/{id}', 'SignupController@step2');
+    Route::get('signup/step2/project/{project_id}', 'SignupController@step2Project');
+    Route::get('signup/step2/course/{course_id}', 'SignupController@step2Course');
+    Route::get('signup/step2/event/{event_id}', 'SignupController@step2Event');
+    Route::post('signup/step3', 'SignupController@step3');
     Route::controller('signup', 'SignupController');
 
 });

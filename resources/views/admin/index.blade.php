@@ -133,16 +133,10 @@
                                 </ul>
                                 <!-- /.nav-second-level -->
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 報名管理<span
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
-                                    <li>
-                                        <a href="{{ url('admin/signup/yearlist') }}"> 菁訓班年度</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ url('admin/signup/grouplist') }}"> 菁訓班梯次</a>
-                                    </li>
                                     <li>
                                         <a href="{{ url('admin/signup/projectlist') }}"> 課程項目</a>
                                     </li>

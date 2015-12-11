@@ -8,15 +8,6 @@ class Signup extends Model
 {
     protected $fillable = ["photo_id", "year_id", "group_id", "project_id", "course_id", "event_id", "note"];
 
-    public function year()
-    {
-        return $this->belongsTo('App\Year');
-    }
-
-    public function group()
-    {
-        return $this->belongsTo('App\Group');
-    }
 
     public function project()
     {

@@ -12,4 +12,9 @@ class Project extends Model
     {
         return $this->hasMany('App\Signup');
     }
+
+    public function course()
+    {
+        return $this->hasMany('App\Course');
+    }
 }

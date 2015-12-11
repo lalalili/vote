@@ -1,7 +1,7 @@
 <?php namespace app\Http\Controllers;
 
 use App\Http\Requests;
-use App\Whitelist;
+use App\Models\Whitelist;
 use DataEdit;
 use DataFilter;
 use DataGrid;

@@ -10,7 +10,6 @@ use DataGrid;
 use DB;
 use Entrust;
 use Input;
-
 use View;
 
 class PhotoController extends Controller
