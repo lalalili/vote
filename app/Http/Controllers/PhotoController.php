@@ -9,6 +9,7 @@ use DataFilter;
 use DataGrid;
 use DB;
 use Entrust;
+use Excel;
 use Input;
 use View;
 
@@ -34,7 +35,6 @@ class PhotoController extends Controller
         $grid->add('updated_at', '更新時間');
         $grid->orderBy('album_id', 'asc');
         $grid->paginate(10);
-
         $grid->edit('/admin/photo/edit', '功能', 'show|modify');
 
         $grid->link('/admin/photo/edit', "新增員工", "TR");
@@ -138,5 +138,26 @@ class PhotoController extends Controller
             ->where('title_id', $id)->orderBy('album_id', 'asc')->get();
         //dd($lists);
         return view('admin.wall', compact('lists'));
+    }
+
+    public function getDownload()
+    {
+        Excel::create('photo', function ($excel) {
+            $excel->sheet('photo', function ($sheet) {
+                $photos = DB::table('photos')
+                    ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+                    ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+                    ->select('albums.area as area', 'albums.name as store', 'titles.name as title',
+                        'photos.name as name', 'photos.path as path')
+                    ->orderBy('photos.id', 'asc')->get();
+                //dd($photos);
+                $data = array();
+                foreach ($photos as $photo) {
+                    $data[] = (array)$photo;
+                }
+                //dd($data);
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
     }
 }
