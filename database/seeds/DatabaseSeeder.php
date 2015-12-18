@@ -20,8 +20,8 @@ class DatabaseSeeder extends Seeder
 //        $this->call(PhotoTableSeeder::class);
 //        $this->call(VoteTableSeeder::class);
         $this->call(ProjectTableSeeder::class);
-        $this->call(CourseTableSeeder::class);
-        $this->call(EventTableSeeder::class);
+//        $this->call(CourseTableSeeder::class);
+//        $this->call(EventTableSeeder::class);
 
         Model::reguard();
     }

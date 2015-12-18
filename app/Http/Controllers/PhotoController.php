@@ -10,7 +10,11 @@ use DataGrid;
 use DB;
 use Entrust;
 use Excel;
+use Flash;
 use Input;
+use Redirect;
+use Request;
+use Validator;
 use View;
 
 class PhotoController extends Controller
@@ -147,8 +151,8 @@ class PhotoController extends Controller
                 $photos = DB::table('photos')
                     ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
                     ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-                    ->select('albums.area as area', 'albums.name as store', 'titles.name as title',
-                        'photos.name as name', 'photos.path as path')
+                    ->select('photos.name as name', 'photos.id as id', 'albums.area as area', 'albums.name as store',
+                        'albums.id as album_id', 'titles.name as title', 'titles.id as title_id', 'photos.path as path')
                     ->orderBy('photos.id', 'asc')->get();
                 //dd($photos);
                 $data = array();
@@ -159,5 +163,49 @@ class PhotoController extends Controller
                 $sheet->fromArray($data);
             });
         })->export('xlsx');
+    }
+
+    public function anyBatch()
+    {
+        $file = array('upload' => Request::file('upload'));
+        $rules = array('upload' => 'required',);
+        //dd(Request::file('upload'));
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            Flash::overlay('請選擇上傳Excel檔案', '警告');
+            return Redirect::to('admin/adv');
+        } else {
+            // checking file is valid.
+            $upload_name = Request::file('upload')->getClientOriginalName();
+            //dd($upload_name);
+            if ($upload_name == 'photo.xlsx') {
+                $destinationPath = 'uploads'; // upload path
+                //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
+                //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                $fileName = 'photo.xlsx';
+                Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+                //Flash::overlay('success', 'Upload successfully');
+                $file = public_path() . '/' . $destinationPath . '/' . $fileName;
+                //dd($file);
+                $uploads = Excel::selectSheets('new')->load($file, function ($reader) {
+                })->get()->toArray();
+                //dd($data);
+                //Photo::truncate();
+                foreach ($uploads as $upload) {
+                    Photo::create($upload);
+                }
+                unlink($file);
+                //Company::insert($upload);
+                //Flash::overlay('上傳成功','Info');
+                //$datas = Album::orderBy('site', 'asc')->get();
+                return Redirect::to('/admin/whitelist/list');
+            } else {
+                // sending back with error message.
+                Flash::overlay('請上傳正確檔案', '警告');
+                return Redirect::to('/admin/adv');
+            }
+        }
     }
 }

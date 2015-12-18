@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
-use App\Event;
+use App\Http\Requests\CreateEmployeeRequest;
+use App\Models\Course;
+use App\Models\Employee;
+use App\Models\Event;
 use App\Http\Requests\CreateSignupRequest;
 use App\Models\Photo;
-use App\Project;
-use App\Signup;
+use App\Models\Project;
+use App\Models\Signup;
+use Carbon\Carbon;
 use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
+use Excel;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -21,163 +25,6 @@ use View;
 
 class SignupController extends Controller
 {
-
-    public function anyProjectlist()
-    {
-        $filter = DataFilter::source(new Project());
-        //dd($filter);
-        $filter->add('name', '課程項目', 'text');
-        $filter->add('note', '備註', 'text');
-
-        $filter->submit('search');
-        $filter->reset('reset');
-        $filter->build();
-
-        $grid = DataGrid::source($filter);
-        $grid->add('name', '課程項目');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/projectedit', '功能', 'show|modify|delete');
-
-        $grid->link('/admin/signup/projectedit', "新增", "TR");
-        return View::make('admin.list', compact('filter', 'grid'));
-    }
-
-    public function anyProjectedit()
-    {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
-        $edit = DataEdit::source(new Project());
-        //dd($edit);
-        $edit->link("/admin/signup/projectlist", "上一頁", "BL");
-        $edit->link("/admin/signup/projectedit", "新增", "TR");
-        $edit->label('編輯');
-
-        $edit->add('name', '課程項目', 'text')->rule('required|min:4');
-        $edit->add('note', '備註', 'text');
-
-        $grid = DataGrid::source(new Project());
-        $grid->add('name', '課程項目');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/projectedit', '功能', 'show|modify|delete');
-
-        return $edit->view('admin.detail', compact('edit', 'grid'));
-    }
-
-    public function anyCourselist()
-    {
-        $filter = DataFilter::source(Course::with('project'));
-        //dd($filter);
-        $filter->add('name', '課別', 'text');
-//        $filter->add('note', '備註', 'text');
-
-        $filter->submit('search');
-        $filter->reset('reset');
-        $filter->build();
-
-        $grid = DataGrid::source($filter);
-        $grid->add('name', '課程項目');
-        $grid->add('{{ $project->name }}', '課別', 'project_id');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/courseedit', '功能', 'show|modify|delete');
-        $grid->link('/admin/signup/courseedit', "新增", "TR");
-        return View::make('admin.list', compact('filter', 'grid'));
-    }
-
-    public function anyCourseedit()
-    {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
-        $edit = DataEdit::source(new Course());
-        //dd($edit);
-        $edit->link("/admin/signup/courselist", "上一頁", "BL");
-        $edit->link("/admin/signup/courseedit", "新增", "TR");
-        $edit->label('編輯');
-
-        $edit->add('name', '課別', 'text')->rule('required');
-        $edit->add('project_id', '課別', 'select')->options(Project::lists("name", "id")->all());
-        $edit->add('note', '備註', 'text');
-
-        $grid = DataGrid::source(Course::with('project'));
-        $grid->add('name', '課程項目');
-        $grid->add('{{ $project->name }}', '課別', 'project_id');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/courseedit', '功能', 'show|modify|delete');
-
-        return $edit->view('admin.detail', compact('edit', 'grid'));
-    }
-
-    public function anyEventlist()
-    {
-        $filter = DataFilter::source(Event::with('course'));
-        //dd($filter);
-        $filter->add('name', '課程日期/場次', 'text');
-//        $filter->add('note', '備註', 'text');
-
-        $filter->submit('search');
-        $filter->reset('reset');
-        $filter->build();
-
-        $grid = DataGrid::source($filter);
-        $grid->add('name', '課程日期/場次');
-        $grid->add('{{ $course->name }}', '課程項目');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/eventedit', '功能', 'show|modify|delete');
-
-        $grid->link('/admin/signup/eventedit', "新增", "TR");
-        return View::make('admin.list', compact('filter', 'grid'));
-    }
-
-    public function anyEventedit()
-    {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
-        $edit = DataEdit::source(new Event());
-        //dd($edit);
-        $edit->link("/admin/signup/eventlist", "上一頁", "BL");
-        $edit->link("/admin/signup/eventedit", "新增", "TR");
-        $edit->label('編輯');
-
-        $edit->add('name', '課程日期/場次', 'text')->rule('required');
-        $edit->add('course_id', '課別', 'select')->options(Course::lists("name", "id")->all());
-        $edit->add('note', '備註', 'text');
-
-        $grid = DataGrid::source(new Event());
-        $grid->add('name', '課程日期/場次');
-        $grid->add('note', '備註');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('id', 'asc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/eventedit', '功能', 'show|modify|delete');
-
-        return $edit->view('admin.detail', compact('edit', 'grid'));
-    }
 
     public function anyList()
     {
@@ -203,7 +50,7 @@ class SignupController extends Controller
         $grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
 
         $grid->link('/admin/signup/edit', "新增", "TR");
-        return View::make('admin.list', compact('filter', 'grid'));
+        return View::make('admin.signup', compact('filter', 'grid'));
     }
 
     public function anyEdit()
@@ -222,17 +69,6 @@ class SignupController extends Controller
         $edit->add('project_id', '課程項目', 'select')->options(Project::lists("name", "id")->all());
         $edit->add('course_id', '課別', 'select')->options(Course::lists("name", "id")->all());
         $edit->add('event_id', '場次', 'select')->options(Event::lists("name", "id")->all());
-        $edit->add('identity', '身分證號', 'text');
-        $edit->add('birth_year', '出生年', 'text');
-        $edit->add('mobile', '手機號碼', 'text');
-        $edit->add('emp_id', '工號', 'text');
-        $edit->add('group', '菁英班梯次', 'text');
-        $edit->add('gender', '性別', 'text');
-        $edit->add('type', '人員別', 'text');
-        $edit->add('level', '階層別', 'text');
-        $edit->add('background', '最高學歷', 'text');
-        $edit->add('food', '飲食習慣', 'text');
-        $edit->add('note', '備註', 'text');
         //dd($edit);
 
         $grid = DataGrid::source(Signup::with('project', 'course', 'event', 'photo'));
@@ -250,21 +86,8 @@ class SignupController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyStep1()
-    {
-        $lists = DB::table('photos')
-            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-            ->select('photos.id as id', 'photos.name as name', 'titles.name as title',
-                'albums.name as album')
-            ->orderBy('photos.id', 'asc')->get();
-        //dd($lists);
-        return view('admin.step1', compact('lists'));
-    }
-
     public function step2(Request $request, $id)
     {
-        //dd($id);
         if ($id == "project") {
             $id = $request->session()->get('id');
             Session::forget('project_id');
@@ -279,12 +102,12 @@ class SignupController extends Controller
             return redirect("/admin/signup/step2/course/$course_id");
         } else {
             $employee = Photo::findOrFail($id);
-            //dd($employee);
             $projects = Project::all();
-            //dd($projects);
             Session::forget(['project_id', 'course_id', 'event_id']);
             Session::put('id', $id);
 
+            //dd($employee);
+            //dd($projects);
             return view('admin.step2', compact('employee', 'projects'));
         }
     }
@@ -314,7 +137,19 @@ class SignupController extends Controller
         $projects = Project::all();
         //dd($projects);
         $courses = Course::all();
-        $events = Event::where('course_id', $course_id)->get();
+        //dd(Carbon::now('Asia/Taipei')->subDay(1));
+        //dd(Photo::findOrFail($request->session()->get('id'))->album->type);
+        $type = Photo::findOrFail($request->session()->get('id'))->album->type;
+        if ($type == "生活館") {
+            $events = Event::where('course_id', $course_id)->where('event_at', '>',
+                Carbon::now('Asia/Taipei')->subDay(1))->where('area', '生活館')->get();
+        } elseif ($type == "服務廠") {
+            $events = Event::where('course_id', $course_id)->where('event_at', '>',
+                Carbon::now('Asia/Taipei')->subDay(1))->where('area', '服務廠')->get();
+        } else {
+            $events = Event::where('course_id', $course_id)->where('event_at', '>',
+                Carbon::now('Asia/Taipei')->subDay(1))->get();
+        }
         //dd($events);
         Session::put('course_id', $course_id);
         return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
@@ -334,6 +169,7 @@ class SignupController extends Controller
         $courses = Course::all();
         $course_id = $request->session()->get('course_id');
         $events = Event::where('course_id', $course_id)->get();
+
         //dd($events);
         if ($event_id == 0) {
             //dd($projects);
@@ -341,7 +177,10 @@ class SignupController extends Controller
             return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
         } else {
             Session::put('event_id', $event_id);
-            return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
+            $number = Event::where('id', $event_id)->first()->number;
+            $signed = Signup::where('event_id', $event_id)->count();
+            //dd($number);
+            return view('admin.step2', compact('employee', 'projects', 'courses', 'events', 'number', 'signed'));
         }
     }
 
@@ -351,21 +190,40 @@ class SignupController extends Controller
         //dd($request->group);
         $signup = new Signup;
         $signup->photo_id = $request->photo_id;
-        $signup->identity = $request->identity;
-        $signup->gender = $request->gender;
-        $signup->birth_year = $request->birth_year;
-        $signup->type = $request->type;
-        $signup->level = $request->level;
-        $signup->background = $request->background;
-        $signup->mobile = $request->mobile;
-        $signup->food = $request->food;
-        $signup->emp_id = $request->emp_id;
-        $signup->group = $request->group;
         $signup->project_id = $request->project_id;
         $signup->course_id = $request->course_id;
         $signup->event_id = $request->event_id;
         $signup->save();
 
         return redirect('/admin/signup/list');
+    }
+
+    public function getDownload()
+    {
+        Excel::create('signup', function ($excel) {
+            $excel->sheet('all', function ($sheet) {
+                //dd($photos);
+                $signups = DB::table('signups')
+                    ->leftjoin('photos', 'signups.photo_id', '=', 'photos.id')
+                    ->leftjoin('employees', 'signups.photo_id', '=', 'employees.photo_id')
+                    ->leftjoin('projects', 'signups.project_id', '=', 'projects.id')
+                    ->leftjoin('courses', 'signups.course_id', '=', 'courses.id')
+                    ->leftjoin('events', 'signups.event_id', '=', 'events.id')
+                    ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+                    ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+                    ->select('signups.id as sno', 'albums.area as area', 'albums.type as type', 'albums.name as album',
+                        'titles.name as title', 'employees.emp_id', 'photos.name as name', 'employees.identity',
+                        'employees.gender', 'employees.birth_year', 'employees.level', 'employees.background',
+                        'employees.mobile', 'employees.food', 'employees.group', 'projects.name as project',
+                        'courses.name as course', 'events.name as event')
+                    ->orderBy('signups.id', 'asc')->get();
+                //dd($signups);
+                $data = array();
+                foreach ($signups as $signup) {
+                    $data[] = (array)$signup;
+                }
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
     }
 }

@@ -13,12 +13,12 @@
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        報名
+                        Step2 - 課程報名
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             @include('common.errors')
-                            <form role="form" method="POST" action="/admin/signup/step3">
+                            <form role="form" method="POST" action="/admin/signup/step3/">
                                 {{ csrf_field() }}
                                 <div class="col-lg-6">
                                     <input type="hidden" name="photo_id" value="{{ $employee->id }}">
@@ -68,7 +68,11 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label>課程日期/場次</label>
+                                        <label>課程日期 / 場次 </label><br>
+                                        @if ( isset($number) )
+                                            <label> - 本堂課預估上課人數：{{ $number }}</label><br>
+                                            <label> - 本堂課已報名人數：{{ $signed }}</label>
+                                        @endif
                                         <select class="form-control" name="event_id"
                                                 onChange="location = '/admin/signup/step2/event/' + this.options[this.selectedIndex].value;">
                                             <option value="">--請選擇--</option>
@@ -84,89 +88,7 @@
                                             @endif
                                         </select>
                                     </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label>身分證號</label>
-                                        <input class="form-control" name="identity" value="{{ old('identity') }}">
-
-                                        <p class="help-block">範例：A123456789</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>出生年</label>
-                                        <input class="form-control" name="birth_year" value="{{ old('birth_year') }}">
-
-                                        <p class="help-block">範例：1980</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>手機號碼</label>
-                                        <input class="form-control" name="mobile" value="{{ old('mobile') }}">
-
-                                        <p class="help-block">範例：0920123456</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>工號</label>
-                                        <input class="form-control" name="emp_id" value="{{ old('emp_id') }}">
-
-                                        <p class="help-block">範例：LA1234</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>菁英班梯次</label>
-                                        <input class="form-control" name="group" value="{{ old('group') }}">
-
-                                        <p class="help-block">範例：152</p>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>性別</label>
-                                        <select class="form-control" name="gender">
-                                            <option value="">--請選擇--</option>
-                                            <option value="男">男</option>
-                                            <option value="女">女</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>人員別</label>
-                                        <select class="form-control" name="type">
-                                            <option value="">--請選擇--</option>
-                                            <option value="本國職工">本國職工</option>
-                                            <option value="適用就保之大陸或外籍配偶">適用就保之大陸或外籍配偶</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>階層別</label>
-                                        <select class="form-control" name="level">
-                                            <option value="">--請選擇--</option>
-                                            <option value="基層員工">基層員工</option>
-                                            <option value="基層管理者">基層管理者</option>
-                                            <option value="基層管理者">基層管理者</option>
-                                            <option value="中階管理者">中階管理者</option>
-                                            <option value="高階管理者">高階管理者</option>
-                                            <option value="其他">其他</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>最高學歷</label>
-                                        <select class="form-control" name="background">
-                                            <option value="">--請選擇--</option>
-                                            <option value="國小">國小</option>
-                                            <option value="國中">國中</option>
-                                            <option value="高中職">高中職</option>
-                                            <option value="專科">專科</option>
-                                            <option value="大學">大學</option>
-                                            <option value="碩士">碩士</option>
-                                            <option value="博士">博士</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>飲食習慣</label>
-                                        <select class="form-control" name="food">
-                                            <option value="">--請選擇--</option>
-                                            <option value="男">葷</option>
-                                            <option value="女">素</option>
-                                        </select>
-                                    </div>
-                                    <button class="btn btn-default" type="submit">送出</button>
-                                    <button class="btn btn-default" type="reset">重新選擇</button>
+                                    <button class="btn btn-default" type="submit">報名</button>
                                 </div>
                             </form>
                             <!-- /.col-lg-6 (nested) -->

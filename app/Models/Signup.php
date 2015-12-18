@@ -1,27 +1,25 @@
-<?php
-
-namespace App;
+<?php namespace app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Signup extends Model
 {
-    protected $fillable = ["photo_id", "year_id", "group_id", "project_id", "course_id", "event_id", "note"];
+    protected $fillable = ["photo_id", "project_id", "course_id", "event_id", "note"];
 
 
     public function project()
     {
-        return $this->belongsTo('App\Project');
+        return $this->belongsTo('App\Models\Project');
     }
 
     public function course()
     {
-        return $this->belongsTo('App\Course');
+        return $this->belongsTo('App\Models\Course');
     }
 
     public function event()
     {
-        return $this->belongsTo('App\Event');
+        return $this->belongsTo('App\Models\Event');
     }
 
     public function photo()

@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap-datepicker.min.css') }}">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -138,19 +140,22 @@
                                             class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="{{ url('admin/signup/projectlist') }}"> 課程項目</a>
+                                        <a href="{{ url('admin/project/list') }}"> 課程項目</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/signup/courselist') }}"> 課別</a>
+                                        <a href="{{ url('admin/course/list') }}"> 課別</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/signup/eventlist') }}"> 課程日期/場次</a>
+                                        <a href="{{ url('admin/event/list') }}"> 場次</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('admin/employee/list') }}"> 員工個資</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('admin/signup/list') }}"> 報名列表</a>
                                     </li>
                                     <li>
-                                        <a href="{{ url('admin/signup/step1') }}"> 報名</a>
+                                        <a href="{{ url('admin/signup/choose') }}"> 報名</a>
                                     </li>
                                 </ul>
                                 <!-- /.nav-second-level -->
@@ -179,6 +184,8 @@
 <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/js/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
+<script src="{{ asset('/js/bootstrap-datepicker.min.js') }}"></script>
+<script src="{{ asset('/locales/bootstrap-datepicker.zh-TW.min.js') }}"></script>
 
 <!-- Custom Theme JavaScript -->
 {{--<script src="{{ url('js/sb-admin-2.js') }}"></script>--}}

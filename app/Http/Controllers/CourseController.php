@@ -1,7 +1,8 @@
 <?php namespace app\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Whitelist;
+use App\Models\Course;
+use App\Models\Project;
 use DataEdit;
 use DataFilter;
 use DataGrid;
@@ -13,55 +14,53 @@ use Request;
 use Validator;
 use View;
 
-class WhitelistController extends Controller
+class CourseController extends Controller
 {
     public function anyList()
     {
-        $filter = DataFilter::source(new Whitelist());
-        //dd($filter);
-        $filter->add('name', '姓名', 'text');
-        $filter->add('phone', '電話', 'text');
+        $filter = DataFilter::source(Course::with('project'));
+        //dd(Course::with('project')->get());
+        $filter->add('name', '課別', 'text');
+//        $filter->add('note', '備註', 'text');
 
         $filter->submit('search');
         $filter->reset('reset');
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('name', '姓名');
-        $grid->add('phone', '電話');
+        $grid->add('name', '課程項目');
+        $grid->add('{{ $project->name }}', '課別', 'project_id');
+        $grid->add('note', '備註');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
 
-        $grid->edit('/admin/whitelist/edit', '功能', 'show|modify|delete');
-
-        $grid->link('/admin/whitelist/edit', "新增", "TR");
+        $grid->edit('/admin/course/edit', '功能', 'show|modify|delete');
+        $grid->link('/admin/course/edit', "新增", "TR");
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
     public function anyEdit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
-        $edit = DataEdit::source(new Whitelist());
+        $edit = DataEdit::source(new Course());
         //dd($edit);
-        $edit->link("/admin/whitelist/list", "上一頁", "BL");
-        $edit->link("/admin/whitelist/edit", "新增", "TR");
+        $edit->link("/admin/course/list", "上一頁", "BL");
+        $edit->link("/admin/course/edit", "新增", "TR");
         $edit->label('編輯');
 
-        $edit->add('name', '姓名', 'text')->rule('required');
-        $edit->add('phone', '電話', 'text')->rule('required');
+        $edit->add('name', '課別', 'text')->rule('required');
+        $edit->add('project_id', '課別', 'select')->options(Project::lists("name", "id")->all());
+        $edit->add('note', '備註', 'text');
 
-        $grid = DataGrid::source(new Whitelist());
-        $grid->add('name', '姓名');
-        $grid->add('phone', '電話');
+        $grid = DataGrid::source(Course::with('project'));
+        $grid->add('name', '課程項目');
+        $grid->add('{{ $project->name }}', '課別', 'project_id');
+        $grid->add('note', '備註');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
 
-        $grid->edit('/admin/whitelist/edit', '功能', 'show|modify|delete');
+        $grid->edit('/admin/course/edit', '功能', 'show|modify|delete');
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
@@ -85,28 +84,28 @@ class WhitelistController extends Controller
             // checking file is valid.
             $upload_name = Request::file('upload')->getClientOriginalName();
             //dd($upload_name);
-            if ($upload_name == 'whitelist.xlsx') {
+            if ($upload_name == 'course.xlsx') {
                 $destinationPath = 'uploads'; // upload path
                 //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
                 //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-                $fileName = 'whitelist.xlsx';
+                $fileName = 'course.xlsx';
                 Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;
                 //dd($file);
-                $uploads = Excel::selectSheets('whitelist')->load($file, function ($reader) {
+                $uploads = Excel::selectSheets('course')->load($file, function ($reader) {
                 })->get()->toArray();
                 //dd($data);
-                Whitelist::truncate();
+                Course::truncate();
                 foreach ($uploads as $upload) {
-                    Whitelist::create($upload);
+                    Course::create($upload);
                 }
                 unlink($file);
                 //Company::insert($upload);
                 //Flash::overlay('上傳成功','Info');
                 //$datas = Album::orderBy('site', 'asc')->get();
-                return Redirect::to('/admin/whitelist/list');
+                return Redirect::to('/admin/course/list');
             } else {
                 // sending back with error message.
                 Flash::overlay('請上傳正確檔案', '警告');
@@ -117,9 +116,9 @@ class WhitelistController extends Controller
 
     public function getDownload()
     {
-        Excel::create('whitelist', function ($excel) {
-            $excel->sheet('whitelist', function ($sheet) {
-                $title = Whitelist::all();
+        Excel::create('course', function ($excel) {
+            $excel->sheet('course', function ($sheet) {
+                $title = Course::all();
                 //dd($data);
                 $sheet->fromArray($title);
             });

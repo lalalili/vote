@@ -85,7 +85,7 @@ class Image extends File
     protected function imageProcess()
     {
         if ($this->saved) {
-            if (!$this->image)  $this->image = ImageManager::make($this->saved)->encode('png');
+            if (!$this->image)  $this->image = ImageManager::make($this->saved);
 
             if ($this->image_callable) {
                 $callable = $this->image_callable;

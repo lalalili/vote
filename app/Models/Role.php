@@ -1,4 +1,4 @@
-<?php namespace app;
+<?php namespace app\Models;
 
 use Zizaco\Entrust\EntrustRole;
 
@@ -8,6 +8,6 @@ class Role extends EntrustRole
 
     public function signup()
     {
-        return $this->hasMany('App\Signup');
+        return $this->hasMany('App\Models\Signup');
     }
 }

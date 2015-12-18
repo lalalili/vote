@@ -87,7 +87,7 @@ class AlbumController extends Controller
         if ($validator->fails()) {
             // send back to the page with the input data and errors
             Flash::overlay('請選擇上傳Excel檔案', '警告');
-            return Redirect::to('admin/album/upload');
+            return Redirect::to('admin/adv');
         } else {
             // checking file is valid.
             $upload_name = Request::file('upload')->getClientOriginalName();
@@ -102,7 +102,7 @@ class AlbumController extends Controller
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;
                 //dd($file);
-                $uploads = Excel::selectSheets('All')->load($file, function ($reader) {
+                $uploads = Excel::selectSheets('store')->load($file, function ($reader) {
                 })->get()->toArray();
                 //dd($data);
                 Album::truncate();
@@ -117,7 +117,7 @@ class AlbumController extends Controller
             } else {
                 // sending back with error message.
                 Flash::overlay('請上傳正確檔案', '警告');
-                return Redirect::to('/admin/album/upload');
+                return Redirect::to('/admin/adv');
             }
         }
     }
@@ -142,5 +142,16 @@ class AlbumController extends Controller
         } else {
             return redirect('/');
         }
+    }
+
+    public function getDownload()
+    {
+        Excel::create('store', function ($excel) {
+            $excel->sheet('store', function ($sheet) {
+                $title = Album::all();
+                //dd($data);
+                $sheet->fromArray($title);
+            });
+        })->export('xlsx');
     }
 }

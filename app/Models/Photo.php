@@ -55,12 +55,18 @@ class Photo extends Model
         return $this->hasMany('App\Models\Vote');
     }
 
-    public function signup()
-    {
-        return $this->hasMany('App\Signup');
-    }
     public function postvote()
     {
         return $this->hasMany('App\Models\PostVote', 'id', 'photo_id');
+    }
+
+    public function employee()
+    {
+        return $this->hasMany('App\Models\Employee');
+    }
+
+    public function signup()
+    {
+        return $this->hasMany('App\Models\Signup');
     }
 }

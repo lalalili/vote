@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace app\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,11 +10,11 @@ class Project extends Model
 
     public function signup()
     {
-        return $this->hasMany('App\Signup');
+        return $this->hasMany('App\Models\Signup');
     }
 
     public function course()
     {
-        return $this->hasMany('App\Course');
+        return $this->hasMany('App\Models\Course');
     }
 }
