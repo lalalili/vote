@@ -36,8 +36,8 @@ class PhotoController extends Controller
         $grid->add('{{ $album->name }}', '據點', 'album_id');
         $grid->add('{{ $title->name }}', '職稱', 'title_id');
         $grid->add('name', '姓名');
-        $grid->add('updated_at', '更新時間');
-        $grid->orderBy('album_id', 'asc');
+        $grid->add('updated_at', '更新時間', true);
+        $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
         $grid->edit('/admin/photo/edit', '功能', 'show|modify');
 
@@ -67,9 +67,9 @@ class PhotoController extends Controller
         $grid = DataGrid::source(Photo::with('album', 'title'));
         $grid->add('{{ $album->name }}', '據點', 'album_id');
         $grid->add('{{ $title->name }}', '職稱', 'title_id');
-        $grid->add('name', '姓名');
+        $grid->add('name', '姓名', true);
         $grid->add('updated_at', '更新時間');
-        $grid->orderBy('album_id', 'asc');
+        $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
         $grid->edit('/admin/photo/edit', '功能', 'show|modify');
@@ -200,7 +200,7 @@ class PhotoController extends Controller
                 //Company::insert($upload);
                 //Flash::overlay('上傳成功','Info');
                 //$datas = Album::orderBy('site', 'asc')->get();
-                return Redirect::to('/admin/whitelist/list');
+                return Redirect::to('/admin/photo/list');
             } else {
                 // sending back with error message.
                 Flash::overlay('請上傳正確檔案', '警告');

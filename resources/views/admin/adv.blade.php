@@ -87,6 +87,60 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="panel panel-default">
+                    <div class="panel-heading"> 員工基本資料上傳 (!! 只新增new工作表內的資料)</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form role="form" action="{{url('/admin/photo/batch')}}" method="POST"
+                                  enctype="multipart/form-data"
+                                  accept-charset="UTF-8">
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input type="file" name="upload">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button class="btn btn-default" type="submit">Upload</button>
+                                        <button class="btn btn-default" type="reset">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @include('flash::message')
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> 員工個資上傳 </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form role="form" action="{{url('/admin/employee/batch')}}" method="POST"
+                                  enctype="multipart/form-data"
+                                  accept-charset="UTF-8">
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input type="file" name="upload">
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button class="btn btn-default" type="submit">Upload</button>
+                                        <button class="btn btn-default" type="reset">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @include('flash::message')
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="panel panel-default">
                     <div class="panel-heading"> 課別</div>
                     <div class="panel-body">
                         <div class="row">
@@ -148,7 +202,10 @@
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/title/download'">職稱
                         </button>
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/photo/download'">
-                            員工照片資料
+                            員工基本資料
+                        </button>
+                        <button class="btn btn-info" type="button" onclick="location.href='/admin/employee/download'">
+                            員工個資
                         </button>
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/whitelist/download'">
                             白名單
@@ -174,16 +231,16 @@
         {{--onclick="seed_confirm()">建立測試資料--}}
         {{--</button>--}}
         {{--</div>--}}
-        {{--<div class="panel-body">--}}
-        {{--<button class="btn btn-danger" type="button"--}}
-        {{--onclick="reset_photo_confirm()">清空員工資料--}}
-        {{--</button>--}}
-        {{--<button class="btn btn-danger" type="button"--}}
-        {{--onclick="reset_vote_confirm()">清空投票資料--}}
-        {{--</button>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-        {{--</div>--}}
-    </div>
+        <div class="panel-body">
+            <button class="btn btn-danger" type="button"
+                    onclick="reset_photo_confirm()">清空員工資料
+            </button>
+            {{--<button class="btn btn-danger" type="button"--}}
+            {{--onclick="reset_vote_confirm()">清空投票資料--}}
+            {{--</button>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+            {{--</div>--}}
+        </div>
 @endsection

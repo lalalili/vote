@@ -3,22 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEmployeeRequest;
-use App\Models\Course;
 use App\Models\Employee;
-use App\Models\Event;
 use App\Models\Photo;
-use App\Models\Project;
-use App\Models\Signup;
 use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
-use Illuminate\Http\Request;
+use Excel;
+use Flash;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Input;
-use Session;
+use Redirect;
+use Validator;
 use View;
+use Request;
 
 class EmployeeController extends Controller
 {
@@ -28,6 +25,7 @@ class EmployeeController extends Controller
         $filter = DataFilter::source(Employee::with('photo'));
         //dd($filter);
         $filter->add('photo.name', '員工', 'text');
+        $filter->add('emp_id', '工號', 'text');
 
         $filter->submit('search');
         $filter->reset('reset');
@@ -156,5 +154,60 @@ class EmployeeController extends Controller
         $employee->save();
 
         return redirect('/admin/signup/step2/' . $request->photo_id);
+    }
+
+    public function anyBatch()
+    {
+        $file = array('upload' => Request::file('upload'));
+        $rules = array('upload' => 'required',);
+        //dd(Request::file('upload'));
+        $validator = Validator::make($file, $rules);
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            Flash::overlay('請選擇上傳Excel檔案', '警告');
+            return Redirect::to('admin/adv');
+        } else {
+            // checking file is valid.
+            $upload_name = Request::file('upload')->getClientOriginalName();
+            //dd($upload_name);
+            if ($upload_name == 'employee.xlsx') {
+                $destinationPath = 'uploads'; // upload path
+                //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
+                //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
+                $fileName = 'employee.xlsx';
+                Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
+                // sending back with message
+                //Flash::overlay('success', 'Upload successfully');
+                $file = public_path() . '/' . $destinationPath . '/' . $fileName;
+                //dd($file);
+                $uploads = Excel::selectSheets('employee')->load($file, function ($reader) {
+                    //$reader->ignoreEmpty();
+                })->get()->toArray();
+                //dd($uploads);
+                Employee::truncate();
+                foreach ($uploads as $upload) {
+                    Employee::create($upload);
+                }
+                unlink($file);
+                //Company::insert($upload);
+                //Flash::overlay('上傳成功','Info');
+                //$datas = Album::orderBy('site', 'asc')->get();
+                return Redirect::to('/admin/employee/list');
+            } else {
+                // sending back with error message.
+                Flash::overlay('請上傳正確檔案', '警告');
+                return Redirect::to('/admin/adv');
+            }
+        }
+    }
+
+    public function getDownload()
+    {
+        Excel::create('employee', function ($excel) {
+            $excel->sheet('employee', function ($sheet) {
+                $employee = Employee::all();
+                $sheet->fromArray($employee);
+            });
+        })->export('xlsx');
     }
 }

@@ -202,7 +202,6 @@ class SignupController extends Controller
     {
         Excel::create('signup', function ($excel) {
             $excel->sheet('all', function ($sheet) {
-                //dd($photos);
                 $signups = DB::table('signups')
                     ->leftjoin('photos', 'signups.photo_id', '=', 'photos.id')
                     ->leftjoin('employees', 'signups.photo_id', '=', 'employees.photo_id')

@@ -6,27 +6,12 @@ class Album extends Model
 {
     public $table = "albums";
 
-
     public $fillable = [
         "name",
         "type",
         "area",
         "path",
         "note"
-    ];
-
-    /**
-     * The attributes that should be casted to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        "name" => "string",
-        "note" => "string"
-    ];
-
-    public static $rules = [
-        "name" => "required"
     ];
 
     public function photo()
