@@ -22,7 +22,6 @@ class RoleTableSeeder extends Seeder
         Schema::drop('roles');
         Schema::drop('users');
 
-
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -81,9 +80,30 @@ class RoleTableSeeder extends Seeder
                 'display_name' => '站台管理'
             ],
             [
-                'name'         => 'owner',
-                'display_name' => '據點管理'
-            ]
+                'name'         => 'luxgen-owner',
+                'display_name' => '總公司管理'
+            ],
+            [
+                'name'         => 'la-owner',
+                'display_name' => '北智捷管理'
+            ],
+            [
+                'name'         => 'lb-owner',
+                'display_name' => '桃智捷管理'
+            ],
+            [
+                'name'         => 'lc-owner',
+                'display_name' => '中智捷管理'
+            ],
+            [
+                'name'         => 'ld-owner',
+                'display_name' => '南智捷管理'
+            ],
+            [
+                'name'         => 'le-owner',
+                'display_name' => '高智捷管理'
+            ],
+
         ];
         foreach ($roles as $role) {
             Role::create($role);
@@ -91,26 +111,39 @@ class RoleTableSeeder extends Seeder
 
         $permissions = [
             [
-                'name'         => 'edit-photo',
+                'name'         => 'basic_employee',
                 'display_name' => '員工管理'
             ],
             [
-                'name'         => 'edit-album',
-                'display_name' => '據點管理'
+                'name'         => 'adv_vote',
+                'display_name' => '投票管理'
             ],
             [
-                'name'         => 'edit-vote',
-                'display_name' => '投票管理'
-            ]
+                'name'         => 'adv_sysmgr',
+                'display_name' => '系統設定'
+            ],
+            [
+                'name'         => 'adv_signup',
+                'display_name' => '報名管理'
+            ],
         ];
         foreach ($permissions as $permission) {
             Permission::create($permission);
         }
 
-
         $role1 = Role::findOrFail(1);
-        $role1->perms()->sync([1, 2, 3]);
+        $role1->perms()->sync([1, 2, 3, 4]);
         $role2 = Role::findOrFail(2);
         $role2->perms()->sync([1]);
+        $role3 = Role::findOrFail(3);
+        $role3->perms()->sync([1]);
+        $role4 = Role::findOrFail(4);
+        $role4->perms()->sync([1]);
+        $role5 = Role::findOrFail(5);
+        $role5->perms()->sync([1]);
+        $role6 = Role::findOrFail(6);
+        $role6->perms()->sync([1]);
+        $role7 = Role::findOrFail(7);
+        $role7->perms()->sync([1]);
     }
 }

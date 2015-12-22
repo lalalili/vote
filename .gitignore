@@ -9,6 +9,5 @@
 Envoy.blade.php
 /public/uploads/images
 *.org
-
-
 /tests/VoteTest.php
+/database/seeds/UserTableSeeder.php

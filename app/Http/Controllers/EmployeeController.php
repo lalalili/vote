@@ -114,6 +114,84 @@ class EmployeeController extends Controller
         return view('admin.choose', compact('lists'));
     }
 
+    public function la_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','北智捷')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
+    public function lb_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','桃智捷')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
+    public function lc_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','中智捷')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
+    public function ld_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','南智捷')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
+    public function le_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','高智捷')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
+    public function luxgen_choose()
+    {
+        $lists = DB::table('photos')
+            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
+            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
+            ->select('photos.name as name', 'titles.name as title',
+                'albums.name as album', 'albums.type as type', 'photos.id as id')
+            ->where('albums.area','納智捷汽車')
+            ->orderBy('photos.album_id', 'asc')->get();
+        //dd($lists);
+        return view('admin.choose', compact('lists'));
+    }
+
     public function step1(request $request, $id)
     {
         $employee = DB::table('photos')

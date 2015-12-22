@@ -1,0 +1,72 @@
+﻿<?php
+
+use App\Models\User;
+use Illuminate\Database\Seeder;
+
+class UserTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $users = [
+            [
+                'name'     => 'admincat',
+                'email'    => 'admincat',
+                'password' => bcrypt('gearbolt9'),
+            ],
+            [
+                'name'     => 'luxgencat',
+                'email'    => 'luxgencat',
+                'password' => bcrypt('gearbolt9'),
+            ],
+            [
+                'name'     => 'LA',
+                'email'    => 'LA',
+                'password' => bcrypt('LA'),
+            ],
+            [
+                'name'     => 'LB',
+                'email'    => 'LB',
+                'password' => bcrypt('LB'),
+            ],
+            [
+                'name'     => 'LC',
+                'email'    => 'LC',
+                'password' => bcrypt('LC'),
+            ],
+            [
+                'name'     => 'LD',
+                'email'    => 'LD',
+                'password' => bcrypt('LD'),
+            ],
+            [
+                'name'     => 'LE',
+                'email'    => 'LE',
+                'password' => bcrypt('LE'),
+            ],
+        ];
+        //dd($users);
+        foreach ($users as $user) {
+            User::create($user);
+        }
+
+        $user1 = User::findOrFail(1);
+        $user1->roles()->sync([1]);
+        $user2 = User::findOrFail(2);
+        $user2->roles()->sync([2]);
+        $user3 = User::findOrFail(3);
+        $user3->roles()->sync([3]);
+        $user4 = User::findOrFail(4);
+        $user4->roles()->sync([4]);
+        $user5 = User::findOrFail(5);
+        $user5->roles()->sync([5]);
+        $user6 = User::findOrFail(6);
+        $user6->roles()->sync([6]);
+        $user7 = User::findOrFail(7);
+        $user7->roles()->sync([7]);
+    }
+}

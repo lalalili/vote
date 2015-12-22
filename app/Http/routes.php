@@ -39,6 +39,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return redirect('/admin/photo/list');
     });
+    Route::get('signup/la_choose', 'EmployeeController@la_choose');
+    Route::get('signup/lb_choose', 'EmployeeController@lb_choose');
+    Route::get('signup/lc_choose', 'EmployeeController@lc_choose');
+    Route::get('signup/ld_choose', 'EmployeeController@ld_choose');
+    Route::get('signup/le_choose', 'EmployeeController@le_choose');
+    Route::get('signup/luxgen_choose', 'EmployeeController@luxgen_choose');
     Route::controller('photo', 'PhotoController');
 
 });
