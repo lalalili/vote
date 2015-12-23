@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Whitelist;
@@ -15,7 +15,7 @@ use View;
 
 class WhitelistController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(new Whitelist());
         //dd($filter);
@@ -39,7 +39,7 @@ class WhitelistController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
         if (Input::get('do_delete') == 1) {
             return "not the first";
@@ -66,12 +66,7 @@ class WhitelistController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyUpload()
-    {
-        return view('admin/adv');
-    }
-
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -115,7 +110,7 @@ class WhitelistController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('whitelist', function ($excel) {
             $excel->sheet('whitelist', function ($sheet) {

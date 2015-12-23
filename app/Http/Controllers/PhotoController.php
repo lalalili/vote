@@ -11,7 +11,6 @@ use DB;
 use Entrust;
 use Excel;
 use Flash;
-use Input;
 use Redirect;
 use Request;
 use Validator;
@@ -19,7 +18,7 @@ use View;
 
 class PhotoController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(Photo::with('album', 'title'));
         //dd($filter);
@@ -45,12 +44,8 @@ class PhotoController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
         $edit = DataEdit::source(new Photo());
         //dd($edit);
         $edit->link("/admin/photo/list", "上一頁", "BL");
@@ -99,7 +94,7 @@ class PhotoController extends Controller
         return view('pull', compact('to'));
     }
 
-    public function anyDelete()
+    public function delete()
     {
         if (!Entrust::hasRole('admin')) {
             return redirect('/admin');
@@ -144,7 +139,7 @@ class PhotoController extends Controller
         return view('admin.wall', compact('lists'));
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('photo', function ($excel) {
             $excel->sheet('photo', function ($sheet) {
@@ -165,7 +160,7 @@ class PhotoController extends Controller
         })->export('xlsx');
     }
 
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -191,7 +186,7 @@ class PhotoController extends Controller
                 //dd($file);
                 $uploads = Excel::selectSheets('new')->load($file, function ($reader) {
                 })->get()->toArray();
-                //dd($data);
+                //dd($uploads);
                 //Photo::truncate();
                 foreach ($uploads as $upload) {
                     Photo::create($upload);
@@ -207,5 +202,11 @@ class PhotoController extends Controller
                 return Redirect::to('/admin/adv');
             }
         }
+    }
+
+    public function resetPhotos()
+    {
+        DB::table('photos')->truncate();
+        return redirect('admin/photo/list');
     }
 }

@@ -1,15 +1,12 @@
-<?php
+<?php namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
-
-use App\Http\Requests\CreateEmployeeRequest;
 use App\Models\Course;
-use App\Models\Employee;
 use App\Models\Event;
 use App\Http\Requests\CreateSignupRequest;
 use App\Models\Photo;
 use App\Models\Project;
 use App\Models\Signup;
+use Auth;
 use Carbon\Carbon;
 use DataEdit;
 use DataFilter;
@@ -18,17 +15,31 @@ use DB;
 use Excel;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Input;
 use Session;
 use View;
 
 class SignupController extends Controller
 {
 
-    public function anyList()
+    public function lists()
     {
-        $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo'));
+        //dd(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA')->get());
+        if (Auth::user()->hasRole('la-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA'));
+        } elseif (Auth::user()->hasRole('lb-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LB'));
+        } elseif (Auth::user()->hasRole('lc-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LC'));
+        } elseif (Auth::user()->hasRole('ld-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LD'));
+        } elseif (Auth::user()->hasRole('le-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LE'));
+        } elseif (Auth::user()->hasRole('luxgen-owner')) {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'luxgen'));
+        } else {
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo'));
+        }
+
         //dd($filter);
         $filter->add('photo.name', '員工', 'text');
         $filter->add('course.name', '課別', 'text');
@@ -43,21 +54,20 @@ class SignupController extends Controller
         $grid->add('project.name', '課程項目', true);
         $grid->add('course.name', '課別', true);
         $grid->add('event.name', '場次', true);
+        $grid->add('note', '報名者', true);
 
         $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
-        $grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
+        //$grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
+        $grid->edit('/admin/signup/edit', '功能', 'show|delete');
 
-        $grid->link('/admin/signup/edit', "新增", "TR");
+        //$grid->link('/admin/signup/edit', "新增", "TR");
         return View::make('admin.signup', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
         //dd(Signup::find(1));
         $edit = DataEdit::source(new Signup());
         //dd($edit);
@@ -69,6 +79,7 @@ class SignupController extends Controller
         $edit->add('project_id', '課程項目', 'select')->options(Project::lists("name", "id")->all());
         $edit->add('course_id', '課別', 'select')->options(Course::lists("name", "id")->all());
         $edit->add('event_id', '場次', 'select')->options(Event::lists("name", "id")->all());
+        //$edit->add('note', '報名者', 'text');
         //dd($edit);
 
         $grid = DataGrid::source(Signup::with('project', 'course', 'event', 'photo'));
@@ -77,6 +88,7 @@ class SignupController extends Controller
         $grid->add('project.name', '課程項目', true);
         $grid->add('course.name', '課別', true);
         $grid->add('event.name', '場次', true);
+        $grid->add('note', '報名者', true);
 
         $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
@@ -193,12 +205,14 @@ class SignupController extends Controller
         $signup->project_id = $request->project_id;
         $signup->course_id = $request->course_id;
         $signup->event_id = $request->event_id;
+        //dd(Auth::user()->name);
+        $signup->note = Auth::user()->name;
         $signup->save();
 
         return redirect('/admin/signup/list');
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('signup', function ($excel) {
             $excel->sheet('all', function ($sheet) {
@@ -224,5 +238,11 @@ class SignupController extends Controller
                 $sheet->fromArray($data);
             });
         })->export('xlsx');
+    }
+
+    public function resetSignups()
+    {
+        Signup::truncate();
+        return redirect('/admin/signup/list');
     }
 }

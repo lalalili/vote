@@ -1,13 +1,10 @@
-<?php
-
-namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Title;
 use DataEdit;
 use DataFilter;
 use DataGrid;
-use DB;
 use Excel;
 use Flash;
 use Input;
@@ -18,7 +15,7 @@ use View;
 
 class TitleController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(new Title());
         //dd($filter);
@@ -42,7 +39,7 @@ class TitleController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
         if (Input::get('do_delete') == 1) {
             return "not the first";
@@ -69,7 +66,7 @@ class TitleController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('title', function ($excel) {
             $excel->sheet('title', function ($sheet) {
@@ -80,7 +77,7 @@ class TitleController extends Controller
         })->export('xlsx');
     }
 
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);

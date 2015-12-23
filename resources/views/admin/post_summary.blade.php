@@ -11,7 +11,7 @@
                                 onclick="location.href='/admin/post_summary/download'">下載
                         </button>
                         <button class="btn btn-danger" type="button" style="float: left; position: relative; left: 50%;"
-                                onclick="location.href='/admin/post_votes/recal'">重新計算
+                                onclick="location.href='/admin/post_vote/recal'">重新計算
                         </button>
                         <h3>生活館</h3>
 

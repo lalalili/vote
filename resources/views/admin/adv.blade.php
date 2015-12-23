@@ -113,7 +113,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> 員工個資上傳 </div>
+                    <div class="panel-heading"> 員工個資上傳</div>
                     <div class="panel-body">
                         <div class="row">
                             <form role="form" action="{{url('/admin/employee/batch')}}" method="POST"
@@ -218,6 +218,10 @@
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/course/download'">課別
                         </button>
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/event/download'">場次
+                        </button>
+                        <button class="btn btn-info" type="button" onclick="location.href='/admin/signup/download'">
+                            報名資料完整欄位下載
+                        </button>
                     </div>
                 </div>
             </div>
@@ -232,12 +236,15 @@
         {{--</button>--}}
         {{--</div>--}}
         <div class="panel-body">
-            <button class="btn btn-danger" type="button"
-                    onclick="reset_photo_confirm()">清空員工資料
-            </button>
+            {{--<button class="btn btn-danger" type="button"--}}
+            {{--onclick="reset_photo_confirm()">清空員工資料--}}
+            {{--</button>--}}
             {{--<button class="btn btn-danger" type="button"--}}
             {{--onclick="reset_vote_confirm()">清空投票資料--}}
             {{--</button>--}}
+            <button class="btn btn-danger" type="button"
+                    onclick="reset_signup_confirm()">清空報名資料
+            </button>
             {{--</div>--}}
             {{--</div>--}}
             {{--</div>--}}

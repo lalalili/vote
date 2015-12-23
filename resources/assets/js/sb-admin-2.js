@@ -41,7 +41,7 @@ function reset_photo_confirm()
     var r=confirm("確認要清空員工資料 !!");
     if (r==true)
     {
-        window.location.href='/admin/reset/photos';
+        window.location.href='/admin/photo/reset';
     }
 }
 
@@ -50,6 +50,15 @@ function reset_vote_confirm()
     var r=confirm("確認要清空投票資料 !!");
     if (r==true)
     {
-        window.location.href='/admin/reset/votes';
+        window.location.href='/admin/vote/reset';
+    }
+}
+
+function reset_signup_confirm()
+{
+    var r=confirm("確認要清空報名資料 !!");
+    if (r==true)
+    {
+        window.location.href='/admin/signup/reset';
     }
 }

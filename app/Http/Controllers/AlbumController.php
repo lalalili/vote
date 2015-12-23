@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Album;
@@ -7,7 +7,6 @@ use DataFilter;
 use DataGrid;
 use Excel;
 use Flash;
-use Input;
 use Redirect;
 use Request;
 use Validator;
@@ -15,7 +14,7 @@ use View;
 
 class AlbumController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(new Album());
         //dd($filter);
@@ -33,18 +32,14 @@ class AlbumController extends Controller
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
 
-        $grid->edit('/admin/album/edit', '功能', 'show|modify');
+        $grid->edit('/admin/album/edit', '功能', 'show|modify|delete');
 
         $grid->link('/admin/album/edit', "新增據點", "TR");
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
         $edit = DataEdit::source(new Album());
         //dd($edit);
         $edit->link("/admin/album/list", "上一頁", "BL");
@@ -60,7 +55,6 @@ class AlbumController extends Controller
 //        $edit->add('seq', '呈現順序(1~9)', 'text');
 //        $edit->add('is_display', '是否顯示', 'checkbox');
 
-
         $grid = DataGrid::source(new Album());
         $grid->add('name', '據點');
         $grid->add('area', '經銷商');
@@ -73,12 +67,7 @@ class AlbumController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyUpload()
-    {
-        return view('admin/adv');
-    }
-
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -144,7 +133,7 @@ class AlbumController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('store', function ($excel) {
             $excel->sheet('store', function ($sheet) {

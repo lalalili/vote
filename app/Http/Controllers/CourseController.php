@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Course;
@@ -16,7 +16,7 @@ use View;
 
 class CourseController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(Course::with('project'));
         //dd(Course::with('project')->get());
@@ -40,7 +40,7 @@ class CourseController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
         $edit = DataEdit::source(new Course());
         //dd($edit);
@@ -65,12 +65,7 @@ class CourseController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyUpload()
-    {
-        return view('admin/adv');
-    }
-
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -114,7 +109,7 @@ class CourseController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('course', function ($excel) {
             $excel->sheet('course', function ($sheet) {

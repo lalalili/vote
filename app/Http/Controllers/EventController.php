@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Event;
@@ -8,7 +8,6 @@ use DataFilter;
 use DataGrid;
 use Excel;
 use Flash;
-use Input;
 use Redirect;
 use Request;
 use Validator;
@@ -16,7 +15,7 @@ use View;
 
 class EventController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(Event::with('course'));
         //dd($filter);
@@ -43,7 +42,7 @@ class EventController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
         $edit = DataEdit::source(new Event());
         //dd($edit);
@@ -73,12 +72,7 @@ class EventController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyUpload()
-    {
-        return view('admin/adv');
-    }
-
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -122,7 +116,7 @@ class EventController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('event', function ($excel) {
             $excel->sheet('event', function ($sheet) {

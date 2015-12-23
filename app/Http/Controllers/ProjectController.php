@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Project;
@@ -7,7 +7,6 @@ use DataFilter;
 use DataGrid;
 use Excel;
 use Flash;
-use Input;
 use Redirect;
 use Request;
 use Validator;
@@ -15,7 +14,7 @@ use View;
 
 class ProjectController extends Controller
 {
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(new Project());
         //dd($filter);
@@ -39,7 +38,7 @@ class ProjectController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
         $edit = DataEdit::source(new Project());
         //dd($edit);
@@ -62,12 +61,7 @@ class ProjectController extends Controller
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function anyUpload()
-    {
-        return view('admin/adv');
-    }
-
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -111,7 +105,7 @@ class ProjectController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('project', function ($excel) {
             $excel->sheet('project', function ($sheet) {

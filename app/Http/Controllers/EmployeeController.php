@@ -1,6 +1,4 @@
-<?php
-
-namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Models\Employee;
@@ -20,7 +18,7 @@ use Request;
 class EmployeeController extends Controller
 {
 
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(Employee::with('photo'));
         //dd($filter);
@@ -54,7 +52,7 @@ class EmployeeController extends Controller
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
 //        if (Input::get('do_delete') == 1) {
 //            return "not the first";
@@ -121,7 +119,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','北智捷')
+            ->where('albums.area', '北智捷')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -134,7 +132,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','桃智捷')
+            ->where('albums.area', '桃智捷')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -147,7 +145,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','中智捷')
+            ->where('albums.area', '中智捷')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -160,7 +158,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','南智捷')
+            ->where('albums.area', '南智捷')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -173,7 +171,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','高智捷')
+            ->where('albums.area', '高智捷')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -186,7 +184,7 @@ class EmployeeController extends Controller
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
             ->select('photos.name as name', 'titles.name as title',
                 'albums.name as album', 'albums.type as type', 'photos.id as id')
-            ->where('albums.area','納智捷汽車')
+            ->where('albums.area', '納智捷汽車')
             ->orderBy('photos.album_id', 'asc')->get();
         //dd($lists);
         return view('admin.choose', compact('lists'));
@@ -194,6 +192,7 @@ class EmployeeController extends Controller
 
     public function step1(request $request, $id)
     {
+        dd('123');
         $employee = DB::table('photos')
             ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')

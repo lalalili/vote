@@ -1,4 +1,4 @@
-<?php namespace app\Http\Controllers;
+<?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Photo;
@@ -85,7 +85,7 @@ class VoteController extends Controller
         }
     }
 
-    public function anyList()
+    public function lists()
     {
         $filter = DataFilter::source(Vote::with('photo'));
         //dd($filter);
@@ -113,12 +113,8 @@ class VoteController extends Controller
         return View::make('admin.vote', compact('filter', 'grid'));
     }
 
-    public function anyEdit()
+    public function edit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
         $edit = DataEdit::source(new Vote());
         //dd($edit);
         $edit->link("/admin/vote/list", "Back", "BL");
@@ -371,11 +367,7 @@ class VoteController extends Controller
         return redirect('admin/vote/list');
     }
 
-    public function resetPhotos()
-    {
-        DB::table('photos')->truncate();
-        return redirect('admin/photo/list');
-    }
+
 
     public function seed()
     {
@@ -386,7 +378,7 @@ class VoteController extends Controller
     }
 
 
-    public function anyPostlist()
+    public function postlists()
     {
         $filter = DataFilter::source(PostVote::with('photo'));
         //dd($filter);
@@ -413,12 +405,8 @@ class VoteController extends Controller
         return View::make('admin.post_vote', compact('filter', 'grid'));
     }
 
-    public function anyPostedit()
+    public function postedit()
     {
-        if (Input::get('do_delete') == 1) {
-            return "not the first";
-        }
-
         $edit = DataEdit::source(new PostVote());
         //dd($edit);
         $edit->link("/admin/vote/postlist", "Back", "BL");
@@ -712,7 +700,7 @@ class VoteController extends Controller
             compact('r1s', 'r2s', 'r3s', 'r4s', 'r5s', 'r6s', 'r7s', 'r8s', 'r9s', 'r10s'));
     }
 
-    public function anyWhitelist()
+    public function whitelists()
     {
         $phone = Whitelist::lists('phone');
         $filter = DataFilter::source(Vote::with('photo')->whereIn('phone', $phone));
@@ -733,7 +721,7 @@ class VoteController extends Controller
         $grid->add('phone', '客戶電話', true);
         $grid->add('updated_at', '投票時間', true);
 
-        $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
+        $grid->edit('/admin/vote/whitelistedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
 
@@ -741,7 +729,7 @@ class VoteController extends Controller
         return View::make('admin.whitelist', compact('filter', 'grid'));
     }
 
-    public function anyWhiteedit()
+    public function whitelistedit()
     {
         if (Input::get('do_delete') == 1) {
             return "not the first";
@@ -767,7 +755,7 @@ class VoteController extends Controller
         $grid->add('phone', '客戶電話', true);
         $grid->add('updated_at', '投票時間', true);
 
-        $grid->edit('/admin/vote/whiteedit', 'Edit', 'show|modify|delete');
+        $grid->edit('/admin/vote/whitelistedit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
         $grid->paginate(10);
 

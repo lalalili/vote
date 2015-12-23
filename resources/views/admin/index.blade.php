@@ -106,6 +106,9 @@
                                     <a href="{{ url('/admin/signup/choose') }}"> 報名</a>
                                 @endif
                             </li>
+                            <li>
+                                <a href="{{ url('/admin/signup/list') }}"> 報名列表</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
