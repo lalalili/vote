@@ -192,7 +192,6 @@ class EmployeeController extends Controller
 
     public function step1(request $request, $id)
     {
-        dd('123');
         $employee = DB::table('photos')
             ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
             ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
