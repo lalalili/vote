@@ -152,9 +152,11 @@ class SignupController extends Controller
 
         $id = $request->session()->get('id');
         $employee = Photo::findOrFail($id);
-        $project_id = $request->session()->get('project_id');
-        $projects = Project::where('id', $project_id)->get();
-        $courses = Course::where('id', $course_id)->get();
+//        $project_id = $request->session()->get('project_id');
+//        $projects = Project::where('id', $project_id)->get();
+        $projects = Project::all();
+        //$courses = Course::where('id', $course_id)->get();
+        $courses = Course::all();
         //dd(Carbon::now('Asia/Taipei')->subDay(1));
         //dd(Photo::findOrFail($request->session()->get('id'))->album->type);
         $events = Event::where('course_id', $course_id)->where('event_at', '>',
@@ -173,19 +175,21 @@ class SignupController extends Controller
         $employee = Photo::findOrFail($id);
         //dd($employee);
         //$project_id = $request->session()->get('project_id');
-        $project_id = $request->session()->get('project_id');
-        $projects = Project::where('id', $project_id)->get();
+//        $project_id = $request->session()->get('project_id');
+//        $projects = Project::where('id', $project_id)->get();
         $course_id = $request->session()->get('course_id');
-        $courses = Course::where('id', $course_id)->get();
+//        $courses = Course::where('id', $course_id)->get();
+        $projects = Project::all();
+        $courses = Course::all();
         $events = Event::where('course_id', $course_id)->get();
 
         //dd($events);
         if ($event_id == 0) {
             //dd($projects);
-            Session::forget('event_id');
+            //Session::forget('event_id');
             return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
         } else {
-            Session::put('event_id', $event_id);
+            //Session::put('event_id', $event_id);
             $number = Event::where('id', $event_id)->first()->number;
             $signed = Signup::where('event_id', $event_id)->count();
             //dd($number);
