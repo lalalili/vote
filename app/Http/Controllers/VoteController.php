@@ -121,7 +121,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::lists("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
@@ -413,7 +413,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::lists("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
@@ -482,7 +482,7 @@ class VoteController extends Controller
     public function syncVote()
     {
         DB::table('post_votes')->truncate();
-        $phone = Whitelist::lists('phone');
+        $phone = Whitelist::all()->pluck('phone');
         $votes = DB::table('votes')->whereRaw('updated_at = (select max(updated_at) from votes as f where f.phone = votes.phone)')
             ->whereRaw('time(created_at) between "08:30:00" and "22:00:00"')
             ->whereNotIn('phone', $phone)
@@ -702,7 +702,7 @@ class VoteController extends Controller
 
     public function whitelists()
     {
-        $phone = Whitelist::lists('phone');
+        $phone = Whitelist::all()->pluck('phone');
         $filter = DataFilter::source(Vote::with('photo')->whereIn('phone', $phone));
         //dd($filter);
         //$filter->add('album.name', '據點', 'text');
@@ -741,7 +741,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::lists("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');

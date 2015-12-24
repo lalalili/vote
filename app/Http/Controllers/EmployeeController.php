@@ -64,7 +64,7 @@ class EmployeeController extends Controller
         $edit->link("/admin/employee/edit", "新增", "TR");
         $edit->label('編輯');
 
-        $edit->add('photo_id', '姓名', 'select')->options(Photo::lists("name", "id")->all());
+        $edit->add('photo_id', '姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
         $edit->add('identity', '身分證號', 'text');
         $edit->add('birth_year', '出生年', 'text');
         $edit->add('mobile', '手機號碼', 'text');

@@ -75,10 +75,10 @@ class SignupController extends Controller
         $edit->link("/admin/signup/edit", "新增", "TR");
         $edit->label('編輯');
 
-        $edit->add('photo_id', '姓名', 'select')->options(Photo::lists("name", "id")->all());
-        $edit->add('project_id', '課程項目', 'select')->options(Project::lists("name", "id")->all());
-        $edit->add('course_id', '課別', 'select')->options(Course::lists("name", "id")->all());
-        $edit->add('event_id', '場次', 'select')->options(Event::lists("name", "id")->all());
+        $edit->add('photo_id', '姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
+        $edit->add('project_id', '課程項目', 'select')->options(Project::all()->pluck("name", "id")->all());
+        $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
+        $edit->add('event_id', '場次', 'select')->options(Event::all()->pluck("name", "id")->all());
         //$edit->add('note', '報名者', 'text');
         //dd($edit);
 
@@ -132,7 +132,16 @@ class SignupController extends Controller
         $employee = Photo::findOrFail($id);
         //dd($project_id);
         $projects = Project::where('id', $project_id)->get();
-        $courses = Course::where('project_id', $project_id)->get();
+        $type = Photo::findOrFail($request->session()->get('id'))->album->type;
+        //dd($type);
+        if ($type == '生活館') {
+            $courses = Course::where('project_id', $project_id)->where('type', '<>', '服務廠')->get();
+        } elseif ($type == '服務廠') {
+            $courses = Course::where('project_id', $project_id)->where('type', '<>', '生活館')->get();
+        } else {
+            $courses = Course::where('project_id', $project_id)->get();
+        }
+
         //dd($courses);
         Session::put('project_id', $project_id);
         return view('admin.step2', compact('employee', 'projects', 'courses'));
@@ -142,26 +151,14 @@ class SignupController extends Controller
     {
 
         $id = $request->session()->get('id');
-        //dd($course_id);
         $employee = Photo::findOrFail($id);
-        //dd($employee);
-        //$project_id = $request->session()->get('project_id');
-        $projects = Project::all();
-        //dd($projects);
-        $courses = Course::all();
+        $project_id = $request->session()->get('project_id');
+        $projects = Project::where('id', $project_id)->get();
+        $courses = Course::where('id', $course_id)->get();
         //dd(Carbon::now('Asia/Taipei')->subDay(1));
         //dd(Photo::findOrFail($request->session()->get('id'))->album->type);
-        $type = Photo::findOrFail($request->session()->get('id'))->album->type;
-        if ($type == "生活館") {
-            $events = Event::where('course_id', $course_id)->where('event_at', '>',
-                Carbon::now('Asia/Taipei')->subDay(1))->where('area', '生活館')->get();
-        } elseif ($type == "服務廠") {
-            $events = Event::where('course_id', $course_id)->where('event_at', '>',
-                Carbon::now('Asia/Taipei')->subDay(1))->where('area', '服務廠')->get();
-        } else {
-            $events = Event::where('course_id', $course_id)->where('event_at', '>',
-                Carbon::now('Asia/Taipei')->subDay(1))->get();
-        }
+        $events = Event::where('course_id', $course_id)->where('event_at', '>',
+            Carbon::now('Asia/Taipei')->subDay(1))->get();
         //dd($events);
         Session::put('course_id', $course_id);
         return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
@@ -176,10 +173,10 @@ class SignupController extends Controller
         $employee = Photo::findOrFail($id);
         //dd($employee);
         //$project_id = $request->session()->get('project_id');
-        $projects = Project::all();
-        //dd($projects);
-        $courses = Course::all();
+        $project_id = $request->session()->get('project_id');
+        $projects = Project::where('id', $project_id)->get();
         $course_id = $request->session()->get('course_id');
+        $courses = Course::where('id', $course_id)->get();
         $events = Event::where('course_id', $course_id)->get();
 
         //dd($events);

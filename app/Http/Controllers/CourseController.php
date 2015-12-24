@@ -21,7 +21,7 @@ class CourseController extends Controller
         $filter = DataFilter::source(Course::with('project'));
         //dd(Course::with('project')->get());
         $filter->add('name', '課別', 'text');
-//        $filter->add('note', '備註', 'text');
+        //$filter->add('note', '備註', 'text');
 
         $filter->submit('search');
         $filter->reset('reset');
@@ -30,7 +30,7 @@ class CourseController extends Controller
         $grid = DataGrid::source($filter);
         $grid->add('name', '課程項目');
         $grid->add('{{ $project->name }}', '課別', 'project_id');
-        $grid->add('note', '備註');
+        $grid->add('type', '課程類型');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);
@@ -49,13 +49,14 @@ class CourseController extends Controller
         $edit->label('編輯');
 
         $edit->add('name', '課別', 'text')->rule('required');
-        $edit->add('project_id', '課別', 'select')->options(Project::lists("name", "id")->all());
-        $edit->add('note', '備註', 'text');
+        //dd(Project::all()->pluck('name', 'id')->all());
+        $edit->add('project_id', '課別', 'select')->options(Project::all()->pluck('name', 'id')->all());
+        $edit->add('type', '課程類型', 'text');
 
         $grid = DataGrid::source(Course::with('project'));
         $grid->add('name', '課程項目');
         $grid->add('{{ $project->name }}', '課別', 'project_id');
-        $grid->add('note', '備註');
+        $grid->add('type', '課程類型');
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('id', 'asc');
         $grid->paginate(10);

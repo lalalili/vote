@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
-    protected $fillable = ["name", "project_id", "note"];
+    protected $fillable = ["name", "project_id", "type", "note"];
 
     public function signup()
     {

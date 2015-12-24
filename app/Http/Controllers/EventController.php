@@ -51,7 +51,7 @@ class EventController extends Controller
         $edit->label('編輯');
 
         $edit->add('name', '課程日期/場次', 'text')->rule('required');
-        $edit->add('course_id', '課別', 'select')->options(Course::lists("name", "id")->all());
+        $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('number', '預估上課人數', 'text');
         $edit->add('area', '職級別', 'text');
         $edit->add('event_at', '上課時間', 'datetime')->format('d/m/Y', 'zh-TW');
