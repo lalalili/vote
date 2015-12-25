@@ -764,8 +764,10 @@ class VoteController extends Controller
 
     public function downloadWhitelistVote()
     {
+
         Excel::create('whitelist_votes', function ($excel) {
             $excel->sheet('whitelist_votes', function ($sheet) {
+                $phone = Whitelist::all()->pluck('phone');
                 $votes = DB::table('votes')
                     ->select('votes.id as 投票編號', 'albums.area as 經銷商', 'albums.name as 據點', 'photos.name as 員工姓名',
                         'votes.name as 客戶姓名',

@@ -84,7 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('post_vote/download', 'VoteController@postdownloadVote');
     Route::get('summary/download', 'VoteController@downloadSummary');
     Route::get('post_summary/download', 'VoteController@postdownloadSummary');
-    Route::get('whitelist_votes/download', 'VoteController@downloadWhitelistVote');
+    Route::get('whitelist_vote/download', 'VoteController@downloadWhitelistVote');
     Route::get('vote/syncvote', 'VoteController@syncvote');
     Route::get('vote/reset', 'VoteController@resetVotes');
 
