@@ -116,7 +116,6 @@ class SignupController extends Controller
             Session::forget('event_id');
             return redirect("/admin/signup/step2/course/$course_id");
         } else {
-            dd('123');
             $employee = Photo::findOrFail($id);
             $projects = Project::all();
             Session::forget(['project_id', 'course_id', 'event_id']);
