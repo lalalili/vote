@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/plugins/metisMenu/metisMenu.min.css') }}">
-    {{--<link rel="stylesheet" href="{{ asset('/css/jquery.dataTables.min.css') }}">--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/dataTables.bootstrap.css') }}">--}}
-    {{--<link rel="stylesheet" href="{{ asset('/css/dataTables.responsive.css') }}">--}}
-    <link rel="stylesheet" href="{{ asset('/css/dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
@@ -226,9 +223,7 @@
 <script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
-{{--<script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>--}}
-{{--<script src="{{ asset('/js/dataTables.bootstrap.min.js') }}"></script>--}}
-<script src="{{ asset('/js/dataTables.min.js') }}"></script>
+<script src="{{ asset('/js/datatables.min.js') }}"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
 <script src="{{ asset('/locales/jquery.ui.datepicker-zh-TW.js') }}"></script>
 <script src="{{ asset('/locales/jquery-ui-timepicker-zh-TW.js') }}"></script>
