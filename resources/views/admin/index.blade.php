@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/plugins/metisMenu/metisMenu.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/datatables.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
@@ -210,7 +210,10 @@
     </nav>
 
     <!-- Page Content -->
-    <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
 
     @yield('content')
             <!-- /.row -->
@@ -218,12 +221,10 @@
 
 </div>
 <!-- /#wrapper -->
-<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-<script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>
-<script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
+
 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
-<script src="{{ asset('/js/datatables.min.js') }}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.js"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
 <script src="{{ asset('/locales/jquery.ui.datepicker-zh-TW.js') }}"></script>
 <script src="{{ asset('/locales/jquery-ui-timepicker-zh-TW.js') }}"></script>

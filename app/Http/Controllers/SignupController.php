@@ -15,11 +15,11 @@ use DB;
 use Excel;
 use Flash;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 use Redirect;
 use Session;
 use Validator;
 use View;
-use Request;
 
 class SignupController extends Controller
 {
@@ -116,6 +116,7 @@ class SignupController extends Controller
             Session::forget('event_id');
             return redirect("/admin/signup/step2/course/$course_id");
         } else {
+            dd('123');
             $employee = Photo::findOrFail($id);
             $projects = Project::all();
             Session::forget(['project_id', 'course_id', 'event_id']);
