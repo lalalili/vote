@@ -27,7 +27,8 @@ $(function () {
 
 $(function () {
     var opt={dateFormat: 'yy-mm-dd',
-        timeFormat: 'HH:mm'
+        showSecond: true,
+        timeFormat: 'HH:mm:ss'
     };
     $("#event_at").datetimepicker(opt);
 });

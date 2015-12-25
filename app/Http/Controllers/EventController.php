@@ -30,10 +30,10 @@ class EventController extends Controller
         $grid->add('name', '課程日期/場次');
         $grid->add('{{ $course->name }}', '課程項目');
         $grid->add('number', '預估上課人數');
-        $grid->add('area', '職級別', true);
+//        $grid->add('area', '職級別', true);
         $grid->add('event_at', '上課時間', true);
         $grid->add('hour', '課程時數');
-        $grid->orderBy('id', 'asc');
+        $grid->orderBy('event_at', 'desc');
         $grid->paginate(10);
 
         $grid->edit('/admin/event/edit', '功能', 'show|modify|delete');
@@ -53,18 +53,18 @@ class EventController extends Controller
         $edit->add('name', '課程日期/場次', 'text')->rule('required');
         $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('number', '預估上課人數', 'text');
-        $edit->add('area', '職級別', 'text');
-        $edit->add('event_at', '上課時間', 'datetime')->format('Y-m-d h:i', 'zh-TW');
+//        $edit->add('area', '職級別', 'text');
+        $edit->add('event_at', '上課時間', 'text');
         $edit->add('hour', '課程時數', 'text');
 
         $grid = DataGrid::source(Event::with('course'));
         $grid->add('name', '課程日期/場次');
         $grid->add('{{ $course->name }}', '課程項目');
         $grid->add('number', '預估上課人數');
-        $grid->add('area', '職級別', true);
+//        $grid->add('area', '職級別', true);
         $grid->add('event_at', '上課時間', true);
         $grid->add('hour', '課程時數');
-        $grid->orderBy('id', 'asc');
+        $grid->orderBy('event_at', 'desc');
         $grid->paginate(10);
 
         $grid->edit('/admin/event/edit', '功能', 'show|modify|delete');
@@ -107,7 +107,7 @@ class EventController extends Controller
                 //Company::insert($upload);
                 //Flash::overlay('上傳成功','Info');
                 //$datas = Album::orderBy('site', 'asc')->get();
-                return Redirect::to('/admin/signup/list');
+                return Redirect::to('/admin/event/list');
             } else {
                 // sending back with error message.
                 Flash::overlay('請上傳正確檔案', '警告');
