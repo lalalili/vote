@@ -186,7 +186,7 @@ class SignupController extends Controller
         //dd($events);
         if ($event_id == 0) {
             //dd($projects);
-            //Session::forget('event_id');
+            Session::forget('event_id');
             return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
         } else {
             Session::put('event_id', $event_id);
