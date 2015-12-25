@@ -189,7 +189,7 @@ class SignupController extends Controller
             //Session::forget('event_id');
             return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
         } else {
-            //Session::put('event_id', $event_id);
+            Session::put('event_id', $event_id);
             $number = Event::where('id', $event_id)->first()->number;
             $signed = Signup::where('event_id', $event_id)->count();
             //dd($number);
