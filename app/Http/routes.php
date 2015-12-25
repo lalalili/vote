@@ -133,5 +133,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
 
     //Route::controller('signup', 'SignupController');
     Route::get('signup/download', 'SignupController@download');
-    Route::get('signups/reset', 'SignupController@resetSignups');
+    Route::get('signup/downloadAll', 'SignupController@downloadAll');
+    Route::get('signup/reset', 'SignupController@resetSignups');
+    Route::post('signup/batch', 'SignupController@batch');
 });

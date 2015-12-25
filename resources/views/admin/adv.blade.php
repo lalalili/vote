@@ -16,11 +16,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -42,11 +42,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -70,11 +70,37 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        @include('flash::message')
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading"> 課程報名上傳(!! 只新增new工作表內的資料)</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <form role="form" action="{{url('/admin/signup/batch')}}" method="POST"
+                                  enctype="multipart/form-data"
+                                  accept-charset="UTF-8">
+                                <div class="form-group">
+                                    <div class="col-lg-6">
+                                        <input type="file" name="upload">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div>
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -98,11 +124,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -124,11 +150,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -152,11 +178,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -178,11 +204,11 @@
                                         <input type="file" name="upload">
                                     </div>
                                 </div>
-                                <div class="col-lg-2">
+                                <div class="col-lg-3">
                                     <div>
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button class="btn btn-default" type="submit">Upload</button>
-                                        <button class="btn btn-default" type="reset">Reset</button>
+                                        <button class="btn btn-default" type="submit">上傳</button>
+                                        {{--<button class="btn btn-default" type="reset">Reset</button>--}}
                                     </div>
                                 </div>
                             </form>
@@ -220,6 +246,9 @@
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/event/download'">場次
                         </button>
                         <button class="btn btn-info" type="button" onclick="location.href='/admin/signup/download'">
+                            報名資料下載
+                        </button>
+                        <button class="btn btn-info" type="button" onclick="location.href='/admin/signup/downloadAll'">
                             報名資料完整欄位下載
                         </button>
                     </div>

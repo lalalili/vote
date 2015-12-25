@@ -232,7 +232,7 @@ class EmployeeController extends Controller
         return redirect('/admin/signup/step2/' . $request->photo_id);
     }
 
-    public function anyBatch()
+    public function batch()
     {
         $file = array('upload' => Request::file('upload'));
         $rules = array('upload' => 'required',);
@@ -277,7 +277,7 @@ class EmployeeController extends Controller
         }
     }
 
-    public function getDownload()
+    public function download()
     {
         Excel::create('employee', function ($excel) {
             $excel->sheet('employee', function ($sheet) {

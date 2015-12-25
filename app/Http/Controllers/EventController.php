@@ -54,7 +54,7 @@ class EventController extends Controller
         $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('number', '預估上課人數', 'text');
         $edit->add('area', '職級別', 'text');
-        $edit->add('event_at', '上課時間', 'datetime')->format('d/m/Y', 'zh-TW');
+        $edit->add('event_at', '上課時間', 'datetime')->format('Y-m-d h:i', 'zh-TW');
         $edit->add('hour', '課程時數', 'text');
 
         $grid = DataGrid::source(Event::with('course'));
@@ -107,7 +107,7 @@ class EventController extends Controller
                 //Company::insert($upload);
                 //Flash::overlay('上傳成功','Info');
                 //$datas = Album::orderBy('site', 'asc')->get();
-                return Redirect::to('/admin/event/list');
+                return Redirect::to('/admin/signup/list');
             } else {
                 // sending back with error message.
                 Flash::overlay('請上傳正確檔案', '警告');

@@ -20,8 +20,8 @@
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap-datepicker.min.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/jquery-ui-timepicker-addon.min.css') }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -44,7 +44,7 @@
         <!-- /.navbar-header -->
         <ul class="nav navbar-top-links navbar-right">
             @if (Auth::check())
-            歡迎登入： {{Auth::getUser()['email']}}
+                歡迎登入： {{Auth::getUser()['email']}}
             @endif
             <li class="dropdown">
                 <a class="dropdown-toggle" href="#" data-toggle="dropdown">
@@ -71,7 +71,7 @@
             </li>
         </ul>
         @if (Auth::check())
-        <!-- /.navbar-top-links -->
+                <!-- /.navbar-top-links -->
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
@@ -212,31 +212,32 @@
     </nav>
 
     <!-- Page Content -->
-    <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
+
     @yield('content')
             <!-- /.row -->
     <!-- /#page-wrapper -->
 
 </div>
 <!-- /#wrapper -->
-
+<script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>
+<script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
 <script src="{{ asset('/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('/js/dataTables.bootstrap.min.js') }}"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
-<script src="{{ asset('/js/bootstrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('/locales/bootstrap-datepicker.zh-TW.min.js') }}"></script>
+<script src="{{ asset('/locales/jquery.ui.datepicker-zh-TW.js') }}"></script>
+<script src="{{ asset('/locales/jquery-ui-timepicker-zh-TW.js') }}"></script>
 
 <!-- Custom Theme JavaScript -->
 {{--<script src="{{ url('js/sb-admin-2.js') }}"></script>--}}
 <script src="{{ elixir('js/admin.js') }}"></script>
 
-<!-- This is only necessary if you do Flash::overlay('...') -->
 <script>
     $('#flash-overlay-modal').modal();
 </script>
 
 </body>
-
 </html>
