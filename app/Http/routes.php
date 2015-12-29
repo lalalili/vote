@@ -31,6 +31,10 @@ Route::get('/home', function () {
     return redirect('/admin/photo/list');
 });
 
+Route::get('lottery', function () {
+    return view('lottery');
+});
+
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
         return redirect('/admin/photo/list');
@@ -55,6 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('signup/step3', 'SignupController@step3');
     Route::get('signup/list', 'SignupController@lists');
     Route::any('signup/edit', 'SignupController@edit');
+
+
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {

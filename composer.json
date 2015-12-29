@@ -24,7 +24,8 @@
     "zizaco/entrust": "dev-laravel-5",
     "league/flysystem-dropbox": "^1.0",
     "spatie/laravel-backup": "^2.7",
-    "doctrine/dbal": "^2.5"
+    "doctrine/dbal": "^2.5",
+    "spatie/laravel-link-checker": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",

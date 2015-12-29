@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
 <div id="wrapper">
 
     <!-- Navigation -->
@@ -147,6 +146,9 @@
                                     <a href="{{ url('/admin/wall/1') }}"> 相片牆</a>
                                 </li>
                                 <li>
+                                    <a href="{{ url('/lottery') }}" target="_blank"> 抽獎</a>
+                                </li>
+                                <li>
                                     <a href="#">投票資料管理<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
@@ -210,7 +212,7 @@
     </nav>
 
     <!-- Page Content -->
-    <script src="{{ asset('/js/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>

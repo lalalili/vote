@@ -151,6 +151,7 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         App\Providers\DropboxFilesystemServiceProvider::class,
+        Spatie\LinkChecker\LinkCheckerServiceProvider::class,
     ],
 
     /*
