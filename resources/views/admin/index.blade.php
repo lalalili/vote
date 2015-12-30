@@ -184,6 +184,15 @@
                                     </ul>
                                     <!-- /.nav-third-level -->
                                 </li>
+                                <li>
+                                    <a href="#">感動服務管理<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        <li>
+                                            <a href="{{ url('#') }}"> 照片上傳</a>
+                                        </li>
+                                    </ul>
+                                    <!-- /.nav-third-level -->
+                                </li>
                                 {{--<li>--}}
                                 {{--<a href="#">帳號管理<span class="fa arrow"></span></a>--}}
                                 {{--<ul class="nav nav-third-level">--}}

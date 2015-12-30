@@ -45,4 +45,9 @@ class Photo extends Model
     {
         return $this->hasMany('App\Models\Signup');
     }
+
+    public function touch()
+    {
+        return $this->hasMany('App\Models\Touch');
+    }
 }

@@ -142,4 +142,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('signup/downloadAll', 'SignupController@downloadAll');
     Route::get('signup/reset', 'SignupController@resetSignups');
     Route::post('signup/batch', 'SignupController@batch');
+
+    Route::post('touch/batch', 'TouchController@batch');
 });
