@@ -83,7 +83,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('vote/list', 'VoteController@lists');
     Route::any('vote/edit', 'VoteController@edit');
     Route::get('vote/postlist', 'VoteController@postlists');
-    Route::any('vote/edit', 'VoteController@postedit');
+    Route::any('vote/postedit', 'VoteController@postedit');
     Route::get('vote/whitelist', 'VoteController@whitelists');
     Route::any('vote/whitelistedit', 'VoteController@whitelistedit');
     Route::get('summary', 'VoteController@count');
