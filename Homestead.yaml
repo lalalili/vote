@@ -20,7 +20,6 @@ sites:
       to: /home/vagrant/report/public
     - map: votev.com
       to: /home/vagrant/vote/public
-      hhvm: true
 
 databases:
     - homestead

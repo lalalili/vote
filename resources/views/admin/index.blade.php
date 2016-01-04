@@ -188,7 +188,13 @@
                                     <a href="#">感動服務管理<span class="fa arrow"></span></a>
                                     <ul class="nav nav-third-level">
                                         <li>
-                                            <a href="{{ url('#') }}"> 照片上傳</a>
+                                            <a href="{{ url('/admin/touching/edit') }}"> 編輯內容</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/admin/touching/poll/list') }}"> 投票檢視</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/touching/show') }}" target="_blank"> 檢視內容</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->

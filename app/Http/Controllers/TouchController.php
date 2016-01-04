@@ -1,9 +1,9 @@
 <?php namespace App\Http\Controllers;
 
 use App\Http\Requests;
-use App\Models\Album;
-use App\Models\Photo;
-use App\Models\Title;
+use App\Models\Poll;
+use App\Models\Score;
+use App\Models\Touch;
 use DataEdit;
 use DataFilter;
 use DataGrid;
@@ -19,12 +19,118 @@ use View;
 
 class TouchController extends Controller
 {
+    public function show()
+    {
+        $lists = Touch::all();
+        //dd($lists);
+        return view('touching.show', compact('lists'));
+    }
+
+    public function batch()
+    {
+        $files = Input::file('upload');
+        $file_count = count($files);
+        $uploadcount = 0;
+        //dd($files);
+        $saves = glob('uploads/touch/*'); // get all file names
+        foreach ($saves as $save) { // iterate files
+            if (is_file($save)) {
+                unlink($save);
+            } // delete file
+        }
+        Touch::truncate();
+        foreach ($files as $file) {
+            $rules = array('file' => 'required'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+            $validator = Validator::make(array('file' => $file), $rules);
+            if ($validator->passes()) {
+                $destinationPath = 'uploads/touch';
+                $filename = $file->getClientOriginalName();
+                $upload_success = $file->move($destinationPath, $filename);
+                $uploadcount++;
+
+                $touch = new Touch;
+                $touch->name = $filename;
+                $touch->filename = $filename;
+                $touch->save();
+            }
+        }
+        if ($uploadcount == $file_count) {
+            return Redirect::to('/touching/show');
+        } else {
+            Flash::overlay('上傳失敗', '警告');
+            return Redirect::to('/admin/adv');
+        }
+    }
+
+    public function topic()
+    {
+        $file = Input::file('upload');
+        //dd($files);
+        $save = 'uploads/touch/topic.png'; // get all file names
+        if (is_file($save)) {
+            unlink($save);
+        } // delete file
+
+        $rules = array('file' => 'required|mimes:png'); //'required|mimes:png,gif,jpeg,txt,pdf,doc'
+        $validator = Validator::make(array('file' => $file), $rules);
+        if ($validator->passes()) {
+            $destinationPath = 'uploads/touch';
+            $filename = 'topic.png';
+            $upload_success = $file->move($destinationPath, $filename);
+            return Redirect::to('/touching/show#2nd');
+        } else {
+            Flash::overlay('上傳失敗', '警告');
+            return Redirect::to('/admin/adv');
+        }
+    }
+
+    public function poll(Request $request)
+    {
+        //dd($request::input('r1'));
+        $name = $request::input('name');
+        $r1 = $request::input('r1');
+        $r2 = $request::input('r2');
+        $r3 = $request::input('r3');
+        $r4 = $request::input('r4');
+        $r5 = $request::input('r5');
+//        $request::flash();
+//        if ($Name == "") {
+//            Flash::warning('請輸入姓名');
+//            return Redirect::back()->withInput();
+//        }
+
+        $validator = Validator::make($request::all(), [
+            'name' => 'required',
+            'r1'   => 'required',
+            'r2'   => 'required',
+            'r3'   => 'required',
+            'r4'   => 'required',
+            'r5'   => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            Flash::warning('請樹入完整資訊');
+            return Redirect::to('/touching/show#poll')->withInput();
+        }
+        $poll = new Poll;
+        $poll->name = $name;
+        $poll->r1 = $r1;
+        $poll->r2 = $r2;
+        $poll->r3 = $r3;
+        $poll->r4 = $r4;
+        $poll->r5 = $r5;
+
+        if ($poll->save()) {
+            return redirect('/thanks');
+        } else {
+            Flash::warning('系統異常，請再重新送出一次');
+            return Redirect('/touching/show#poll');
+        }
+    }
+
     public function lists()
     {
-        $filter = DataFilter::source(Photo::with('album', 'title'));
-        //dd($filter);
-        $filter->add('album.name', '據點', 'text');
-        $filter->add('title.name', '職稱', 'text');
+        $filter = DataFilter::source(new Poll());
         $filter->add('name', '姓名', 'text');
 
         $filter->submit('search');
@@ -32,188 +138,106 @@ class TouchController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
+        $grid->add('id', '序號', true);
+        $grid->add('name', '姓名', true);
+        $grid->add('r1', '第一名', true);
+        $grid->add('r2', '第二名', true);
+        $grid->add('r3', '第三名', true);
+        $grid->add('r4', '第四名', true);
+        $grid->add('r5', '第五名', true);
+        $grid->add('updated_at', '投票時間', true);
 
-        $grid->add('{{ $album->name }}', '據點', 'album_id');
-        $grid->add('{{ $title->name }}', '職稱', 'title_id');
-        $grid->add('name', '姓名');
-        $grid->add('updated_at', '更新時間', true);
-        $grid->orderBy('updated_at', 'desc');
+        $grid->edit('/admin/touching/poll/edit', '功能', 'show|modify|delete');
+        $grid->orderBy('id', 'desc');
         $grid->paginate(10);
-        $grid->edit('/admin/photo/edit', '功能', 'show|modify');
 
-        $grid->link('/admin/photo/edit', "新增員工", "TR");
-        return View::make('admin.list', compact('filter', 'grid'));
+        Score::truncate();
+        $r1s = DB::table('polls')->select(DB::raw('count(*) as count, r1'))->groupBy('r1')->get();
+        //dd($r1s);
+        foreach ($r1s as $r1) {
+            $score = new Score;
+            $score->name = $r1->r1;
+            $score->count = $r1->count;
+            $score->total = ($r1->count) * 5;
+            $score->save();
+        }
+
+        $r2s = DB::table('polls')->select(DB::raw('count(*) as count, r2'))->groupBy('r2')->get();
+        foreach ($r2s as $r2) {
+            $score = new Score;
+            $score->name = $r2->r2;
+            $score->count = $r2->count;
+            $score->total = ($r2->count) * 4;
+            $score->save();
+        }
+
+        $r3s = DB::table('polls')->select(DB::raw('count(*) as count, r3'))->groupBy('r3')->get();
+        foreach ($r3s as $r3) {
+            $score = new Score;
+            $score->name = $r3->r3;
+            $score->count = $r3->count;
+            $score->total = ($r3->count) * 3;
+            $score->save();
+        }
+
+        $r4s = DB::table('polls')->select(DB::raw('count(*) as count, r4'))->groupBy('r4')->get();
+        foreach ($r4s as $r4) {
+            $score = new Score;
+            $score->name = $r4->r4;
+            $score->count = $r4->count;
+            $score->total = ($r4->count) * 2;
+            $score->save();
+        }
+
+        $r5s = DB::table('polls')->select(DB::raw('count(*) as count, r5'))->groupBy('r5')->get();
+        foreach ($r5s as $r5) {
+            $score = new Score;
+            $score->name = $r5->r5;
+            $score->count = $r5->count;
+            $score->total = ($r5->count) * 1;
+            $score->save();
+        }
+
+        //dd(Score::all());
+        $scores = DB::table('scores')->select(DB::raw('name, sum(count) as count, sum(total) as total'))->groupBy('name')->orderBy('total',
+            'count', 'asc')->get();
+        //dd($scores);
+        return View::make('touching.list', compact('filter', 'grid', 'scores'));
     }
 
     public function edit()
     {
-        $edit = DataEdit::source(new Photo());
+        $edit = DataEdit::source(new Poll());
         //dd($edit);
-        $edit->link("/admin/photo/list", "上一頁", "BL");
-        $edit->link("/admin/photo/edit", "新增員工", "TR");
-        $edit->label('員工編輯');
+        $edit->link("/admin/touching/poll/list", "Back", "BL");
+        $edit->label('投票細項');
 
-        $edit->add('album_id', '據點', 'select')->options(Album::all()->pluck("name", "id")->all());
-        $edit->add('title_id', '職稱', 'select')->options(Title::all()->pluck("name", "id")->all());
-        $edit->add('name', '姓名', 'text')->rule('required|min:2');
-//        $edit->add('utf8_filename', '原始圖片名稱', 'text');
-        $edit->add('path', '照片', 'image')->resize(145, 160)->move('uploads/images/user')->preview(145, 160);
+        $edit->add('name', '姓名', 'text');
+        $edit->add('r1', '第一名', 'text');
+        $edit->add('r2', '第二名', 'text');
+        $edit->add('r3', '第三名', 'text');
+        $edit->add('r4', '第四名', 'text');
+        $edit->add('r5', '第五名', 'text');
 
-
-        $grid = DataGrid::source(Photo::with('album', 'title'));
-        $grid->add('{{ $album->name }}', '據點', 'album_id');
-        $grid->add('{{ $title->name }}', '職稱', 'title_id');
+        $grid = DataGrid::source(new Poll());
         $grid->add('name', '姓名', true);
-        $grid->add('updated_at', '更新時間');
-        $grid->orderBy('updated_at', 'desc');
-        $grid->paginate(10);
+        $grid->add('r1', '第一名', true);
+        $grid->add('r2', '第二名', true);
+        $grid->add('r3', '第三名', true);
+        $grid->add('r4', '第四名', true);
+        $grid->add('r5', '第五名', true);
+        $grid->add('updated_at', '投票時間', true);
 
-        $grid->edit('/admin/photo/edit', '功能', 'show|modify');
+        $grid->edit('/admin/touching/poll/edit', 'Edit', 'show|modify|delete');
+        $grid->orderBy('id', 'desc');
+        $grid->paginate(10);
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
-    public function show($id)
+    public function reset()
     {
-        //$lists = Photo::findOrFail($id);
-        //$lists = Photo::with('Album', 'Title')->where('album_id', $id)->orderBy('titles.id', 'desc')->get();
-        $lists = DB::table('photos')
-            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-            ->select('photos.id as id', 'photos.name as name', 'photos.path as path', 'titles.name as title',
-                'albums.id as album_id', 'titles.note as order')
-            ->where('album_id', $id)->orderBy('order', 'asc')->get();
-        //dd($lists);
-        return view('show', compact('lists'));
-    }
-
-    public function choose($id)
-    {
-        //dd($id);
-        $to = Photo::findOrFail($id);
-        //dd($to);
-        return view('pull', compact('to'));
-    }
-
-    public function delete()
-    {
-        if (!Entrust::hasRole('admin')) {
-            return redirect('/admin');
-        } else {
-            $filter = DataFilter::source(Photo::with('album', 'title'));
-            //dd($filter);
-            $filter->add('album.name', '據點', 'text');
-            $filter->add('title.name', '職稱', 'text');
-            $filter->add('name', '姓名', 'text');
-
-            $filter->submit('search');
-            $filter->reset('reset');
-            $filter->build();
-
-            $grid = DataGrid::source($filter);
-
-            $grid->add('{{ $album->name }}', '據點', 'album_id');
-            $grid->add('{{ $title->name }}', '職稱', 'title_id');
-            $grid->add('name', '姓名');
-            $grid->add('updated_at', '更新時間');
-            $grid->orderBy('album_id', 'asc');
-            $grid->paginate(10);
-
-            $grid->edit('/admin/photo/edit', '功能', 'show|modify|delete');
-
-            $grid->link('/admin/photo/edit', "新增員工", "TR");
-            return View::make('admin.list', compact('filter', 'grid'));
-        }
-    }
-
-    public function wall($id)
-    {
-        //$lists = Photo::findOrFail($id);
-        //$lists = Photo::with('Album', 'Title')->where('album_id', $id)->orderBy('titles.id', 'desc')->get();
-        $lists = DB::table('photos')
-            ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-            ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-            ->select('photos.id as id', 'photos.name as name', 'photos.path as path', 'albums.name as album',
-                'albums.id as album_id', 'titles.note as order')
-            ->where('title_id', $id)->orderBy('album_id', 'asc')->get();
-        //dd($lists);
-        return view('admin.wall', compact('lists'));
-    }
-
-    public function download()
-    {
-        Excel::create('photo', function ($excel) {
-            $excel->sheet('photo', function ($sheet) {
-                $photos = DB::table('photos')
-                    ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-                    ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-                    ->select('photos.name as name', 'photos.id as id', 'albums.area as area', 'albums.name as store',
-                        'albums.id as album_id', 'titles.name as title', 'titles.id as title_id', 'photos.path as path')
-                    ->orderBy('photos.id', 'asc')->get();
-                //dd($photos);
-                $data = array();
-                foreach ($photos as $photo) {
-                    $data[] = (array)$photo;
-                }
-                //dd($data);
-                $sheet->fromArray($data);
-            });
-        })->export('xlsx');
-    }
-
-    public function batch()
-    {
-        ini_set('max_file_uploads', "50");
-        echo "max_file_uploads: " . ini_get('max_file_uploads');
-        $file = array('upload' => Request::file('upload'));
-        $rules = array('upload' => 'required',);
-        $files = Input::file('upload');
-        $file_count = count($file);
-        //dd(Input::file('upload'));
-        dd(Request::file('upload'));
-        //dd($file);
-        $validator = Validator::make($file, $rules);
-        if ($validator->fails()) {
-            // send back to the page with the input data and errors
-            Flash::overlay('請選擇上傳檔案', '警告');
-            return Redirect::to('admin/adv');
-        } else {
-            // checking file is valid.
-            $upload_name = Request::file('upload')->getClientOriginalName();
-            //dd($upload_name);
-            if ($upload_name == 'photo.xlsx') {
-                $destinationPath = 'uploads'; // upload path
-                //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
-                //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-                $fileName = 'photo.xlsx';
-                Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
-                // sending back with message
-                //Flash::overlay('success', 'Upload successfully');
-                $file = public_path() . '/' . $destinationPath . '/' . $fileName;
-                //dd($file);
-                $uploads = Excel::selectSheets('new')->load($file, function ($reader) {
-                })->get()->toArray();
-                //dd($uploads);
-                //Photo::truncate();
-                foreach ($uploads as $upload) {
-                    Photo::create($upload);
-                }
-                unlink($file);
-                //Company::insert($upload);
-                //Flash::overlay('上傳成功','Info');
-                //$datas = Album::orderBy('site', 'asc')->get();
-                return Redirect::to('/admin/photo/list');
-            } else {
-                // sending back with error message.
-                Flash::overlay('請上傳正確檔案', '警告');
-                return Redirect::to('/admin/adv');
-            }
-        }
-    }
-
-    public function resetPhotos()
-    {
-        DB::table('photos')->truncate();
-        return redirect('admin/photo/list');
+        Poll::truncate();
+        return Redirect::to('/admin/touching/poll/list');
     }
 }

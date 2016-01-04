@@ -22,7 +22,7 @@ use View;
 
 class VoteController extends Controller
 {
-    public function pull(Request $request)
+    public function poll(Request $request)
     {
         //dd($request::input('voteToID'));
         $voteToID = $request::input('voteToID');

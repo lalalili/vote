@@ -8,6 +8,7 @@
 ### Project ###
 Envoy.blade.php
 /public/uploads/images
+/public/uploads/touch
 *.org
 /tests/VoteTest.php
 /database/seeds/UserTableSeeder.php

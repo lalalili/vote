@@ -14,7 +14,6 @@
     <title>禮貌大使票選活動</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <link rel="shortcut icon" href="favicon.png">
 
     <!-- Bootstrap 3.3.2 -->
     <link rel="stylesheet" href="{{ url('/css/bootstrap.min.css')}}">
@@ -28,19 +27,17 @@
     <link rel="stylesheet" href="{{ elixir('css/app.css') }}">
 
     <link rel="stylesheet" href="{{ url('/js/rs-plugin/css/settings.css')}}">
-
-
-    {!! Rapyd::styles() !!}
 </head>
 
 <body>
 
-<script src="{{ url('/js/jquery-1.11.1.min.js')}}"></script>
+<script src="{{ url('/js/jquery-1.11.3.min.js')}}"></script>
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 @yield('content')
+
 <script src="{{ url('/js/bootstrap.min.js') }}"></script>
 <script src="{{ url('/js/slick.min.js') }}"></script>
 <script src="{{ url('/js/placeholdem.min.js') }}"></script>
@@ -57,9 +54,5 @@
     });
 </script>
 
-
-{!! Rapyd::scripts() !!}
-
 </body>
-
 </html>

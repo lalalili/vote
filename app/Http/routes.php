@@ -16,7 +16,7 @@ Route::get('/home', 'AlbumController@show');
 Route::get('store/{id}', 'AlbumController@choose');
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
-Route::post('pull', 'VoteController@pull');
+Route::post('poll', 'VoteController@poll');
 Route::get('pdpa', function () {
     return view('pdpa');
 });
@@ -34,6 +34,10 @@ Route::get('/home', function () {
 Route::get('lottery', function () {
     return view('lottery');
 });
+
+Route::get('touching/show', 'TouchController@show');
+Route::post('touching/poll', 'TouchController@poll');
+Route::get('touching/thank', 'TouchController@thank');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
@@ -143,5 +147,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('signup/reset', 'SignupController@resetSignups');
     Route::post('signup/batch', 'SignupController@batch');
 
-    Route::post('touch/batch', 'TouchController@batch');
+    Route::post('touching/batch', 'TouchController@batch');
+    Route::post('touching/topic', 'TouchController@topic');
+    Route::get('touching/edit', function () {
+        return view('touching.adv');
+    });
+    Route::get('touching/poll/list', 'TouchController@lists');
+    Route::any('touching/poll/edit', 'TouchController@edit');
+    Route::get('touching/poll/reset', 'TouchController@reset');
 });

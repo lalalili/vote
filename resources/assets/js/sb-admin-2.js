@@ -26,7 +26,8 @@ $(function () {
 });
 
 $(function () {
-    var opt={dateFormat: 'yy-mm-dd',
+    var opt = {
+        dateFormat: 'yy-mm-dd',
         showSecond: true,
         timeFormat: 'HH:mm:ss'
 
@@ -59,5 +60,12 @@ function reset_signup_confirm() {
     var r = confirm("確認要清空報名資料 !!");
     if (r == true) {
         window.location.href = '/admin/signup/reset';
+    }
+}
+
+function reset_poll_confirm() {
+    var r = confirm("確認要清空投票資料 !!");
+    if (r == true) {
+        window.location.href = '/admin/touching/poll/reset';
     }
 }
