@@ -121,7 +121,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
@@ -413,7 +413,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
@@ -741,7 +741,7 @@ class VoteController extends Controller
         $edit->label('投票細項');
 
         $edit->add('album', '據點', 'text');
-        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());;
+        $edit->add('photo_id', '員工姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
         $edit->add('name', '客戶姓名', 'text');
         $edit->add('phone', '客戶電話', 'text');
         $edit->add('q1', '問題一', 'checkbox');
