@@ -185,8 +185,8 @@ $(document).ready(function () {
 
 });
 
-$("input").click(function () {
-    $("input." + this.className).not($(this)).each(function () {
-        this.checked = false;
-    });
-});
+//$("input").click(function () {
+//    $("input." + this.className).not($(this)).each(function () {
+//        this.checked = false;
+//    });
+//});

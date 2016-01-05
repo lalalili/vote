@@ -50,24 +50,24 @@
     </div>
 </div>
 <header>
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
+    <nav class="navbar navbar-default2 navbar-fixed-top" role="navigation">
+        <div class="container2">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1">
                     <span class="fa fa-bars fa-lg"></span>
                 </button>
-                <a class="navbar-brand">
-                    <img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">
-                </a>
+                {{--<a class="navbar-brand">--}}
+                {{--<img src="{{url('/images/freeze/logo.png')}}" alt="" class="logo">--}}
+                {{--</a>--}}
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">感動服務</a>
-                    </li>
+                <ul class="nav navbar-nav2 navbar-left">
                     <li><a href="#poll">投票</a>
+                    </li>
+                    <li><a href="#">感動服務</a>
                     </li>
                 </ul>
             </div>
@@ -77,12 +77,12 @@
     </nav>
 </header>
 <div class="wrapper">
-    <section id="abouts">
+    <section id="touching">
         <div class="container">
-            <div class="section-heading inverse scrollpoint sp-effect3">
-                <br>
-                <br>
-            </div>
+            {{--<div class="section-heading inverse scrollpoint sp-effect3">--}}
+            {{--<br>--}}
+            {{--</div>--}}
+            <br>
             @foreach($lists as $list)
                 <div class="row">
                     <img class="img-responsive" src="/uploads/touch/{{ $list->name }}">
@@ -97,7 +97,9 @@
                 <div class="container">
                     <div class="section-heading scrollpoint sp-effect3">
                         <br/><br/>
+
                         <h2>感動服務票選活動</h2>
+
                         <h3>請選出最觸動您心的真實感動故事，您寶貴的意見，將是對第一線同仁最好的鼓勵!!</h3>
                         {{--<div class="divider"></div>--}}
                         <div class="row">
@@ -110,115 +112,84 @@
                     <div class="row" style="margin-top: -15px">
                         <div class="col-md-6 col-sm-6 scrollpoint sp-effect1" style="font-size: 18px">
                             <form role="form" action="{{url('/touching/poll')}}" method="post">
-                                <div class="form-group">
+                                <div class="panel-body">
                                     <label>
                                         <b style="color: red">*</b> 請排序您心目中的第一到第五名 :
                                     </label>
-                                </div>
-                                <div class="form-group">
-                                    <div class="alert alert-info">
-                                        <label>第一名</label>
-                                        <label class="radio-inline" style="margin-left: 10px">
-                                            <input value="北智捷" type="radio" class="la" name="r1">北智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="桃智捷" type="radio" class="lb" name="r1">桃智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="中智捷" type="radio" class="lc" name="r1">中智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="南智捷" type="radio" class="ld" name="r1">南智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="高智捷" type="radio" class="le" name="r1">高智捷
-                                        </label>
+
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover"
+                                               style="display:table-cell; vertical-align:middle; text-align:center">
+                                            <thead>
+                                            <tr>
+                                                <th> 名次</th>
+                                                <th>北智捷</th>
+                                                <th>桃智捷</th>
+                                                <th>中智捷</th>
+                                                <th>南智捷</th>
+                                                <th>高智捷</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>第一名</td>
+                                                    <td><input value="北智捷" type="radio" class="la" name="r1"></td>
+                                                    <td><input value="桃智捷" type="radio" class="lb" name="r1"></td>
+                                                    <td><input value="中智捷" type="radio" class="lc" name="r1"></td>
+                                                    <td><input value="南智捷" type="radio" class="ld" name="r1"></td>
+                                                    <td><input value="高智捷" type="radio" class="le" name="r1"></td>
+                                                </tr>
+                                            </div>
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>第二名</td>
+                                                    <td><input value="北智捷" type="radio" class="la" name="r2"></td>
+                                                    <td><input value="桃智捷" type="radio" class="lb" name="r2"></td>
+                                                    <td><input value="中智捷" type="radio" class="lc" name="r2"></td>
+                                                    <td><input value="南智捷" type="radio" class="ld" name="r2"></td>
+                                                    <td><input value="高智捷" type="radio" class="le" name="r2"></td>
+                                                </tr>
+                                            </div>
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>第三名</td>
+                                                    <td><input value="北智捷" type="radio" class="la" name="r3"></td>
+                                                    <td><input value="桃智捷" type="radio" class="lb" name="r3"></td>
+                                                    <td><input value="中智捷" type="radio" class="lc" name="r3"></td>
+                                                    <td><input value="南智捷" type="radio" class="ld" name="r3"></td>
+                                                    <td><input value="高智捷" type="radio" class="le" name="r3"></td>
+                                                </tr>
+                                            </div>
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>第四名</td>
+                                                    <td><input value="北智捷" type="radio" class="la" name="r4"></td>
+                                                    <td><input value="桃智捷" type="radio" class="lb" name="r4"></td>
+                                                    <td><input value="中智捷" type="radio" class="lc" name="r4"></td>
+                                                    <td><input value="南智捷" type="radio" class="ld" name="r4"></td>
+                                                    <td><input value="高智捷" type="radio" class="le" name="r4"></td>
+                                                </tr>
+                                            </div>
+                                            <div class="form-group">
+                                                <tr>
+                                                    <td>第五名</td>
+                                                    <td><input value="北智捷" type="radio" class="la" name="r5"></td>
+                                                    <td><input value="桃智捷" type="radio" class="lb" name="r5"></td>
+                                                    <td><input value="中智捷" type="radio" class="lc" name="r5"></td>
+                                                    <td><input value="南智捷" type="radio" class="ld" name="r5"></td>
+                                                    <td><input value="高智捷" type="radio" class="le" name="r5"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    <!-- /.table-responsive -->
                                 </div>
+                                <label>
+                                    <b style="color: red">*</b> 請填寫您的大名 :
+                                </label>
+
                                 <div class="form-group">
-                                    <div class="alert alert-info">
-                                        <label>第二名</label>
-                                        <label class="radio-inline" style="margin-left: 10px">
-                                            <input value="北智捷" type="radio" class="la" name="r2">北智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="桃智捷" type="radio" class="lb" name="r2">桃智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="中智捷" type="radio" class="lc" name="r2">中智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="南智捷" type="radio" class="ld" name="r2">南智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="高智捷" type="radio" class="le" name="r2">高智捷
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="alert alert-info">
-                                        <label>第三名</label>
-                                        <label class="radio-inline" style="margin-left: 10px">
-                                            <input value="北智捷" type="radio" class="la" name="r3">北智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="桃智捷" type="radio" class="lb" name="r3">桃智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="中智捷" type="radio" class="lc" name="r3">中智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="南智捷" type="radio" class="ld" name="r3">南智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="高智捷" type="radio" class="le" name="r3">高智捷
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="alert alert-info">
-                                        <label>第四名</label>
-                                        <label class="radio-inline" style="margin-left: 10px">
-                                            <input value="北智捷" type="radio" class="la" name="r4">北智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="桃智捷" type="radio" class="lb" name="r4">桃智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="中智捷" type="radio" class="lc" name="r4">中智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="南智捷" type="radio" class="ld" name="r4">南智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="高智捷" type="radio" class="le" name="r4">高智捷
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="alert alert-info" >
-                                        <label>第五名</label>
-                                        <label class="radio-inline" style="margin-left: 10px">
-                                            <input value="北智捷" type="radio" class="la" name="r5">北智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="桃智捷" type="radio" class="lb" name="r5">桃智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="中智捷" type="radio" class="lc" name="r5">中智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="南智捷" type="radio" class="ld" name="r5">南智捷
-                                        </label>
-                                        <label class="radio-inline">
-                                            <input value="高智捷" type="radio" class="le" name="r5">高智捷
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label>
-                                        <b style="color: red">*</b> 請填寫您的大名 :
-                                    </label>
                                     <input type="text" class="form-control" name="name" value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">

@@ -109,7 +109,7 @@ class TouchController extends Controller
         ]);
 
         if ($validator->fails()) {
-            Flash::warning('請樹入完整資訊');
+            Flash::warning('請輸入完整 * 必填資訊');
             return Redirect::to('/touching/show#poll')->withInput();
         }
         $poll = new Poll;
@@ -121,7 +121,7 @@ class TouchController extends Controller
         $poll->r5 = $r5;
 
         if ($poll->save()) {
-            return redirect('/thanks');
+            return redirect('/touching/thanks');
         } else {
             Flash::warning('系統異常，請再重新送出一次');
             return Redirect('/touching/show#poll');

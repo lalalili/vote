@@ -1432,3 +1432,32 @@ section#pull {
     z-index: 70;
     background: rgba(30, 30, 30, 0.8) none repeat scroll 0 0;
 }
+
+header .navbar-default2 ul.navbar-nav2 li {
+    float: left;
+}
+
+
+header .navbar-default2 ul.navbar-nav2 li a {
+    display: inline;
+    color: #ffffff;
+    background: none;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 26px;
+    padding: 7px 20px;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    margin-left: 20px;
+}
+
+.container2 {
+    background: #000000;
+}
+
+.navbar-nav2 {
+    margin-left: 16%;
+}

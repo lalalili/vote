@@ -37,7 +37,9 @@ Route::get('lottery', function () {
 
 Route::get('touching/show', 'TouchController@show');
 Route::post('touching/poll', 'TouchController@poll');
-Route::get('touching/thank', 'TouchController@thank');
+Route::get('touching/thanks', function () {
+    return view('touching.success');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/', function () {
