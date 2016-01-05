@@ -35,6 +35,7 @@ Route::get('lottery', function () {
     return view('lottery');
 });
 
+Route::get('touching', 'TouchController@show');
 Route::get('touching/show', 'TouchController@show');
 Route::post('touching/poll', 'TouchController@poll');
 Route::get('touching/thanks', function () {
@@ -157,4 +158,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('touching/poll/list', 'TouchController@lists');
     Route::any('touching/poll/edit', 'TouchController@edit');
     Route::get('touching/poll/reset', 'TouchController@reset');
+    Route::get('touching/poll/draw', 'TouchController@draw');
+    Route::get('touching/poll/count', 'TouchController@count');
+    Route::get('touching/poll/name/{id}', 'TouchController@name');
 });

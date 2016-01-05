@@ -14,6 +14,7 @@ use Flash;
 use Input;
 use Redirect;
 use Request;
+use Session;
 use Validator;
 use View;
 
@@ -131,6 +132,7 @@ class TouchController extends Controller
     public function lists()
     {
         $filter = DataFilter::source(new Poll());
+        $filter->add('id', '序號', 'text');
         $filter->add('name', '姓名', 'text');
 
         $filter->submit('search');
@@ -201,7 +203,6 @@ class TouchController extends Controller
         //dd(Score::all());
         $scores = DB::table('scores')->select(DB::raw('name, sum(count) as count, sum(total) as total'))->groupBy('name')->orderBy('total',
             'count', 'asc')->get();
-        //dd($scores);
         return View::make('touching.list', compact('filter', 'grid', 'scores'));
     }
 
@@ -239,5 +240,19 @@ class TouchController extends Controller
     {
         Poll::truncate();
         return Redirect::to('/admin/touching/poll/list');
+    }
+
+    public function draw()
+    {
+        $count = Poll::count();
+        return view('touching/draw', compact('count'));
+    }
+
+    public function name($id)
+    {
+        $name = Poll::where('id', $id)->pluck('name');
+        //return response()->json(['response' => $name]);
+        print_r($name);
+        die;
     }
 }
