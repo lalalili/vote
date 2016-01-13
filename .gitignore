@@ -10,5 +10,5 @@ Envoy.blade.php
 /public/uploads/images
 /public/uploads/touch
 *.org
-/tests/VoteTest.php
+/tests/*Test.php
 /database/seeds/UserTableSeeder.php

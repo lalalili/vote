@@ -19,5 +19,4 @@ class Touch extends Model
     {
         return $this->belongsTo('App\Models\Photo');
     }
-
 }

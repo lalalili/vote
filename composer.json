@@ -32,14 +32,16 @@
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0",
     "phpspec/phpspec": "~2.1",
-    "laravel/homestead": "^2.1"
+    "laravel/homestead": "^2.1",
+    "barryvdh/laravel-debugbar": "^2.1"
   },
   "autoload": {
     "classmap": [
       "database"
     ],
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "Luxgen\\": "app/Luxgen/"
     }
   },
   "autoload-dev": {
@@ -59,7 +61,6 @@
       "php artisan clear-compiled",
       "php artisan ide-helper:generate",
       "php artisan optimize"
-
     ],
     "post-root-package-install": [
       "php -r \"copy('.env.example', '.env');\""

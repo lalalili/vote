@@ -10,7 +10,7 @@
                         <h3>員工列表</h3>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped" id="list">
+                            <table id="example" class="display" cellspacing="0" width="100%">
                                 <thead>
                                 <tr>
                                     <th>類型</th>
@@ -20,22 +20,15 @@
                                     <th>報名</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                @foreach( $lists as $list)
-                                    <tr>
-                                        <td>{{$list->type}}
-                                        </td>
-                                        <td>{{$list->album}}
-                                        </td>
-                                        <td>{{$list->title}}
-                                        </td>
-                                        <td>{{$list->name}}
-                                        </td>
-                                        <td><a href="/admin/signup/step1/{{$list->id}}">開始報名</a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
+                                {{--<tfoot>--}}
+                                {{--<tr>--}}
+                                {{--<th>type</th>--}}
+                                {{--<th>album</th>--}}
+                                {{--<th>title</th>--}}
+                                {{--<th>name</th>--}}
+                                {{--<th>id</th>--}}
+                                {{--</tr>--}}
+                                {{--</tfoot>--}}
                             </table>
                         </div>
                     </div>
@@ -47,11 +40,34 @@
 
     <script>
         $(document).ready(function () {
-            $('#list').DataTable({
+            var type = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+            $('#example').DataTable({
                 responsive: true,
                 language: {
                     url: '/locales/zh_TW.json'
-                }
+                },
+                "ajax": {
+                    "url": "/admin/signup/data/" + type,
+                    "dataSrc": function (data) {
+                        //console.log(data[0]['id']);
+                        for (var i = 0, ien = data.length; i < ien; i++) {
+                            data[i]['id'] = '<a href="/admin/signup/step1/' + data[i]['id'] + '">開始報名</a>';
+                        }
+                        //console.log(data);
+                        return data;
+
+                    },
+                    "error": function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("資料庫連線錯誤，請洽系統管理員 !");
+                    }
+                },
+                "columns": [
+                    {"data": "type"},
+                    {"data": "album"},
+                    {"data": "title"},
+                    {"data": "name"},
+                    {"data": "id"}
+                ]
             });
         });
     </script>

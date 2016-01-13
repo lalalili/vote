@@ -88,19 +88,19 @@
                         <ul class="nav nav-second-level">
                             <li>
                                 @if(Auth::user()->hasRole('la-owner'))
-                                    <a href="{{ url('/admin/signup/la_choose') }}"> 北智捷報名</a>
+                                    <a href="{{ url('/admin/signup/choose/la') }}"> 北智捷報名</a>
                                 @elseif(Auth::user()->hasRole('lb-owner'))
-                                    <a href="{{ url('/admin/signup/lb_choose') }}"> 桃智捷報名</a>
+                                    <a href="{{ url('/admin/signup/choose/lb') }}"> 桃智捷報名</a>
                                 @elseif(Auth::user()->hasRole('lc-owner'))
-                                    <a href="{{ url('/admin/signup/lc_choose') }}"> 中智捷報名</a>
+                                    <a href="{{ url('/admin/signup/choose/lc') }}"> 中智捷報名</a>
                                 @elseif(Auth::user()->hasRole('ld-owner'))
-                                    <a href="{{ url('/admin/signup/ld_choose') }}"> 南智捷報名</a>
+                                    <a href="{{ url('/admin/signup/choose/ld') }}"> 南智捷報名</a>
                                 @elseif(Auth::user()->hasRole('le-owner'))
-                                    <a href="{{ url('/admin/signup/le_choose') }}"> 高智捷報名</a>
+                                    <a href="{{ url('/admin/signup/choose/le') }}"> 高智捷報名</a>
                                 @elseif(Auth::user()->hasRole('luxgen-owner'))
-                                    <a href="{{ url('/admin/signup/luxgen_choose') }}"> 總公司報名</a>
+                                    <a href="{{ url('/admin/signup/choose/luxgen') }}"> 總公司報名</a>
                                 @else
-                                    <a href="{{ url('/admin/signup/choose') }}"> 報名</a>
+                                    <a href="{{ url('/admin/signup/choose/all') }}"> 報名</a>
                                 @endif
                             </li>
                             <li>
@@ -194,7 +194,10 @@
                                             <a href="{{ url('/admin/touching/poll/list') }}"> 投票檢視</a>
                                         </li>
                                         <li>
-                                            <a href="{{ url('/touching/show') }}" target="_blank"> 檢視內容</a>
+                                            <a href="{{ url('/touching/show') }}" target="_blank"> 檢視每月投票</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ url('/touching/yearly') }}" target="_blank"> 檢視年度</a>
                                         </li>
                                     </ul>
                                     <!-- /.nav-third-level -->

@@ -764,7 +764,6 @@ class VoteController extends Controller
 
     public function downloadWhitelistVote()
     {
-
         Excel::create('whitelist_votes', function ($excel) {
             $excel->sheet('whitelist_votes', function ($sheet) {
                 $phone = Whitelist::all()->pluck('phone');

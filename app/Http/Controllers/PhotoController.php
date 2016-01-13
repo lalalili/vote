@@ -11,6 +11,7 @@ use DB;
 use Entrust;
 use Excel;
 use Flash;
+use Luxgen\Repository\PhotoRepository;
 use Redirect;
 use Request;
 use Validator;
@@ -18,6 +19,20 @@ use View;
 
 class PhotoController extends Controller
 {
+
+    /** @var PhotoRepository 注入 */
+    protected $photoRepository;
+
+    /**
+     * PhotoController constructor.
+     * @param PhotoRepository $photoRepository
+     * @internal param Photo $photo
+     */
+    public function __construct(PhotoRepository $photoRepository)
+    {
+        $this->photoRepository = $photoRepository;
+    }
+
     public function lists()
     {
         $filter = DataFilter::source(Photo::with('album', 'title'));
@@ -208,5 +223,10 @@ class PhotoController extends Controller
     {
         DB::table('photos')->truncate();
         return redirect('admin/photo/list');
+    }
+
+    public function signupData($type)
+    {
+        return $this->photoRepository->choose($type);
     }
 }

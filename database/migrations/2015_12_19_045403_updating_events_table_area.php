@@ -25,7 +25,7 @@ class UpdatingEventsTableArea extends Migration
     public function down()
     {
         Schema::table('events', function ($table) {
-            $table->string('area');
+            $table->string('area')->nullable();
         });
     }
 }

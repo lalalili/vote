@@ -37,7 +37,9 @@ Route::get('lottery', function () {
 
 Route::get('touching', 'TouchController@show');
 Route::get('touching/show', 'TouchController@show');
+Route::get('touching/yearly', 'TouchController@yearly');
 Route::post('touching/poll', 'TouchController@poll');
+Route::post('touching/poll_yearly', 'TouchController@pollYear');
 Route::get('touching/thanks', function () {
     return view('touching.success');
 });
@@ -50,12 +52,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('photo/list', 'PhotoController@lists');
     Route::any('photo/edit', 'PhotoController@edit');
 
-    Route::get('signup/la_choose', 'EmployeeController@la_choose');
-    Route::get('signup/lb_choose', 'EmployeeController@lb_choose');
-    Route::get('signup/lc_choose', 'EmployeeController@lc_choose');
-    Route::get('signup/ld_choose', 'EmployeeController@ld_choose');
-    Route::get('signup/le_choose', 'EmployeeController@le_choose');
-    Route::get('signup/luxgen_choose', 'EmployeeController@luxgen_choose');
+    Route::get('signup/choose/{type}', function () {
+        return view('admin.choose');
+    });
+    Route::get('signup/data/{type}', 'PhotoController@signupData');
+//    Route::get('signup/la_choose', 'EmployeeController@la_choose');
+//    Route::get('signup/lb_choose', 'EmployeeController@lb_choose');
+//    Route::get('signup/lc_choose', 'EmployeeController@lc_choose');
+//    Route::get('signup/ld_choose', 'EmployeeController@ld_choose');
+//    Route::get('signup/le_choose', 'EmployeeController@le_choose');
+//    Route::get('signup/luxgen_choose', 'EmployeeController@luxgen_choose');
     Route::get('signup/step1/{id}', 'EmployeeController@step1');
     Route::post('signup/step1/save', 'EmployeeController@saveEmployee');
 
@@ -124,7 +130,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::any('employee/edit', 'EmployeeController@edit');
     Route::post('employee/batch', 'EmployeeController@batch');
     Route::get('employee/download', 'EmployeeController@download');
-    Route::get('signup/choose', 'EmployeeController@choose');
+
 
     //Route::controller('project', 'ProjectController');
     Route::get('project/list', 'ProjectController@lists');

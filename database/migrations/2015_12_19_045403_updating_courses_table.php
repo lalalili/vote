@@ -24,7 +24,7 @@ class UpdatingCoursesTable extends Migration
      */
     public function down()
     {
-        Schema::table('events', function ($table) {
+        Schema::table('courses', function ($table) {
             $table->dropColumn('type');
         });
     }

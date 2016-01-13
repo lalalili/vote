@@ -129,7 +129,6 @@ class SignupController extends Controller
 
     public function step2Project(Request $request, $project_id)
     {
-
         $id = $request->session()->get('id');
         //dd($id);
         $employee = Photo::findOrFail($id);
@@ -152,7 +151,6 @@ class SignupController extends Controller
 
     public function step2Course(Request $request, $course_id)
     {
-
         $id = $request->session()->get('id');
         $employee = Photo::findOrFail($id);
 //        $project_id = $request->session()->get('project_id');
@@ -171,7 +169,6 @@ class SignupController extends Controller
 
     public function step2Event(Request $request, $event_id)
     {
-
         $id = $request->session()->get('id');
 
         //dd($course_id);

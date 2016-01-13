@@ -2,7 +2,6 @@
 
 use App\Http\Requests\Request;
 
-
 class CreateSignupRequest extends Request
 {
     /**

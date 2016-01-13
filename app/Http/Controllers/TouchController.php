@@ -8,13 +8,10 @@ use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
-use Entrust;
-use Excel;
 use Flash;
 use Input;
 use Redirect;
 use Request;
-use Session;
 use Validator;
 use View;
 
@@ -25,6 +22,13 @@ class TouchController extends Controller
         $lists = Touch::all();
         //dd($lists);
         return view('touching.show', compact('lists'));
+    }
+
+    public function yearly()
+    {
+        $lists = Touch::all();
+        //dd($lists);
+        return view('touching.yearly', compact('lists'));
     }
 
     public function batch()
@@ -126,6 +130,50 @@ class TouchController extends Controller
         } else {
             Flash::warning('系統異常，請再重新送出一次');
             return Redirect('/touching/show#poll');
+        }
+    }
+
+    public function pollYear(Request $request)
+    {
+        //dd($request::input('r1'));
+        $name = $request::input('name');
+        $r1 = $request::input('r1');
+        $r2 = $request::input('r2');
+        $r3 = $request::input('r3');
+        $r4 = $request::input('r4');
+        $r5 = $request::input('r5');
+//        $request::flash();
+//        if ($Name == "") {
+//            Flash::warning('請輸入姓名');
+//            return Redirect::back()->withInput();
+//        }
+
+        $validator = Validator::make($request::all(), [
+            'name' => 'required',
+            'r1'   => 'required',
+            'r2'   => 'required',
+            'r3'   => 'required',
+            'r4'   => 'required',
+            'r5'   => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            Flash::warning('請輸入完整 * 必填資訊');
+            return Redirect::to('/touching/yearly#poll')->withInput();
+        }
+        $poll = new Poll;
+        $poll->name = $name;
+        $poll->r1 = $r1;
+        $poll->r2 = $r2;
+        $poll->r3 = $r3;
+        $poll->r4 = $r4;
+        $poll->r5 = $r5;
+
+        if ($poll->save()) {
+            return redirect('/touching/thanks');
+        } else {
+            Flash::warning('系統異常，請再重新送出一次');
+            return Redirect('/touching/yearly#poll');
         }
     }
 
