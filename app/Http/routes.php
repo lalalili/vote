@@ -12,49 +12,37 @@
 */
 
 Route::get('/', 'AlbumController@show');
-Route::get('/home', 'AlbumController@show');
+Route::get('home', 'AlbumController@show');
 Route::get('store/{id}', 'AlbumController@choose');
 Route::get('show/{id}', 'PhotoController@show');
 Route::get('choose/{id}', 'PhotoController@choose');
 Route::post('poll', 'VoteController@poll');
-Route::get('pdpa', function () {
-    return view('pdpa');
-});
-Route::get('thanks', function () {
-    return view('success');
-});
-
+Route::get('pdpa', 'RedirectController@pdpa');
+Route::get('thanks', 'RedirectController@thanks');
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
-Route::get('/home', function () {
-    return redirect('/admin/photo/list');
-});
-
-Route::get('lottery', function () {
-    return view('lottery');
-});
-
+Route::get('lottery', 'RedirectController@lottery');
 Route::get('touching', 'TouchController@show');
 Route::get('touching/show', 'TouchController@show');
 Route::get('touching/yearly', 'TouchController@yearly');
 Route::post('touching/poll', 'TouchController@poll');
 Route::post('touching/poll_yearly', 'TouchController@pollYear');
-Route::get('touching/thanks', function () {
-    return view('touching.success');
+Route::get('touching/thanks', 'RedirectController@tunchingThanks');
+Route::get('signup/data/{type}', 'PhotoController@signupData');
+
+Route::group(['prefix' => 'api'], function () {
+    Route::get('callback_download', 'ApiController@callbackDownload');
+    Route::get('callback_list', 'ApiController@callbackLists');
+    Route::any('callback_edit', 'ApiController@callbackEdit');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
-    Route::get('/', function () {
-        return redirect('/admin/photo/list');
-    });
-
+    Route::get('/', 'RedirectController@adminHome');
     Route::get('photo/list', 'PhotoController@lists');
     Route::any('photo/edit', 'PhotoController@edit');
 
-    Route::get('signup/choose/{type}', function () {
-        return view('admin.choose');
-    });
+    Route::get('signup/choose/{type}', 'RedirectController@signupChoose');
     Route::get('signup/data/{type}', 'PhotoController@signupData');
 //    Route::get('signup/la_choose', 'EmployeeController@la_choose');
 //    Route::get('signup/lb_choose', 'EmployeeController@lb_choose');
@@ -72,15 +60,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('signup/step3', 'SignupController@step3');
     Route::get('signup/list', 'SignupController@lists');
     Route::any('signup/edit', 'SignupController@edit');
-
-
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
-    Route::get('adv', function () {
-        return view('admin.adv');
-    });
-
+    Route::get('adv', 'RedirectController@adv');
     Route::get('wall/{id}', 'PhotoController@wall');
     Route::get('photo/delete', 'PhotoController@delete');
     Route::get('photo/reset', 'PhotoController@resetPhotos');
@@ -158,9 +141,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
 
     Route::post('touching/batch', 'TouchController@batch');
     Route::post('touching/topic', 'TouchController@topic');
-    Route::get('touching/edit', function () {
-        return view('touching.adv');
-    });
+    Route::get('touching/edit', 'RedirectController@touchingEdit');
     Route::get('touching/poll/list', 'TouchController@lists');
     Route::any('touching/poll/edit', 'TouchController@edit');
     Route::get('touching/poll/reset', 'TouchController@reset');

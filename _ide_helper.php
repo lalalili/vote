@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.28 (LTS) on 2016-01-13.
+ * Generated for Laravel 5.1.28 (LTS) on 2016-01-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -14843,7 +14843,7 @@ namespace {
         }
         
         /**
-         * 
+         * Add a submit button to allow saving the current order of the nodes
          *
          * @param string $name
          * @param string $position
@@ -14856,8 +14856,13 @@ namespace {
         }
         
         /**
+         * Get/Set maximum depth of the tree. Nesting beyond this limit will not
+         * be allowed.
          * 
+         * Defaults to 5.
          *
+         * @param integer $value
+         * @return $this|int 
          * @static 
          */
         public static function maxDepth($value = null){
@@ -14865,8 +14870,33 @@ namespace {
         }
         
         /**
-         * 
+         * Get/Set a custom javascript string to be executed at each order change.
          *
+         * @param string $value
+         * @return $this|string 
+         * @static 
+         */
+        public static function onChange($value = null){
+            return \Zofe\Rapyd\DataTree\DataTree::onChange($value);
+        }
+        
+        /**
+         * Enable/Disable automatic ajax-saving at each change
+         *
+         * @param null $value
+         * @return $this 
+         * @static 
+         */
+        public static function autoSave($value = null){
+            return \Zofe\Rapyd\DataTree\DataTree::autoSave($value);
+        }
+        
+        /**
+         * Set the group of the DataTree. Multiple DataTrees of the same
+         * group will be able to exchange items.
+         *
+         * @param null $value
+         * @return $this|int 
          * @static 
          */
         public static function group($value = null){
@@ -14874,8 +14904,11 @@ namespace {
         }
         
         /**
-         * 
+         * Get/Set the input name of the DataTree data. You have to change
+         * this if you display multiple datatrees in the same page.
          *
+         * @param null $value
+         * @return $this|string 
          * @static 
          */
         public static function name($value = null){

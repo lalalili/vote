@@ -5,6 +5,7 @@ namespace Luxgen\Repository;
 use App\Models\Photo;
 use Auth;
 use DB;
+use Response;
 
 class PhotoRepository
 {
@@ -22,19 +23,26 @@ class PhotoRepository
 
     public function choose($type)
     {
-
-        if ($type == 'la') {
-            $area = '北智捷';
-        } elseif ($type == 'lb') {
-            $area = '桃智捷';
-        } elseif ($type == 'lc') {
-            $area = '中智捷';
-        } elseif ($type == 'ld') {
-            $area = '南智捷';
-        } elseif ($type == 'le') {
-            $area = '高智捷';
-        } elseif ($type == 'luxgen') {
-            $area = '納智捷汽車';
+        //dd($type);
+        switch ($type) {
+            case 'la':
+                $area = '北智捷';
+                break;
+            case 'lb':
+                $area = '桃智捷';
+                break;
+            case 'lc':
+                $area = '中智捷';
+                break;
+            case 'ld':
+                $area = '南智捷';
+                break;
+            case 'le':
+                $area = '高智捷';
+                break;
+            case 'luxgen':
+                $area = '納智捷汽車';
+                break;
         }
 
         if (isset($area)) {
@@ -57,14 +65,6 @@ class PhotoRepository
                 die();
             }
         }
-
-        //dd($lists);
-        //return view('admin.choose', compact('lists'));
-        $data = array();
-        foreach ($lists as $list) {
-            $data [] = (array)$list;
-        }
-        //dd(Response::json($data));
-        return $data;
+        return $lists;
     }
 }

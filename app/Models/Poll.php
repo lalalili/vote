@@ -1,6 +1,6 @@
 <?php namespace app\Models;
 
-use Illuminate\Database\Eloquent\Model as Model;
+use Illuminate\Database\Eloquent\Model;
 
 class Poll extends Model
 {
