@@ -34,7 +34,6 @@
     "phpspec/phpspec": "~2.1",
     "laravel/homestead": "^2.1",
     "barryvdh/laravel-debugbar": "^2.1",
-    "spatie/laravel-link-checker": "^1.0",
     "guzzlehttp/guzzle": "^6.1",
     "barryvdh/laravel-ide-helper": "^2.0"
   },
