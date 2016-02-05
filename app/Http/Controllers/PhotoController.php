@@ -103,10 +103,11 @@ class PhotoController extends Controller
 
     public function choose($id)
     {
-        //dd($id);
-        $to = Photo::findOrFail($id);
-        //dd($to);
-        return view('poll', compact('to'));
+//        //dd($id);
+//        $to = Photo::findOrFail($id);
+//        //dd($to);
+//        return view('poll', compact('to'));
+        return view('expire');
     }
 
     public function delete()
