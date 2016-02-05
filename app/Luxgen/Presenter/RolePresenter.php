@@ -43,7 +43,7 @@ class RolePresenter
         if ($this->getRole() == 'admin') {
             return '
                                 <li class="active">
-                        <a href="#"><i class="fa fa-calculator fa-fw"></i>課程報名管理<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-calculator fa-fw"></i> 課程報名管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
                                 <a href="/admin/project/list"> 課程項目</a>
@@ -61,7 +61,7 @@ class RolePresenter
                         <!-- /.nav-third-level -->
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-heart fa-fw"></i>感動服務管理<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
                                 <a href="/admin/touching/edit"> 編輯內容</a>
