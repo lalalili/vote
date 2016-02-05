@@ -72,8 +72,8 @@
         <div class="navbar-default sidebar" role="navigation">
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="active">
-                        <a href="#"><i class="fa fa-child fa-fw"></i> 禮貌大使<span class="fa arrow"></span></a>
+                    <li>
+                        <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 禮貌大使<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="{{ url('/admin/photo/list') }}"> 員工管理</a>
@@ -81,8 +81,8 @@
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-                    <li>
-                        <a href="#"><i class="fa fa-envelope-o fa-fw"></i> 課程報名<span
+                    <li class="active">
+                        <a href="#"><i class="fa fa-calculator fa-fw"></i> 課程報名<span
                                     class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
