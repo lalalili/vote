@@ -196,7 +196,7 @@ class PhotoController extends Controller
                 //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
                 $fileName = 'photo.xlsx';
                 Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
-                // sending back with message
+                //sending back with message
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;
                 //dd($file);

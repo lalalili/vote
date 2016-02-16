@@ -22,7 +22,9 @@ class Employee extends Model
         "note2",
         "note3",
         "note4",
-        "note5"
+        "note5",
+        "tax_id",
+        "duty_day"
     ];
 
 

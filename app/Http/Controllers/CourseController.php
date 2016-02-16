@@ -28,6 +28,7 @@ class CourseController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
+        $grid->add('id', 'id');
         $grid->add('name', '課程項目');
         $grid->add('{{ $project->name }}', '課別', 'project_id');
         $grid->add('type', '課程類型');
@@ -54,6 +55,7 @@ class CourseController extends Controller
         $edit->add('type', '課程類型', 'text');
 
         $grid = DataGrid::source(Course::with('project'));
+        $grid->add('id', 'id');
         $grid->add('name', '課程項目');
         $grid->add('{{ $project->name }}', '課別', 'project_id');
         $grid->add('type', '課程類型');

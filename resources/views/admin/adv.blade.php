@@ -85,7 +85,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> 課程報名上傳(!! 只新增new工作表內的資料)</div>
+                    <div class="panel-heading"> 課程報名上傳 csv</div>
                     <div class="panel-body">
                         <div class="row">
                             <form role="form" action="{{url('/admin/signup/batch')}}" method="POST"
@@ -139,7 +139,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="panel panel-default">
-                    <div class="panel-heading"> 員工個資上傳</div>
+                    <div class="panel-heading"> 員工個資上傳 csv</div>
                     <div class="panel-body">
                         <div class="row">
                             <form role="form" action="{{url('/admin/employee/batch')}}" method="POST"

@@ -15,11 +15,11 @@ use DB;
 use Excel;
 use Flash;
 use App\Http\Requests;
-use Illuminate\Http\Request;
 use Redirect;
 use Session;
 use Validator;
 use View;
+use Request;
 
 class SignupController extends Controller
 {
@@ -271,17 +271,18 @@ class SignupController extends Controller
             // checking file is valid.
             $upload_name = Request::file('upload')->getClientOriginalName();
             //dd($upload_name);
-            if ($upload_name == 'signup.xlsx') {
+            if ($upload_name == 'signup.csv') {
                 $destinationPath = 'uploads'; // upload path
                 //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
                 //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-                $fileName = 'signup.xlsx';
+                $fileName = 'signup.csv';
                 Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;
                 //dd($file);
-                $uploads = Excel::selectSheets('new')->load($file, function ($reader) {
+                //$uploads = Excel::selectSheets('new')->load($file, function ($reader) {
+                $uploads = Excel::load($file, function ($reader) {
                 })->get()->toArray();
                 //dd($data);
                 //Signup::truncate();

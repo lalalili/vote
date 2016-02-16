@@ -31,7 +31,7 @@ class EmployeeController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('photo.name', '姓名', true);
+        $grid->add('photo.name', '姓名', 'photo_id');
         $grid->add('identity', '身分證號', true);
         $grid->add('birth_year', '出生年', true);
         $grid->add('mobile', '手機號碼', true);
@@ -42,6 +42,8 @@ class EmployeeController extends Controller
         $grid->add('level', '階層別', true);
         $grid->add('background', '最高學歷', true);
         $grid->add('food', '飲食習慣', true);
+        $grid->add('tax_id', '統編', true);
+        $grid->add('duty_day', '到職日', true);
         $grid->add('updated_at', '最後更新時間', true);
 
         $grid->orderBy('updated_at', 'desc');
@@ -76,7 +78,9 @@ class EmployeeController extends Controller
         $edit->add('level', '階層別', 'text');
         $edit->add('background', '最高學歷', 'text');
         $edit->add('food', '飲食習慣', 'text');
-        $edit->add('note', '備註', 'text');
+        $edit->add('tax_id', '統編', 'text');
+        $edit->add('duty_day', '到職日', 'text');
+        //$edit->add('note', '備註', 'text');
         //dd($edit);
 
         $grid = DataGrid::source(Employee::with('photo'));
@@ -92,7 +96,8 @@ class EmployeeController extends Controller
         $grid->add('level', '階層別', true);
         $grid->add('background', '最高學歷', true);
         $grid->add('food', '飲食習慣', true);
-
+        $grid->add('tax_id', '統編', true);
+        $grid->add('duty_day', '到職日', true);
         $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
@@ -157,17 +162,18 @@ class EmployeeController extends Controller
             // checking file is valid.
             $upload_name = Request::file('upload')->getClientOriginalName();
             //dd($upload_name);
-            if ($upload_name == 'employee.xlsx') {
+            if ($upload_name == 'employee.csv') {
                 $destinationPath = 'uploads'; // upload path
                 //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
                 //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
-                $fileName = 'employee.xlsx';
+                $fileName = 'employee.csv';
                 Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
                 // sending back with message
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;
                 //dd($file);
-                $uploads = Excel::selectSheets('employee')->load($file, function ($reader) {
+                //$uploads = Excel::selectSheets('employee')->load($file, function ($reader) {
+                $uploads = Excel::load($file, function ($reader) {
                     //$reader->ignoreEmpty();
                 })->get()->toArray();
                 //dd($uploads);
