@@ -104,15 +104,15 @@ class SignupController extends Controller
     public function step2(Request $request, $id)
     {
         if ($id == "project") {
-            $id = $request->session()->get('id');
+            $id = Session::get('id');
             Session::forget('project_id');
             return redirect("/admin/signup/step2/$id");
         } elseif ($id == "course") {
-            $project_id = $request->session()->get('project_id');
+            $project_id = Session::get('project_id');
             Session::forget('course_id');
             return redirect("/admin/signup/step2/project/$project_id");
         } elseif ($id == "event") {
-            $course_id = $request->session()->get('course_id');
+            $course_id = Session::get('course_id');
             Session::forget('event_id');
             return redirect("/admin/signup/step2/course/$course_id");
         } else {
@@ -129,12 +129,12 @@ class SignupController extends Controller
 
     public function step2Project(Request $request, $project_id)
     {
-        $id = $request->session()->get('id');
+        $id = Session::get('id');
         //dd($id);
         $employee = Photo::findOrFail($id);
         //dd($project_id);
         $projects = Project::where('id', $project_id)->get();
-        $type = Photo::findOrFail($request->session()->get('id'))->album->type;
+        $type = Photo::findOrFail(Session::get('id'))->album->type;
         //dd($type);
         if ($type == '生活館') {
             $courses = Course::where('project_id', $project_id)->where('type', '<>', '服務廠')->get();
@@ -151,15 +151,15 @@ class SignupController extends Controller
 
     public function step2Course(Request $request, $course_id)
     {
-        $id = $request->session()->get('id');
+        $id = Session::get('id');
         $employee = Photo::findOrFail($id);
-//        $project_id = $request->session()->get('project_id');
+//        $project_id = Session::get('project_id');
 //        $projects = Project::where('id', $project_id)->get();
         $projects = Project::all();
         //$courses = Course::where('id', $course_id)->get();
         $courses = Course::all();
         //dd(Carbon::now('Asia/Taipei')->subDay(1));
-        //dd(Photo::findOrFail($request->session()->get('id'))->album->type);
+        //dd(Photo::findOrFail(Session::get('id'))->album->type);
         $events = Event::where('course_id', $course_id)->where('event_at', '>',
             Carbon::now('Asia/Taipei')->subDay(1))->get();
         //dd($events);
@@ -169,15 +169,15 @@ class SignupController extends Controller
 
     public function step2Event(Request $request, $event_id)
     {
-        $id = $request->session()->get('id');
+        $id = Session::get('id');
 
         //dd($course_id);
         $employee = Photo::findOrFail($id);
         //dd($employee);
-        //$project_id = $request->session()->get('project_id');
-//        $project_id = $request->session()->get('project_id');
+        //$project_id = Session::get('project_id');
+//        $project_id = Session::get('project_id');
 //        $projects = Project::where('id', $project_id)->get();
-        $course_id = $request->session()->get('course_id');
+        $course_id = Session::get('course_id');
 //        $courses = Course::where('id', $course_id)->get();
         $projects = Project::all();
         $courses = Course::all();
