@@ -243,6 +243,22 @@
                                             @endif
                                         </select>
                                     </div>
+                                    <div class="form-group">
+                                        <label>統編 (必填)</label>
+                                        <input class="form-control" name="tax_id"
+                                               @if ($employee->tax_id <> '') value="{{ $employee->tax_id }}"
+                                               @else value="{{old("tax_id")}}" @endif>
+
+                                        <p class="help-block">範例：24367766</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>到職日 (必填)</label>
+                                        <input class="form-control" name="duty_day"
+                                               @if ($employee->duty_day <> '') value="{{ $employee->duty_day }}"
+                                               @else value="{{old("duty_day")}}" @endif>
+
+                                        <p class="help-block">範例：2016-01-01</p>
+                                    </div>
                                     <button class="btn btn-default" type="submit">下一步</button>
                                 </div>
                             </form>

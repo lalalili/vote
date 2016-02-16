@@ -116,7 +116,7 @@ class EmployeeController extends Controller
                 'albums.name as album', 'albums.area as area', 'photos.id as id', 'employees.identity',
                 'employees.gender', 'employees.birth_year', 'employees.level', 'employees.background',
                 'employees.mobile', 'employees.food', 'employees.emp_id', 'employees.group', 'employees.type',
-                'employees.id as emp')
+                'employees.id as emp', 'employees.tax_id', 'employees.duty_day')
             ->where('photos.id', '=', $id)->first();
         //dd($employee);
         return view('admin.step1', compact('employee'));
@@ -142,6 +142,8 @@ class EmployeeController extends Controller
         $employee->food = $request->food;
         $employee->emp_id = $request->emp_id;
         $employee->group = $request->group;
+        $employee->tax_id = $request->tax_id;
+        $employee->duty_day = $request->duty_day;
         //dd($employee);
         $employee->save();
 
