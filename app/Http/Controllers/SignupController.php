@@ -225,7 +225,11 @@ class SignupController extends Controller
 
     public function downloadAll()
     {
-        Excel::create('signup', function ($excel) {
+        $date = Carbon::now('Asia/Taipei')->format('YmdHis');
+        //dd($date);
+        $filename = 'signup_' . $date;
+        //dd($filename);
+        Excel::create($filename, function ($excel) {
             $excel->sheet('all', function ($sheet) {
                 $signups = DB::table('signups')
                     ->leftjoin('photos', 'signups.photo_id', '=', 'photos.id')
