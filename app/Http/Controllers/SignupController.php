@@ -1,8 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Http\Requests;
+use App\Http\Requests\CreateSignupRequest;
 use App\Models\Course;
 use App\Models\Event;
-use App\Http\Requests\CreateSignupRequest;
 use App\Models\Photo;
 use App\Models\Project;
 use App\Models\Signup;
@@ -14,12 +15,11 @@ use DataGrid;
 use DB;
 use Excel;
 use Flash;
-use App\Http\Requests;
 use Redirect;
+use Request;
 use Session;
 use Validator;
 use View;
-use Request;
 
 class SignupController extends Controller
 {
@@ -238,7 +238,8 @@ class SignupController extends Controller
                     ->select('signups.id as sno', 'albums.area as area', 'albums.type as type', 'albums.name as album',
                         'titles.name as title', 'employees.emp_id', 'photos.name as name', 'employees.identity',
                         'employees.gender', 'employees.birth_year', 'employees.level', 'employees.background',
-                        'employees.mobile', 'employees.food', 'employees.group', 'projects.name as project',
+                        'employees.mobile', 'employees.food', 'employees.group', 'employees.tax_id',
+                        'employees.duty_day', 'projects.name as project',
                         'courses.name as course', 'events.name as event')
                     ->orderBy('signups.id', 'asc')->get();
                 //dd($signups);
