@@ -14,25 +14,25 @@ class RolePresenter
     {
         switch ($this->getRole()) {
             case 'la-owner':
-                return '<a href="/admin/signup/choose/la"> 北智捷報名</a>';
+                return '<a href="/admin/signup/choose/la"> 新增報名</a>';
                 break;
             case 'lb-owner':
-                return '<a href="/admin/signup/choose/lb"> 桃智捷報名</a>';
+                return '<a href="/admin/signup/choose/lb"> 新增報名</a>';
                 break;
             case 'lc-owner':
-                return '<a href="/admin/signup/choose/lc"> 中智捷報名</a>';
+                return '<a href="/admin/signup/choose/lc"> 新增報名</a>';
                 break;
             case 'ld-owner':
-                return '<a href="/admin/signup/choose/ld"> 南智捷報名</a>';
+                return '<a href="/admin/signup/choose/ld"> 新增報名</a>';
                 break;
             case 'le-owner':
-                return '<a href="/admin/signup/choose/le"> 高智捷報名</a>';
+                return '<a href="/admin/signup/choose/le"> 新增報名</a>';
                 break;
             case 'luxgen-owner':
-                return '<a href="/admin/signup/choose/luxgen"> 總公司報名</a>';
+                return '<a href="/admin/signup/choose/luxgen"> 新增報名</a>';
                 break;
             case 'admin':
-                return '<a href="/admin/signup/choose/all"> 報名</a>';
+                return '<a href="/admin/signup/choose/all"> 新增報名</a>';
                 break;
         }
 

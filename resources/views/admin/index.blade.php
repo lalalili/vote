@@ -86,10 +86,10 @@
                                     class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                {!! $roleMenu->pullupMenu() !!}
+                                <a href="{{ url('/admin/signup/list') }}"> 已報名列表</a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/signup/list') }}"> 報名列表</a>
+                                {!! $roleMenu->pullupMenu() !!}
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
