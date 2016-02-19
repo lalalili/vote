@@ -73,10 +73,10 @@
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 禮貌大使<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="{{ url('/admin/photo/list') }}"> 員工管理</a>
+                                <a href="{{ url('/admin/photo/list') }}"> 員工基本資料</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->
