@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Signup extends Model
 {
-    protected $fillable = ["photo_id", "project_id", "course_id", "event_id", "note"];
+    protected $fillable = ['photo_id', 'project_id', 'course_id', 'event_id', 'note'];
 
 
     public function project()
@@ -24,6 +24,6 @@ class Signup extends Model
 
     public function photo()
     {
-        return $this->belongsTo('App\Models\Photo');
+        return $this->belongsTo('App\Models\Photo', 'photo_id');
     }
 }

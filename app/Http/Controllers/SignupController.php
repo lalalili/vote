@@ -53,10 +53,10 @@ class SignupController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('photo.name', '姓名', true);
-        $grid->add('project.name', '課程項目', true);
-        $grid->add('course.name', '課別', true);
-        $grid->add('event.name', '場次', true);
+        $grid->add('{{ $photo->name }}', '姓名', 'photo_id');
+        $grid->add('project.name', '課程項目', 'project_id');
+        $grid->add('course.name', '課別', 'course_id');
+        $grid->add('event.name', '場次', 'event_id');
         $grid->add('note', '報名者', true);
 
         $grid->orderBy('updated_at', 'desc');
