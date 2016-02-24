@@ -160,7 +160,8 @@
                                                     </td>
                                                     <td><input value="9月特優-高智捷-大中館" type="radio" class="s9" name="r1">
                                                     </td>
-                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10" name="r1">
+                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10"
+                                                               name="r1">
                                                     </td>
                                                     <td><input value="11月特優-北智捷-濱江廠" type="radio" class="s11" name="r1">
                                                     </td>
@@ -191,7 +192,8 @@
                                                     </td>
                                                     <td><input value="9月特優-高智捷-大中館" type="radio" class="s9" name="r2">
                                                     </td>
-                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10" name="r2">
+                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10"
+                                                               name="r2">
                                                     </td>
                                                     <td><input value="11月特優-北智捷-濱江廠" type="radio" class="s11" name="r2">
                                                     </td>
@@ -222,7 +224,8 @@
                                                     </td>
                                                     <td><input value="9月特優-高智捷-大中館" type="radio" class="s9" name="r3">
                                                     </td>
-                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10" name="r3">
+                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10"
+                                                               name="r3">
                                                     </td>
                                                     <td><input value="11月特優-北智捷-濱江廠" type="radio" class="s11" name="r3">
                                                     </td>
@@ -253,7 +256,8 @@
                                                     </td>
                                                     <td><input value="9月特優-高智捷-大中館" type="radio" class="s9" name="r4">
                                                     </td>
-                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10" name="r4">
+                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10"
+                                                               name="r4">
                                                     </td>
                                                     <td><input value="11月特優-北智捷-濱江廠" type="radio" class="s11" name="r4">
                                                     </td>
@@ -284,7 +288,8 @@
                                                     </td>
                                                     <td><input value="9月特優-高智捷-大中館" type="radio" class="s9" name="r5">
                                                     </td>
-                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10" name="r5">
+                                                    <td><input value="10月特優-中智捷-南台中館" type="radio" class="s10"
+                                                               name="r5">
                                                     </td>
                                                     <td><input value="11月特優-北智捷-濱江廠" type="radio" class="s11" name="r5">
                                                     </td>
