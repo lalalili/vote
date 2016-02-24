@@ -44,58 +44,57 @@
             </div>
             <!-- /.container-->
         </nav>
-    </header>
-    <!--RevSlider-->
-    <div class="tp-banner-container">
-        <div class="tp-banner">
-            <ul>
-                <!-- SLIDE  -->
-                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
-                    <!-- MAIN IMAGE -->
-                    <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
-                         data-bgposition="left top" data-bgrepeat="no-repeat">
-                    <!-- LAYERS -->
-                    <!-- LAYER NR. 1 -->
-                    <div class="tp-caption lfl fadeout hidden-xs"
-                         data-x="left"
-                         data-y="bottom"
-                         data-hoffset="30"
-                         data-voffset="0"
-                         data-speed="500"
-                         data-start="700"
-                         data-easing="Power4.easeOut">
-                        <img src="{{url('/images/freeze/Slides/thumb.png')}}" alt="">
-                    </div>
-                    <div class="tp-caption lfl fadeout visible-xs"
-                         data-x="left"
-                         data-y="center"
-                         data-hoffset="700"
-                         data-voffset="0"
-                         data-speed="500"
-                         data-start="700"
-                         data-easing="Power4.easeOut">
-                        <img src="{{url('/images/freeze/Slides/thumb_s.png')}}" alt="">
-                    </div>
-                    <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
-                         data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
-                        2015 Luxgen
-                    </div>
-                    <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0"
-                         data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                        禮貌大使票選活動
-                    </div>
-                    <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0"
-                         data-voffset="185" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
-                        <a href="#abouts" class="btn btn-primary inverse btn-lg">活動辦法</a>
-                    </div>
-                    <div class="tp-caption sfr" data-x="750" data-y="center" data-hoffset="0"
-                         data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
-                        <a href="{{url('/show')}}/{{$storeId}}" class="btn btn-default btn-lg">投票去</a>
-                    </div>
-                </li>
-            </ul>
+        <!--RevSlider-->
+        <div class="tp-banner-container">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE  -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{url('/images/transparent.png')}}" alt="slidebg1" data-bgfit="cover"
+                             data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption lfl fadeout hidden-xs"
+                             data-x="left"
+                             data-y="bottom"
+                             data-hoffset="30"
+                             data-voffset="0"
+                             data-speed="500"
+                             data-start="700"
+                             data-easing="Power4.easeOut">
+                            <img src="{{url('/images/freeze/Slides/thumb.png')}}" alt="">
+                        </div>
+                        <div class="tp-caption lfl fadeout visible-xs"
+                             data-x="left"
+                             data-y="center"
+                             data-hoffset="700"
+                             data-voffset="0"
+                             data-speed="500"
+                             data-start="700"
+                             data-easing="Power4.easeOut">
+                            <img src="{{url('/images/freeze/Slides/thumb_s.png')}}" alt="">
+                        </div>
+                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
+                             data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
+                            2015 Luxgen
+                        </div>
+                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0"
+                             data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
+                            禮貌大使票選活動
+                        </div>
+                        <div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0"
+                             data-voffset="185" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">
+                            <a href="#abouts" class="btn btn-primary inverse btn-lg">活動辦法</a>
+                        </div>
+                        <div class="tp-caption sfr" data-x="750" data-y="center" data-hoffset="0"
+                             data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
+                            <a href="{{url('/show')}}/{{$storeId}}" class="btn btn-default btn-lg">投票去</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
     </header>
     <div class="wrapper">
         <section id="abouts">

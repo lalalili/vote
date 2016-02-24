@@ -75,7 +75,6 @@
         </div>
         <!-- /.container-->
     </nav>
-</header>
 <!--RevSlider-->
 <div class="tp-banner-container">
     <div class="tp-banner">
@@ -119,7 +118,7 @@
         </ul>
     </div>
 </div>
-
+</header>
 <script src="{{ url('/js/bootstrap.min.js') }}"></script>
 <script src="{{ url('/js/slick.min.js') }}"></script>
 <script src="{{ url('/js/placeholdem.min.js') }}"></script>
