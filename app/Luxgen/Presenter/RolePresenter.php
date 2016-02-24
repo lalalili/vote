@@ -70,10 +70,10 @@ class RolePresenter
                                 <a href="/admin/touching/poll/list"> 投票檢視</a>
                             </li>
                             <li>
-                                <a href="/touching/show" target="_blank"> 檢視每月投票</a>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
                             </li>
                             <li>
-                                <a href="/touching/yearly" target="_blank"> 檢視年度</a>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/yearly"> 檢視年度</a>
                             </li>
                         </ul>
                         <!-- /.nav-third-level -->
