@@ -33,7 +33,7 @@ class EventController extends Controller
 //        $grid->add('area', '職級別', true);
         $grid->add('event_at', '上課時間', true);
         $grid->add('hour', '課程時數');
-        $grid->orderBy('event_at', 'desc');
+        $grid->orderBy('event_at', 'asc');
         $grid->paginate(10);
 
         $grid->edit('/admin/event/edit', '功能', 'show|modify|delete');
@@ -64,7 +64,7 @@ class EventController extends Controller
 //        $grid->add('area', '職級別', true);
         $grid->add('event_at', '上課時間', true);
         $grid->add('hour', '課程時數');
-        $grid->orderBy('event_at', 'desc');
+        $grid->orderBy('event_at', 'asc');
         $grid->paginate(10);
 
         $grid->edit('/admin/event/edit', '功能', 'show|modify|delete');

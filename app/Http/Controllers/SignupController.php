@@ -161,7 +161,7 @@ class SignupController extends Controller
         //dd(Carbon::now('Asia/Taipei')->subDay(1));
         //dd(Photo::findOrFail(Session::get('id'))->album->type);
         $events = Event::where('course_id', $course_id)->where('event_at', '>',
-            Carbon::now('Asia/Taipei')->subDay(1))->get();
+            Carbon::now('Asia/Taipei')->addDay(6))->get();
         //dd($events);
         Session::put('course_id', $course_id);
         return view('admin.step2', compact('employee', 'projects', 'courses', 'events'));
