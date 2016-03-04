@@ -14,12 +14,16 @@ folders:
       to: /home/vagrant/report
     - map: D:\Dropbox\work\vote
       to: /home/vagrant/vote
+    - map: D:\Dropbox\work\phpMyAdmin-4.5.5-all-languages
+      to: /home/vagrant/phpMyAdmin
 
 sites:
-    - map: reportv.com
+    - map: reportv.app
       to: /home/vagrant/report/public
-    - map: votev.com
+    - map: votev.app
       to: /home/vagrant/vote/public
+    - map: phpmyadminv.app
+      to: /home/vagrant/phpMyAdmin
 
 databases:
     - homestead

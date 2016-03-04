@@ -26,19 +26,28 @@ class SignupController extends Controller
 
     public function lists()
     {
-        //dd(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA')->get());
+        //dd(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA'));
+        $filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(6))->get()->pluck('id')->all();
+        //dd($filterEvents);
+
         if (Auth::user()->hasRole('la-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'LA')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('lb-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LB'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'LB')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('lc-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LC'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'LC')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('ld-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LD'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'LD')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('le-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LE'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'LE')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('luxgen-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note', 'luxgen'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+                'luxgen')->whereIn('event_id', $filterEvents));
         } else {
             $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo'));
         }
@@ -59,7 +68,7 @@ class SignupController extends Controller
         $grid->add('event.name', '場次', 'event_id');
         $grid->add('note', '報名者', true);
 
-        $grid->orderBy('updated_at', 'desc');
+        $grid->orderBy('event_id');
         $grid->paginate(10);
 
         //$grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
@@ -93,7 +102,7 @@ class SignupController extends Controller
         $grid->add('event.name', '場次', true);
         $grid->add('note', '報名者', true);
 
-        $grid->orderBy('updated_at', 'desc');
+        $grid->orderBy('event_id');
         $grid->paginate(10);
 
         $grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
