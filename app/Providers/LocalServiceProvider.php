@@ -34,7 +34,7 @@ class LocalServiceProvider extends ServiceProvider
         //if ($this->app->environment() == 'local') {
         //      $this->app->register('Barryvdh\Debugbar\ServiceProvider');
         //}
-        dd($this->app->isLocal());
+        //dd($this->app->isLocal());
         if ($this->app->isLocal() && !empty($this->providers)) {
             foreach ($this->providers as $provider) {
                 $this->app->register($provider);
