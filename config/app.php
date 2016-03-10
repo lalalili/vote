@@ -204,6 +204,7 @@ return [
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Gate' => Illuminate\Support\Facades\Gate::class,
 
     ],
 
