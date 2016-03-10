@@ -24,9 +24,7 @@
     "league/flysystem-dropbox": "^1.0",
     "spatie/laravel-backup": "^2.7",
     "doctrine/dbal": "^2.5",
-    "yuanchao/pjax-for-laravel-5": "dev-master",
-    "barryvdh/laravel-ide-helper": "^2.0"
-
+    "yuanchao/pjax-for-laravel-5": "dev-master"
   },
   "require-dev": {
     "fzaninotto/faker": "~1.4",
@@ -35,7 +33,8 @@
     "phpspec/phpspec": "~2.1",
     "laravel/homestead": "^2.1",
     "barryvdh/laravel-debugbar": "^2.1",
-    "guzzlehttp/guzzle": "^6.1"
+    "guzzlehttp/guzzle": "^6.1",
+    "barryvdh/laravel-ide-helper": "^2.0"
   },
   "autoload": {
     "classmap": [

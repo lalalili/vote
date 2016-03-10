@@ -145,7 +145,6 @@ return [
         App\Providers\RouteServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
-        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Zofe\Rapyd\RapydServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
@@ -153,6 +152,7 @@ return [
         App\Providers\DropboxFilesystemServiceProvider::class,
         YuanChao\Pjax\EndaPjaxServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Providers\LocalServiceProvider::class,
     ],
 
     /*
@@ -204,8 +204,7 @@ return [
         'Flash'     => Laracasts\Flash\Flash::class,
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'Gate' => Illuminate\Support\Facades\Gate::class,
+        'Gate'      => Illuminate\Support\Facades\Gate::class,
 
     ],
 

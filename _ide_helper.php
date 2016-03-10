@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.1.29 (LTS) on 2016-02-15.
+ * Generated for Laravel 5.1.31 (LTS) on 2016-03-10.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -3399,6 +3399,52 @@ namespace {
          */
         public static function findOrFail($id, $columns = array()){
             return \Illuminate\Database\Eloquent\Builder::findOrFail($id, $columns);
+        }
+        
+        /**
+         * Find a model by its primary key or return fresh model instance.
+         *
+         * @param mixed $id
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function findOrNew($id, $columns = array()){
+            return \Illuminate\Database\Eloquent\Builder::findOrNew($id, $columns);
+        }
+        
+        /**
+         * Get the first record matching the attributes or instantiate it.
+         *
+         * @param array $attributes
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function firstOrNew($attributes){
+            return \Illuminate\Database\Eloquent\Builder::firstOrNew($attributes);
+        }
+        
+        /**
+         * Get the first record matching the attributes or create it.
+         *
+         * @param array $attributes
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function firstOrCreate($attributes){
+            return \Illuminate\Database\Eloquent\Builder::firstOrCreate($attributes);
+        }
+        
+        /**
+         * Create or update a record matching the attributes, and fill it with values.
+         *
+         * @param array $attributes
+         * @param array $values
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */
+        public static function updateOrCreate($attributes, $values = array()){
+            return \Illuminate\Database\Eloquent\Builder::updateOrCreate($attributes, $values);
         }
         
         /**
@@ -12249,6 +12295,19 @@ namespace {
         }
         
         /**
+         * Check if the current user has a role or permission by its name
+         *
+         * @param array|string $roles The role(s) needed.
+         * @param array|string $permissions The permission(s) needed.
+         * @param array $options The Options.
+         * @return bool 
+         * @static 
+         */
+        public static function ability($roles, $permissions, $options = array()){
+            return \Zizaco\Entrust\Entrust::ability($roles, $permissions, $options);
+        }
+        
+        /**
          * Get the currently authenticated user or null.
          *
          * @return \Zizaco\Entrust\Illuminate\Auth\UserInterface|null 
@@ -12777,6 +12836,152 @@ namespace {
         public static function offsetUnset($key){
             //Method inherited from \DebugBar\DebugBar            
             return \Barryvdh\Debugbar\LaravelDebugbar::offsetUnset($key);
+        }
+        
+    }
+
+
+    class Gate extends \Illuminate\Support\Facades\Gate{
+        
+        /**
+         * Determine if a given ability has been defined.
+         *
+         * @param string $ability
+         * @return bool 
+         * @static 
+         */
+        public static function has($ability){
+            return \Illuminate\Auth\Access\Gate::has($ability);
+        }
+        
+        /**
+         * Define a new ability.
+         *
+         * @param string $ability
+         * @param callable|string $callback
+         * @return $this 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function define($ability, $callback){
+            return \Illuminate\Auth\Access\Gate::define($ability, $callback);
+        }
+        
+        /**
+         * Define a policy class for a given class type.
+         *
+         * @param string $class
+         * @param string $policy
+         * @return $this 
+         * @static 
+         */
+        public static function policy($class, $policy){
+            return \Illuminate\Auth\Access\Gate::policy($class, $policy);
+        }
+        
+        /**
+         * Register a callback to run before all Gate checks.
+         *
+         * @param callable $callback
+         * @return $this 
+         * @static 
+         */
+        public static function before($callback){
+            return \Illuminate\Auth\Access\Gate::before($callback);
+        }
+        
+        /**
+         * Register a callback to run after all Gate checks.
+         *
+         * @param callable $callback
+         * @return $this 
+         * @static 
+         */
+        public static function after($callback){
+            return \Illuminate\Auth\Access\Gate::after($callback);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function allows($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::allows($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be denied for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function denies($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::denies($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return bool 
+         * @static 
+         */
+        public static function check($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::check($ability, $arguments);
+        }
+        
+        /**
+         * Determine if the given ability should be granted for the current user.
+         *
+         * @param string $ability
+         * @param array|mixed $arguments
+         * @return \Illuminate\Auth\Access\Response 
+         * @throws \Illuminate\Auth\Access\UnauthorizedException
+         * @static 
+         */
+        public static function authorize($ability, $arguments = array()){
+            return \Illuminate\Auth\Access\Gate::authorize($ability, $arguments);
+        }
+        
+        /**
+         * Get a policy instance for a given class.
+         *
+         * @param object|string $class
+         * @return mixed 
+         * @throws \InvalidArgumentException
+         * @static 
+         */
+        public static function getPolicyFor($class){
+            return \Illuminate\Auth\Access\Gate::getPolicyFor($class);
+        }
+        
+        /**
+         * Build a policy class instance of the given type.
+         *
+         * @param object|string $class
+         * @return mixed 
+         * @static 
+         */
+        public static function resolvePolicy($class){
+            return \Illuminate\Auth\Access\Gate::resolvePolicy($class);
+        }
+        
+        /**
+         * Get a guard instance for the given user.
+         *
+         * @param \Illuminate\Contracts\Auth\Authenticatable|mixed $user
+         * @return static 
+         * @static 
+         */
+        public static function forUser($user){
+            return \Illuminate\Auth\Access\Gate::forUser($user);
         }
         
     }
