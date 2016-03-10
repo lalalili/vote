@@ -152,6 +152,7 @@ return [
         Spatie\Backup\BackupServiceProvider::class,
         App\Providers\DropboxFilesystemServiceProvider::class,
         YuanChao\Pjax\EndaPjaxServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
     ],
 
     /*
