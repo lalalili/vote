@@ -104,7 +104,7 @@ class RolePresenter
                                 <a href="/admin/title/list"> 職稱管理</a>
                             </li>
                             <li>
-                                <a href="/admin/photo/delete"> 員工管理</a>
+                                <a href="/admin/photo/adminlist"> 員工管理</a>
                             </li>
                             <li>
                                 <a href="/admin/whitelist/list"> 白名單管理</a>

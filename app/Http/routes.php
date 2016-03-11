@@ -65,7 +65,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('adv', 'RedirectController@adv');
     Route::get('wall/{id}', 'PhotoController@wall');
-    Route::get('photo/delete', 'PhotoController@delete');
+    Route::get('photo/adminlist', 'PhotoController@adminList');
+    Route::any('photo/adminedit', 'PhotoController@adminEdit');
     Route::get('photo/reset', 'PhotoController@resetPhotos');
     Route::get('photo/download', 'PhotoController@download');
     Route::post('photo/batch', 'PhotoController@batch');

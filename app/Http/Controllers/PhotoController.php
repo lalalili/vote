@@ -110,11 +110,17 @@ class PhotoController extends Controller
         return view('expire');
     }
 
-    public function delete()
+    public function adminList()
     {
         if (!Entrust::hasRole('admin')) {
             return redirect('/admin');
         } else {
+            $photo_id = Photo::all()->pluck('id')->all();
+            //dd($photo_id);
+            //dd(DB::table('signups')->whereNotIn('photo_id', $photo_id)->get());
+            DB::table('signups')->whereNotIn('photo_id', $photo_id)->delete();
+            DB::table('employees')->whereNotIn('photo_id', $photo_id)->delete();
+
             $filter = DataFilter::source(Photo::with('album', 'title'));
             //dd($filter);
             $filter->add('album.name', '據點', 'text');
@@ -134,11 +140,40 @@ class PhotoController extends Controller
             $grid->orderBy('album_id', 'asc');
             $grid->paginate(10);
 
-            $grid->edit('/admin/photo/edit', '功能', 'show|modify|delete');
+            $grid->edit('/admin/photo/adminedit', '功能', 'show|modify|delete');
 
-            $grid->link('/admin/photo/edit', "新增員工", "TR");
+            $grid->link('/admin/photo/adminedit', "新增員工", "TR");
+
             return View::make('admin.list', compact('filter', 'grid'));
         }
+    }
+
+    public function adminEdit()
+    {
+        $edit = DataEdit::source(new Photo());
+        //dd($edit);
+        $edit->link("/admin/photo/adminlist", "上一頁", "BL");
+        $edit->link("/admin/photo/adminedit", "新增員工", "TR");
+        $edit->label('員工編輯');
+
+        $edit->add('album_id', '據點', 'select')->options(Album::all()->pluck("name", "id")->all());
+        $edit->add('title_id', '職稱', 'select')->options(Title::all()->pluck("name", "id")->all());
+        $edit->add('name', '姓名', 'text')->rule('required|min:2');
+//        $edit->add('utf8_filename', '原始圖片名稱', 'text');
+        $edit->add('path', '照片', 'image')->resize(145, 160)->move('uploads/images/user')->preview(145, 160);
+
+
+        $grid = DataGrid::source(Photo::with('album', 'title'));
+        $grid->add('{{ $album->name }}', '據點', 'album_id');
+        $grid->add('{{ $title->name }}', '職稱', 'title_id');
+        $grid->add('name', '姓名', true);
+        $grid->add('updated_at', '更新時間');
+        $grid->orderBy('updated_at', 'desc');
+        $grid->paginate(10);
+
+        $grid->edit('/admin/photo/adminedit', '功能', 'show|modify|delete');
+
+        return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
     public function wall($id)

@@ -15,6 +15,7 @@ use DataGrid;
 use DB;
 use Excel;
 use Flash;
+use Luxgen\Repository\SignupRepository;
 use Redirect;
 use Request;
 use Session;
@@ -23,6 +24,13 @@ use View;
 
 class SignupController extends Controller
 {
+
+    protected $signupRepository;
+
+    public function __construct(SignupRepository $signupRepository)
+    {
+        $this->signupRepository = $signupRepository;
+    }
 
     public function lists()
     {
