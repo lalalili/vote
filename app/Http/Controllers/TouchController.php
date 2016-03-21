@@ -98,6 +98,7 @@ class TouchController extends Controller
         $r3 = $request::input('r3');
         $r4 = $request::input('r4');
         $r5 = $request::input('r5');
+        $dep = $request::input('dep');
 //        $request::flash();
 //        if ($Name == "") {
 //            Flash::warning('請輸入姓名');
@@ -111,6 +112,7 @@ class TouchController extends Controller
             'r3'   => 'required',
             'r4'   => 'required',
             'r5'   => 'required',
+            'dep'   => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -124,6 +126,7 @@ class TouchController extends Controller
         $poll->r3 = $r3;
         $poll->r4 = $r4;
         $poll->r5 = $r5;
+        $poll->note1 = $dep;
 
         if ($poll->save()) {
             return redirect('/touching/thanks');
@@ -142,6 +145,8 @@ class TouchController extends Controller
         $r3 = $request::input('r3');
         $r4 = $request::input('r4');
         $r5 = $request::input('r5');
+        $dep = $request::input('dep');
+
 //        $request::flash();
 //        if ($Name == "") {
 //            Flash::warning('請輸入姓名');
@@ -155,6 +160,7 @@ class TouchController extends Controller
             'r3'   => 'required',
             'r4'   => 'required',
             'r5'   => 'required',
+            'dep'   => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -168,6 +174,8 @@ class TouchController extends Controller
         $poll->r3 = $r3;
         $poll->r4 = $r4;
         $poll->r5 = $r5;
+        $poll->note1 = $dep;
+
 
         if ($poll->save()) {
             return redirect('/touching/thanks');
@@ -195,6 +203,7 @@ class TouchController extends Controller
         $grid->add('r3', '第三名', true);
         $grid->add('r4', '第四名', true);
         $grid->add('r5', '第五名', true);
+        $grid->add('note1', '部門', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/touching/poll/edit', '功能', 'show|modify|delete');
@@ -267,6 +276,7 @@ class TouchController extends Controller
         $edit->add('r3', '第三名', 'text');
         $edit->add('r4', '第四名', 'text');
         $edit->add('r5', '第五名', 'text');
+        $edit->add('note1', '部門', 'text');
 
         $grid = DataGrid::source(new Poll());
         $grid->add('name', '姓名', true);
@@ -275,6 +285,7 @@ class TouchController extends Controller
         $grid->add('r3', '第三名', true);
         $grid->add('r4', '第四名', true);
         $grid->add('r5', '第五名', true);
+        $grid->add('note1', '部門', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/touching/poll/edit', 'Edit', 'show|modify|delete');

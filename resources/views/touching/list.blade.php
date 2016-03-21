@@ -38,7 +38,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <button class="btn btn-info" type="button" style="float: left; position: relative; left: 50%;"
-                        onclick="location.href='/admin/touching/poll/draw'">抽獎
+                        onclick="window.open('/admin/touching/poll/draw')">抽獎
                 </button>
                 {!! $filter !!}
                 {!! $grid !!}

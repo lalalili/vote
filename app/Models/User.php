@@ -11,7 +11,8 @@ use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
-class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+//class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
+class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
     //use Authenticatable, Authorizable, CanResetPassword, EntrustUserTrait;
     use Authenticatable, CanResetPassword, EntrustUserTrait;

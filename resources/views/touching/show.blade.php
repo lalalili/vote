@@ -186,11 +186,25 @@
                                     <!-- /.table-responsive -->
                                 </div>
                                 <label>
-                                    <b style="color: red">*</b> 請填寫您的大名 :
+                                    <b style="color: red">*</b> 請選擇您的部門 :
                                 </label>
-
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="name" value="{{old('name')}}">
+                                    <select class="form-control" name="dep" style="height: 50px;">
+                                        <option value="">---請選擇---</option>
+                                        <option value="銷售部">銷售部</option>
+                                        <option value="行銷部">行銷部</option>
+                                        <option value="財務部">財務部</option>
+                                        <option value="零件服務部">零件服務部</option>
+                                        <option value="顧客滿意部">顧客滿意部</option>
+                                        <option value="行政企劃部">行政企劃部</option>
+                                        <option value="總經理室">總經理室</option>
+                                    </select>
+                                </div>
+                                <label>
+                                    <b style="color: red">*</b> 請填寫您的姓名 :
+                                </label>
+                                <div class="form-group" style="height: 50px;">
+                                    <input type="" class="form-control" name="name" value="{{old('name')}}">
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Events\CleaningEvent;
 use App\Http\Requests;
 use App\Models\Album;
 use App\Models\Photo;
@@ -9,13 +10,16 @@ use DataFilter;
 use DataGrid;
 use DB;
 use Entrust;
+use Event;
 use Excel;
 use Flash;
+use Illuminate\Http\Request;
 use Luxgen\Repository\PhotoRepository;
 use Redirect;
-use Request;
 use Validator;
 use View;
+
+//use Request;
 
 class PhotoController extends Controller
 {
@@ -110,17 +114,11 @@ class PhotoController extends Controller
         return view('expire');
     }
 
-    public function adminList()
+    public function adminList(Request $request)
     {
         if (!Entrust::hasRole('admin')) {
             return redirect('/admin');
         } else {
-            $photo_id = Photo::all()->pluck('id')->all();
-            //dd($photo_id);
-            //dd(DB::table('signups')->whereNotIn('photo_id', $photo_id)->get());
-            DB::table('signups')->whereNotIn('photo_id', $photo_id)->delete();
-            DB::table('employees')->whereNotIn('photo_id', $photo_id)->delete();
-
             $filter = DataFilter::source(Photo::with('album', 'title'));
             //dd($filter);
             $filter->add('album.name', '據點', 'text');
@@ -148,9 +146,18 @@ class PhotoController extends Controller
         }
     }
 
-    public function adminEdit()
+    public function adminEdit(Request $request)
     {
-        $edit = DataEdit::source(new Photo());
+        $photo = new Photo();
+        $do_delete = $request->input('do_delete');
+        //dd($delete);
+//        $photo_id = Photo::all()->pluck('id')->all();
+//        DB::table('signups')->whereNotIn('photo_id', $photo_id)->delete();
+//        DB::table('employees')->whereNotIn('photo_id', $photo_id)->delete();
+        if ($request->method() == 'DELETE') {
+            Event::fire(new CleaningEvent($photo->where('id', '<>', $do_delete)));
+        }
+        $edit = DataEdit::source($photo);
         //dd($edit);
         $edit->link("/admin/photo/adminlist", "上一頁", "BL");
         $edit->link("/admin/photo/adminedit", "新增員工", "TR");
@@ -172,6 +179,7 @@ class PhotoController extends Controller
         $grid->paginate(10);
 
         $grid->edit('/admin/photo/adminedit', '功能', 'show|modify|delete');
+
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
@@ -213,9 +221,9 @@ class PhotoController extends Controller
 
     public function batch()
     {
-        $file = array('upload' => Request::file('upload'));
+        $file = array('upload' => $request->file('upload'));
         $rules = array('upload' => 'required',);
-        //dd(Request::file('upload'));
+        //dd($request->file('upload'));
         $validator = Validator::make($file, $rules);
         if ($validator->fails()) {
             // send back to the page with the input data and errors
@@ -223,14 +231,14 @@ class PhotoController extends Controller
             return Redirect::to('admin/adv');
         } else {
             // checking file is valid.
-            $upload_name = Request::file('upload')->getClientOriginalName();
+            $upload_name = $request->file('upload')->getClientOriginalName();
             //dd($upload_name);
             if ($upload_name == 'photo.xlsx') {
                 $destinationPath = 'uploads'; // upload path
-                //$extension = Request::file('image')->getClientOriginalExtension(); // getting image extension
+                //$extension = $request->file('image')->getClientOriginalExtension(); // getting image extension
                 //$fileName = rand(11111, 99999) . '.' . $extension; // renameing image
                 $fileName = 'photo.xlsx';
-                Request::file('upload')->move($destinationPath, $fileName); // uploading file to given path
+                $request->file('upload')->move($destinationPath, $fileName); // uploading file to given path
                 //sending back with message
                 //Flash::overlay('success', 'Upload successfully');
                 $file = public_path() . '/' . $destinationPath . '/' . $fileName;

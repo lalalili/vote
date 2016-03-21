@@ -67,7 +67,7 @@ class RolePresenter
                                 <a href="/admin/touching/edit"> 編輯內容</a>
                             </li>
                             <li>
-                                <a href="/admin/touching/poll/list"> 投票檢視</a>
+                                <a href="/admin/touching/poll/list"> 投票結果</a>
                             </li>
                             <li>
                                 <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
