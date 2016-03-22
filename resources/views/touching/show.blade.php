@@ -197,6 +197,11 @@
                                         <option value="零件服務部">零件服務部</option>
                                         <option value="顧客滿意部">顧客滿意部</option>
                                         <option value="行政企劃部">行政企劃部</option>
+                                        <option value="外銷業務部">外銷業務部</option>
+                                        <option value="品牌企劃部">品牌企劃部</option>
+                                        <option value="電動車部">電動車部</option>
+                                        <option value="外銷部">外銷部</option>
+                                        <option value="公關暨品牌推廣部">公關暨品牌推廣部</option>
                                         <option value="總經理室">總經理室</option>
                                     </select>
                                 </div>
