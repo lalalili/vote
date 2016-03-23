@@ -8,6 +8,7 @@ use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
+use Excel;
 use Flash;
 use Input;
 use Redirect;
@@ -112,7 +113,7 @@ class TouchController extends Controller
             'r3'   => 'required',
             'r4'   => 'required',
             'r5'   => 'required',
-            'dep'   => 'required',
+            'dep'  => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -160,7 +161,7 @@ class TouchController extends Controller
             'r3'   => 'required',
             'r4'   => 'required',
             'r5'   => 'required',
-            'dep'   => 'required',
+            'dep'  => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -208,7 +209,7 @@ class TouchController extends Controller
 
         $grid->edit('/admin/touching/poll/edit', '功能', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
-        $grid->paginate(10);
+        $grid->paginate(50);
 
         Score::truncate();
         $r1s = DB::table('polls')->select(DB::raw('count(*) as count, r1'))->groupBy('r1')->get();
@@ -290,7 +291,7 @@ class TouchController extends Controller
 
         $grid->edit('/admin/touching/poll/edit', 'Edit', 'show|modify|delete');
         $grid->orderBy('id', 'desc');
-        $grid->paginate(10);
+        $grid->paginate(50);
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
@@ -313,5 +314,23 @@ class TouchController extends Controller
         //return response()->json(['response' => $name]);
         print_r($name);
         die;
+    }
+
+    public function download()
+    {
+        Excel::create('touching', function ($excel) {
+            $excel->sheet('touching', function ($sheet) {
+                $touchings = DB::table('polls')
+                    ->select('id as sno', 'note1 as 部門', 'name as 姓名', 'r1 as 第一名', 'r2 as 第二名', 'r3 as 第三名',
+                        'r4 as 第四名', 'r5 as 第五名')
+                    ->get();
+                $data = array();
+                foreach ($touchings as $touching) {
+                    $data[] = (array)$touching;
+                }
+                //dd($data);
+                $sheet->fromArray($data);
+            });
+        })->export('xlsx');
     }
 }

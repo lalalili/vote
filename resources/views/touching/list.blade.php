@@ -40,6 +40,9 @@
                 <button class="btn btn-info" type="button" style="float: left; position: relative; left: 50%;"
                         onclick="window.open('/admin/touching/poll/draw')">抽獎
                 </button>
+                <button class="btn btn-success" type="button" style="float: left; position: relative; left: 50%;"
+                        onclick="window.open('/admin/touching/download')">下載
+                </button>
                 {!! $filter !!}
                 {!! $grid !!}
             </div>
