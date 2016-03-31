@@ -11,7 +11,7 @@ class CleaningEvent extends Event
 {
     use SerializesModels;
 
-    protected $photo;
+    public $photo;
     /**
      * Create a new event instance.
      *

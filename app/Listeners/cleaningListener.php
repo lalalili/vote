@@ -28,8 +28,7 @@ class CleaningListener
      */
     public function handle(CleaningEvent $event)
     {
-        //$photo_id = $event->photo->get()->pluck('id')->all();
-        //dd($photo_id);
+        //dd($event);
         //dd(DB::table('signups')->whereNotIn('photo_id', $photo_id)->get());
         $photo = $event->photo;
         $photo_id = $this->getVaildId($photo);

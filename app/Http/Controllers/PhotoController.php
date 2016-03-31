@@ -148,16 +148,13 @@ class PhotoController extends Controller
 
     public function adminEdit(Request $request)
     {
-        $photo = new Photo();
         $do_delete = $request->input('do_delete');
-        //dd($delete);
-//        $photo_id = Photo::all()->pluck('id')->all();
-//        DB::table('signups')->whereNotIn('photo_id', $photo_id)->delete();
-//        DB::table('employees')->whereNotIn('photo_id', $photo_id)->delete();
+        //dd($do_delete);
+        //dd(Photo::where('id', '<>', $do_delete)->get());
         if ($request->method() == 'DELETE') {
-            Event::fire(new CleaningEvent($photo->where('id', '<>', $do_delete)));
+            Event::fire(new CleaningEvent(Photo::where('id', '<>', $do_delete)));
         }
-        $edit = DataEdit::source($photo);
+        $edit = DataEdit::source(new Photo());
         //dd($edit);
         $edit->link("/admin/photo/adminlist", "上一頁", "BL");
         $edit->link("/admin/photo/adminedit", "新增員工", "TR");
