@@ -75,8 +75,9 @@ class SignupController extends Controller
         $grid->add('course.name', '課別', 'course_id');
         $grid->add('event.name', '場次', 'event_id');
         $grid->add('note', '報名者', true);
+        $grid->add('updated_at', '報名日期', true);
 
-        $grid->orderBy('event_id');
+        $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
         //$grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
@@ -109,8 +110,9 @@ class SignupController extends Controller
         $grid->add('course.name', '課別', true);
         $grid->add('event.name', '場次', true);
         $grid->add('note', '報名者', true);
+        $grid->add('updated_at', '報名日期', true);
 
-        $grid->orderBy('event_id');
+        $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
         $grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
