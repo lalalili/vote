@@ -38,7 +38,7 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon icon-shield" style="font-size:30px; color:#3498db;">感動服務</span>
+                <span class="icon icon-shield" style="font-size:30px; color:#3498db;">目錄</span>
                 </button>
                 <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-shield"
                 style="font-size:18px; color:#3498db;"></span></a>
@@ -52,7 +52,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    {{--<li><a href="#home" class="smoothScroll"> 感動服務</a></li>--}}
+                    <li><a href="#home" class="smoothScroll"> 感動服務</a></li>
                     <li><a href="#about" class="smoothScroll"> 北智捷</a></li>
                     <li><a href="#services" class="smoothScroll"> 桃智捷</a></li>
                     <li><a href="#team" class="smoothScroll"> 中智捷</a></li>
