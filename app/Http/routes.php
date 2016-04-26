@@ -30,6 +30,7 @@ Route::post('touching/poll', 'TouchController@poll');
 Route::post('touching/poll_yearly', 'TouchController@pollYear');
 Route::get('touching/thanks', 'RedirectController@tunchingThanks');
 Route::get('signup/data/{type}', 'PhotoController@signupData');
+Route::get('touching2', 'RedirectController@show');
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('callback_download', 'ApiController@callbackDownload');

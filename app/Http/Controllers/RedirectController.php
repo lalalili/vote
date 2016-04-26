@@ -45,4 +45,9 @@ class RedirectController extends Controller
     {
         return view('touching.adv');
     }
+
+    public function show()
+    {
+        return view('touching2.index');
+    }
 }
