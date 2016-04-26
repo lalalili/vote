@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SHIELD - Free Bootstrap 3 Theme">
-    <meta name="author" content="Carlos Alvarez - Alvarez.is - blacktie.co">
 
     <title> 感動服務</title>
 
@@ -39,21 +37,29 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                {{--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">--}}
-                {{--<span class="icon icon-shield" style="font-size:30px; color:#3498db;"></span>--}}
-                {{--</button>--}}
-                {{--<a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-shield"--}}
-                {{--style="font-size:18px; color:#3498db;"></span></a>--}}
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon icon-shield" style="font-size:30px; color:#3498db;">感動服務</span>
+                </button>
+                <a class="navbar-brand hidden-xs hidden-sm" href="#home"><span class="icon icon-shield"
+                style="font-size:18px; color:#3498db;"></span></a>
+                    {{--<li><a href="#about" class="smoothScroll"> 北智捷</a></li>--}}
+                    {{--<li><a href="#services" class="smoothScroll"> 桃智捷</a></li>--}}
+                    {{--<li><a href="#team" class="smoothScroll"> 中智捷</a></li>--}}
+                    {{--<li><a href="#portfolio" class="smoothScroll"> 南智捷</a></li>--}}
+                    {{--<li><a href="#blog" class="smoothScroll"> 高智捷</a></li>--}}
+                    {{--<li><a href="#contact" class="smoothScroll"> 投票</a></li>--}}
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#home" class="smoothScroll"> 感動服務</a></li>
+                    {{--<li><a href="#home" class="smoothScroll"> 感動服務</a></li>--}}
                     <li><a href="#about" class="smoothScroll"> 北智捷</a></li>
                     <li><a href="#services" class="smoothScroll"> 桃智捷</a></li>
                     <li><a href="#team" class="smoothScroll"> 中智捷</a></li>
                     <li><a href="#portfolio" class="smoothScroll"> 南智捷</a></li>
                     <li><a href="#blog" class="smoothScroll"> 高智捷</a></li>
                     <li><a href="#contact" class="smoothScroll"> 投票</a></li>
+                </ul>
             </div><!--/.nav-collapse -->
         </div>
     </div>
@@ -61,9 +67,11 @@
 
 
 <!-- ==== HEADERWRAP ==== -->
-<div id="headerwrap" id="home" name="home" style="min-height: 700px; padding-top: 500px;">
+<div id="headerwrap" id="home" name="home">
     <header class="clearfix">
+        <div style="margin-top: 500px">
         <h1><span>2016年4月感動服務典範</span></h1>
+        </div>
     </header>
 </div><!-- /headerwrap -->
 
@@ -205,8 +213,8 @@
             <figure>
                 <img class="img-responsive" src="{{ url('/touching/img/team/team01.jpg') }}" alt="">
                 {{--<figcaption>--}}
-                    {{--<h5>原始圖片</h5>--}}
-                    {{--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">檢視</a>--}}
+                {{--<h5>原始圖片</h5>--}}
+                {{--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">檢視</a>--}}
                 {{--</figcaption><!-- /figcaption -->--}}
             </figure><!-- /figure -->
         </div><!-- /grid-mask -->
