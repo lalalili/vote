@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> 感動服務</title>
+    <title>感動服務</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ url('/touching/css/bootstrap.css') }}">
@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="{{ url('/touching/css/main.css') }}">
     <link rel="stylesheet" href="{{ url('/touching/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ url('/touching/css/animate-custom.css') }}">
-
 
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic' rel='stylesheet'
           type='text/css'>
@@ -38,45 +37,32 @@
         <div class="container">
             <div class="navbar-header">
                 <ul class="nav navbar-nav">
-                    <li><a href="#home"> 感動服務</a></li>
+                    <li><a href="#"> 感動服務</a></li>
                     {{--<li><a href="#about" class="smoothScroll"> 北智捷</a></li>--}}
                     {{--<li><a href="#services" class="smoothScroll"> 桃智捷</a></li>--}}
                     {{--<li><a href="#team" class="smoothScroll"> 中智捷</a></li>--}}
                     {{--<li><a href="#portfolio" class="smoothScroll"> 南智捷</a></li>--}}
                     {{--<li><a href="#blog" class="smoothScroll"> 高智捷</a></li>--}}
-                    <li><a href="#contact"> 投票</a></li>
+                    <li><a href="#vote"> 投票</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
-<div class="col-lg-12">
-    <div class="grid mask">
-        <figure>
+<div class="container" id="home" name="home">
+    <div class="row">
+        <div class="col-lg-12">
             <img class="img-responsive" src="{{ url('/touching/img/header_bg.jpg') }}" alt="">
-        </figure>
+            <h2 class="centered">2016年</h2>
+            <h2 class="centered">4月</h2>
+            <h2 class="centered">感動服務</h2>
+            <hr>
+            <br>
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h2 class="centered">2016年</h2>
-        <br>
-        <h2 class="centered">4月</h2>
-        <br>
-        <h2 class="centered">感動服務</h2>
-        <hr>
-    </div>
-</div><!-- row -->
-
-<!-- ==== ABOUT ==== -->
-<div class="container" id="about" name="about">
-
-</div><!-- container -->
-
-
-<!-- ==== SERVICES ==== -->
-<div class="container" id="services" name="services">
+<div class="container" id="area1" name="area1">
     <!-- ==== SECTION DIVIDER1 -->
     {{--<section class="section-divider textdivider divider1">--}}
     {{--<div class="container">--}}
@@ -88,9 +74,8 @@
 
 
     <div class="row">
-        <h2 class="centered">北智捷</h2>
-        <br>
-        <h2 class="centered">LUXGEN ! 使命必達 !</h2>
+        <h3 class="centered">北智捷</h3>
+        <h3 class="centered">LUXGEN ! 使命必達 !</h3>
         <hr>
         <h3 class="centered">執行據點：板橋生活館</h3>
         <h3 class="centered">執行同仁：銷售顧問 林祐聰</h3>
@@ -101,7 +86,7 @@
     </div><!-- row -->
 
     <div class="row">
-        <h2 class="centered">感動案例經過</h2>
+        <h3 class="centered">感動案例經過</h3>
         <hr>
         <div class="col-lg-2">
         </div>
@@ -145,31 +130,26 @@
     </div><!-- row -->
 
     <div class="row">
-        <h2 class="centered">感動案例4T說明</h2>
+        <h3 class="centered">感動案例4T說明</h3>
         <hr>
         <div class="col-lg-2">
         </div>
         <div class="col-lg-8">
-            <h3>
-                <li>預先設想Thinking</li>
-                找不到鑰匙時，車主多半是無奈又無助，在佑聰幫忙下順利找到最快速的解決方法。
+            <ul>
+                <li><h3>預先設想Thinking</h3></li>
+                <h3>找不到鑰匙時，車主多半是無奈又無助，在佑聰幫忙下順利找到最快速的解決方法。</h3>
                 <br>
-            </h3>
-            <h3>
-                <li>超越期待Touching</li>
-                前往救援時刻，考量到山區夜晚寒冷還帶了一杯熱咖啡，讓客人感到窩心。
+                <li><h3>超越期待Touching</h3></li>
+                <h3>前往救援時刻，考量到山區夜晚寒冷還帶了一杯熱咖啡，讓客人感到窩心。</h3>
                 <br>
-            </h3>
-            <h3>
-                <li>同理心Treating</li>
-                同時考慮客戶著急的心情與天候狀況，衡量出最經濟省事的救援時間。
+
+                <li><h3>同理心Treating</h3></li>
+                <h3>同時考慮客戶著急的心情與天候狀況，衡量出最經濟省事的救援時間。</h3>
                 <br>
-            </h3>
-            <h3>
-                <li>感動關鍵時刻Timing</li>
-                佑聰雖然下班了，但得知客戶所需困難，馬上聯絡其家人，協助圓滿解決，感動之情溢於言表。
+                <li><h3>感動關鍵時刻Timing</h3></li>
+                <h3>佑聰雖然下班了，但得知客戶所需困難，馬上聯絡其家人，協助圓滿解決，感動之情溢於言表。</h3>
                 <br><br>
-            </h3>
+            </ul>
         </div>
         <div class="col-lg-2">
         </div>
@@ -194,24 +174,25 @@
         <div class="col-lg-2">
         </div>
     </div><!-- row -->
-</div><!-- container -->
+</div>
 
-<!-- ==== TEAM MEMBERS ==== -->
-<div class="container" id="team" name="team">
-</div><!-- container -->
+<div class="container" id="area2" name="area2">
 
-<!-- ==== PORTFOLIO ==== -->
-<div class="container" id="portfolio" name="portfolio">
+</div>
 
-</div><!-- /container -->
+<div class="container" id="area3" name="area3">
+</div>
 
-<!-- ==== BLOG ==== -->
-<div class="container" id="blog" name="blog">
-</div><!-- /container -->
+<div class="container" id="area4" name="area4">
+
+</div>
+
+<div class="container" id="area5" name="area5">
+</div>
 
 
-<div class="container" id="contact" name="contact">
-</div><!-- container -->
+<div class="container" id="vote" name="bote">
+</div>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
