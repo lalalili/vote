@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-<div class="container" id="home" name="home">
+<div class="container" id="home" name="home" style="margin-top: 50px">
     <div class="row">
         <div class="col-lg-12">
             <img class="img-responsive" src="{{ url('/touching/img/header_bg.jpg') }}" alt="">
