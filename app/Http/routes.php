@@ -151,4 +151,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('touching/poll/count', 'TouchController@count');
     Route::get('touching/poll/name/{id}', 'TouchController@name');
     Route::get('touching/download', 'TouchController@download');
+
+    Route::get('touching2/list_title', 'StoryController@listTitle');
+    Route::any('touching2/edit_title', 'StoryController@editTitle');
+    Route::get('touching2/list_1', 'StoryController@list1');
+    Route::any('touching2/edit_1', 'StoryController@edit1');
 });

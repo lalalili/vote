@@ -9,6 +9,7 @@
 Envoy.blade.php
 /public/uploads/images
 /public/uploads/touch
+/public/uploads/story
 *.org
 /tests/*Test.php
 /database/seeds/UserTableSeeder.php

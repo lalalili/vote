@@ -78,6 +78,39 @@ class RolePresenter
                         </ul>
                         <!-- /.nav-third-level -->
                     </li>
+                    <li class="active">
+                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理new<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="/admin/touching2/list_title"> 編輯TITLE</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching2/list_1"> 編輯北智捷</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching2/list_2"> 編輯桃智捷</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching2/list_3"> 編輯中智捷</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching2/list_4"> 編輯南智捷</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching2/list_5"> 編輯高智捷</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching/poll/list"> 投票結果</a>
+                            </li>
+                            <li>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
+                            </li>
+                            <li>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/yearly"> 檢視年度</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
+                    </li>
             <li>
                 <a href="#"><i class="fa fa-wrench fa-fw"></i> 系統設定<span
                                                     class="fa arrow"></span></a>

@@ -23,6 +23,6 @@ elixir(function (mix) {
     mix.version(['css/app.css', 'css/admin.css', 'js/app.js', 'js/admin.js']);
     mix.phpUnit();
     mix.browserSync({
-        proxy: 'votev.com'
+        proxy: 'votev.app'
     });
 });

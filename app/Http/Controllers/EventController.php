@@ -54,6 +54,7 @@ class EventController extends Controller
         $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('number', '預估上課人數', 'text');
 //        $edit->add('area', '職級別', 'text');
+        //$edit->add('event_at', '上課時間', 'datetime')->format('Y/m/d H:i:s', 'zh-TW');
         $edit->add('event_at', '上課時間', 'text');
         $edit->add('hour', '課程時數', 'text');
 
@@ -69,7 +70,7 @@ class EventController extends Controller
 
         $grid->edit('/admin/event/edit', '功能', 'show|modify|delete');
 
-        return $edit->view('admin.detail', compact('edit', 'grid'));
+        return $edit->view('admin.detail_datetime', compact('edit', 'grid'));
     }
 
     public function batch()

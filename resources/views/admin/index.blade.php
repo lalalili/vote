@@ -11,7 +11,7 @@
 
     <title>管理系統</title>
 
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/plugins/metisMenu/metisMenu.min.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
@@ -19,7 +19,8 @@
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui-timepicker-addon.min.css') }}">
+
+    {!! Rapyd::styles() !!}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -108,6 +109,7 @@
     <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>
     <script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     @include('pjax::pjax')
 
     @yield('content')
@@ -121,8 +123,6 @@
 <script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.js"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
-<script src="{{ asset('/locales/jquery.ui.datepicker-zh-TW.js') }}"></script>
-<script src="{{ asset('/locales/jquery-ui-timepicker-zh-TW.js') }}"></script>
 
 <!-- Custom Theme JavaScript -->
 {{--<script src="{{ url('js/sb-admin-2.js') }}"></script>--}}
@@ -131,6 +131,6 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
-
+{!! Rapyd::scripts() !!}
 </body>
 </html>
