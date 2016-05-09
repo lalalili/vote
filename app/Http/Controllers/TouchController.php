@@ -118,7 +118,7 @@ class TouchController extends Controller
 
         if ($validator->fails()) {
             Flash::warning('請輸入完整 * 必填資訊');
-            return Redirect::to('/touching/show#poll')->withInput();
+            return Redirect::to('/touching2/#poll')->withInput();
         }
         $poll = new Poll;
         $poll->name = $name;
@@ -133,7 +133,7 @@ class TouchController extends Controller
             return redirect('/touching/thanks');
         } else {
             Flash::warning('系統異常，請再重新送出一次');
-            return Redirect('/touching/show#poll');
+            return Redirect('/touching2/#poll');
         }
     }
 
@@ -198,13 +198,13 @@ class TouchController extends Controller
 
         $grid = DataGrid::source($filter);
         $grid->add('id', '序號', true);
-        $grid->add('name', '姓名', true);
-        $grid->add('r1', '第一名', true);
-        $grid->add('r2', '第二名', true);
-        $grid->add('r3', '第三名', true);
-        $grid->add('r4', '第四名', true);
-        $grid->add('r5', '第五名', true);
         $grid->add('note1', '部門', true);
+        $grid->add('name', '姓名', true);
+        $grid->add('r1', '北智捷', true);
+        $grid->add('r2', '桃智捷', true);
+        $grid->add('r3', '中智捷', true);
+        $grid->add('r4', '南智捷', true);
+        $grid->add('r5', '高智捷', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/touching/poll/edit', '功能', 'show|modify|delete');
@@ -212,51 +212,146 @@ class TouchController extends Controller
         $grid->paginate(50);
 
         Score::truncate();
-        $r1s = DB::table('polls')->select(DB::raw('count(*) as count, r1'))->groupBy('r1')->get();
+        $r1s = DB::table('polls')->select(DB::raw('count(*) as count, r1 as rank'))->groupBy('r1')->get();
         //dd($r1s);
         foreach ($r1s as $r1) {
             $score = new Score;
-            $score->name = $r1->r1;
-            $score->count = $r1->count;
-            $score->total = ($r1->count) * 5;
+            $score->name = '北智捷';
+            $score->count = 0;
+
+            switch ($r1->rank) {
+                case '第一名':
+                    $score->total += ($r1->count) * 5;
+                    break;
+                case '第二名':
+                    $score->total += ($r1->count) * 4;
+                    break;
+                case '第三名':
+                    $score->total += ($r1->count) * 3;
+                    break;
+                case '第四名':
+                    $score->total += ($r1->count) * 2;
+                    break;
+                case '第五名':
+                    $score->total += ($r1->count) * 1;
+                    break;
+            }
+
             $score->save();
         }
 
-        $r2s = DB::table('polls')->select(DB::raw('count(*) as count, r2'))->groupBy('r2')->get();
+        $r2s = DB::table('polls')->select(DB::raw('count(*) as count, r2 as rank'))->groupBy('r2')->get();
+        //dd($r2s);
         foreach ($r2s as $r2) {
             $score = new Score;
-            $score->name = $r2->r2;
-            $score->count = $r2->count;
-            $score->total = ($r2->count) * 4;
+            $score->name = '桃智捷';
+            $score->count = 0;
+
+            switch ($r2->rank) {
+                case '第一名':
+                    $score->total += ($r2->count) * 5;
+                    break;
+                case '第二名':
+                    $score->total += ($r2->count) * 4;
+                    break;
+                case '第三名':
+                    $score->total += ($r2->count) * 3;
+                    break;
+                case '第四名':
+                    $score->total += ($r2->count) * 2;
+                    break;
+                case '第五名':
+                    $score->total += ($r2->count) * 1;
+                    break;
+            }
+
             $score->save();
         }
 
-        $r3s = DB::table('polls')->select(DB::raw('count(*) as count, r3'))->groupBy('r3')->get();
+        $r3s = DB::table('polls')->select(DB::raw('count(*) as count, r3 as rank'))->groupBy('r3')->get();
+        //dd($r1s);
         foreach ($r3s as $r3) {
             $score = new Score;
-            $score->name = $r3->r3;
-            $score->count = $r3->count;
-            $score->total = ($r3->count) * 3;
+            $score->name = '中智捷';
+            $score->count = 0;
+
+            switch ($r3->rank) {
+                case '第一名':
+                    $score->total += ($r3->count) * 5;
+                    break;
+                case '第二名':
+                    $score->total += ($r3->count) * 4;
+                    break;
+                case '第三名':
+                    $score->total += ($r3->count) * 3;
+                    break;
+                case '第四名':
+                    $score->total += ($r3->count) * 2;
+                    break;
+                case '第五名':
+                    $score->total += ($r3->count) * 1;
+                    break;
+            }
+
             $score->save();
         }
 
-        $r4s = DB::table('polls')->select(DB::raw('count(*) as count, r4'))->groupBy('r4')->get();
+        $r4s = DB::table('polls')->select(DB::raw('count(*) as count, r4 as rank'))->groupBy('r4')->get();
+        //dd($r1s);
         foreach ($r4s as $r4) {
             $score = new Score;
-            $score->name = $r4->r4;
-            $score->count = $r4->count;
-            $score->total = ($r4->count) * 2;
+            $score->name = '南智捷';
+            $score->count = 0;
+
+            switch ($r4->rank) {
+                case '第一名':
+                    $score->total += ($r4->count) * 5;
+                    break;
+                case '第二名':
+                    $score->total += ($r4->count) * 4;
+                    break;
+                case '第三名':
+                    $score->total += ($r4->count) * 3;
+                    break;
+                case '第四名':
+                    $score->total += ($r4->count) * 2;
+                    break;
+                case '第五名':
+                    $score->total += ($r4->count) * 1;
+                    break;
+            }
+
             $score->save();
         }
 
-        $r5s = DB::table('polls')->select(DB::raw('count(*) as count, r5'))->groupBy('r5')->get();
+        $r5s = DB::table('polls')->select(DB::raw('count(*) as count, r5 as rank'))->groupBy('r5')->get();
+        //dd($r1s);
         foreach ($r5s as $r5) {
             $score = new Score;
-            $score->name = $r5->r5;
-            $score->count = $r5->count;
-            $score->total = ($r5->count) * 1;
+            $score->name = '高智捷';
+            $score->count = 0;
+
+            switch ($r5->rank) {
+                case '第一名':
+                    $score->total += ($r5->count) * 5;
+                    break;
+                case '第二名':
+                    $score->total += ($r5->count) * 4;
+                    break;
+                case '第三名':
+                    $score->total += ($r5->count) * 3;
+                    break;
+                case '第四名':
+                    $score->total += ($r5->count) * 2;
+                    break;
+                case '第五名':
+                    $score->total += ($r5->count) * 1;
+                    break;
+            }
+
             $score->save();
         }
+
 
         //dd(Score::all());
         $scores = DB::table('scores')->select(DB::raw('name, sum(count) as count, sum(total) as total'))->groupBy('name')->orderBy('total',
@@ -270,23 +365,23 @@ class TouchController extends Controller
         //dd($edit);
         $edit->link("/admin/touching/poll/list", "Back", "BL");
         $edit->label('投票細項');
-
-        $edit->add('name', '姓名', 'text');
-        $edit->add('r1', '第一名', 'text');
-        $edit->add('r2', '第二名', 'text');
-        $edit->add('r3', '第三名', 'text');
-        $edit->add('r4', '第四名', 'text');
-        $edit->add('r5', '第五名', 'text');
         $edit->add('note1', '部門', 'text');
+        $edit->add('name', '姓名', 'text');
+        $edit->add('r1', '北智捷', 'text');
+        $edit->add('r2', '桃智捷', 'text');
+        $edit->add('r3', '中智捷', 'text');
+        $edit->add('r4', '南智捷', 'text');
+        $edit->add('r5', '高智捷', 'text');
 
         $grid = DataGrid::source(new Poll());
-        $grid->add('name', '姓名', true);
-        $grid->add('r1', '第一名', true);
-        $grid->add('r2', '第二名', true);
-        $grid->add('r3', '第三名', true);
-        $grid->add('r4', '第四名', true);
-        $grid->add('r5', '第五名', true);
+        $grid->add('id', '序號', true);
         $grid->add('note1', '部門', true);
+        $grid->add('name', '姓名', true);
+        $grid->add('r1', '北智捷', true);
+        $grid->add('r2', '桃智捷', true);
+        $grid->add('r3', '中智捷', true);
+        $grid->add('r4', '南智捷', true);
+        $grid->add('r5', '高智捷', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/touching/poll/edit', 'Edit', 'show|modify|delete');

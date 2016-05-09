@@ -66,11 +66,11 @@ class PhotoController extends Controller
     public function edit()
     {
         $edit = DataEdit::source(new Photo());
+        //dd(Album::all()->pluck("name", "id")->all());
         //dd($edit);
         $edit->link("/admin/photo/list", "上一頁", "BL");
         $edit->link("/admin/photo/edit", "新增員工", "TR");
         $edit->label('員工編輯');
-
         $edit->add('album_id', '據點', 'select')->options(Album::all()->pluck("name", "id")->all());
         $edit->add('title_id', '職稱', 'select')->options(Title::all()->pluck("name", "id")->all());
         $edit->add('name', '姓名', 'text')->rule('required|min:2');

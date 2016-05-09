@@ -85,28 +85,16 @@ class RolePresenter
                                 <a href="/admin/touching2/list_title"> 編輯TITLE</a>
                             </li>
                             <li>
-                                <a href="/admin/touching2/list_1"> 編輯北智捷</a>
-                            </li>
-                            <li>
-                                <a href="/admin/touching2/list_2"> 編輯桃智捷</a>
-                            </li>
-                            <li>
-                                <a href="/admin/touching2/list_3"> 編輯中智捷</a>
-                            </li>
-                            <li>
-                                <a href="/admin/touching2/list_4"> 編輯南智捷</a>
-                            </li>
-                            <li>
-                                <a href="/admin/touching2/list_5"> 編輯高智捷</a>
+                                <a href="/admin/touching2/lists"> 編輯感動服務</a>
                             </li>
                             <li>
                                 <a href="/admin/touching/poll/list"> 投票結果</a>
                             </li>
                             <li>
-                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
+                                <a href="/admin/touching/edit"> 清空投票</a>
                             </li>
                             <li>
-                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/yearly"> 檢視年度</a>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching2"> 檢視感動服務</a>
                             </li>
                         </ul>
                         <!-- /.nav-third-level -->

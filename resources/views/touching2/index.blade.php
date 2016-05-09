@@ -37,13 +37,15 @@
         <div class="container">
             <div class="navbar-header">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"> 感動服務</a></li>
                     {{--<li><a href="#about" class="smoothScroll"> 北智捷</a></li>--}}
                     {{--<li><a href="#services" class="smoothScroll"> 桃智捷</a></li>--}}
                     {{--<li><a href="#team" class="smoothScroll"> 中智捷</a></li>--}}
                     {{--<li><a href="#portfolio" class="smoothScroll"> 南智捷</a></li>--}}
                     {{--<li><a href="#blog" class="smoothScroll"> 高智捷</a></li>--}}
-                    <li><a href="#vote"> 投票</a></li>
+                    <li><a href="#poll">投票</a>
+                    </li>
+                    <li><a href="#">感動服務</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -53,146 +55,460 @@
     <div class="row">
         <div class="col-lg-12">
             <img class="img-responsive" src="{{ url('/touching/img/header_bg.jpg') }}" alt="">
-            <h2 class="centered">2016年</h2>
-            <h2 class="centered">4月</h2>
-            <h2 class="centered">感動服務</h2>
+            <h2 class="centered">{{ $title[0]->title1 }}</h2>
+            <h2 class="centered">{{ $title[0]->title2 }}</h2>
+            <h2 class="centered">{{ $title[0]->title3 }}</h2>
             <hr>
             <br>
         </div>
     </div>
 </div>
 
-<div class="container" id="area1" name="area1">
-    <!-- ==== SECTION DIVIDER1 -->
-    {{--<section class="section-divider textdivider divider1">--}}
-    {{--<div class="container">--}}
-    {{--<h1>北智捷感動服務</h1>--}}
-    {{--<hr>--}}
-    {{--<h1>LUXGEN ! 使命必達 !</h1>--}}
-    {{--</div><!-- container -->--}}
-    {{--</section><!-- section -->--}}
+@foreach($stories as $story)
+    <div class="container" id="{{ $story->id.'_'.$story->area }}" name="{{ $story->id.'_'.$story->area }}">
+        <!-- ==== SECTION DIVIDER1 -->
+        {{--<section class="section-divider textdivider divider1">--}}
+        {{--<div class="container">--}}
+        {{--<h1>北智捷感動服務</h1>--}}
+        {{--<hr>--}}
+        {{--<h1>LUXGEN ! 使命必達 !</h1>--}}
+        {{--</div><!-- container -->--}}
+        {{--</section><!-- section -->--}}
 
 
-    <div class="row">
-        <h3 class="centered">北智捷</h3>
-        <h3 class="centered">LUXGEN ! 使命必達 !</h3>
-        <hr>
-        <h3 class="centered">執行據點：板橋生活館</h3>
-        <h3 class="centered">執行同仁：銷售顧問 林祐聰</h3>
-        <h3 class="centered">車主姓名：王先生</h3>
-        <h3 class="centered">執行日期：2016/2/28</h3>
+        <div class="row">
+            <h3 class="centered">{{$story->area}}</h3>
+            <h3 class="centered">{{$story->slogn}}</h3>
+            <hr>
+            <h3 class="centered">執行據點：{{$story->store1}}</h3>
+            @if( ! empty($story->store2))
+                <h3 class="centered">執行據點：{{$story->store2}}</h3>
+            @endif
+            @if( ! empty($story->store3))
+                <h3 class="centered">執行據點：{{$story->store3}}</h3>
+            @endif
+            <h3 class="centered">執行同仁：{{$story->employee1}}</h3>
+            @if( ! empty($story->employee2))
+                <h3 class="centered">執行同仁：{{$story->employee2}}</h3>
+            @endif
+            @if( ! empty($story->employee3))
+                <h3 class="centered">執行同仁：{{$story->employee3}}</h3>
+            @endif
+            @if( ! empty($story->employee4))
+                <h3 class="centered">執行同仁：{{$story->employee4}}</h3>
+            @endif
+            @if( ! empty($story->employee5))
+                <h3 class="centered">執行同仁：{{$story->employee5}}</h3>
+            @endif
+            <h3 class="centered">車主姓名：{{$story->customer1}}</h3>
+            @if( ! empty($story->customer2))
+                <h3 class="centered">車主姓名：{{$story->customer2}}</h3>
+            @endif
+            @if( ! empty($story->customer3))
+                <h3 class="centered">車主姓名：{{$story->customer3}}</h3>
+            @endif
+            @if( ! empty($story->customer4))
+                <h3 class="centered">車主姓名：{{$story->customer4}}</h3>
+            @endif
+            @if( ! empty($story->customer5))
+                <h3 class="centered">車主姓名：{{$story->customer5}}</h3>
+            @endif
+            <h3 class="centered">執行日期：{{$story->date1}}</h3>
+            @if( ! empty($story->date2))
+                <h3 class="centered">執行日期：{{$story->date2}}</h3>
+            @endif
+            @if( ! empty($story->date3))
+                <h3 class="centered">執行日期：{{$story->date3}}</h3>
+            @endif
+            <br>
+            <br>
+        </div><!-- row -->
+
+        <div class="row">
+            <h3 class="centered">感動案例經過</h3>
+            <hr>
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+                <h3>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story1}}
+                    <br>
+                </h3>
+                @if( ! empty($story->story2))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story2}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story3))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story3}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story4))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story4}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story5))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story5}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story6))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story6}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story7))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story7}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story8))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story8}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story9))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story9}}
+                        <br>
+                    </h3>
+                @endif
+                @if( ! empty($story->story10))
+                    <h3>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$story->story10}}
+                        <br>
+                    </h3>
+                @endif
+                <br>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div><!-- row -->
+
+        <div class="row">
+            <h3 class="centered">感動案例4T說明</h3>
+            <hr>
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+                <ul>
+                    <li><h3>預先設想Thinking</h3></li>
+                    <h3>{{$story->thinking}}</h3>
+                    <br>
+                    <li><h3>超越期待Touching</h3></li>
+                    <h3>{{$story->touching}}</h3>
+                    <br>
+
+                    <li><h3>同理心Treating</h3></li>
+                    <h3>{{$story->treating}}</h3>
+                    <br>
+                    <li><h3>感動關鍵時刻Timing</h3></li>
+                    <h3>{{$story->timing}}</h3>
+                    <br><br>
+                </ul>
+            </div>
+            <div class="col-lg-2">
+            </div>
+        </div><!-- row -->
+
+        <div class="row">
+            <h2 class="centered">感動服務照片</h2>
+            <hr>
+            <div class="col-lg-2">
+            </div>
+            <div class="col-lg-8">
+                <div class="grid mask">
+                    <figure>
+                        <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic1) }}" alt="">
+                        {{--<figcaption>--}}
+                        {{--<h5>原始圖片</h5>--}}
+                        {{--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">檢視</a>--}}
+                        {{--</figcaption><!-- /figcaption -->--}}
+                    </figure><!-- /figure -->
+                </div><!-- /grid-mask -->
+                @if( ! empty($story->pic1_note))
+                    <h3>
+                        <h3 class="centered">{{$story->pic1_note}}</h3>
+                    </h3>
+                @endif
+            </div>
+            <div class="col-lg-2">
+            </div>
+            <br>
+        </div>
+        @if( ! empty($story->pic2))
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+                    <div class="grid mask">
+                        <figure>
+                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic2) }}" alt="">
+                        </figure><!-- /figure -->
+                    </div><!-- /grid-mask -->
+                    @if( ! empty($story->pic2_note))
+                        <h3>
+                            <h3 class="centered">{{$story->pic2_note}}</h3>
+                        </h3>
+                    @endif
+                </div>
+                <div class="col-lg-2">
+                </div>
+                <br>
+                <br>
+            </div>
+        @endif
+        @if( ! empty($story->pic3))
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+                    <div class="grid mask">
+                        <figure>
+                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic3) }}" alt="">
+                        </figure><!-- /figure -->
+                    </div><!-- /grid-mask -->
+                    @if( ! empty($story->pic3_note))
+                        <h3>
+                            <h3 class="centered">{{$story->pic3_note}}</h3>
+                        </h3>
+                    @endif
+                </div>
+                <div class="col-lg-2">
+                </div>
+                <br>
+            </div>
+        @endif
+        @if( ! empty($story->pic4))
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+                    <div class="grid mask">
+                        <figure>
+                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic4) }}" alt="">
+                        </figure><!-- /figure -->
+                    </div><!-- /grid-mask -->
+                    @if( ! empty($story->pic1_note))
+                        <h3>
+                            <h3 class="centered">{{$story->pic4_note}}</h3>
+                        </h3>
+                    @endif
+                </div>
+                <div class="col-lg-2">
+                </div>
+                <br>
+            </div>
+        @endif
+        @if( ! empty($story->pic5))
+            <div class="row">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+                    <div class="grid mask">
+                        <figure>
+                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic5) }}" alt="">
+                        </figure><!-- /figure -->
+                    </div><!-- /grid-mask -->
+                    @if( ! empty($story->pic1_note))
+                        <h3>
+                            <h3 class="centered">{{$story->pic5_note}}</h3>
+                        </h3>
+                    @endif
+                </div>
+                <div class="col-lg-2">
+                </div>
+                <br>
+            </div>
+        @endif
         <br>
-        <br>
-    </div><!-- row -->
-
-    <div class="row">
-        <h3 class="centered">感動案例經過</h3>
         <hr>
-        <div class="col-lg-2">
-        </div>
-        <div class="col-lg-8">
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王先生是在2015年11月第一次來賞車，家裡有部十年的舊車，
-                準備做更換。在商談的過程中得知，王先生平常是一位上班族，家住板橋，但爸爸在安坑山區有一塊農地，每週假日家人去那裡耕種蔬果，當一位快樂的假日農夫。
-                <br>
-            </h3>
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;王先生購車過程考量了很多因素，諸如妥善率、油耗、安全性、維修保養…等。但家人對LUXGEN品牌很陌生，尤其是媽媽，更極力反對選擇這個品牌，
-                堅持要買日本進口的MADZA3，在佑聰多方分析及解說中，以兩個特點說服媽媽，分別是LUXGEN的安全結構和售後服務。在與家人充分討論後，決定向佑聰購買S5 TURBO，做為全家人出遊的用車。 
-                <br>
-            </h3>
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;交車半年內，佑聰常在週日晚上接到王先生的電話:「聰仔，你有在店裡嗎？我拿一些自己種的水果您吃。」每次還客氣地說自己種的有機蔬果長的都不漂亮，
-                但絕對是安心無毒。讓我很感動，彷彿多了一位朋友般。
-                <br>
-            </h3>
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在一個週末下班的晚上十點我又接到王大哥的電話:「聰仔，我車鑰匙不見了，家裡都找不到，不知道會不會掉到田裡，天色也晚了！怎麼辦？」
-                聽得出語氣中充滿了急促和無奈。
-                <br>
-            </h3>
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其實當下我有想過聯絡保險公司，安排拖吊即可，但考量到山區拖吊車需花相當時間，且王先生簽約前也跟我分享過，
-                當初舊車剛買時有一次在高速公路拋錨，拖吊時還不小心刮傷他的車，讓他心疼好久。所以當下我除了安撫他之外，
-                立刻回答：「王先生沒關係，請問備份鑰匙在哪裡？我方便去拿過去給您嗎？」得知另一把鑰匙在板橋家中，家中姊姊因照顧小孩無法送達，
-                但可以拿給我之後，我請他稍安勿躁，便即刻啟程前往。
-                <br>
-            </h3>
-            <h3>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先到王先生家跟姊姊拿到鑰匙，之後沿著他口述的路線，開了大概半個小時，看到黑漆的安坑山區內一棟亮燈的民宅。王先生看到佑聰前來，不只帶了鑰匙還拿著一杯熱飲，覺得十分感動。原來在上山的途中經過便利商店，我突然想到那麼晚的天，山上氣溫驟降，順手帶杯熱飲給王先生喝，王先生滿懷感謝的說：
-                「還好你願意在這麼晚上山送備用鑰匙，讓我可以順利發動車子回家，不然車子又要等拖吊，板橋家人也沒人可以幫忙送鑰匙。 」
-                客戶大讚這次的救援，當初選納智捷真是對的選擇！直到此刻我才發現我竟然穿著拖鞋就出門!預先設想，超越期待是納智捷的服務最高原則，能立即幫客戶解決問題更是銷售顧問最常做的事。
-                <br><br>
-            </h3>
-        </div>
-        <div class="col-lg-2">
-        </div>
-    </div><!-- row -->
+    </div>
+@endforeach
+<section id="poll">
+    <div class="wrapper">
+        <section id="support" class="doublediagonal">
+            <div class="container">
+                <div class="section-heading scrollpoint sp-effect3">
+                    <br/><br/>
+                    <h2>感動服務票選活動</h2>
+                    <h3>請選出最觸動您心的真實感動故事，您寶貴的意見，將是對第一線同仁最好的鼓勵!!</h3>
+                    <div class="container">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr><h3>{{ $title[0]->title1.$title[0]->title2.$title[0]->title3 }}</h3></tr>
+                            <tr>
+                                <th>經銷商</th>
+                                <th>據點</th>
+                                <th>人員</th>
+                                <th>主題</th>
+                                <th>內容</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($stories as $story)
+                                <tr>
+                                    <td>{{ $story->area }}</td>
+                                    <td>{{ $story->store1}}
+                                        @if( ! empty($story->store2))
+                                            <br>
+                                            {{ $story->store2}}
+                                        @endif
+                                        @if( ! empty($story->store3))
+                                            <br>
+                                            {{ $story->store3}}
+                                        @endif
+                                    </td>
+                                    <td>{{ $story->employee1 }}
+                                        @if( ! empty($story->employee2))
+                                            <br>
+                                            {{ $story->employee2}}
+                                        @endif
+                                        @if( ! empty($story->employee3))
+                                            <br>
+                                            {{ $story->employee3}}
+                                        @endif
+                                        @if( ! empty($story->employee4))
+                                            <br>
+                                            {{ $story->employee4}}
+                                        @endif
+                                        @if( ! empty($story->employee5))
+                                            <br>
+                                            {{ $story->employee5}}
+                                        @endif
+                                    </td>
+                                    <td>{{ $story->slogn }}</td>
+                                    <td>{{ $story->summary }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
 
-    <div class="row">
-        <h3 class="centered">感動案例4T說明</h3>
-        <hr>
-        <div class="col-lg-2">
-        </div>
-        <div class="col-lg-8">
-            <ul>
-                <li><h3>預先設想Thinking</h3></li>
-                <h3>找不到鑰匙時，車主多半是無奈又無助，在佑聰幫忙下順利找到最快速的解決方法。</h3>
-                <br>
-                <li><h3>超越期待Touching</h3></li>
-                <h3>前往救援時刻，考量到山區夜晚寒冷還帶了一杯熱咖啡，讓客人感到窩心。</h3>
-                <br>
+                </div>
+                <div class="row">
+                    @include('flash::message')
+                </div>
+                <div class="row" style="margin-top: -15px">
+                    <div class="col-md-6 col-sm-6 scrollpoint sp-effect1" style="font-size: 18px">
+                        <form role="form" action="{{url('/touching/poll')}}" method="post">
+                            <div class="panel-body">
+                                <label>
+                                    <b style="color: red">*</b> 請排序您心目中的第一到第五名 :
+                                </label>
 
-                <li><h3>同理心Treating</h3></li>
-                <h3>同時考慮客戶著急的心情與天候狀況，衡量出最經濟省事的救援時間。</h3>
-                <br>
-                <li><h3>感動關鍵時刻Timing</h3></li>
-                <h3>佑聰雖然下班了，但得知客戶所需困難，馬上聯絡其家人，協助圓滿解決，感動之情溢於言表。</h3>
-                <br><br>
-            </ul>
-        </div>
-        <div class="col-lg-2">
-        </div>
-    </div><!-- row -->
-
-    <div class="row">
-        <h2 class="centered">感動服務照片</h2>
-        <hr>
-        <div class="col-lg-2">
-        </div>
-        <div class="col-lg-8">
-            <div class="grid mask">
-                <figure>
-                    <img class="img-responsive" src="{{ url('/touching/img/team/team01.jpg') }}" alt="">
-                    {{--<figcaption>--}}
-                    {{--<h5>原始圖片</h5>--}}
-                    {{--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">檢視</a>--}}
-                    {{--</figcaption><!-- /figcaption -->--}}
-                </figure><!-- /figure -->
-            </div><!-- /grid-mask -->
-        </div>
-        <div class="col-lg-2">
-        </div>
-    </div><!-- row -->
-</div>
-
-<div class="container" id="area2" name="area2">
-
-</div>
-
-<div class="container" id="area3" name="area3">
-</div>
-
-<div class="container" id="area4" name="area4">
-
-</div>
-
-<div class="container" id="area5" name="area5">
-</div>
-
-
-<div class="container" id="vote" name="bote">
-</div>
+                                <div class="table-responsive">
+                                    <table class="table table-striped table-bordered table-hover"
+                                           style="display:table-cell; vertical-align:middle; text-align:center">
+                                        <thead>
+                                        <tr>
+                                            <th> 名次</th>
+                                            <th>第一名</th>
+                                            <th>第二名</th>
+                                            <th>第三名</th>
+                                            <th>第四名</th>
+                                            <th>第五名</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <div class="form-group">
+                                            <tr>
+                                                <td>北智捷</td>
+                                                <td><input value="第一名" type="radio" class="la" name="r1"></td>
+                                                <td><input value="第二名" type="radio" class="lb" name="r1"></td>
+                                                <td><input value="第三名" type="radio" class="lc" name="r1"></td>
+                                                <td><input value="第四名" type="radio" class="ld" name="r1"></td>
+                                                <td><input value="第五名" type="radio" class="le" name="r1"></td>
+                                            </tr>
+                                        </div>
+                                        <div class="form-group">
+                                            <tr>
+                                                <td>桃智捷</td>
+                                                <td><input value="第一名" type="radio" class="la" name="r2"></td>
+                                                <td><input value="第二名" type="radio" class="lb" name="r2"></td>
+                                                <td><input value="第三名" type="radio" class="lc" name="r2"></td>
+                                                <td><input value="第四名" type="radio" class="ld" name="r2"></td>
+                                                <td><input value="第五名" type="radio" class="le" name="r2"></td>
+                                            </tr>
+                                        </div>
+                                        <div class="form-group">
+                                            <tr>
+                                                <td>中智捷</td>
+                                                <td><input value="第一名" type="radio" class="la" name="r3"></td>
+                                                <td><input value="第二名" type="radio" class="lb" name="r3"></td>
+                                                <td><input value="第三名" type="radio" class="lc" name="r3"></td>
+                                                <td><input value="第四名" type="radio" class="ld" name="r3"></td>
+                                                <td><input value="第五名" type="radio" class="le" name="r3"></td>
+                                            </tr>
+                                        </div>
+                                        <div class="form-group">
+                                            <tr>
+                                                <td>南智捷</td>
+                                                <td><input value="第一名" type="radio" class="la" name="r4"></td>
+                                                <td><input value="第二名" type="radio" class="lb" name="r4"></td>
+                                                <td><input value="第三名" type="radio" class="lc" name="r4"></td>
+                                                <td><input value="第四名" type="radio" class="ld" name="r4"></td>
+                                                <td><input value="第五名" type="radio" class="le" name="r4"></td>
+                                            </tr>
+                                        </div>
+                                        <div class="form-group">
+                                            <tr>
+                                                <td>高智捷</td>
+                                                <td><input value="第一名" type="radio" class="la" name="r5"></td>
+                                                <td><input value="第二名" type="radio" class="lb" name="r5"></td>
+                                                <td><input value="第三名" type="radio" class="lc" name="r5"></td>
+                                                <td><input value="第四名" type="radio" class="ld" name="r5"></td>
+                                                <td><input value="第五名" type="radio" class="le" name="r5"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.table-responsive -->
+                            </div>
+                            <label>
+                                <b style="color: red">*</b> 請選擇您的部門 :
+                            </label>
+                            <div class="form-group">
+                                <select class="form-control" name="dep" style="height: 50px;">
+                                    <option value="">---請選擇---</option>
+                                    <option value="銷售部">銷售部</option>
+                                    <option value="財務部">財務部</option>
+                                    <option value="零件服務部">零件服務部</option>
+                                    <option value="顧客滿意部">顧客滿意部</option>
+                                    <option value="行政企劃部">行政企劃部</option>
+                                    <option value="外銷業務部">外銷業務部</option>
+                                    <option value="品牌企劃部">品牌企劃部</option>
+                                    <option value="電動車部">電動車部</option>
+                                    <option value="公關暨品牌推廣部">公關暨品牌推廣部</option>
+                                    <option value="總經理室">總經理室</option>
+                                </select>
+                            </div>
+                            <label>
+                                <b style="color: red">*</b> 請填寫您的姓名 :
+                            </label>
+                            <div class="form-group" style="height: 50px;">
+                                <input type="" class="form-control" name="name" value="{{old('name')}}">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">送出</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

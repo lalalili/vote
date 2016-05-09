@@ -180,8 +180,9 @@ class SignupController extends Controller
         //dd(Carbon::now('Asia/Taipei')->subDay(1));
         //dd(Photo::findOrFail(Session::get('id'))->album->type);
         if (Auth::user()->hasRole('admin')) {
-            $events = Event::where('course_id', $course_id)->where('event_at', '>',
-                Carbon::now('Asia/Taipei'))->get();
+//            $events = Event::where('course_id', $course_id)->where('event_at', '>',
+//                Carbon::now('Asia/Taipei'))->get();
+            $events = Event::where('course_id', $course_id)->get();
         } else {
             $events = Event::where('course_id', $course_id)->where('event_at', '>',
                 Carbon::now('Asia/Taipei')->addDay(6))->get();

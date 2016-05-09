@@ -79,9 +79,8 @@ class File extends Field
                 $filename = ($this->filename!='') ?  $this->filename : $this->file->getClientOriginalName();
 
                 $this->path =  $this->parseString($this->path);
-                $filename = $this->md5Name($filename);
-//                $filename = $this->parseString($filename);
-//                $filename = $this->sanitizeFilename($filename);
+                $filename = $this->parseString($filename);
+                $filename = $this->sanitizeFilename($filename);
                 $this->new_value = $filename;
 
                 //deferred upload
@@ -92,9 +91,8 @@ class File extends Field
                             $this->recursion = true;
 
                             $this->path =  $this->parseString($this->path);
-                            $filename = $this->md5Name($filename);
-//                            $filename = $this->parseString($filename);
-//                            $filename = $this->sanitizeFilename($filename);
+                            $filename = $this->parseString($filename);
+                            $filename = $this->sanitizeFilename($filename);
                             $this->new_value = $filename;
                             if ($this->uploadFile($filename)) {
                                 if (is_a($this->relation, 'Illuminate\Database\Eloquent\Relations\Relation'))
@@ -150,17 +148,6 @@ class File extends Field
         }
 
         return true;
-    }
-
-    protected function md5Name($filename)
-    {
-        $ext = strtolower(substr(strrchr($filename, '.'), 1));
-        $name = rtrim($filename, strrchr($filename, '.'));
-        $md5name = md5($name);
-        $this->model->utf8_filename = $filename;
-        //dd($this->model);
-        return $md5name. '.png';
-        //dd($name);
     }
 
     protected function sanitizeFilename($filename)

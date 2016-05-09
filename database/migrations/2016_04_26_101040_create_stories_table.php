@@ -14,19 +14,29 @@ class CreateStoriesTable extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedSmallInteger('type');
+            $table->unsignedSmallInteger('type')->default(99);
+            $table->unsignedSmallInteger('order')->default(99);
             $table->string('title1', 10)->nullable();
             $table->string('title2', 10)->nullable();
             $table->string('title3', 10)->nullable();
             $table->string('slogn', 30)->nullable();
-            $table->string('store', 10)->nullable();
-            $table->string('employee1', 10)->nullable();
-            $table->string('employee2', 10)->nullable();
-            $table->string('employee3', 10)->nullable();
-            $table->string('employee4', 10)->nullable();
-            $table->string('employee5', 10)->nullable();
-            $table->string('customer', 10)->nullable();
-            $table->date('date')->nullable();
+            $table->string('area', 10)->nullable();
+            $table->string('store1', 10)->nullable();
+            $table->string('store2', 10)->nullable();
+            $table->string('store3', 10)->nullable();
+            $table->string('employee1', 20)->nullable();
+            $table->string('employee2', 20)->nullable();
+            $table->string('employee3', 20)->nullable();
+            $table->string('employee4', 20)->nullable();
+            $table->string('employee5', 20)->nullable();
+            $table->string('customer1', 20)->nullable();
+            $table->string('customer2', 20)->nullable();
+            $table->string('customer3', 20)->nullable();
+            $table->string('customer4', 20)->nullable();
+            $table->string('customer5', 20)->nullable();
+            $table->date('date1')->nullable();
+            $table->date('date2')->nullable();
+            $table->date('date3')->nullable();
             $table->string('story1', 500)->nullable();
             $table->string('story2', 500)->nullable();
             $table->string('story3', 500)->nullable();
@@ -47,6 +57,17 @@ class CreateStoriesTable extends Migration
             $table->string('pic3', 50)->nullable();
             $table->string('pic4', 50)->nullable();
             $table->string('pic5', 50)->nullable();
+            $table->string('pic1_note', 500)->nullable();
+            $table->string('pic2_note', 500)->nullable();
+            $table->string('pic3_note', 500)->nullable();
+            $table->string('pic4_note', 500)->nullable();
+            $table->string('pic5_note', 500)->nullable();
+            $table->boolean('is_display')->default(1);
+            $table->string('note1')->nullable();
+            $table->string('note2')->nullable();
+            $table->string('note3')->nullable();
+            $table->string('note4')->nullable();
+            $table->string('note5')->nullable();
             $table->timestamps();
         });
     }

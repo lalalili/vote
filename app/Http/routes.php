@@ -30,7 +30,7 @@ Route::post('touching/poll', 'TouchController@poll');
 Route::post('touching/poll_yearly', 'TouchController@pollYear');
 Route::get('touching/thanks', 'RedirectController@tunchingThanks');
 Route::get('signup/data/{type}', 'PhotoController@signupData');
-Route::get('touching2', 'RedirectController@show');
+Route::get('touching2', 'StoryController@show');
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('callback_download', 'ApiController@callbackDownload');
@@ -154,6 +154,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
 
     Route::get('touching2/list_title', 'StoryController@listTitle');
     Route::any('touching2/edit_title', 'StoryController@editTitle');
-    Route::get('touching2/list_1', 'StoryController@list1');
-    Route::any('touching2/edit_1', 'StoryController@edit1');
+    Route::get('touching2/lists', 'StoryController@lists');
+    Route::any('touching2/edit', 'StoryController@edit');
 });
