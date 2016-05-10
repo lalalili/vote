@@ -412,62 +412,60 @@
                                         <thead>
                                         <tr>
                                             <th> 名次</th>
-                                            <th>第一名</th>
-                                            <th>第二名</th>
-                                            <th>第三名</th>
-                                            <th>第四名</th>
-                                            <th>第五名</th>
+                                            @foreach($stories as $story)
+                                                <th style="text-align: center">{{ $story->note1 }}<br>{{ $story->area }}<br>{{ $story->store1 }}
+                                            @endforeach
                                         </tr>
                                         </thead>
                                         <tbody>
                                         <div class="form-group">
                                             <tr>
-                                                <td>北智捷</td>
-                                                <td><input value="第一名" type="radio" class="la" name="r1"></td>
-                                                <td><input value="第二名" type="radio" class="lb" name="r1"></td>
-                                                <td><input value="第三名" type="radio" class="lc" name="r1"></td>
-                                                <td><input value="第四名" type="radio" class="ld" name="r1"></td>
-                                                <td><input value="第五名" type="radio" class="le" name="r1"></td>
+                                                <td>第一名</td>
+                                                @foreach($stories as $story)
+                                                    <td><input class="{{$story->id}}"
+                                                               value="{{$story->area}}_{{$story->store1}}"
+                                                               type="checkbox" name="r1[]"></td>
+                                                @endforeach
                                             </tr>
                                         </div>
                                         <div class="form-group">
                                             <tr>
-                                                <td>桃智捷</td>
-                                                <td><input value="第一名" type="radio" class="la" name="r2"></td>
-                                                <td><input value="第二名" type="radio" class="lb" name="r2"></td>
-                                                <td><input value="第三名" type="radio" class="lc" name="r2"></td>
-                                                <td><input value="第四名" type="radio" class="ld" name="r2"></td>
-                                                <td><input value="第五名" type="radio" class="le" name="r2"></td>
+                                                <td>第二名</td>
+                                                @foreach($stories as $story)
+                                                    <td><input class="{{$story->id}}"
+                                                               value="{{$story->area}}_{{$story->store1}}"
+                                                               type="checkbox" name="r2[]"></td>
+                                                @endforeach
                                             </tr>
                                         </div>
                                         <div class="form-group">
                                             <tr>
-                                                <td>中智捷</td>
-                                                <td><input value="第一名" type="radio" class="la" name="r3"></td>
-                                                <td><input value="第二名" type="radio" class="lb" name="r3"></td>
-                                                <td><input value="第三名" type="radio" class="lc" name="r3"></td>
-                                                <td><input value="第四名" type="radio" class="ld" name="r3"></td>
-                                                <td><input value="第五名" type="radio" class="le" name="r3"></td>
+                                                <td>第三名</td>
+                                                @foreach($stories as $story)
+                                                    <td><input class="{{$story->id}}"
+                                                               value="{{$story->area}}_{{$story->store1}}"
+                                                               type="checkbox" name="r3[]"></td>
+                                                @endforeach
                                             </tr>
                                         </div>
                                         <div class="form-group">
                                             <tr>
-                                                <td>南智捷</td>
-                                                <td><input value="第一名" type="radio" class="la" name="r4"></td>
-                                                <td><input value="第二名" type="radio" class="lb" name="r4"></td>
-                                                <td><input value="第三名" type="radio" class="lc" name="r4"></td>
-                                                <td><input value="第四名" type="radio" class="ld" name="r4"></td>
-                                                <td><input value="第五名" type="radio" class="le" name="r4"></td>
+                                                <td>第四名</td>
+                                                @foreach($stories as $story)
+                                                    <td><input class="{{$story->id}}"
+                                                               alue="{{$story->area}}_{{$story->store1}}"
+                                                               type="checkbox" name="r4[]"></td>
+                                                @endforeach
                                             </tr>
                                         </div>
                                         <div class="form-group">
                                             <tr>
-                                                <td>高智捷</td>
-                                                <td><input value="第一名" type="radio" class="la" name="r5"></td>
-                                                <td><input value="第二名" type="radio" class="lb" name="r5"></td>
-                                                <td><input value="第三名" type="radio" class="lc" name="r5"></td>
-                                                <td><input value="第四名" type="radio" class="ld" name="r5"></td>
-                                                <td><input value="第五名" type="radio" class="le" name="r5"></td>
+                                                <td>第五名</td>
+                                                @foreach($stories as $story)
+                                                    <td><input class="{{$story->id}}"
+                                                               value="{{$story->area}}_{{$story->store1}}"
+                                                               type="checkbox" name="r5[]"></td>
+                                                @endforeach
                                             </tr>
                                         </tbody>
                                     </table>
@@ -520,6 +518,12 @@
 <script type="text/javascript" src="{{ url('/touching/js/jquery.easing.1.3.js') }}"></script>
 <script type="text/javascript" src="{{ url('/touching/js/smoothscroll.js') }}"></script>
 <script type="text/javascript" src="{{ url('/touching/js/jquery-func.js') }}"></script>
-
+<script>
+    $("input:checkbox").click(function () {
+        var group = "input:checkbox[class='" + $(this).attr("class") + "']";
+        $(group).prop("checked", false);
+        $(this).prop("checked", true);
+    });
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Models\Story;
+use Carbon\Carbon;
 use DataEdit;
 use DataFilter;
 use DataGrid;
@@ -88,6 +89,7 @@ class StoryController extends Controller
         $grid->add('customer2', 'customer2');
         $grid->add('date1', 'date1');
         $grid->add('date2', 'date2');
+        $grid->add('note1', '月份');
         $grid->add('is_diaplay', '是否顯示', true);
         $grid->add('updated_at', '更新時間', true);
 
@@ -169,6 +171,7 @@ class StoryController extends Controller
         $edit->add('pic4_note', '照片4說明', 'textarea');
         $edit->add('pic5', '照片5', 'image')->move('uploads/images/story')->preview(145, 160);
         $edit->add('pic5_note', '照片5說明', 'textarea');
+        $edit->add('note1', '故事月份', 'text')->insertValue(Carbon::now('Asia/Taipei')->month . '月');
         $edit->add('is_display', '是否顯示', 'checkbox')->insertValue(1);
 
         $grid = DataGrid::source(DB::table('stories')->where('type', '<>', 1));
@@ -184,6 +187,7 @@ class StoryController extends Controller
         $grid->add('customer2', 'customer2');
         $grid->add('date1', 'date1');
         $grid->add('date2', 'date2');
+        $grid->add('note1', '月份');
         $grid->add('is_diaplay', '是否顯示', true);
         $grid->add('updated_at', '更新時間', true);
 
@@ -197,7 +201,7 @@ class StoryController extends Controller
     public function show()
     {
         $title = DB::table('stories')->where('type', 1)->get();
-        $stories = DB::table('stories')->where('type', '<>', 1)->orderBy('order')->get();
+        $stories = DB::table('stories')->where('type', '<>', 1)->where('is_display', '=', '1')->orderBy('order')->get();
         //dd($title[0]->title1);
         //dd($stories);
         return view('touching2.index', compact('title', 'stories'));

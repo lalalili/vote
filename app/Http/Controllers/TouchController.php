@@ -100,6 +100,7 @@ class TouchController extends Controller
         $r4 = $request::input('r4');
         $r5 = $request::input('r5');
         $dep = $request::input('dep');
+        //dd($r1);
 //        $request::flash();
 //        if ($Name == "") {
 //            Flash::warning('請輸入姓名');
@@ -108,11 +109,11 @@ class TouchController extends Controller
 
         $validator = Validator::make($request::all(), [
             'name' => 'required',
-            'r1'   => 'required',
-            'r2'   => 'required',
-            'r3'   => 'required',
-            'r4'   => 'required',
-            'r5'   => 'required',
+//            'r1'   => 'required',
+//            'r2'   => 'required',
+//            'r3'   => 'required',
+//            'r4'   => 'required',
+//            'r5'   => 'required',
             'dep'  => 'required',
         ]);
 
@@ -122,11 +123,21 @@ class TouchController extends Controller
         }
         $poll = new Poll;
         $poll->name = $name;
-        $poll->r1 = $r1;
-        $poll->r2 = $r2;
-        $poll->r3 = $r3;
-        $poll->r4 = $r4;
-        $poll->r5 = $r5;
+        if (!is_null($r1)) {
+            $poll->r1 = implode(',', $r1);
+        }
+        if (!is_null($r2)) {
+            $poll->r2 = implode(',', $r2);
+        }
+        if (!is_null($r3)) {
+            $poll->r3 = implode(',', $r3);
+        }
+        if (!is_null($r4)) {
+            $poll->r4 = implode(',', $r4);
+        }
+        if (!is_null($r5)) {
+            $poll->r5 = implode(',', $r5);
+        }
         $poll->note1 = $dep;
 
         if ($poll->save()) {
@@ -147,7 +158,7 @@ class TouchController extends Controller
         $r4 = $request::input('r4');
         $r5 = $request::input('r5');
         $dep = $request::input('dep');
-
+        //dd($r1);
 //        $request::flash();
 //        if ($Name == "") {
 //            Flash::warning('請輸入姓名');
@@ -200,11 +211,11 @@ class TouchController extends Controller
         $grid->add('id', '序號', true);
         $grid->add('note1', '部門', true);
         $grid->add('name', '姓名', true);
-        $grid->add('r1', '北智捷', true);
-        $grid->add('r2', '桃智捷', true);
-        $grid->add('r3', '中智捷', true);
-        $grid->add('r4', '南智捷', true);
-        $grid->add('r5', '高智捷', true);
+        $grid->add('r1', '第一名', true);
+        $grid->add('r2', '第二名', true);
+        $grid->add('r3', '第三名', true);
+        $grid->add('r4', '第四名', true);
+        $grid->add('r5', '第五名', true);
         $grid->add('updated_at', '投票時間', true);
 
         $grid->edit('/admin/touching/poll/edit', '功能', 'show|modify|delete');
@@ -212,148 +223,68 @@ class TouchController extends Controller
         $grid->paginate(50);
 
         Score::truncate();
-        $r1s = DB::table('polls')->select(DB::raw('count(*) as count, r1 as rank'))->groupBy('r1')->get();
+
+        $r1s = DB::table('polls')->where('r1', '<>', '')->get();
         //dd($r1s);
         foreach ($r1s as $r1) {
-            $score = new Score;
-            $score->name = '北智捷';
-            $score->count = 0;
-
-            switch ($r1->rank) {
-                case '第一名':
-                    $score->total += ($r1->count) * 5;
-                    break;
-                case '第二名':
-                    $score->total += ($r1->count) * 4;
-                    break;
-                case '第三名':
-                    $score->total += ($r1->count) * 3;
-                    break;
-                case '第四名':
-                    $score->total += ($r1->count) * 2;
-                    break;
-                case '第五名':
-                    $score->total += ($r1->count) * 1;
-                    break;
+            foreach (explode(",", $r1->r1) as $group) {
+                $score = new Score;
+                $score->name = $group;
+                $score->count = 1;
+                $score->total = 5;
+                $score->save();
             }
-
-            $score->save();
         }
 
-        $r2s = DB::table('polls')->select(DB::raw('count(*) as count, r2 as rank'))->groupBy('r2')->get();
-        //dd($r2s);
+        $r2s = DB::table('polls')->where('r2', '<>', '')->get();
+        //dd($r1s);
         foreach ($r2s as $r2) {
-            $score = new Score;
-            $score->name = '桃智捷';
-            $score->count = 0;
-
-            switch ($r2->rank) {
-                case '第一名':
-                    $score->total += ($r2->count) * 5;
-                    break;
-                case '第二名':
-                    $score->total += ($r2->count) * 4;
-                    break;
-                case '第三名':
-                    $score->total += ($r2->count) * 3;
-                    break;
-                case '第四名':
-                    $score->total += ($r2->count) * 2;
-                    break;
-                case '第五名':
-                    $score->total += ($r2->count) * 1;
-                    break;
+            foreach (explode(",", $r2->r2) as $group) {
+                $score = new Score;
+                $score->name = $group;
+                $score->count = 1;
+                $score->total = 4;
+                $score->save();
             }
-
-            $score->save();
         }
 
-        $r3s = DB::table('polls')->select(DB::raw('count(*) as count, r3 as rank'))->groupBy('r3')->get();
+        $r3s = DB::table('polls')->where('r3', '<>', '')->get();
         //dd($r1s);
         foreach ($r3s as $r3) {
-            $score = new Score;
-            $score->name = '中智捷';
-            $score->count = 0;
-
-            switch ($r3->rank) {
-                case '第一名':
-                    $score->total += ($r3->count) * 5;
-                    break;
-                case '第二名':
-                    $score->total += ($r3->count) * 4;
-                    break;
-                case '第三名':
-                    $score->total += ($r3->count) * 3;
-                    break;
-                case '第四名':
-                    $score->total += ($r3->count) * 2;
-                    break;
-                case '第五名':
-                    $score->total += ($r3->count) * 1;
-                    break;
+            foreach (explode(",", $r3->r3) as $group) {
+                $score = new Score;
+                $score->name = $group;
+                $score->count = 1;
+                $score->total = 3;
+                $score->save();
             }
-
-            $score->save();
         }
 
-        $r4s = DB::table('polls')->select(DB::raw('count(*) as count, r4 as rank'))->groupBy('r4')->get();
+        $r4s = DB::table('polls')->where('r4', '<>', '')->get();
         //dd($r1s);
         foreach ($r4s as $r4) {
-            $score = new Score;
-            $score->name = '南智捷';
-            $score->count = 0;
-
-            switch ($r4->rank) {
-                case '第一名':
-                    $score->total += ($r4->count) * 5;
-                    break;
-                case '第二名':
-                    $score->total += ($r4->count) * 4;
-                    break;
-                case '第三名':
-                    $score->total += ($r4->count) * 3;
-                    break;
-                case '第四名':
-                    $score->total += ($r4->count) * 2;
-                    break;
-                case '第五名':
-                    $score->total += ($r4->count) * 1;
-                    break;
+            foreach (explode(",", $r4->r4) as $group) {
+                $score = new Score;
+                $score->name = $group;
+                $score->count = 1;
+                $score->total = 2;
+                $score->save();
             }
-
-            $score->save();
         }
 
-        $r5s = DB::table('polls')->select(DB::raw('count(*) as count, r5 as rank'))->groupBy('r5')->get();
+        $r5s = DB::table('polls')->where('r5', '<>', '')->get();
         //dd($r1s);
         foreach ($r5s as $r5) {
-            $score = new Score;
-            $score->name = '高智捷';
-            $score->count = 0;
-
-            switch ($r5->rank) {
-                case '第一名':
-                    $score->total += ($r5->count) * 5;
-                    break;
-                case '第二名':
-                    $score->total += ($r5->count) * 4;
-                    break;
-                case '第三名':
-                    $score->total += ($r5->count) * 3;
-                    break;
-                case '第四名':
-                    $score->total += ($r5->count) * 2;
-                    break;
-                case '第五名':
-                    $score->total += ($r5->count) * 1;
-                    break;
+            foreach (explode(",", $r5->r5) as $group) {
+                $score = new Score;
+                $score->name = $group;
+                $score->count = 1;
+                $score->total = 1;
+                $score->save();
             }
-
-            $score->save();
         }
 
-
-        //dd(Score::all());
+        //dd(Score::all()->toArray());
         $scores = DB::table('scores')->select(DB::raw('name, sum(count) as count, sum(total) as total'))->groupBy('name')->orderBy('total',
             'count', 'asc')->get();
         return View::make('touching.list', compact('filter', 'grid', 'scores'));
