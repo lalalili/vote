@@ -347,11 +347,11 @@
                             <thead>
                             <tr><h3>{{ $title[0]->title1.$title[0]->title2.$title[0]->title3 }}</h3></tr>
                             <tr>
-                                <th>經銷商</th>
-                                <th>據點</th>
-                                <th>人員</th>
-                                <th>主題</th>
-                                <th>內容</th>
+                                <th style="text-align:center; width:10%">經銷商</th>
+                                <th style="text-align:center; width:15%">據點</th>
+                                <th style="text-align:center; width:15%">人員</th>
+                                <th style="text-align:center; width:20%">主題</th>
+                                <th style="text-align:center; width:40%">內容</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -399,7 +399,7 @@
                     @include('flash::message')
                 </div>
                 <div class="row" style="margin-top: -15px">
-                    <div class="col-md-6 col-sm-6 scrollpoint sp-effect1" style="font-size: 18px">
+                    <div class="col-lg-12" style="font-size: 18px">
                         <form role="form" action="{{url('/touching/poll')}}" method="post">
                             <div class="panel-body">
                                 <label>
@@ -411,10 +411,19 @@
                                            style="display:table-cell; vertical-align:middle; text-align:center">
                                         <thead>
                                         <tr>
-                                            <th> 名次</th>
-                                            @foreach($stories as $story)
-                                                <th style="text-align: center">{{ $story->note1 }}<br>{{ $story->area }}<br>{{ $story->store1 }}
-                                            @endforeach
+                                            @if ($count < 6)
+                                                <th style="text-align:center; width:10%"> 名次</th>
+                                                @foreach($stories as $story)
+                                                    <th style="text-align:center; width:18%">{{ $story->note1 }}
+                                                        <br>{{ $story->area }}<br>{{ $story->store1 }}
+                                                @endforeach
+                                            @else
+                                                <th style="text-align:center; width:4%"> 名次</th>
+                                                @foreach($stories as $story)
+                                                    <th style="text-align:center; width:8%">{{ $story->note1 }}
+                                                        <br>{{ $story->area }}<br>{{ $story->store1 }}
+                                                @endforeach
+                                            @endif
                                         </tr>
                                         </thead>
                                         <tbody>

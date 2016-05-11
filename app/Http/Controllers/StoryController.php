@@ -203,7 +203,7 @@ class StoryController extends Controller
         $title = DB::table('stories')->where('type', 1)->get();
         $stories = DB::table('stories')->where('type', '<>', 1)->where('is_display', '=', '1')->orderBy('order')->get();
         //dd($title[0]->title1);
-        //dd($stories);
-        return view('touching2.index', compact('title', 'stories'));
+        $count = count($stories);
+        return view('touching2.index', compact('title', 'stories', 'count'));
     }
 }
