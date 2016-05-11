@@ -399,118 +399,118 @@
                     @include('flash::message')
                 </div>
                 <div class="row" style="margin-top: -15px">
-                    <div class="col-lg-12" style="font-size: 18px">
-                        <form role="form" action="{{url('/touching/poll')}}" method="post">
-                            <div class="panel-body">
-                                <label>
-                                    <b style="color: red">*</b> 請排序您心目中的第一到第五名 :
-                                </label>
+                    <form role="form" action="{{url('/touching/poll')}}" method="post">
+                        <div class="panel-body">
+                            <label>
+                                <b style="color: red">*</b> 請排序您心目中的第一到第五名 :
+                            </label>
 
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover"
-                                           style="display:table-cell; vertical-align:middle; text-align:center">
-                                        <thead>
-                                        <tr>
-                                            @if ($count < 6)
-                                                <th style="text-align:center; width:10%"> 名次</th>
-                                                @foreach($stories as $story)
-                                                    <th style="text-align:center; width:18%">{{ $story->note1 }}
-                                                        <br>{{ $story->area }}<br>{{ $story->store1 }}
-                                                @endforeach
-                                            @else
-                                                <th style="text-align:center; width:4%"> 名次</th>
-                                                @foreach($stories as $story)
-                                                    <th style="text-align:center; width:8%">{{ $story->note1 }}
-                                                        <br>{{ $story->area }}<br>{{ $story->store1 }}
-                                                @endforeach
-                                            @endif
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" >
+                                    <thead>
+                                    <tr>
+                                        @if ($count < 6)
+                                            <th style="text-align:center; width:10%"> 名次</th>
+                                            @foreach($stories as $story)
+                                                <th style="text-align:center; width:18%">{{ $story->note1 }}
+                                                    <br>{{ $story->area }}<br>{{ $story->store1 }}
+                                            @endforeach
+                                        @else
+                                            <th style="text-align:center; width:4%"> 名次</th>
+                                            @foreach($stories as $story)
+                                                <th style="text-align:center; width:8%">{{ $story->note1 }}
+                                                    <br>{{ $story->area }}<br>{{ $story->store1 }}
+                                            @endforeach
+                                        @endif
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <div class="form-group">
+                                        <tr style="vertical-align:middle; text-align:center">
+                                            <td>第一名</td>
+                                            @foreach($stories as $story)
+                                                <td><input class="{{$story->id}}"
+                                                           value="{{$story->area}}_{{$story->store1}}"
+                                                           type="checkbox" name="r1[]"></td>
+                                            @endforeach
                                         </tr>
-                                        </thead>
-                                        <tbody>
-                                        <div class="form-group">
-                                            <tr>
-                                                <td>第一名</td>
-                                                @foreach($stories as $story)
-                                                    <td><input class="{{$story->id}}"
-                                                               value="{{$story->area}}_{{$story->store1}}"
-                                                               type="checkbox" name="r1[]"></td>
-                                                @endforeach
-                                            </tr>
-                                        </div>
-                                        <div class="form-group">
-                                            <tr>
-                                                <td>第二名</td>
-                                                @foreach($stories as $story)
-                                                    <td><input class="{{$story->id}}"
-                                                               value="{{$story->area}}_{{$story->store1}}"
-                                                               type="checkbox" name="r2[]"></td>
-                                                @endforeach
-                                            </tr>
-                                        </div>
-                                        <div class="form-group">
-                                            <tr>
-                                                <td>第三名</td>
-                                                @foreach($stories as $story)
-                                                    <td><input class="{{$story->id}}"
-                                                               value="{{$story->area}}_{{$story->store1}}"
-                                                               type="checkbox" name="r3[]"></td>
-                                                @endforeach
-                                            </tr>
-                                        </div>
-                                        <div class="form-group">
-                                            <tr>
-                                                <td>第四名</td>
-                                                @foreach($stories as $story)
-                                                    <td><input class="{{$story->id}}"
-                                                               alue="{{$story->area}}_{{$story->store1}}"
-                                                               type="checkbox" name="r4[]"></td>
-                                                @endforeach
-                                            </tr>
-                                        </div>
-                                        <div class="form-group">
-                                            <tr>
-                                                <td>第五名</td>
-                                                @foreach($stories as $story)
-                                                    <td><input class="{{$story->id}}"
-                                                               value="{{$story->area}}_{{$story->store1}}"
-                                                               type="checkbox" name="r5[]"></td>
-                                                @endforeach
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.table-responsive -->
+                                    </div>
+                                    <div class="form-group">
+                                        <tr style="vertical-align:middle; text-align:center">
+                                            <td>第二名</td>
+                                            @foreach($stories as $story)
+                                                <td><input class="{{$story->id}}"
+                                                           value="{{$story->area}}_{{$story->store1}}"
+                                                           type="checkbox" name="r2[]"></td>
+                                            @endforeach
+                                        </tr>
+                                    </div>
+                                    <div class="form-group">
+                                        <tr style="vertical-align:middle; text-align:center">
+                                            <td>第三名</td>
+                                            @foreach($stories as $story)
+                                                <td><input class="{{$story->id}}"
+                                                           value="{{$story->area}}_{{$story->store1}}"
+                                                           type="checkbox" name="r3[]"></td>
+                                            @endforeach
+                                        </tr>
+                                    </div>
+                                    <div class="form-group">
+                                        <tr style="vertical-align:middle; text-align:center">
+                                            <td>第四名</td>
+                                            @foreach($stories as $story)
+                                                <td><input class="{{$story->id}}"
+                                                           alue="{{$story->area}}_{{$story->store1}}"
+                                                           type="checkbox" name="r4[]"></td>
+                                            @endforeach
+                                        </tr>
+                                    </div>
+                                    <div class="form-group">
+                                        <tr style="vertical-align:middle; text-align:center">
+                                            <td>第五名</td>
+                                            @foreach($stories as $story)
+                                                <td><input class="{{$story->id}}"
+                                                           value="{{$story->area}}_{{$story->store1}}"
+                                                           type="checkbox" name="r5[]"></td>
+                                            @endforeach
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
+                            <!-- /.table-responsive -->
+                        </div>
+
+                        <div class="form-group">
                             <label>
                                 <b style="color: red">*</b> 請選擇您的部門 :
                             </label>
-                            <div class="form-group">
-                                <select class="form-control" name="dep" style="height: 50px;">
-                                    <option value="">---請選擇---</option>
-                                    <option value="銷售部">銷售部</option>
-                                    <option value="財務部">財務部</option>
-                                    <option value="零件服務部">零件服務部</option>
-                                    <option value="顧客滿意部">顧客滿意部</option>
-                                    <option value="行政企劃部">行政企劃部</option>
-                                    <option value="外銷業務部">外銷業務部</option>
-                                    <option value="品牌企劃部">品牌企劃部</option>
-                                    <option value="電動車部">電動車部</option>
-                                    <option value="公關暨品牌推廣部">公關暨品牌推廣部</option>
-                                    <option value="總經理室">總經理室</option>
-                                </select>
-                            </div>
+                            <select class="form-control" name="dep" style="height: 50px; width:50%">
+                                <option value="">---請選擇---</option>
+                                <option value="銷售部">銷售部</option>
+                                <option value="財務部">財務部</option>
+                                <option value="零件服務部">零件服務部</option>
+                                <option value="顧客滿意部">顧客滿意部</option>
+                                <option value="行政企劃部">行政企劃部</option>
+                                <option value="外銷業務部">外銷業務部</option>
+                                <option value="品牌企劃部">品牌企劃部</option>
+                                <option value="電動車部">電動車部</option>
+                                <option value="公關暨品牌推廣部">公關暨品牌推廣部</option>
+                                <option value="總經理室">總經理室</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label>
                                 <b style="color: red">*</b> 請填寫您的姓名 :
                             </label>
-                            <div class="form-group" style="height: 50px;">
-                                <input type="" class="form-control" name="name" value="{{old('name')}}">
-                            </div>
-                            <div class="form-group">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg">送出</button>
-                        </form>
-                    </div>
+                            <input class="form-control" name="name" value="{{old('name')}}"
+                                   style="height: 50px; width:50%">
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg">送出</button>
+                    </form>
                 </div>
             </div>
         </section>
