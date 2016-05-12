@@ -23,14 +23,15 @@ Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('lottery', 'RedirectController@lottery');
-Route::get('touching', 'TouchController@show');
-Route::get('touching/show', 'TouchController@show');
-Route::get('touching/yearly', 'TouchController@yearly');
 Route::post('touching/poll', 'TouchController@poll');
 Route::post('touching/poll_yearly', 'TouchController@pollYear');
 Route::get('touching/thanks', 'RedirectController@tunchingThanks');
 Route::get('signup/data/{type}', 'PhotoController@signupData');
-Route::get('touching2', 'StoryController@show');
+Route::get('touching/show', 'StoryController@show');
+Route::get('touching', 'StoryController@show');
+//Route::get('touching', 'TouchController@show');
+//Route::get('touching/show', 'TouchController@show');
+//Route::get('touching/yearly', 'TouchController@yearly');
 
 Route::group(['prefix' => 'api'], function () {
     Route::get('callback_download', 'ApiController@callbackDownload');

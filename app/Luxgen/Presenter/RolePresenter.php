@@ -64,24 +64,6 @@ class RolePresenter
                         <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a href="/admin/touching/edit"> 編輯內容</a>
-                            </li>
-                            <li>
-                                <a href="/admin/touching/poll/list"> 投票結果</a>
-                            </li>
-                            <li>
-                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
-                            </li>
-                            <li>
-                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/yearly"> 檢視年度</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-third-level -->
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理new<span class="fa arrow"></span></a>
-                        <ul class="nav nav-third-level">
-                            <li>
                                 <a href="/admin/touching2/list_title"> 編輯TITLE</a>
                             </li>
                             <li>
@@ -94,7 +76,7 @@ class RolePresenter
                                 <a href="/admin/touching/edit"> 清空投票</a>
                             </li>
                             <li>
-                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching2"> 檢視感動服務</a>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視感動服務</a>
                             </li>
                         </ul>
                         <!-- /.nav-third-level -->
@@ -136,7 +118,7 @@ class RolePresenter
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-                                <li>
+            <li>
                 <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 禮貌大使管理<span
                                                     class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
@@ -157,6 +139,24 @@ class RolePresenter
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
+            </li>
+            <li>
+                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理old<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            <li>
+                                <a href="/admin/touching/edit"> 編輯內容</a>
+                            </li>
+                            <li>
+                                <a href="/admin/touching/poll/list"> 投票結果</a>
+                            </li>
+                            <li>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/show"> 檢視每月投票</a>
+                            </li>
+                            <li>
+                                <a onclick="window.open(this.href,\'_blank\');return false;" href="/touching/yearly"> 檢視年度</a>
+                            </li>
+                        </ul>
+                        <!-- /.nav-third-level -->
             </li>';
 
         }
