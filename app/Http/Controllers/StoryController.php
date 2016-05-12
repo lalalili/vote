@@ -203,6 +203,14 @@ class StoryController extends Controller
         $grid->orderBy('type');
         $grid->paginate(5);
 
+        $grid->row(function ($row) {
+            if ($row->cell('is_display')->value == 1) {
+                $row->cell('is_display')->value = '是';
+            } else {
+                $row->cell('is_display')->value = '否';
+            }
+        });
+
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }
 
