@@ -90,11 +90,19 @@ class StoryController extends Controller
         $grid->add('date1', 'date1');
         $grid->add('date2', 'date2');
         $grid->add('note1', '月份');
-        $grid->add('is_diaplay', '是否顯示', true);
+        $grid->add('is_display', '是否顯示', true);
         $grid->add('updated_at', '更新時間', true);
 
         $grid->orderBy('type', 'desc');
         $grid->paginate(12);
+
+        $grid->row(function ($row) {
+            if ($row->cell('is_display')->value == 1) {
+                $row->cell('is_display')->value = '是';
+            } else {
+                $row->cell('is_display')->value = '否';
+            }
+        });
 
         $grid->edit('/admin/touching2/edit', '功能', 'show|modify|delete');
         $grid->link('/admin/touching2/edit', "新增", "TR");
@@ -188,7 +196,7 @@ class StoryController extends Controller
         $grid->add('date1', 'date1');
         $grid->add('date2', 'date2');
         $grid->add('note1', '月份');
-        $grid->add('is_diaplay', '是否顯示', true);
+        $grid->add('is_display', '是否顯示', true);
         $grid->add('updated_at', '更新時間', true);
 
         $grid->edit('/admin/touching2/edit', 'Edit', 'show|modify|delete');
