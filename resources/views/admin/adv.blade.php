@@ -271,9 +271,9 @@
             {{--<button class="btn btn-danger" type="button"--}}
             {{--onclick="reset_vote_confirm()">清空投票資料--}}
             {{--</button>--}}
-            <button class="btn btn-danger" type="button"
-                    onclick="reset_signup_confirm()">清空報名資料
-            </button>
+            {{--<button class="btn btn-danger" type="button"--}}
+                    {{--onclick="reset_signup_confirm()">清空報名資料--}}
+            {{--</button>--}}
             {{--</div>--}}
             {{--</div>--}}
             {{--</div>--}}

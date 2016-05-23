@@ -59,7 +59,8 @@ class StoryController extends Controller
         $grid->add('order', 'Order', true);
         $grid->add('is_display', 'is_display', true);
 
-        $grid->edit('/admin/touching2/edit_title', 'Edit', 'show|modify|delete');
+        //$grid->edit('/admin/touching2/edit_title', 'Edit', 'show|modify|delete');
+        $grid->edit('/admin/touching2/edit_title', 'Edit', 'show|modify');
         $grid->orderBy('id', 'desc');
         $grid->paginate(5);
 
@@ -104,7 +105,8 @@ class StoryController extends Controller
             }
         });
 
-        $grid->edit('/admin/touching2/edit', '功能', 'show|modify|delete');
+        //$grid->edit('/admin/touching2/edit', '功能', 'show|modify|delete');
+        $grid->edit('/admin/touching2/edit', '功能', 'show|modify');
         $grid->link('/admin/touching2/edit', "新增", "TR");
         return view('admin.list', compact('filter', 'grid'));
 

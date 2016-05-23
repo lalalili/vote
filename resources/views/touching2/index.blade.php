@@ -77,7 +77,7 @@
 
 
         <div class="row">
-            <h3 class="centered">{{$story->area}}</h3>
+            <h2 class="centered">{{$story->area}}</h2>
             <h3 class="centered">{{$story->slogn}}</h3>
             <hr>
             <h3 class="centered">執行據點：{{$story->store1}}</h3>
@@ -113,13 +113,13 @@
             @if( ! empty($story->customer5))
                 <h3 class="centered">車主姓名：{{$story->customer5}}</h3>
             @endif
-            <h3 class="centered">執行日期：{{$story->date1}}</h3>
-            @if( ! empty($story->date2))
-                <h3 class="centered">執行日期：{{$story->date2}}</h3>
-            @endif
-            @if( ! empty($story->date3))
-                <h3 class="centered">執行日期：{{$story->date3}}</h3>
-            @endif
+            {{--<h3 class="centered">執行日期：{{$story->date1}}</h3>--}}
+            {{--@if( ! empty($story->date2))--}}
+                {{--<h3 class="centered">執行日期：{{$story->date2}}</h3>--}}
+            {{--@endif--}}
+            {{--@if( ! empty($story->date3))--}}
+                {{--<h3 class="centered">執行日期：{{$story->date3}}</h3>--}}
+            {{--@endif--}}
             <br>
             <br>
         </div><!-- row -->
