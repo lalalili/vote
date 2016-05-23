@@ -460,7 +460,7 @@
                                             <td>第四名</td>
                                             @foreach($stories as $story)
                                                 <td><input class="{{$story->id}}"
-                                                           alue="{{$story->area}}_{{$story->store1}}"
+                                                           value="{{$story->area}}_{{$story->store1}}"
                                                            type="checkbox" name="r4[]"></td>
                                             @endforeach
                                         </tr>

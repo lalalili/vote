@@ -92,7 +92,7 @@ class TouchController extends Controller
 
     public function poll(Request $request)
     {
-        //dd($request::input('r1'));
+        //dd($request::input());
         $name = $request::input('name');
         $r1 = $request::input('r1');
         $r2 = $request::input('r2');
