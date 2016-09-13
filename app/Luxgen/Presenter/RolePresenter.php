@@ -119,7 +119,10 @@ class RolePresenter
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 禮貌大使管理<span
+                <a href="#"><i class="fa fa-sitemap fa-fw"></i>舊版<span class="fa arrow"></span></a>
+            <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+            <li>
+                <a href="#"><i class="fa fa-thumbs-o-up fa-fw"></i> 2015禮貌大使<span
                                                     class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li>
@@ -141,7 +144,7 @@ class RolePresenter
                 <!-- /.nav-second-level -->
             </li>
             <li>
-                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理old<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-heart fa-fw"></i> 感動服務管理<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
                                 <a href="/admin/touching/edit"> 編輯內容</a>
@@ -157,7 +160,8 @@ class RolePresenter
                             </li>
                         </ul>
                         <!-- /.nav-third-level -->
-            </li>';
+            </li>
+            <ul></li>';
 
         }
     }
