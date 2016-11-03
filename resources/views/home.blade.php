@@ -75,22 +75,22 @@
                              data-easing="Power4.easeOut">
                             <img src="{{url('/images/freeze/Slides/thumb_s.png')}}" alt="">
                         </div>
-                        <div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"
-                             data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">
-                            2016 Luxgen
-                        </div>
-                        <div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0"
-                             data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">
-                            禮貌大使票選活動
-                        </div>
+                        {{--<div class="tp-caption large_white_bold sft" data-x="550" data-y="center" data-hoffset="0"--}}
+                             {{--data-voffset="-80" data-speed="500" data-start="1200" data-easing="Power4.easeOut">--}}
+                             {{--Luxgen CS--}}
+                        {{--</div>--}}
+                        {{--<div class="tp-caption large_white_light sfb" data-x="550" data-y="center" data-hoffset="0"--}}
+                             {{--data-voffset="0" data-speed="1000" data-start="1500" data-easing="Power4.easeOut">--}}
+                            {{--禮貌大使票選活動--}}
+                        {{--</div>--}}
                         {{--<div class="tp-caption sfb hidden-xs" data-x="550" data-y="center" data-hoffset="0"--}}
                              {{--data-voffset="185" data-speed="1000" data-start="1700" data-easing="Power4.easeOut">--}}
                             {{--<a href="#abouts" class="btn btn-primary inverse btn-lg">活動辦法</a>--}}
                         {{--</div>--}}
-                        <div class="tp-caption sfr" data-x="750" data-y="center" data-hoffset="0"
-                             data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">
-                            <a href="#" class="btn btn-default btn-lg">參加</a>
-                        </div>
+                        {{--<div class="tp-caption sfr" data-x="750" data-y="center" data-hoffset="0"--}}
+                             {{--data-voffset="185" data-speed="1500" data-start="1900" data-easing="Power4.easeOut">--}}
+                            {{--<a href="#" class="btn btn-default btn-lg">參加</a>--}}
+                        {{--</div>--}}
                     </li>
                 </ul>
             </div>
