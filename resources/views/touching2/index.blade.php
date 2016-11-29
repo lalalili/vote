@@ -19,6 +19,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:400,300,700' rel='stylesheet' type='text/css'>
 
     <script src="{{ url('/touching/js/jquery.min.js') }}"></script>
+    <script src="{{ url('/touching/js/jquery.lazyload.min.js') }}"></script>
     <script type="text/javascript" src="{{ url('/touching/js/modernizr.custom.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -54,7 +55,7 @@
 <div class="container" id="home" name="home" style="margin-top: 50px">
     <div class="row">
         <div class="col-lg-12">
-            <img class="img-responsive" src="{{ url('/touching/img/header_bg.jpg') }}" alt="">
+            <img class="img-responsive" data-original="{{ url('/touching/img/header_bg.jpg') }}" alt="">
             <h2 class="centered">{{ $title[0]->title1 }}</h2>
             <h2 class="centered">{{ $title[0]->title2 }}</h2>
             <h2 class="centered">{{ $title[0]->title3 }}</h2>
@@ -228,7 +229,7 @@
             <div class="col-lg-8">
                 <div class="grid mask">
                     <figure>
-                        <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic1) }}" alt="">
+                        <img class="img-responsive" data-original="{{ url('/uploads/images/story/'.$story->pic1) }}" alt="">
                         {{--<figcaption>--}}
                         {{--<h5>原始圖片</h5>--}}
                         {{--<a data-toggle="modal" href="#myModal" class="btn btn-primary btn-lg">檢視</a>--}}
@@ -252,7 +253,7 @@
                 <div class="col-lg-8">
                     <div class="grid mask">
                         <figure>
-                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic2) }}" alt="">
+                            <img class="img-responsive" data-original="{{ url('/uploads/images/story/'.$story->pic2) }}" alt="">
                         </figure><!-- /figure -->
                     </div><!-- /grid-mask -->
                     @if( ! empty($story->pic2_note))
@@ -274,7 +275,7 @@
                 <div class="col-lg-8">
                     <div class="grid mask">
                         <figure>
-                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic3) }}" alt="">
+                            <img class="img-responsive" data-original="{{ url('/uploads/images/story/'.$story->pic3) }}" alt="">
                         </figure><!-- /figure -->
                     </div><!-- /grid-mask -->
                     @if( ! empty($story->pic3_note))
@@ -295,7 +296,7 @@
                 <div class="col-lg-8">
                     <div class="grid mask">
                         <figure>
-                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic4) }}" alt="">
+                            <img class="img-responsive" data-original="{{ url('/uploads/images/story/'.$story->pic4) }}" alt="">
                         </figure><!-- /figure -->
                     </div><!-- /grid-mask -->
                     @if( ! empty($story->pic1_note))
@@ -316,7 +317,7 @@
                 <div class="col-lg-8">
                     <div class="grid mask">
                         <figure>
-                            <img class="img-responsive" src="{{ url('/uploads/images/story/'.$story->pic5) }}" alt="">
+                            <img class="img-responsive" data-original="{{ url('/uploads/images/story/'.$story->pic5) }}" alt="">
                         </figure><!-- /figure -->
                     </div><!-- /grid-mask -->
                     @if( ! empty($story->pic1_note))
@@ -523,7 +524,7 @@
 
 
 <script type="text/javascript" src="{{ url('/touching/js/bootstrap.min.js') }}"></script>
-<script type="text/javascript" src="{{ url('/touching/js/retina.js') }}"></script>
+{{--<script type="text/javascript" src="{{ url('/touching/js/retina.js') }}"></script>--}}
 <script type="text/javascript" src="{{ url('/touching/js/jquery.easing.1.3.js') }}"></script>
 <script type="text/javascript" src="{{ url('/touching/js/smoothscroll.js') }}"></script>
 <script type="text/javascript" src="{{ url('/touching/js/jquery-func.js') }}"></script>
@@ -532,6 +533,14 @@
         var group = "input:checkbox[class='" + $(this).attr("class") + "']";
         $(group).prop("checked", false);
         $(this).prop("checked", true);
+    });
+</script>
+<script type="text/javascript">
+
+    $("img.img-responsive").lazyload({
+
+        effect : "fadeIn"
+
     });
 </script>
 </body>
