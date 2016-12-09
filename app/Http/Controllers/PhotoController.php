@@ -57,7 +57,7 @@ class PhotoController extends Controller
         $grid->add('updated_at', '更新時間', true);
         $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
-        $grid->edit('/admin/photo/edit', '功能', 'show|modify');
+        $grid->edit('/admin/photo/edit', '功能', 'show|modify|delete');
 
         $grid->link('/admin/photo/edit', "新增員工", "TR");
         return View::make('admin.list', compact('filter', 'grid'));
@@ -86,7 +86,7 @@ class PhotoController extends Controller
         $grid->orderBy('updated_at', 'desc');
         $grid->paginate(10);
 
-        $grid->edit('/admin/photo/edit', '功能', 'show|modify');
+        $grid->edit('/admin/photo/edit', '功能', 'show|modify|delete');
 
         return $edit->view('admin.detail', compact('edit', 'grid'));
     }

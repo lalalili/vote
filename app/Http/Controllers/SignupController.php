@@ -35,7 +35,8 @@ class SignupController extends Controller
     public function lists()
     {
         //dd(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA'));
-        $filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(6))->get()->pluck('id')->all();
+        //$filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(6))->get()->pluck('id')->all();
+        $filterEvents = Event::get()->pluck('id')->all();
         //dd($filterEvents);
 
         if (Auth::user()->hasRole('la-owner')) {
