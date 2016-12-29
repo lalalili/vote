@@ -21,9 +21,9 @@
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/jquery-ui.min.css') }}">
 
-    {!! Rapyd::styles() !!}
+{!! Rapyd::styles() !!}
 
-            <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -34,10 +34,16 @@
 
 <body>
 <div id="wrapper">
-    @inject('roleMenu', 'Luxgen\Presenter\RolePresenter')
-            <!-- Navigation -->
+@inject('roleMenu', 'Luxgen\Presenter\RolePresenter')
+<!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
             <a class="navbar-brand">管理系統</a>
         </div>
         <!-- /.navbar-header -->
@@ -69,39 +75,39 @@
                 </ul>
             </li>
         </ul>
-        @if (Auth::check())
-                <!-- /.navbar-top-links -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav navbar-collapse">
-                <ul class="nav" id="side-menu">
-                    <li>
-                        <a href="#"><i class="fa fa-users fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('/admin/photo/list') }}"> 員工基本資料</a>
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    <li class="active">
-                        <a href="#"><i class="fa fa-calculator fa-fw"></i> 課程報名<span
-                                    class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="{{ url('/admin/signup/list') }}"> 已報名列表</a>
-                            </li>
-                            <li>
-                                {!! $roleMenu->pullupMenu() !!}
-                            </li>
-                        </ul>
-                        <!-- /.nav-second-level -->
-                    </li>
-                    {!! $roleMenu->adminMenu() !!}
-                </ul>
+    @if (Auth::check())
+        <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-users fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('/admin/photo/list') }}"> 員工基本資料</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-calculator fa-fw"></i> 課程報名<span
+                                        class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="{{ url('/admin/signup/list') }}"> 已報名列表</a>
+                                </li>
+                                <li>
+                                    {!! $roleMenu->pullupMenu() !!}
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        {!! $roleMenu->adminMenu() !!}
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.sidebar-collapse -->
-        </div>
-        <!-- /.navbar-static-side -->
+            <!-- /.navbar-static-side -->
         @endif
     </nav>
 
@@ -114,10 +120,10 @@
             integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
             crossorigin="anonymous"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    @include('pjax::pjax')
+@include('pjax::pjax')
 
-    @yield('content')
-            <!-- /.row -->
+@yield('content')
+<!-- /.row -->
     <!-- /#page-wrapper -->
 
 </div>
