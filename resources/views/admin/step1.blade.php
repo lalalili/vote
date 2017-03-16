@@ -21,28 +21,18 @@
                             <form role="form" method="POST" action="/admin/signup/step1/save">
                                 {{ csrf_field() }}
                                 <div class="col-lg-6">
-                                    <input type="hidden" name="photo_id" value="{{ $employee->id }}">
-                                    <input type="hidden" name="emp" value="{{ $employee->emp }}">
-
-                                    <div class="form-group">
+                                    <input type="hidden" name="identify" value="{{ $employee->identity }}">
+                                     <div class="form-group">
                                         <label>經銷商：</label> {{ $employee->area }}
                                     </div>
                                     <div class="form-group">
-                                        <label>據點：</label> {{ $employee->album }}
+                                        <label>據點：</label> {{ $employee->location }}
                                     </div>
                                     <div class="form-group">
                                         <label>職稱：</label> {{ $employee->title }}
                                     </div>
                                     <div class="form-group">
                                         <label>學員姓名：</label> {{ $employee->name }}
-                                    </div>
-                                    <div class="form-group">
-                                        <label>身分證號 (必填)</label>
-                                        <input class="form-control" name="identity"
-                                               @if ($employee->identity <> '') value="{{ $employee->identity }}"
-                                               @else value="{{old("identity")}}" @endif>
-
-                                        <p class=" help-block">範例：A123456789</p>
                                     </div>
                                     <div class="form-group">
                                         <label>出生年 (必填)</label>
@@ -111,22 +101,22 @@
                                             @endif
                                         </select>
                                     </div>
-                                    <div class="form-group">
-                                        <label>人員別 (必填)</label>
-                                        <select class="form-control" name="type">
-                                            <option value="">--請選擇--</option>
-                                            @if ($employee->type == '本國職工')
-                                                <option value="本國職工" selected>本國職工</option>
-                                                <option value="適用就保之大陸或外籍配偶">適用就保之大陸或外籍配偶</option>
-                                            @elseif ($employee->type == '適用就保之大陸或外籍配偶')
-                                                <option value="本國職工">本國職工</option>
-                                                <option value="適用就保之大陸或外籍配偶" selected>適用就保之大陸或外籍配偶</option>
-                                            @else
-                                                <option value="本國職工">本國職工</option>
-                                                <option value="適用就保之大陸或外籍配偶">適用就保之大陸或外籍配偶</option>
-                                            @endif
-                                        </select>
-                                    </div>
+                                    {{--<div class="form-group">--}}
+                                        {{--<label>人員別 (必填)</label>--}}
+                                        {{--<select class="form-control" name="type">--}}
+                                            {{--<option value="">--請選擇--</option>--}}
+                                            {{--@if ($employee->type == '本國職工')--}}
+                                                {{--<option value="本國職工" selected>本國職工</option>--}}
+                                                {{--<option value="適用就保之大陸或外籍配偶">適用就保之大陸或外籍配偶</option>--}}
+                                            {{--@elseif ($employee->type == '適用就保之大陸或外籍配偶')--}}
+                                                {{--<option value="本國職工">本國職工</option>--}}
+                                                {{--<option value="適用就保之大陸或外籍配偶" selected>適用就保之大陸或外籍配偶</option>--}}
+                                            {{--@else--}}
+                                                {{--<option value="本國職工">本國職工</option>--}}
+                                                {{--<option value="適用就保之大陸或外籍配偶">適用就保之大陸或外籍配偶</option>--}}
+                                            {{--@endif--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
                                     <div class="form-group">
                                         <label>階層別 (必填)</label>
                                         <select class="form-control" name="level">
@@ -253,9 +243,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label>到職日 (必填)</label>
-                                        <input class="form-control" name="duty_day"
-                                               @if ($employee->duty_day <> '') value="{{ $employee->duty_day }}"
-                                               @else value="{{old("duty_day")}}" @endif>
+                                        <input class="form-control" name="duty_date"
+                                               @if ($employee->duty_date <> '') value="{{ $employee->duty_date }}"
+                                               @else value="{{old("duty_date")}}" @endif>
 
                                         <p class="help-block">範例：2016-01-01</p>
                                     </div>

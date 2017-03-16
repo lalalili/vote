@@ -51,7 +51,7 @@
                     "dataSrc": function (data) {
                         //console.log(data[0]['id']);
                         for (var i = 0, ien = data.length; i < ien; i++) {
-                            data[i]['id'] = '<a href="/admin/signup/step1/' + data[i]['id'] + '">開始報名</a>';
+                            data[i]['id'] = '<a href="/admin/signup/step1/' + data[i]['identity'] + '">開始報名</a>';
                         }
                         //console.log(data);
                         return data;
@@ -63,7 +63,7 @@
                 },
                 "columns": [
                     {"data": "type"},
-                    {"data": "album"},
+                    {"data": "location"},
                     {"data": "title"},
                     {"data": "name"},
                     {"data": "id"}

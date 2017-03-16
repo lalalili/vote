@@ -4,6 +4,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateSignupRequest;
 use App\Models\Course;
 use App\Models\Event;
+use App\Models\NewEmployee;
 use App\Models\Photo;
 use App\Models\Project;
 use App\Models\Signup;
@@ -40,29 +41,29 @@ class SignupController extends Controller
         //dd($filterEvents);
 
         if (Auth::user()->hasRole('la-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'LA')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('lb-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'LB')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('lc-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'LC')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('ld-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'LD')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('le-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'LE')->whereIn('event_id', $filterEvents));
         } elseif (Auth::user()->hasRole('luxgen-owner')) {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo')->where('note',
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee')->where('note',
                 'luxgen')->whereIn('event_id', $filterEvents));
         } else {
-            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'photo'));
+            $filter = DataFilter::source(Signup::with('project', 'course', 'event', 'employee'));
         }
 
         //dd($filter);
-        $filter->add('photo.name', '員工', 'text');
+        $filter->add('employee.name', '員工', 'text');
         $filter->add('course.name', '課別', 'text');
         $filter->add('event.name', '場次', 'text');
 
@@ -71,7 +72,7 @@ class SignupController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('{{ $photo->name }}', '姓名', 'photo_id');
+        $grid->add('{{ employee->name }}', '姓名', 'identity');
         $grid->add('project.name', '課程項目', 'project_id');
         $grid->add('course.name', '課別', 'course_id');
         $grid->add('event.name', '場次', 'event_id');
@@ -97,28 +98,12 @@ class SignupController extends Controller
         $edit->link("/admin/signup/edit", "新增", "TR");
         $edit->label('編輯');
 
-        $edit->add('photo_id', '姓名', 'select')->options(Photo::all()->pluck("name", "id")->all());
+        $edit->add('photo_id', '姓名', 'select')->options(NewEmployee::all()->pluck("name", "identity")->all());
         $edit->add('project_id', '課程項目', 'select')->options(Project::all()->pluck("name", "id")->all());
         $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('event_id', '場次', 'select')->options(Event::all()->pluck("name", "id")->all());
-        //$edit->add('note', '報名者', 'text');
-        //dd($edit);
 
-        $grid = DataGrid::source(Signup::with('project', 'course', 'event', 'photo'));
-        //dd($grid);
-        $grid->add('photo.name', '姓名', true);
-        $grid->add('project.name', '課程項目', true);
-        $grid->add('course.name', '課別', true);
-        $grid->add('event.name', '場次', true);
-        $grid->add('note', '報名者', true);
-        $grid->add('updated_at', '報名日期', true);
-
-        $grid->orderBy('updated_at', 'desc');
-        $grid->paginate(10);
-
-        $grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
-
-        return $edit->view('admin.detail', compact('edit', 'grid'));
+        return $edit->view('admin.detail', compact('edit'));
     }
 
     public function step2(Request $request, $id)
@@ -136,7 +121,7 @@ class SignupController extends Controller
             Session::forget('event_id');
             return redirect("/admin/signup/step2/course/$course_id");
         } else {
-            $employee = Photo::findOrFail($id);
+            $employee = NewEmployee::findOrFail($id);
             $projects = Project::all();
             Session::forget(['project_id', 'course_id', 'event_id']);
             Session::put('id', $id);

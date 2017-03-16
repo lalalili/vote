@@ -21,16 +21,16 @@
                             <form role="form" method="POST" action="/admin/signup/step3/">
                                 {{ csrf_field() }}
                                 <div class="col-lg-6">
-                                    <input type="hidden" name="photo_id" value="{{ $employee->id }}">
+                                    <input type="hidden" name="identify" value="{{ $employee->identify }}">
 
                                     <div class="form-group">
-                                        <label>經銷商：</label> {{ $employee->album->area }}
+                                        <label>經銷商：</label> {{ $employee->area }}
                                     </div>
                                     <div class="form-group">
-                                        <label>據點：</label> {{ $employee->album->name }}
+                                        <label>據點：</label> {{ $employee->location}}
                                     </div>
                                     <div class="form-group">
-                                        <label>職稱：</label> {{ $employee->title->name }}
+                                        <label>職稱：</label> {{ $employee->title }}
                                     </div>
                                     <div class="form-group">
                                         <label>學員姓名：</label> {{ $employee->name }}

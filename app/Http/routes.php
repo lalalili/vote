@@ -62,6 +62,11 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('signup/step3', 'SignupController@step3');
     Route::get('signup/list', 'SignupController@lists');
     Route::any('signup/edit', 'SignupController@edit');
+
+    Route::get('employee/list', 'EmployeeController@lists');
+    Route::any('employee/edit', 'EmployeeController@edit');
+    Route::post('employee/batch', 'EmployeeController@batch');
+    Route::get('employee/download', 'EmployeeController@download');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
@@ -112,10 +117,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'acl'], function () {
     Route::get('title/download', 'TitleController@download');
 
     //Route::controller('employee', 'EmployeeController');
-    Route::get('employee/list', 'EmployeeController@lists');
-    Route::any('employee/edit', 'EmployeeController@edit');
-    Route::post('employee/batch', 'EmployeeController@batch');
-    Route::get('employee/download', 'EmployeeController@download');
+
 
 
     //Route::controller('project', 'ProjectController');

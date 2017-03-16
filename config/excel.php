@@ -407,7 +407,7 @@ return array(
         |
         */
 
-        'to_ascii'                => true,
+        'to_ascii'                => false,
 
         /*
         |--------------------------------------------------------------------------
@@ -417,8 +417,8 @@ return array(
 
         'encoding'                => array(
 
-            'input'  => 'UTF-8',
-            'output' => 'UTF-8'
+            'input'  => 'utf-8',
+            'output' => 'utf-8'
 
         ),
 

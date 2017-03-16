@@ -22,8 +22,8 @@ class Signup extends Model
         return $this->belongsTo('App\Models\Event');
     }
 
-    public function photo()
+    public function employee()
     {
-        return $this->belongsTo('App\Models\Photo', 'photo_id');
+        return $this->belongsTo('App\Models\NewEmployee', 'identity', 'identity');
     }
 }

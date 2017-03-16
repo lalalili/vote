@@ -1,4 +1,4 @@
-<?php namespace app\Http\Requests;
+<?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
@@ -22,15 +22,12 @@ class CreateEmployeeRequest extends Request
     public function rules()
     {
         return [
-            'photo_id'   => 'required',
-            'identity'   => 'required|size:10',
             'birth_year' => 'required|digits:4',
             'mobile'     => 'required|digits:10',
             'emp_id'     => 'required|size:6',
             'group'      => 'required|digits:3',
             'gender'     => 'required',
             'food'       => 'required',
-            'type'       => 'required',
             'level'      => 'required',
             'background' => 'required',
         ];
@@ -48,7 +45,7 @@ class CreateEmployeeRequest extends Request
             //下拉選單
             'gender.required'     => '性別為必填欄位',
             'food.required'       => '飲食習慣為必填欄位',
-            'type.required'       => '人員別為必填欄位',
+            //'type.required'       => '人員別為必填欄位',
             'level.required'      => '階層別為必填欄位',
             'background.required' => '最高學歷為必填欄位',
 

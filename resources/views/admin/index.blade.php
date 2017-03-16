@@ -84,7 +84,7 @@
                             <a href="#"><i class="fa fa-users fa-fw"></i> 員工管理<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{ url('/admin/photo/list') }}"> 員工基本資料</a>
+                                    <a href="{{ url('/admin/employee/list') }}"> 員工基本資料</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

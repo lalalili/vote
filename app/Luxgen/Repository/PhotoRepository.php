@@ -46,21 +46,15 @@ class PhotoRepository
         }
 
         if (isset($area)) {
-            $lists = DB::table('photos')
-                ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-                ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-                ->select('photos.name as name', 'titles.name as title',
-                    'albums.name as album', 'albums.type as type', 'photos.id as id')
-                ->where('albums.area', $area)
-                ->orderBy('photos.album_id', 'asc')->get();
+            $lists = DB::table('new_employees')
+                ->select('name', 'title', 'location', 'type', 'identity')
+                ->where('area', $area)
+                ->orderBy('location', 'asc')->get();
         } else {
             if (Auth::user()->hasRole('admin')) {
-                $lists = DB::table('photos')
-                    ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-                    ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-                    ->select('photos.name as name', 'titles.name as title',
-                        'albums.name as album', 'albums.type as type', 'photos.id as id')
-                    ->orderBy('photos.album_id', 'asc')->get();
+                $lists = DB::table('new_employees')
+                    ->select('name', 'title', 'location', 'type', 'identity')
+                    ->orderBy('identity', 'asc')->get();
             } else {
                 die();
             }
