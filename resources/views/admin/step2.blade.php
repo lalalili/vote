@@ -18,10 +18,10 @@
                     <div class="panel-body">
                         <div class="row">
                             @include('common.errors')
-                            <form role="form" method="POST" action="/admin/signup/step3/">
+                            <form role="form" method="POST" action="/admin/signup/step3">
                                 {{ csrf_field() }}
                                 <div class="col-lg-6">
-                                    <input type="hidden" name="identify" value="{{ $employee->identify }}">
+                                    <input type="hidden" name="identity" value="{{ $employee->identity }}">
 
                                     <div class="form-group">
                                         <label>經銷商：</label> {{ $employee->area }}

@@ -25,15 +25,15 @@ $(function () {
     })
 });
 
-$(function () {
-    var opt = {
-        dateFormat: 'yy-mm-dd',
-        showSecond: true,
-        timeFormat: 'HH:mm:ss'
-
-    };
-    $("#event_at").datetimepicker(opt);
-});
+// $(function () {
+//     var opt = {
+//         dateFormat: 'yy-mm-dd',
+//         showSecond: true,
+//         timeFormat: 'HH:mm:ss'
+//
+//     };
+//     $("#event_at").datetimepicker(opt);
+// });
 
 function seed_confirm() {
     var r = confirm("確認要建立測試資料 !!");

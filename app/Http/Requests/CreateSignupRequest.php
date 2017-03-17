@@ -22,7 +22,7 @@ class CreateSignupRequest extends Request
     public function rules()
     {
         return [
-            'photo_id'   => 'required',
+            'identity'   => 'required',
             'project_id' => 'required',
             'course_id'  => 'required',
             'event_id'   => 'required',

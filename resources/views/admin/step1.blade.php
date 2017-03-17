@@ -243,7 +243,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>到職日 (必填)</label>
-                                        <input class="form-control" name="duty_date"
+                                        <input class="form-control" name="duty_date" type="date"
                                                @if ($employee->duty_date <> '') value="{{ $employee->duty_date }}"
                                                @else value="{{old("duty_date")}}" @endif>
 

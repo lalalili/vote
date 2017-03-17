@@ -60,7 +60,7 @@ class EmployeeController extends Controller
         $grid->edit('/admin/employee/edit', '功能', 'show|modify|delete');
 
         $grid->link('/admin/employee/edit', "新增", "TR");
-        $grid->link('/admin/employee/edit', "報名", "TR");
+        $grid->link('/admin/signup/choose/all', "報名", "TR");
         return View::make('admin.list', compact('filter', 'grid'));
     }
 
@@ -69,6 +69,7 @@ class EmployeeController extends Controller
         $edit = DataEdit::source(new NewEmployee());
         $edit->link("/admin/employee/list", "上一頁", "BL");
         $edit->link("/admin/employee/edit", "新增", "TR");
+        $edit->link("/admin/signup/choose/all", "報名", "TR");
         $edit->label('編輯');
         $edit->add('identity', '身分證號', 'text');
         $edit->add('name', '姓名', 'text');

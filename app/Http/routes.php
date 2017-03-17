@@ -40,6 +40,7 @@ Route::group(['prefix' => 'api'], function () {
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::post('signup/step3', 'SignupController@step3');
     Route::get('/', 'RedirectController@adminHome');
     Route::get('photo/list', 'PhotoController@lists');
     Route::any('photo/edit', 'PhotoController@edit');

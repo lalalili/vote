@@ -1,10 +1,10 @@
-<?php namespace app\Models;
+<?php namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Signup extends Model
 {
-    protected $fillable = ['photo_id', 'project_id', 'course_id', 'event_id', 'note'];
+    protected $fillable = ['identity', 'project_id', 'course_id', 'event_id', 'note'];
 
 
     public function project()

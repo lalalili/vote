@@ -72,7 +72,7 @@ class SignupController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('{{ employee->name }}', '姓名', 'identity');
+        $grid->add('employee.name', '姓名', 'identity');
         $grid->add('project.name', '課程項目', 'project_id');
         $grid->add('course.name', '課別', 'course_id');
         $grid->add('event.name', '場次', 'event_id');
@@ -98,7 +98,7 @@ class SignupController extends Controller
         $edit->link("/admin/signup/edit", "新增", "TR");
         $edit->label('編輯');
 
-        $edit->add('photo_id', '姓名', 'select')->options(NewEmployee::all()->pluck("name", "identity")->all());
+        $edit->add('identity', '姓名', 'select')->options(NewEmployee::all()->pluck("name", "identity")->all());
         $edit->add('project_id', '課程項目', 'select')->options(Project::all()->pluck("name", "id")->all());
         $edit->add('course_id', '課別', 'select')->options(Course::all()->pluck("name", "id")->all());
         $edit->add('event_id', '場次', 'select')->options(Event::all()->pluck("name", "id")->all());
@@ -136,10 +136,10 @@ class SignupController extends Controller
     {
         $id = Session::get('id');
         //dd($id);
-        $employee = Photo::findOrFail($id);
+        $employee = NewEmployee::findOrFail($id);
         //dd($project_id);
         $projects = Project::where('id', $project_id)->get();
-        $type = Photo::findOrFail(Session::get('id'))->album->type;
+        $type = NewEmployee::findOrFail(Session::get('id'))->type;
         //dd($type);
         if ($type == '生活館') {
             $courses = Course::where('project_id', $project_id)->where('type', '<>', '服務廠')->get();
@@ -157,7 +157,7 @@ class SignupController extends Controller
     public function step2Course(Request $request, $course_id)
     {
         $id = Session::get('id');
-        $employee = Photo::findOrFail($id);
+        $employee = NewEmployee::findOrFail($id);
 //        $project_id = Session::get('project_id');
 //        $projects = Project::where('id', $project_id)->get();
         $projects = Project::all();
@@ -183,7 +183,7 @@ class SignupController extends Controller
         $id = Session::get('id');
 
         //dd($course_id);
-        $employee = Photo::findOrFail($id);
+        $employee = NewEmployee::findOrFail($id);
         //dd($employee);
         //$project_id = Session::get('project_id');
 //        $project_id = Session::get('project_id');
@@ -213,7 +213,7 @@ class SignupController extends Controller
 
         //dd($request->group);
         $signup = new Signup;
-        $signup->photo_id = $request->photo_id;
+        $signup->identity = $request->identity;
         $signup->project_id = $request->project_id;
         $signup->course_id = $request->course_id;
         $signup->event_id = $request->event_id;
@@ -243,18 +243,15 @@ class SignupController extends Controller
         Excel::create($filename, function ($excel) {
             $excel->sheet('all', function ($sheet) {
                 $signups = DB::table('signups')
-                    ->leftjoin('photos', 'signups.photo_id', '=', 'photos.id')
-                    ->leftjoin('employees', 'signups.photo_id', '=', 'employees.photo_id')
+                    ->leftjoin('new_employees', 'signups.identity', '=', 'new_employees.identity')
                     ->leftjoin('projects', 'signups.project_id', '=', 'projects.id')
                     ->leftjoin('courses', 'signups.course_id', '=', 'courses.id')
                     ->leftjoin('events', 'signups.event_id', '=', 'events.id')
-                    ->leftjoin('titles', 'photos.title_id', '=', 'titles.id')
-                    ->leftjoin('albums', 'photos.album_id', '=', 'albums.id')
-                    ->select('signups.id as sno', 'albums.area as area', 'albums.type as type', 'albums.name as album',
-                        'titles.name as title', 'employees.emp_id', 'photos.name as name', 'employees.identity',
-                        'employees.gender', 'employees.birth_year', 'employees.level', 'employees.background',
-                        'employees.mobile', 'employees.food', 'employees.group', 'employees.tax_id',
-                        'employees.duty_day', 'projects.name as project',
+                    ->select('signups.id as sno', 'new_employees.area as area', 'new_employees.type as type', 'new_employees.location as location',
+                        'new_employees.title as title', 'new_employees.emp_id', 'new_employees.name as name', 'new_employees.identity',
+                        'new_employees.gender', 'new_employees.birth_year', 'new_employees.level', 'new_employees.background',
+                        'new_employees.mobile', 'new_employees.food', 'new_employees.group', 'new_employees.tax_id',
+                        'new_employees.duty_date', 'projects.name as project',
                         'courses.name as course', 'events.name as event')
                     ->orderBy('signups.id', 'asc')->get();
                 //dd($signups);
