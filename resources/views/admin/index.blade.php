@@ -18,9 +18,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
-    <link rel="stylesheet" href="{{ asset('/css/jquery-ui.min.css') }}">
-    {!! Rapyd::styles() !!}
+    <link media="all" type="text/css" rel="stylesheet" href="http://vote.app/packages/zofe/rapyd/assets/datepicker/datepicker3.css">
+    <link media="all" type="text/css" rel="stylesheet" href="http://vote.app/packages/zofe/rapyd/assets/rapyd.css">
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="http://vote.app/packages/zofe/rapyd/assets/datepicker/bootstrap-datepicker.js"></script>
+    <script src="http://vote.app/packages/zofe/rapyd/assets/datepicker/locales/bootstrap-datepicker.zh-TW.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,7 +31,6 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
 
 <body>
@@ -111,15 +113,7 @@
     </nav>
 
     <!-- Page Content -->
-    <script src="{{ asset('/js/jquery-1.11.3.min.js') }}"></script>
-    <script src="{{ asset('/js/jquery-ui.min.js') }}"></script>
-    {{--<script src="{{ asset('/js/jquery-ui-timepicker-addon.min.js') }}"></script>--}}
-    <script src="{{ asset('/js/jquery-ui-sliderAccess.js') }}"></script>
-    {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"--}}
-    {{--integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"--}}
-    {{--crossorigin="anonymous"></script>--}}
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-{!! Rapyd::scripts() !!}
 @include('pjax::pjax')
 
 @yield('content')
@@ -129,17 +123,15 @@
 </div>
 <!-- /#wrapper -->
 
-<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+
 <script src="{{ asset('/js/plugins/metisMenu/metisMenu.min.js') }}"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.js"></script>
 <script src="{{ asset('/js/select2.min.js') }}"></script>
-
 <!-- Custom Theme JavaScript -->
 {{--<script src="{{ url('js/sb-admin-2.js') }}"></script>--}}
+<script src="{{ elixir('js/admin.js') }}"></script>
 <script>
     $('#flash-overlay-modal').modal();
 </script>
-
-<script src="{{ elixir('js/admin.js') }}"></script>
 </body>
 </html>

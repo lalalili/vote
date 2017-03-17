@@ -28,7 +28,7 @@ class RedirectController extends Controller
 
     public function adminHome()
     {
-        return redirect('/admin/photo/list');
+        return redirect('admin/employee/list');
     }
 
     public function adv()

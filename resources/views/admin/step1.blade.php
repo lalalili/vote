@@ -243,7 +243,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>到職日 (必填)</label>
-                                        <input class="form-control" name="duty_date" type="date"
+                                        <input class="form-control" name="duty_date" id ="duty_date" type="text"
                                                @if ($employee->duty_date <> '') value="{{ $employee->duty_date }}"
                                                @else value="{{old("duty_date")}}" @endif>
 
@@ -264,4 +264,14 @@
         </div>
         <!-- /.row -->
     </div>
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $('#duty_date').datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-TW',
+                todayBtn: 'linked',
+                autoclose: true
+            });
+        });
+    </script>
 @endsection
