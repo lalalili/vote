@@ -21,7 +21,8 @@
     <link media="all" type="text/css" rel="stylesheet" href="/packages/zofe/rapyd/assets/datepicker/datepicker3.css">
     <link media="all" type="text/css" rel="stylesheet" href="/packages/zofe/rapyd/assets/rapyd.css">
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="/packages/zofe/rapyd/assets/datepicker/bootstrap-datepicker.js"></script>
     <script src="/packages/zofe/rapyd/assets/datepicker/locales/bootstrap-datepicker.zh-TW.js"></script>
 
@@ -51,30 +52,20 @@
         <ul class="nav navbar-top-links navbar-right">
             @if (Auth::check())
                 歡迎登入： {{Auth::getUser()['email']}}
+                <li>
+                    <a href="{{ url('/auth/logout' )}}">
+                        <i class="fa fa-sign-out fa-fw"></i>
+                        Logout
+                    </a>
+                </li>
+            @else
+                <li>
+                    <a href="{{ url('/auth/login') }}">
+                        <i class="fa fa-sign-in fa-fw"></i>
+                        Login
+                    </a>
+                </li>
             @endif
-            <li class="dropdown">
-                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
-                    <i class="fa fa-user fa-fw"></i>
-                    <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-user">
-                    @if (Auth::check())
-                        <li>
-                            <a href="{{ url('/auth/logout' )}}">
-                                <i class="fa fa-sign-out fa-fw"></i>
-                                Logout
-                            </a>
-                        </li>
-                    @else
-                        <li>
-                            <a href="{{ url('/auth/login') }}">
-                                <i class="fa fa-sign-in fa-fw"></i>
-                                Login
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
         </ul>
     @if (Auth::check())
         <!-- /.navbar-top-links -->
