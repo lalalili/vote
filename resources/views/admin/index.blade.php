@@ -18,12 +18,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/dt-1.10.10/datatables.min.css"/>
     <link rel="stylesheet" href="{{ asset('/css/select2.min.css') }}">
     {{--<link href="{{ url('css/sb-admin-2.css') }}" rel="stylesheet">--}}
-    <link media="all" type="text/css" rel="stylesheet" href="http://vote.app/packages/zofe/rapyd/assets/datepicker/datepicker3.css">
-    <link media="all" type="text/css" rel="stylesheet" href="http://vote.app/packages/zofe/rapyd/assets/rapyd.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/packages/zofe/rapyd/assets/datepicker/datepicker3.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/packages/zofe/rapyd/assets/rapyd.css">
     <link rel="stylesheet" href="{{ elixir('css/admin.css') }}">
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="http://vote.app/packages/zofe/rapyd/assets/datepicker/bootstrap-datepicker.js"></script>
-    <script src="http://vote.app/packages/zofe/rapyd/assets/datepicker/locales/bootstrap-datepicker.zh-TW.js"></script>
+    <script src="/packages/zofe/rapyd/assets/datepicker/bootstrap-datepicker.js"></script>
+    <script src="/packages/zofe/rapyd/assets/datepicker/locales/bootstrap-datepicker.zh-TW.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
