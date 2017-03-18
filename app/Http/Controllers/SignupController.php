@@ -36,8 +36,8 @@ class SignupController extends Controller
     public function lists()
     {
         //dd(Signup::with('project', 'course', 'event', 'photo')->where('note', 'LA'));
-        //$filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(6))->get()->pluck('id')->all();
-        $filterEvents = Event::get()->pluck('id')->all();
+        $filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(3))->get()->pluck('id')->all();
+        //$filterEvents = Event::get()->pluck('id')->all();
         //dd($filterEvents);
 
         if (Auth::user()->hasRole('la-owner')) {
@@ -83,16 +83,17 @@ class SignupController extends Controller
         $grid->paginate(10);
 
         //$grid->edit('/admin/signup/edit', '功能', 'show|modify|delete');
-        $grid->edit('/admin/signup/edit', '功能', 'show|delete');
+        $grid->edit('/admin/signup/edit', '功能', 'modify|show|delete');
 
-        //$grid->link('/admin/signup/edit', "新增", "TR");
+        $grid->link('/admin/signup/downloadAll', "下載報名列表", "TR");
         return View::make('admin.signup', compact('filter', 'grid'));
     }
 
     public function edit()
     {
-        //dd(Signup::find(1));
-        $edit = DataEdit::source(new Signup());
+        $filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(3))->get()->pluck('id')->all();
+        Signup::whereIn('event_id', $filterEvents);
+        $edit = DataEdit::source(Signup::whereIn('event_id', $filterEvents));
         //dd($edit);
         $edit->link("/admin/signup/list", "上一頁", "BL");
         $edit->link("/admin/signup/edit", "新增", "TR");
@@ -252,9 +253,26 @@ class SignupController extends Controller
                         'new_employees.gender', 'new_employees.birth_year', 'new_employees.level', 'new_employees.background',
                         'new_employees.mobile', 'new_employees.food', 'new_employees.group', 'new_employees.tax_id',
                         'new_employees.duty_date', 'projects.name as project',
-                        'courses.name as course', 'events.name as event')
-                    ->orderBy('signups.id', 'asc')->get();
+                        'courses.name as course', 'events.name as event');
+
                 //dd($signups);
+                if (Auth::user()->hasRole('la-owner')) {
+                    $ruleData = $signups->where('area', '北智捷');
+                } elseif (Auth::user()->hasRole('lb-owner')) {
+                    $ruleData = $signups->where('area', '桃智捷');
+                } elseif (Auth::user()->hasRole('lc-owner')) {
+                    $ruleData = $signups->where('area', '中智捷');
+                } elseif (Auth::user()->hasRole('ld-owner')) {
+                    $ruleData = $signups->where('area', '南智捷');
+                } elseif (Auth::user()->hasRole('le-owner')) {
+                    $ruleData = $signups->where('area', '高智捷');
+//                } elseif (Auth::user()->hasRole('luxgen-owner')) {
+//                    $ruleData = $signups->where('note', 'LA')->where('area', '北智捷');
+                } else {
+                   $ruleData = $signups;
+                }
+
+                $signups = $ruleData->orderBy('signups.id', 'asc')->get();
                 $data = array();
                 foreach ($signups as $signup) {
                     $data[] = (array)$signup;
