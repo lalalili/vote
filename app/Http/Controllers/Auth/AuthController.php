@@ -29,8 +29,8 @@ class AuthController extends Controller
      * @return void
      */
 
-    protected $redirectPath = '/admin/photo/list';
-    protected $redirectTo = '/admin/photo/list';
+    protected $redirectPath = '/admin/';
+    protected $redirectTo = '/admin/';
     protected $redirectAfterLogout = '/auth/login';
 
 
