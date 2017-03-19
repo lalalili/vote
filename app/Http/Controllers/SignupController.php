@@ -277,7 +277,7 @@ class SignupController extends Controller
                 }
                 $sheet->fromArray($data);
             });
-        })->export('xlsx');
+        })->download('xlsx');
     }
 
     public function resetSignups()
