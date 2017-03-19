@@ -91,9 +91,7 @@ class SignupController extends Controller
 
     public function edit()
     {
-        $filterEvents = Event::where('event_at', '>', Carbon::now('Asia/Taipei')->addDay(3))->get()->pluck('id')->all();
-        Signup::whereIn('event_id', $filterEvents);
-        $edit = DataEdit::source(Signup::whereIn('event_id', $filterEvents));
+        $edit = DataEdit::source(new Signup());
         //dd($edit);
         $edit->link("/admin/signup/list", "上一頁", "BL");
         $edit->link("/admin/signup/edit", "新增", "TR");
