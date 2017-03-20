@@ -69,7 +69,7 @@ class EmployeeController extends Controller
         $edit = DataEdit::source(new NewEmployee());
         $edit->link("/admin/employee/list", "上一頁", "BL");
         $edit->link("/admin/employee/edit", "新增", "TR");
-        $edit->link("/admin/signup/choose/all", "報名", "TR");
+//        $edit->link("/admin/signup/choose/all", "報名", "TR");
         $edit->label('編輯');
         $edit->add('identity', '身分證號', 'text');
         $edit->add('name', '姓名', 'text');

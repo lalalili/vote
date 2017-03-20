@@ -150,7 +150,6 @@ return [
         Zizaco\Entrust\EntrustServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         App\Providers\DropboxFilesystemServiceProvider::class,
-        YuanChao\Pjax\EndaPjaxServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         App\Providers\LocalServiceProvider::class,
     ],

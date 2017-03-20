@@ -1,11 +1,9 @@
 <?php namespace App\Http\Controllers;
 
-use App\Http\Requests;
 use App\Http\Requests\CreateSignupRequest;
 use App\Models\Course;
 use App\Models\Event;
 use App\Models\NewEmployee;
-use App\Models\Photo;
 use App\Models\Project;
 use App\Models\Signup;
 use Auth;
@@ -267,7 +265,7 @@ class SignupController extends Controller
 //                } elseif (Auth::user()->hasRole('luxgen-owner')) {
 //                    $ruleData = $signups->where('note', 'LA')->where('area', '北智捷');
                 } else {
-                   $ruleData = $signups;
+                    $ruleData = $signups;
                 }
 
                 $signups = $ruleData->orderBy('signups.id', 'asc')->get();

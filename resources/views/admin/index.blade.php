@@ -105,8 +105,6 @@
 
     <!-- Page Content -->
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-@include('pjax::pjax')
-
 @yield('content')
 <!-- /.row -->
     <!-- /#page-wrapper -->
