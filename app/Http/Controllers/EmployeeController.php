@@ -33,6 +33,7 @@ class EmployeeController extends Controller
         $data = $this->getData();
         $filter = DataFilter::source($data);
         //dd($filter);
+        $filter->add('identity', '身分證號', 'text');
         $filter->add('name', '員工', 'text');
         $filter->add('emp_id', '工號', 'text');
 
@@ -71,13 +72,13 @@ class EmployeeController extends Controller
         $edit->link("/admin/employee/edit", "新增", "TR");
 //        $edit->link("/admin/signup/choose/all", "報名", "TR");
         $edit->label('編輯');
-        $edit->add('identity', '身分證號', 'text');
-        $edit->add('name', '姓名', 'text');
+        $edit->add('identity', '身分證號', 'text')->rule('required')->unique();
+        $edit->add('name', '姓名', 'text')->rule('required');
         $edit->add('area', '經銷商', 'select')->options($this->area);
         $edit->add('type', '人員別', 'select')->options($this->type);
         $edit->add('location', '據點', 'select')->options(Album::lists('name', 'name')->all());
         $edit->add('title', '職稱', 'select')->options($this->title);
-        $edit->add('emp_id', '工號', 'text');
+        $edit->add('emp_id', '工號', 'text')->rule('required');
         $edit->add('gender', '性別', 'select')->options($this->gender);
         $edit->add('birth_year', '出生年', 'text');
         $edit->add('level', '階層別', 'select')->options($this->level);
