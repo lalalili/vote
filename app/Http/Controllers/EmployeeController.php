@@ -41,7 +41,7 @@ class EmployeeController extends Controller
         $filter->build();
 
         $grid = DataGrid::source($filter);
-        $grid->add('name', '姓名', 'photo_id');
+        $grid->add('name', '姓名', true);
         $grid->add('area', '經銷商', true);
         $grid->add('type', '人員別', true);
         $grid->add('location', '據點', true);
