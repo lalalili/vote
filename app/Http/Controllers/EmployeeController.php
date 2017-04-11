@@ -3,16 +3,17 @@
 use App\Http\Requests\CreateEmployeeRequest;
 use App\Models\Album;
 use App\Models\NewEmployee;
-use DataEdit;
 use DataFilter;
 use DataGrid;
 use DB;
 use Excel;
 use Flash;
+use Illuminate\Support\Facades\Input;
 use Redirect;
 use Request;
 use Validator;
 use View;
+use Zofe\Rapyd\Facades\DataEdit;
 
 class EmployeeController extends Controller
 {
@@ -67,12 +68,17 @@ class EmployeeController extends Controller
 
     public function edit()
     {
-        $edit = DataEdit::source(new NewEmployee());
+        $edit = DataEdit::source(new NewEmployee);
         $edit->link("/admin/employee/list", "上一頁", "BL");
         $edit->link("/admin/employee/edit", "新增", "TR");
 //        $edit->link("/admin/signup/choose/all", "報名", "TR");
         $edit->label('編輯');
-        $edit->add('identity', '身分證號', 'text')->rule('required')->unique();
+        if (Input::get('update')) {
+            $edit->add('identity', '身分證號', 'text')->rule('required');
+        } else {
+            $edit->add('identity', '身分證號', 'text')->rule('required')->unique();
+        }
+
         $edit->add('name', '姓名', 'text')->rule('required');
         $edit->add('area', '經銷商', 'select')->options($this->area);
         $edit->add('type', '人員別', 'select')->options($this->type);
@@ -87,7 +93,7 @@ class EmployeeController extends Controller
         $edit->add('food', '飲食習慣', 'select')->options($this->food);
         $edit->add('group', '菁英班梯次', 'text');
         $edit->add('tax_id', '統編', 'text');
-        $edit->add('duty_date', '到職日','date')->format('Y-m-d', 'zh-TW');
+        $edit->add('duty_date', '到職日', 'date')->format('Y-m-d', 'zh-TW');
         return $edit->view('admin.detail', compact('edit'));
     }
 
