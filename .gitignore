@@ -2,7 +2,7 @@
 /vendor
 /node_modules
 /.idea
-*.env*
+*.env
 /.vagrant
 
 ### Project ###
