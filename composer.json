@@ -21,7 +21,6 @@
     "maatwebsite/excel": "~2.0",
     "zofe/rapyd": "2.1.*",
     "zizaco/entrust": "dev-laravel-5",
-    "league/flysystem-dropbox": "^1.0",
     "spatie/laravel-backup": "^2.7",
     "doctrine/dbal": "^2.5"
   },
