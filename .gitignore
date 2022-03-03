@@ -14,3 +14,4 @@ Envoy.blade.php
 /tests/*Test.php
 /database/seeds/UserTableSeeder.php
 /public/packages/lalalili/lalalili.tmp
+_ide_helper.php
